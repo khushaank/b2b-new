@@ -1,0 +1,4 @@
+.locations-page .legacy-content > section:not(.page-header) > .container { max-width: 980px; }
+.locations-page .location-grid, .locations-page .service-area-grid, .locations-page .nearby-locations { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
+.locations-page .location-card, .locations-page .area-card { padding: 25px; border: 1px solid var(--soft-line); border-radius: 18px; background: #fff; }
+.locations-page .local-cta, .locations-page .cta-premium { margin: 55px 0; }

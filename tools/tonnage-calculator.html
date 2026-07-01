@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculate the exact AC tonnage and cooling capacity needed for your space. Use our Manual J-based calculator for room load estimates in BTU/hr and Tons (TR).">
+  <title>AC Tonnage Sizing &amp; HVAC Load Calculator | B2B Industrial</title>
+  <link rel="icon" href="../assets/images/favicon.png">
+  <link rel="stylesheet" href="../assets/legacy-css/tools.min.css">
+  <link rel="stylesheet" href="../css/core.css">
+  <link rel="stylesheet" href="../css/content.css">
+  <link rel="stylesheet" href="../css/tools.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body class="interior-page tools-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  
+  <header class="site-header" id="top">
+    <div class="global-bar">
+      <div class="shell global-bar-inner">
+        <a class="brand" href="../index.html" aria-label="B2B Industrial Solutions home"><img src="../assets/images/logo.webp" alt="B2B Industrial Solutions"></a>
+        <nav class="global-nav" aria-label="Company navigation">
+          <a href="../about.html">About</a><a href="../index.html#approach">Process</a><a href="../case-studies/cement-plant-energy-audit.html">Case studies</a><a href="../blog/index.html">Insights</a><a href="../contact.html">Contact</a>
+        </nav>
+        <div class="header-contact"><span>Pan-India service</span><a href="tel:+919899702065" class="global-phone">+91 98997 02065</a></div>
+      </div>
+    </div>
+    <div class="service-bar">
+      <div class="shell nav-wrap">
+        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+        <nav class="main-nav" aria-label="Primary services">
+          <a href="../services/energy-audits.html">Audits</a><a href="../services/compliances.html">Compliance</a><a href="../services/hvac-projects.html">HVAC &amp; IAQ</a><a href="../services/recd-kit.html">RECD &amp; Emission</a><a href="../services/fire-life-safety.html">Fire &amp; HSE</a><a href="../service.html">All services</a>
+        </nav>
+        <a class="button nav-cta" href="../contact.html">Request a site visit</a>
+      </div>
+    </div>
+  </header>
+  <div class="page-context"><div class="shell"><span>Engineering tools</span><b>AC Tonnage Calculator</b><a href="../contact.html">Discuss a project</a></div></div>
+  
+  <main id="main" class="legacy-content">
+    
+    
+    <div id="site-preloader" class="glass-preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">
+                <img src="../assets/images/logo.webp" alt="B2B Industrial Solutions">
+            </div>
+            <div class="preloader-bar">
+                <div class="preloader-progress"></div>
+            </div>
+            <span class="preloader-text">Excellence in Engineering</span>
+        </div>
+    </div>
+    
+
+    <div class="intro">
+        <div class="intro-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="10" rx="2" />
+                <path d="M7 13v4M12 13v4M17 13v4M5 21h14" />
+                <path d="M9 7h6M12 5v4" />
+            </svg>
+        </div>
+        <div>
+            <h1>AC Tonnage Calculator</h1>
+            <p>HVAC Manual J–based sizing · Enter room details to find the right cooling capacity</p>
+        </div>
+    </div>
+
+
+    <div class="layout">
+
+
+        <div>
+
+            <div class="card">
+                <div class="sec-label">Room Dimensions</div>
+                <div class="row">
+                    <div class="field">
+                        <label>Length</label>
+                        <div class="input-wrap">
+                            <input type="number" id="length" value="15" min="1" max="999" />
+                            <div class="unit-tog">
+                                <button class="unit-btn active" id="btnFt">ft</button>
+                                <button class="unit-btn" id="btnM">m</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Width</label>
+                        <div class="input-wrap">
+                            <input type="number" id="width" value="12" min="1" max="999" />
+                            <div class="unit-tog">
+                                <button class="unit-btn active" id="btnFt2">ft</button>
+                                <button class="unit-btn" id="btnM2">m</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="field">
+                        <label>Ceiling Height</label>
+                        <span class="hint">Standard is 8 ft / 2.4 m</span>
+                        <div class="input-wrap">
+                            <input type="number" id="ceilHeight" value="9" min="6" max="30" step="0.5" />
+                            <div class="unit-tog">
+                                <button class="unit-btn active" id="cBtnFt">ft</button>
+                                <button class="unit-btn" id="cBtnM">m</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Room Type</label>
+                        <select class="styled-select" id="roomType">
+                            <option value="0">Bedroom / Living Room</option>
+                            <option value="0">Office / Study</option>
+                            <option value="4000">Kitchen (+4,000 BTU)</option>
+                            <option value="2000">Gym / Workshop (+2,000 BTU)</option>
+                            <option value="1500">Dining Room (+1,500 BTU)</option>
+                            <option value="0">Server / Equipment Room</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card" style="margin-top:16px">
+                <div class="sec-label">Climate & Environment</div>
+                <div class="row">
+                    <div class="field">
+                        <label>Climate Zone</label>
+                        <select class="styled-select" id="climate">
+                            <option value="18">Very Cool (18 BTU/sq ft) — e.g. UK, Canada, Scandinavia</option>
+                            <option value="20">Cool (20 BTU/sq ft) — e.g. Northern Europe, Seattle</option>
+                            <option value="22" selected>Moderate (22 BTU/sq ft) — e.g. Northern India, mild US
+                            </option>
+                            <option value="25">Warm & Humid (25 BTU/sq ft) — e.g. Mumbai, Bangkok, Florida</option>
+                            <option value="28">Hot (28 BTU/sq ft) — e.g. Delhi plains, Middle East, Texas</option>
+                            <option value="32">Very Hot & Dry (32 BTU/sq ft) — e.g. Rajasthan, Phoenix, Gulf
+                            </option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Sun Exposure</label>
+                        <select class="styled-select" id="sunExposure">
+                            <option value="-10">Heavy Shade (−10%)</option>
+                            <option value="0" selected>Average / Mixed</option>
+                            <option value="15">South/West Facing (+15%)</option>
+                            <option value="25">Very Sunny / Lots of Glass (+25%)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="field">
+                        <label>Insulation Quality</label>
+                        <select class="styled-select" id="insulation">
+                            <option value="-15">Excellent (New construction, −15%)</option>
+                            <option value="-5">Good (Modern home, −5%)</option>
+                            <option value="0" selected>Average</option>
+                            <option value="15">Poor (Older building, +15%)</option>
+                            <option value="25">Very Poor (No insulation, +25%)</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Floor Location</label>
+                        <select class="styled-select" id="floor">
+                            <option value="0">Ground / Middle Floor</option>
+                            <option value="10">Top Floor / Under Direct Roof (+10%)</option>
+                            <option value="-5">Basement (−5%)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card" style="margin-top:16px">
+                <div class="sec-label">Occupants &amp; Openings</div>
+                <div class="row">
+                    <div class="field">
+                        <label>Number of Occupants</label>
+                        <span class="hint">First 2 are included in base load</span>
+                        <div class="stepper">
+                            <button>−</button>
+                            <input type="number" id="occupants" value="2" min="1" max="30" />
+                            <button>+</button>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Number of Windows</label>
+                        <span class="hint">First 2 windows in base load</span>
+                        <div class="stepper">
+                            <button>−</button>
+                            <input type="number" id="windows" value="2" min="0" max="30" />
+                            <button>+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="field">
+                        <label>Exterior Doors</label>
+                        <span class="hint">+1,000 BTU each</span>
+                        <div class="stepper">
+                            <button>−</button>
+                            <input type="number" id="doors" value="1" min="0" max="10" />
+                            <button>+</button>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Electrical Load (Watts)</label>
+                        <span class="hint">Lights + appliances in room</span>
+                        <div class="input-wrap">
+                            <input type="number" id="elecLoad" value="500" min="0" max="10000" step="100" />
+                        </div>
+                    </div>
+                </div>
+                <button class="calc-btn">
+                    ⚡ Calculate AC Tonnage
+                </button>
+            </div>
+
+
+            <div class="info-box">
+                <h3>How the calculation works</h3>
+                <div class="formula-grid">
+                    <div class="formula-item"><strong>Base Load</strong><span>Area × Climate BTU/sq ft factor</span>
+                    </div>
+                    <div class="formula-item"><strong>Ceiling Adj.</strong><span>+10% per foot above 8 ft
+                            standard</span></div>
+                    <div class="formula-item"><strong>Insulation</strong><span>−15% (excellent) to +25% (no
+                            insulation)</span></div>
+                    <div class="formula-item"><strong>Solar Gain</strong><span>−10% shade to +25% very sunny</span>
+                    </div>
+                    <div class="formula-item"><strong>Occupants</strong><span>+600 BTU/hr per person above 2</span>
+                    </div>
+                    <div class="formula-item"><strong>Windows</strong><span>+1,000 BTU each above base of 2</span>
+                    </div>
+                    <div class="formula-item"><strong>Doors</strong><span>+1,000 BTU per exterior door</span></div>
+                    <div class="formula-item"><strong>Equipment</strong><span>Electrical load × 3.41 BTU
+                            conversion</span></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="result-panel" id="resultPanel">
+            <div class="empty-state" id="emptyState">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                    <rect x="2" y="3" width="20" height="11" rx="2" />
+                    <path d="M8 14v5M12 14v5M16 14v5M6 19h12" />
+                    <path d="M9 8h6" />
+                </svg>
+                Fill in the room details<br />and tap <strong>Calculate</strong>
+            </div>
+            <div id="resultContent" style="display:none"></div>
+        </div>
+
+    </div>
+
+    
+
+
+    
+
+    
+    
+
+    
+    
+
+  </main>
+  
+  <footer id="footer">
+    <div class="shell footer-top">
+      <div class="footer-brand"><img src="../assets/images/logo.webp" alt="B2B Industrial Solutions"><p>Audits, compliance and turnkey engineering solutions for safer, efficient and future-ready industrial operations.</p><a class="footer-cta" href="../contact.html">Discuss your requirement <span>›</span></a></div>
+      <div class="footer-links"><b>Audits &amp; compliance</b><a href="../services/energy-audits.html">Energy audits</a><a href="../services/electrical-safety-audit.html">Electrical safety</a><a href="../services/fire-life-safety.html">Fire &amp; HSE audits</a><a href="../services/compliances.html">Statutory compliance</a><a href="../services/environment-compliances.html">Environment compliance</a></div>
+      <div class="footer-links"><b>Engineering projects</b><a href="../services/hvac-projects.html">HVAC &amp; duct cleaning</a><a href="../services/recd-kit.html">RECD &amp; DFK kits</a><a href="../services/emission-control.html">Emission control</a><a href="../services/electrical-projects.html">Electrical projects</a><a href="../services/fire-projects.html">Fire projects</a></div>
+      <div class="footer-links"><b>Company</b><a href="../about.html">About us</a><a href="../index.html#approach">Our process</a><a href="../blog/index.html">Insights</a><a href="../service.html">All services</a><a href="../faq.html">FAQs</a></div>
+      <div class="footer-links footer-contact"><b>Contact</b><a href="tel:+919899702065">+91 98997 02065</a><a href="mailto:info@b2bindustrial.in">info@b2bindustrial.in</a><p>Shop No. 2, Gali No. 4<br>Khandsa Road, Gurugram<br>Haryana 122001</p></div>
+    </div>
+    <div class="shell footer-credentials"><span><b>ISO 9001:2015</b> Certified</span><span><b>BEE-certified</b> audit experts</span><span><b>Pan-India</b> project delivery</span><span><b>Since 2013</b> industrial expertise</span></div>
+    <div class="shell footer-bottom"><span>© <span data-current-year></span> B2B Industrial Solutions</span><div><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a><a href="#top">Back to top ↑</a></div></div>
+  </footer>
+  <script src="../js/core.js" defer></script>
+  <script src="../js/tools.js" defer></script>
+  <script src="../assets/js/tooljs/tonnage-calculator.min.js" defer></script>
+</body>
+</html>
