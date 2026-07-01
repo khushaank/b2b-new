@@ -14,9 +14,14 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; color: var(--ink); background: var(--paper); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.47; letter-spacing: -.01em; overflow-x: hidden; }
+html { scroll-behavior: smooth; scroll-padding-top: 14px; scrollbar-width: thin; scrollbar-color: #aeb4bc #f1f2f4; }
+body { margin: 0; color: var(--ink); background: var(--paper); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.47; letter-spacing: -.01em; overflow-x: hidden; overscroll-behavior-y: none; }
 body.menu-open { overflow: hidden; }
+body.command-open { overflow: hidden; }
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: #f1f2f4; }
+::-webkit-scrollbar-thumb { min-height: 48px; border: 3px solid #f1f2f4; border-radius: 999px; background: #aeb4bc; }
+::-webkit-scrollbar-thumb:hover { background: #858c96; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
 button, input, textarea, select { font: inherit; }
@@ -35,6 +40,9 @@ button, input, textarea, select { font: inherit; }
 .header-contact { display: flex; align-items: center; gap: 14px; padding-left: 24px; border-left: 1px solid #dedee1; }
 .header-contact > span { color: var(--muted); font-size: 11px; }
 .global-phone { color: var(--ink); font-size: 13px; font-weight: 600; white-space: nowrap; }
+.command-trigger { min-height: 34px; display: inline-flex; align-items: center; gap: 9px; padding: 0 10px 0 13px; border: 1px solid var(--soft-line); border-radius: 999px; color: #515154; background: var(--pearl); font-size: 11px; cursor: pointer; transition: border-color .2s, background .2s; }
+.command-trigger:hover { border-color: #c4d8ec; background: #eef6ff; }
+.command-trigger kbd { padding: 3px 6px; border: 1px solid #d8d8dc; border-radius: 6px; color: var(--muted); background: #fff; font: 10px/1.2 system-ui, sans-serif; }
 .service-bar { position: relative; z-index: 45; border-bottom: 1px solid rgba(0,0,0,.08); background: rgba(250,250,252,.94); backdrop-filter: saturate(180%) blur(20px); }
 .nav-wrap { height: 54px; display: flex; align-items: center; gap: 28px; }
 .main-nav { margin-right: auto; }
@@ -91,6 +99,33 @@ footer { padding: 78px 0 26px; background: var(--parchment); }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 24px; color: var(--muted); font-size: 11px; }
 .footer-bottom > div { display: flex; gap: 24px; }
 .footer-bottom a:hover { color: var(--blue); }
+
+body.motion-ready .scroll-reveal { opacity: 0 !important; transform: translateY(12px) !important; transition: opacity .5s ease var(--reveal-delay, 0ms), transform .5s ease var(--reveal-delay, 0ms) !important; }
+body.motion-ready .scroll-reveal.visible { opacity: 1 !important; transform: none !important; }
+
+.command-palette { position: fixed; z-index: 300; inset: 0; display: grid; place-items: center; padding: 20px; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .18s, visibility .18s; }
+.command-palette.open { opacity: 1; visibility: visible; pointer-events: auto; }
+.command-scrim { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: rgba(20,20,22,.38); backdrop-filter: blur(10px); cursor: default; }
+.command-panel { position: relative; width: min(680px, calc(100vw - 32px)); max-height: min(640px, calc(100vh - 40px)); display: grid; grid-template-rows: auto auto minmax(0,1fr) auto; overflow: hidden; border: 1px solid rgba(255,255,255,.8); border-radius: 24px; background: rgba(250,250,252,.98); box-shadow: 0 35px 110px rgba(0,0,0,.28); transform: translateY(10px) scale(.985); transition: transform .2s cubic-bezier(.2,.8,.2,1); }
+.command-palette.open .command-panel { transform: none; }
+.command-input-wrap { min-height: 74px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 13px; padding: 0 20px; border-bottom: 1px solid var(--soft-line); background: #fff; }
+.command-input-wrap > span { color: var(--blue); font-size: 25px; line-height: 1; }
+.command-input { width: 100%; min-width: 0; padding: 0; border: 0; outline: 0; color: var(--ink); background: transparent; font-size: 18px; }
+.command-input::placeholder { color: #9a9aa0; }
+.command-panel kbd { min-width: 25px; display: inline-grid; place-items: center; padding: 4px 6px; border: 1px solid #d8d8dc; border-radius: 6px; color: var(--muted); background: #fff; box-shadow: 0 1px 0 #c9c9cd; font: 10px/1.1 system-ui, sans-serif; }
+.command-status { padding: 17px 20px 8px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+.command-results { min-height: 260px; padding: 6px 10px 12px; overflow-y: auto; }
+.command-result { min-height: 58px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 12px; border-radius: 12px; color: var(--ink); }
+.command-result > span:first-child { min-width: 0; display: grid; gap: 3px; }
+.command-result b { overflow: hidden; font-size: 14px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+.command-result small { color: var(--muted); font-size: 10px; letter-spacing: .05em; text-transform: uppercase; }
+.command-result.active { color: #fff; background: var(--blue); }
+.command-result.active small { color: rgba(255,255,255,.72); }
+.command-arrow { opacity: 0; font-size: 16px; transform: translateX(-4px); transition: .15s; }
+.command-result.active .command-arrow { opacity: 1; transform: none; }
+.command-empty { margin: 35px 20px; color: var(--muted); font-size: 14px; text-align: center; }
+.command-footer { min-height: 48px; display: flex; align-items: center; gap: 20px; padding: 0 20px; border-top: 1px solid var(--soft-line); color: var(--muted); background: #fff; font-size: 10px; }
+.command-footer span { display: inline-flex; align-items: center; gap: 5px; }
 
 :focus-visible { outline: 2px solid #0071e3; outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }

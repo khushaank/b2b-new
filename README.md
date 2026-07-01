@@ -25,6 +25,14 @@ Complete static website for B2B Industrial Solutions, with a shared responsive d
 - `css/core-pages.css` — company, catalogue, policy, and system pages
 - `css/responsive.css` — shared responsive rules
 
+## Assets
+
+- `assets/images/home/` — homepage imagery
+- `assets/images/services/` — service-category imagery
+- `assets/images/case-studies/` — case-study graphics
+- `assets/images/client-logo/` — client marks
+- `assets/js/search-data.min.js` — whole-site command palette index, loaded on demand
+
 ## Preview and validate
 
 ```powershell

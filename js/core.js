@@ -1,6 +1,7 @@
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('.main-nav');
 const serviceBar = document.querySelector('.service-bar');
+const siteRootUrl = new URL('../', document.currentScript?.src || window.location.href);
 
 if (navigation && serviceBar) {
   const servicesTrigger = [...navigation.querySelectorAll('a')].find((link) => /service\.html(?:$|[?#])/.test(link.getAttribute('href') || ''));
@@ -103,7 +104,7 @@ if (menuButton && navigation) {
   window.addEventListener('resize', () => { if (window.innerWidth > 820) closeMenu(); });
 }
 
-document.querySelectorAll('[data-current-year], #copyright-year').forEach((node) => { node.textContent = new Date().getFullYear(); });
+document.querySelectorAll('[data-current-year], #copyright-year, #year').forEach((node) => { node.textContent = new Date().getFullYear(); });
 
 document.querySelectorAll('.u-email-link[data-user][data-domain]').forEach((link) => {
   const address = `${link.dataset.user}@${link.dataset.domain}`;
@@ -114,3 +115,239 @@ document.querySelectorAll('.u-email-link[data-user][data-domain]').forEach((link
 document.querySelectorAll('img').forEach((image) => {
   if (!image.hasAttribute('loading') && !image.closest('.page-header, .blog-post-hero, .client-hero')) image.loading = 'lazy';
 });
+
+/* Minimal scroll reveal shared by every page. */
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const revealTargets = [
+  ...document.querySelectorAll('.reveal'),
+  ...document.querySelectorAll('.legacy-content > section:not(:first-child), main > section:not(:first-child)'),
+  ...document.querySelectorAll('.blog-card, .catalog-card, .service-card, .result-card'),
+];
+
+if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+  document.body.classList.add('motion-ready');
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: .08, rootMargin: '0px 0px -8% 0px' });
+
+  [...new Set(revealTargets)].forEach((element, index) => {
+    element.classList.add('scroll-reveal');
+    element.style.setProperty('--reveal-delay', `${(index % 3) * 35}ms`);
+    revealObserver.observe(element);
+  });
+} else {
+  revealTargets.forEach((element) => element.classList.add('visible'));
+}
+
+/* Whole-site Ctrl/Cmd+K command palette. The full index loads only on demand. */
+const commandHost = document.querySelector('.global-bar-inner');
+if (commandHost) {
+  const commandTrigger = document.createElement('button');
+  commandTrigger.className = 'command-trigger';
+  commandTrigger.type = 'button';
+  commandTrigger.setAttribute('aria-label', 'Search the whole website');
+  commandTrigger.innerHTML = '<span>Search site</span><kbd>Ctrl K</kbd>';
+  commandHost.insertBefore(commandTrigger, commandHost.querySelector('.header-contact'));
+
+  const palette = document.createElement('div');
+  palette.className = 'command-palette';
+  palette.setAttribute('aria-hidden', 'true');
+  palette.innerHTML = `
+    <button class="command-scrim" type="button" aria-label="Close search"></button>
+    <section class="command-panel" role="dialog" aria-modal="true" aria-label="Search the whole website">
+      <div class="command-input-wrap">
+        <span aria-hidden="true">⌕</span>
+        <input class="command-input" type="search" autocomplete="off" spellcheck="false" placeholder="Search services, pages, blogs and tools…" aria-label="Search website">
+        <kbd>Esc</kbd>
+      </div>
+      <div class="command-status">Quick links</div>
+      <div class="command-results" role="listbox"></div>
+      <div class="command-footer"><span><kbd>↑</kbd><kbd>↓</kbd> Navigate</span><span><kbd>Enter</kbd> Open</span><span><kbd>Esc</kbd> Close</span></div>
+    </section>`;
+  document.body.appendChild(palette);
+
+  const commandInput = palette.querySelector('.command-input');
+  const commandResults = palette.querySelector('.command-results');
+  const commandStatus = palette.querySelector('.command-status');
+  const quickLinks = [
+    { title: 'Home', url: '/index', tags: 'homepage overview' },
+    { title: 'All Services', url: '/service', tags: 'services directory' },
+    { title: 'About B2B Industrial Solutions', url: '/about', tags: 'company' },
+    { title: 'Industrial Insights', url: '/blog/', tags: 'blogs articles' },
+    { title: 'Case Studies', url: '/case-studies/cement-plant-energy-audit', tags: 'results projects' },
+    { title: 'Engineering Tools', url: '/tools/', tags: 'calculators' },
+    { title: 'Contact Us', url: '/contact', tags: 'quote site visit' },
+  ];
+  let commandData = [];
+  let commandIndexLoaded = false;
+  let commandIndexLoading = false;
+  let activeResult = 0;
+
+  const decodeText = (value) => {
+    const textArea = document.createElement('textarea');
+    textArea.innerHTML = value || '';
+    return textArea.value;
+  };
+
+  const resolvePageUrl = (rawUrl) => {
+    const clean = String(rawUrl || '/').replace(/^\/+/, '');
+    if (!clean || clean === 'index') return new URL('index.html', siteRootUrl).href;
+    if (clean.endsWith('/')) return new URL(`${clean}index.html`, siteRootUrl).href;
+    if (/\.[a-z0-9]+$/i.test(clean)) return new URL(clean, siteRootUrl).href;
+    return new URL(`${clean}.html`, siteRootUrl).href;
+  };
+
+  const sectionLabel = (url) => {
+    if (url.includes('/services/')) return 'Service';
+    if (url.includes('/blog/')) return 'Insight';
+    if (url.includes('/locations/')) return 'Location';
+    if (url.includes('/tools/')) return 'Tool';
+    if (url.includes('/case-studies/')) return 'Case study';
+    return 'Page';
+  };
+
+  const setActiveResult = (nextIndex) => {
+    const results = [...commandResults.querySelectorAll('.command-result')];
+    if (!results.length) return;
+    activeResult = (nextIndex + results.length) % results.length;
+    results.forEach((result, index) => {
+      const active = index === activeResult;
+      result.classList.toggle('active', active);
+      result.setAttribute('aria-selected', String(active));
+    });
+    results[activeResult].scrollIntoView({ block: 'nearest' });
+  };
+
+  const renderResults = (items, label) => {
+    commandResults.replaceChildren();
+    commandStatus.textContent = label;
+    activeResult = 0;
+
+    if (!items.length) {
+      const empty = document.createElement('p');
+      empty.className = 'command-empty';
+      empty.textContent = 'No matching page found. Try a service, topic, or location.';
+      commandResults.appendChild(empty);
+      return;
+    }
+
+    items.slice(0, 9).forEach((item, index) => {
+      const link = document.createElement('a');
+      link.className = `command-result${index === 0 ? ' active' : ''}`;
+      link.href = resolvePageUrl(item.url);
+      link.setAttribute('role', 'option');
+      link.setAttribute('aria-selected', String(index === 0));
+
+      const copy = document.createElement('span');
+      const title = document.createElement('b');
+      const meta = document.createElement('small');
+      title.textContent = decodeText(item.title).replace(/\s*[-|]\s*B2B Industrial Solutions.*$/i, '');
+      meta.textContent = sectionLabel(item.url);
+      copy.append(title, meta);
+
+      const arrow = document.createElement('span');
+      arrow.className = 'command-arrow';
+      arrow.textContent = '↗';
+      link.append(copy, arrow);
+      link.addEventListener('mouseenter', () => setActiveResult(index));
+      commandResults.appendChild(link);
+    });
+  };
+
+  const searchCommands = () => {
+    const query = commandInput.value.trim().toLowerCase();
+    if (!query) {
+      renderResults(quickLinks, 'Quick links');
+      return;
+    }
+
+    const terms = query.split(/\s+/).filter(Boolean);
+    const ranked = commandData
+      .map((item) => {
+        const title = decodeText(item.title).toLowerCase();
+        const tags = decodeText(item.tags).toLowerCase();
+        const text = decodeText(item.text).toLowerCase();
+        if (!terms.every((term) => title.includes(term) || tags.includes(term) || text.includes(term))) return null;
+        let score = 0;
+        terms.forEach((term) => {
+          if (title.startsWith(term)) score += 12;
+          else if (title.includes(term)) score += 8;
+          if (tags.includes(term)) score += 4;
+          if (text.includes(term)) score += 1;
+        });
+        return { item, score };
+      })
+      .filter(Boolean)
+      .sort((a, b) => b.score - a.score)
+      .map((entry) => entry.item);
+    renderResults(ranked, `${Math.min(ranked.length, 9)} best matches`);
+  };
+
+  const loadCommandIndex = () => {
+    if (commandIndexLoaded || commandIndexLoading) return;
+    commandIndexLoading = true;
+    commandStatus.textContent = 'Loading site index…';
+    const script = document.createElement('script');
+    script.src = new URL('assets/js/search-data.min.js', siteRootUrl).href;
+    script.onload = () => {
+      commandData = typeof SEARCH_DATA === 'undefined' ? quickLinks : SEARCH_DATA;
+      commandIndexLoaded = true;
+      commandIndexLoading = false;
+      searchCommands();
+    };
+    script.onerror = () => {
+      commandData = quickLinks;
+      commandIndexLoaded = true;
+      commandIndexLoading = false;
+      searchCommands();
+    };
+    document.head.appendChild(script);
+  };
+
+  const openCommandPalette = () => {
+    palette.classList.add('open');
+    palette.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('command-open');
+    commandInput.value = '';
+    renderResults(quickLinks, 'Quick links');
+    loadCommandIndex();
+    requestAnimationFrame(() => commandInput.focus());
+  };
+
+  const closeCommandPalette = () => {
+    palette.classList.remove('open');
+    palette.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('command-open');
+    commandTrigger.focus();
+  };
+
+  commandTrigger.addEventListener('click', openCommandPalette);
+  palette.querySelector('.command-scrim').addEventListener('click', closeCommandPalette);
+  commandInput.addEventListener('input', searchCommands);
+  commandInput.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      setActiveResult(activeResult + 1);
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      setActiveResult(activeResult - 1);
+    } else if (event.key === 'Enter') {
+      const active = commandResults.querySelector('.command-result.active');
+      if (active) window.location.href = active.href;
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+      event.preventDefault();
+      if (palette.classList.contains('open')) closeCommandPalette();
+      else openCommandPalette();
+    } else if (event.key === 'Escape' && palette.classList.contains('open')) {
+      closeCommandPalette();
+    }
+  });
+}
