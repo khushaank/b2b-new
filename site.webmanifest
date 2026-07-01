@@ -1,0 +1,22 @@
+{
+  "name": "B2B Industrial Solutions",
+  "short_name": "B2B Industrial",
+  "description": "Industrial audits, compliance, safety, energy, HVAC and turnkey engineering services across India.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0874d1",
+  "icons": [
+    {
+      "src": "/assets/images/favicon.png",
+      "sizes": "any",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/logo.webp",
+      "sizes": "any",
+      "type": "image/webp",
+      "purpose": "any"
+    }
+  ]
+}

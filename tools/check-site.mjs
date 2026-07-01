@@ -15,6 +15,8 @@ function walk(directory) {
 
 walk(root);
 const errors = [];
+const indexedTitles = new Map();
+const indexedDescriptions = new Map();
 
 for (const file of htmlFiles) {
   const html = readFileSync(file, 'utf8');
@@ -22,6 +24,28 @@ for (const file of htmlFiles) {
   const h1Count = (html.match(/<h1\b/gi) || []).length;
   if (h1Count !== 1) errors.push(`${display}: expected one h1, found ${h1Count}`);
   if (!/<title>[^<]+<\/title>/i.test(html)) errors.push(`${display}: missing title`);
+  const title = html.match(/<title>([^<]+)<\/title>/i)?.[1]?.trim();
+  const description = html.match(/<meta\s+name=["']description["']\s+content=["']([^"']+)["']/i)?.[1]?.trim();
+  const robots = html.match(/<meta\s+name=["']robots["']\s+content=["']([^"']+)["']/i)?.[1] || '';
+  const canonical = html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i)?.[1];
+  if (!description) errors.push(`${display}: missing meta description`);
+  if (!canonical || !canonical.startsWith('https://b2bindustrial.in/')) errors.push(`${display}: missing or invalid canonical URL`);
+  if (!/<meta\s+property=["']og:title["']/i.test(html)) errors.push(`${display}: missing Open Graph title`);
+  if (!/<meta\s+name=["']twitter:card["']/i.test(html)) errors.push(`${display}: missing Twitter card`);
+  if (!/class=["'][^"']*site-preloader/i.test(html)) errors.push(`${display}: missing load-synced preloader`);
+
+  const schemaBlocks = [...html.matchAll(/<script\s+type=["']application\/ld\+json["']>([\s\S]*?)<\/script>/gi)];
+  if (!schemaBlocks.length) errors.push(`${display}: missing JSON-LD structured data`);
+  for (const [, json] of schemaBlocks) {
+    try { JSON.parse(json); } catch { errors.push(`${display}: invalid JSON-LD`); }
+  }
+
+  if (!/noindex/i.test(robots)) {
+    const titleKey = title?.toLowerCase();
+    const descriptionKey = description?.toLowerCase();
+    if (titleKey) indexedTitles.set(titleKey, [...(indexedTitles.get(titleKey) || []), display]);
+    if (descriptionKey) indexedDescriptions.set(descriptionKey, [...(indexedDescriptions.get(descriptionKey) || []), display]);
+  }
 
   const ids = [...html.matchAll(/\sid=["']([^"']+)["']/gi)].map((match) => match[1]);
   for (const id of new Set(ids)) {
@@ -36,9 +60,18 @@ for (const file of htmlFiles) {
   }
 }
 
+for (const [title, files] of indexedTitles) {
+  if (files.length > 1) errors.push(`duplicate indexed title "${title}": ${files.join(', ')}`);
+}
+for (const [description, files] of indexedDescriptions) {
+  if (files.length > 1) errors.push(`duplicate indexed description "${description}": ${files.join(', ')}`);
+}
+if (!existsSync(join(root, 'sitemap.xml'))) errors.push('missing sitemap.xml');
+if (!existsSync(join(root, 'robots.txt'))) errors.push('missing robots.txt');
+
 if (errors.length) {
   console.error(`Site check failed with ${errors.length} issue(s):\n${errors.join('\n')}`);
   process.exitCode = 1;
 } else {
-  console.log(`Site check passed: ${htmlFiles.length} HTML pages, no broken local references or structural errors.`);
+  console.log(`Site check passed: ${htmlFiles.length} HTML pages with valid structure, local references, metadata and JSON-LD.`);
 }

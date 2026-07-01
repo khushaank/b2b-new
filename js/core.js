@@ -2,6 +2,22 @@ const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('.main-nav');
 const serviceBar = document.querySelector('.service-bar');
 const siteRootUrl = new URL('../', document.currentScript?.src || window.location.href);
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const sitePreloader = document.querySelector('.site-preloader');
+
+if (sitePreloader) {
+  const finishLoading = () => {
+    sitePreloader.classList.add('preloader-hidden');
+    sitePreloader.setAttribute('aria-hidden', 'true');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      sitePreloader.remove();
+    } else {
+      sitePreloader.addEventListener('transitionend', () => sitePreloader.remove(), { once: true });
+    }
+  };
+  if (document.readyState === 'complete') requestAnimationFrame(finishLoading);
+  else window.addEventListener('load', finishLoading, { once: true });
+}
 
 if (navigation && serviceBar) {
   const servicesTrigger = [...navigation.querySelectorAll('a')].find((link) => /service\.html(?:$|[?#])/.test(link.getAttribute('href') || ''));
@@ -116,8 +132,38 @@ document.querySelectorAll('img').forEach((image) => {
   if (!image.hasAttribute('loading') && !image.closest('.page-header, .blog-post-hero, .client-hero')) image.loading = 'lazy';
 });
 
+document.querySelectorAll('main img, main iframe').forEach((media) => {
+  media.classList.add('skeleton-media');
+  const finishMedia = () => media.classList.add('media-ready');
+  if (media.tagName === 'IMG' && media.complete && media.naturalWidth) finishMedia();
+  else media.addEventListener('load', finishMedia, { once: true });
+  media.addEventListener('error', finishMedia, { once: true });
+});
+
+const startSmoothScrolling = () => {
+  if (prefersReducedMotion || !window.matchMedia('(pointer: fine)').matches) return;
+  const activate = () => {
+    if (typeof Lenis === 'undefined' || window.siteLenis) return;
+    window.siteLenis = new Lenis({ duration: .85, smoothWheel: true, syncTouch: false });
+    const frame = (time) => {
+      window.siteLenis?.raf(time);
+      requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+  };
+  if (typeof Lenis !== 'undefined') activate();
+  else {
+    const script = document.createElement('script');
+    script.src = new URL('assets/js/lenis.min.js', siteRootUrl).href;
+    script.onload = activate;
+    document.head.appendChild(script);
+  }
+};
+
+if (document.readyState === 'complete') startSmoothScrolling();
+else window.addEventListener('load', startSmoothScrolling, { once: true });
+
 /* Minimal scroll reveal shared by every page. */
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const revealTargets = [
   ...document.querySelectorAll('.reveal'),
   ...document.querySelectorAll('.legacy-content > section:not(:first-child), main > section:not(:first-child)'),
@@ -146,13 +192,6 @@ if (!prefersReducedMotion && 'IntersectionObserver' in window) {
 /* Whole-site Ctrl/Cmd+K command palette. The full index loads only on demand. */
 const commandHost = document.querySelector('.global-bar-inner');
 if (commandHost) {
-  const commandTrigger = document.createElement('button');
-  commandTrigger.className = 'command-trigger';
-  commandTrigger.type = 'button';
-  commandTrigger.setAttribute('aria-label', 'Search the whole website');
-  commandTrigger.innerHTML = '<span>Search site</span><kbd>Ctrl K</kbd>';
-  commandHost.insertBefore(commandTrigger, commandHost.querySelector('.header-contact'));
-
   const palette = document.createElement('div');
   palette.className = 'command-palette';
   palette.setAttribute('aria-hidden', 'true');
@@ -186,6 +225,7 @@ if (commandHost) {
   let commandIndexLoaded = false;
   let commandIndexLoading = false;
   let activeResult = 0;
+  let lastFocusedElement = null;
 
   const decodeText = (value) => {
     const textArea = document.createElement('textarea');
@@ -309,23 +349,26 @@ if (commandHost) {
   };
 
   const openCommandPalette = () => {
+    lastFocusedElement = document.activeElement;
     palette.classList.add('open');
     palette.setAttribute('aria-hidden', 'false');
     document.body.classList.add('command-open');
+    window.siteLenis?.stop();
     commandInput.value = '';
     renderResults(quickLinks, 'Quick links');
     loadCommandIndex();
-    requestAnimationFrame(() => commandInput.focus());
+    commandInput.focus({ preventScroll: true });
+    requestAnimationFrame(() => commandInput.focus({ preventScroll: true }));
   };
 
   const closeCommandPalette = () => {
     palette.classList.remove('open');
     palette.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('command-open');
-    commandTrigger.focus();
+    window.siteLenis?.start();
+    if (lastFocusedElement instanceof HTMLElement) lastFocusedElement.focus();
   };
 
-  commandTrigger.addEventListener('click', openCommandPalette);
   palette.querySelector('.command-scrim').addEventListener('click', closeCommandPalette);
   commandInput.addEventListener('input', searchCommands);
   commandInput.addEventListener('keydown', (event) => {

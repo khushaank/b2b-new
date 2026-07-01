@@ -253,4 +253,6 @@ const homepage = fs.readFileSync(homepagePath, 'utf8')
   .replaceAll('../terms.html', 'terms.html');
 fs.writeFileSync(homepagePath, homepage, 'utf8');
 
+await import('./tools/enhance-seo.mjs');
+
 console.log(`Generated ${sourcePages.length - 1} interior pages. Homepage retained. Total parallel pages: ${sourcePages.length}.`);

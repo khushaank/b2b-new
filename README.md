@@ -38,9 +38,12 @@ Complete static website for B2B Industrial Solutions, with a shared responsive d
 ```powershell
 node tools/preview-server.mjs
 node tools/check-site.mjs
+node tools/enhance-seo.mjs
 ```
 
 The preview runs at `http://127.0.0.1:4173`. The checker validates heading structure, duplicate IDs, and local links/assets across the full site.
+
+`enhance-seo.mjs` refreshes canonical URLs, social metadata, structured data, image hints, the XML sitemap, robots rules, and the load-synced preloader across every HTML page. It runs automatically after a rebuild.
 
 ## Rebuild
 

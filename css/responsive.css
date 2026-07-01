@@ -1,7 +1,6 @@
 @media (max-width: 1080px) {
   .global-nav { gap: 15px; }
   .header-contact > span { display: none; }
-  .command-trigger > span { display: none; }
   .footer-top { grid-template-columns: 1.4fr 1fr 1fr; }
   .footer-brand { grid-row: span 2; }
   .legacy-content .feature-grid, .legacy-content .services-grid, .legacy-content .benefits-grid, .legacy-content .process-grid, .legacy-content .why-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
@@ -16,7 +15,6 @@
   .header-contact { margin-left: auto; padding-left: 16px; }
   .header-contact > span { display: none; }
   .global-phone { display: block; font-size: 12px; }
-  .command-trigger { margin-left: auto; }
   .service-bar { background: var(--pearl); backdrop-filter: none; }
   .nav-wrap { height: 54px; }
   .menu-toggle { z-index: 3; display: block; }
@@ -58,9 +56,6 @@
   .brand img { transform: scale(1.1); }
   .header-contact { padding: 0; border: 0; }
   .global-phone { font-size: 11px; }
-  .command-trigger { width: 34px; padding: 0; justify-content: center; }
-  .command-trigger kbd { padding: 0; border: 0; background: transparent; box-shadow: none; font-size: 0; }
-  .command-trigger kbd::after { content: "⌕"; color: var(--blue); font-size: 18px; }
   .nav-wrap { height: 52px; }
   .main-nav { inset: 116px 0 0; }
   .core-pages-page .category-nav { top: 6px; margin-bottom: 55px; }
