@@ -17,9 +17,18 @@
   .service-bar { background: var(--pearl); backdrop-filter: none; }
   .nav-wrap { height: 54px; }
   .menu-toggle { z-index: 3; display: block; }
-  .main-nav { position: fixed; z-index: 2; inset: 122px 0 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 25px; margin: 0; padding: 65px 10%; background: var(--pearl); opacity: 0; visibility: hidden; transform: translateY(-10px); transition: .25s; }
+  .main-nav { position: fixed; z-index: 2; inset: 122px 0 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 25px; margin: 0; padding: 65px 10%; overflow-y: auto; background: var(--pearl); opacity: 0; visibility: hidden; transform: translateY(-10px); transition: .25s; }
   .main-nav.open { opacity: 1; visibility: visible; transform: none; }
   .main-nav a { font-size: 25px; }
+  .services-trigger { justify-content: space-between; width: 100%; }
+  .services-mega { position: static; width: 100%; border: 0; background: transparent; backdrop-filter: none; }
+  .service-bar.mega-open .services-mega { max-height: 900px; }
+  .services-mega-inner { width: 100%; grid-template-columns: 1fr; gap: 28px; padding: 28px 0 10px; }
+  .mega-primary { padding: 0 0 28px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .mega-primary strong { font-size: 23px; }
+  .mega-column { gap: 15px; }
+  .mega-column a { font-size: 17px; }
+  .mega-backdrop { display: none; }
   .nav-cta { margin-left: auto; }
   .page-context .shell { grid-template-columns: 1fr auto; }
   .page-context span { display: none; }
