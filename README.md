@@ -31,6 +31,8 @@ Complete static website for B2B Industrial Solutions, with a shared responsive d
 - `assets/images/services/` — service-category imagery
 - `assets/images/case-studies/` — case-study graphics
 - `assets/images/client-logo/` — client marks
+- `assets/images/editorial/` — optimized WebP editorial imagery used across content pages
+- `assets/images/pwa/` — installable-app icons
 - `assets/js/search-data.min.js` — whole-site command palette index, loaded on demand
 
 ## Preview and validate
@@ -39,11 +41,15 @@ Complete static website for B2B Industrial Solutions, with a shared responsive d
 node tools/preview-server.mjs
 node tools/check-site.mjs
 node tools/enhance-seo.mjs
+node tools/generate-discovery.mjs
+python tools/optimize_images.py --help
 ```
 
 The preview runs at `http://127.0.0.1:4173`. The checker validates heading structure, duplicate IDs, and local links/assets across the full site.
 
 `enhance-seo.mjs` refreshes canonical URLs, social metadata, structured data, image hints, the XML sitemap, robots rules, and the load-synced preloader across every HTML page. It runs automatically after a rebuild.
+
+`generate-discovery.mjs` refreshes RSS, the image sitemap, OpenSearch, AI-readable `llms.txt`, Dublin Core metadata, and the schema catalogue. `sw.js`, `site.webmanifest`, and `offline.html` provide installable and offline behavior. The preloader follows the real page `load` event and does not impose an artificial minimum delay.
 
 ## Rebuild
 

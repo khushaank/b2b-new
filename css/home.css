@@ -2018,6 +2018,9 @@ blockquote {
   list-style: none;
 }
 
+.service-group summary::after { content: ""; width: 10px; height: 10px; margin-left: 18px; border-right: 2px solid #0874d1; border-bottom: 2px solid #0874d1; transform: rotate(45deg) translateY(-3px); transition: transform .22s ease; }
+.service-group[open] summary::after { transform: rotate(225deg) translate(-2px,-2px); }
+
 .service-group summary::-webkit-details-marker {
   display: none;
 }

@@ -81,10 +81,26 @@ function pageType(file) {
   return 'page';
 }
 
-function buildSchema(file, html, title, description, canonical) {
+function editorialAsset(file, title) {
+  const subject = `${relative(root, file).split(sep).join('/')} ${plainText(title)}`.toLowerCase();
+  if (/(fire|hse|safety|emergency|disaster|drill|first-aid|occupational|permit|incident|behaviour|posh|tbt)/.test(subject)) {
+    return { file: 'fire-safety.webp', alt: 'Industrial fire and life-safety engineers inspecting compliant protection systems' };
+  }
+  if (/(hvac|duct|ventilation|air-balanc|lighting|interior|project-management|repair|cable|panel|transformer)/.test(subject)) {
+    return { file: 'hvac-projects.webp', alt: 'Industrial engineers commissioning efficient HVAC and engineering systems' };
+  }
+  if (/(environment|emission|carbon|esg|waste|renewable|solar|water|cpcb|recd|ocems|stack)/.test(subject)) {
+    return { file: 'sustainability-emissions.webp', alt: 'Industrial sustainability engineer monitoring emissions and renewable energy performance' };
+  }
+  if (/(audit|energy|electrical|thermograph|power|earthing|arc-flash|harmonic|nabl|boiler|steam|compressed-air)/.test(subject)) {
+    return { file: 'audits-electrical.webp', alt: 'Certified industrial auditors performing a thermal electrical inspection' };
+  }
+  return { file: 'engineering-knowledge.webp', alt: 'Industrial engineering workspace with technical drawings, instruments and performance data' };
+}
+
+function buildSchema(file, html, title, description, canonical, image) {
   const type = pageType(file);
   const pageName = cleanTitle(title);
-  const image = `${origin}/assets/images/og-cover.webp`;
   const organization = {
     '@type': 'Organization',
     '@id': `${origin}/#organization`,
@@ -201,7 +217,15 @@ const descriptions = new Map();
 for (const file of htmlFiles) {
   let html = readFileSync(file, 'utf8');
   html = html.replace(/\s*<!-- SEO:START -->[\s\S]*?<!-- SEO:END -->\s*/g, '\n');
+  const orphanSeoEnd = html.indexOf('<!-- SEO:END -->');
+  if (orphanSeoEnd !== -1) {
+    const orphanSeoStart = html.lastIndexOf('<link rel="canonical"', orphanSeoEnd);
+    if (orphanSeoStart !== -1) {
+      html = `${html.slice(0, orphanSeoStart)}${html.slice(orphanSeoEnd + '<!-- SEO:END -->'.length)}`;
+    }
+  }
   html = html.replace(/\s*<!-- PRELOADER:START -->[\s\S]*?<!-- PRELOADER:END -->\s*/g, '\n');
+  html = html.replace(/\s*<!-- EDITORIAL:START -->[\s\S]*?<!-- EDITORIAL:END -->\s*/g, '\n');
 
   const title = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]?.trim() || 'B2B Industrial Solutions';
   const existingDescription = html.match(/<meta\s+name=["']description["']\s+content=["']([^"']*)["'][^>]*>/i)?.[1];
@@ -211,13 +235,17 @@ for (const file of htmlFiles) {
   const path = relative(root, file).split(sep).join('/');
   const noindex = excludedNames.has(path.split('/').pop()) || path.includes(' copy.html');
   const socialType = ['blog', 'case-study'].includes(pageType(file)) ? 'article' : 'website';
-  const schema = buildSchema(file, html, title, description, canonical);
+  const editorial = editorialAsset(file, title);
+  const socialImage = `${origin}/assets/images/editorial/${editorial.file}`;
+  const schema = buildSchema(file, html, title, description, canonical, socialImage);
 
   const seoBlock = `
   <!-- SEO:START -->
   <link rel="canonical" href="${escapeHtml(canonical)}">
   <link rel="alternate" hreflang="en-IN" href="${escapeHtml(canonical)}">
   <link rel="manifest" href="${origin}/site.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="B2B Industrial Insights" href="${origin}/rss.xml">
+  <link rel="search" type="application/opensearchdescription+xml" title="B2B Industrial Solutions" href="${origin}/opensearch.xml">
   <meta name="robots" content="${noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}">
   <meta name="author" content="B2B Industrial Solutions">
   <meta name="theme-color" content="#ffffff">
@@ -227,12 +255,12 @@ for (const file of htmlFiles) {
   <meta property="og:title" content="${escapeHtml(plainText(title))}">
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:url" content="${escapeHtml(canonical)}">
-  <meta property="og:image" content="${origin}/assets/images/og-cover.webp">
-  <meta property="og:image:alt" content="B2B Industrial Solutions industrial audit and engineering services">
+  <meta property="og:image" content="${socialImage}">
+  <meta property="og:image:alt" content="${escapeHtml(editorial.alt)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escapeHtml(plainText(title))}">
   <meta name="twitter:description" content="${escapeHtml(description)}">
-  <meta name="twitter:image" content="${origin}/assets/images/og-cover.webp">
+  <meta name="twitter:image" content="${socialImage}">
   <script type="application/ld+json">${schema}</script>
   <!-- SEO:END -->
 `;
@@ -251,7 +279,20 @@ for (const file of htmlFiles) {
   <!-- PRELOADER:END -->
 `;
   html = html.replace(/(<body\b[^>]*>)/i, `$1${preloader}`);
+
+  const mainContent = html.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0] || '';
+  if (mainContent && !/<img\b/i.test(mainContent)) {
+    const editorialFigure = `
+    <!-- EDITORIAL:START -->
+    <figure class="page-editorial-visual">
+      <img src="${prefix}assets/images/editorial/${editorial.file}" alt="${escapeHtml(editorial.alt)}" width="1600" height="900" loading="lazy" decoding="async">
+    </figure>
+    <!-- EDITORIAL:END -->
+`;
+    html = html.replace(/<\/main>/i, `${editorialFigure}</main>`);
+  }
   html = optimizeImages(html);
+  html = html.replace(/[ \t]+$/gm, '');
   writeFileSync(file, html, 'utf8');
 
   const normalizedTitle = plainText(title).toLowerCase();
@@ -271,7 +312,7 @@ ${sitemapPages.map(({ canonical, images }) => `  <url>
 </urlset>
 `;
 writeFileSync(join(root, 'sitemap.xml'), sitemap, 'utf8');
-writeFileSync(join(root, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`, 'utf8');
+writeFileSync(join(root, 'robots.txt'), `User-agent: *\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\nSitemap: ${origin}/sitemap-images.xml\n`, 'utf8');
 
 const duplicateTitles = [...titles.entries()].filter(([, count]) => count > 1);
 const duplicateDescriptions = [...descriptions.entries()].filter(([, count]) => count > 1);

@@ -258,6 +258,7 @@ if (commandHost) {
       const active = index === activeResult;
       result.classList.toggle('active', active);
       result.setAttribute('aria-selected', String(active));
+      if (active) commandInput.setAttribute('aria-activedescendant', result.id);
     });
     results[activeResult].scrollIntoView({ block: 'nearest' });
   };
@@ -275,9 +276,10 @@ if (commandHost) {
       return;
     }
 
-    items.slice(0, 9).forEach((item, index) => {
+    items.slice(0, 4).forEach((item, index) => {
       const link = document.createElement('a');
       link.className = `command-result${index === 0 ? ' active' : ''}`;
+      link.id = `command-result-${index}`;
       link.href = resolvePageUrl(item.url);
       link.setAttribute('role', 'option');
       link.setAttribute('aria-selected', String(index === 0));
@@ -324,7 +326,7 @@ if (commandHost) {
       .filter(Boolean)
       .sort((a, b) => b.score - a.score)
       .map((entry) => entry.item);
-    renderResults(ranked, `${Math.min(ranked.length, 9)} best matches`);
+    renderResults(ranked, `${Math.min(ranked.length, 4)} best matches`);
   };
 
   const loadCommandIndex = () => {
@@ -371,26 +373,35 @@ if (commandHost) {
 
   palette.querySelector('.command-scrim').addEventListener('click', closeCommandPalette);
   commandInput.addEventListener('input', searchCommands);
-  commandInput.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowDown') {
-      event.preventDefault();
-      setActiveResult(activeResult + 1);
-    } else if (event.key === 'ArrowUp') {
-      event.preventDefault();
-      setActiveResult(activeResult - 1);
-    } else if (event.key === 'Enter') {
-      const active = commandResults.querySelector('.command-result.active');
-      if (active) window.location.href = active.href;
-    }
-  });
 
   document.addEventListener('keydown', (event) => {
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
       event.preventDefault();
       if (palette.classList.contains('open')) closeCommandPalette();
       else openCommandPalette();
-    } else if (event.key === 'Escape' && palette.classList.contains('open')) {
-      closeCommandPalette();
-    }
+    } else if (palette.classList.contains('open') && event.key === 'ArrowDown') {
+      event.preventDefault();
+      setActiveResult(activeResult + 1);
+    } else if (palette.classList.contains('open') && event.key === 'ArrowUp') {
+      event.preventDefault();
+      setActiveResult(activeResult - 1);
+    } else if (palette.classList.contains('open') && event.key === 'Enter') {
+      const active = commandResults.querySelector('.command-result.active');
+      if (active) {
+        event.preventDefault();
+        window.location.href = active.href;
+      }
+    } else if (event.key === 'Escape' && palette.classList.contains('open')) closeCommandPalette();
   });
+
+  const initialCommandQuery = new URLSearchParams(window.location.search).get('q');
+  if (initialCommandQuery) {
+    openCommandPalette();
+    commandInput.value = initialCommandQuery;
+    searchCommands();
+  }
+}
+
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+  window.addEventListener('load', () => navigator.serviceWorker.register(new URL('sw.js', siteRootUrl)).catch(() => {}), { once: true });
 }

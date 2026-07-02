@@ -2,753 +2,890 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://b2bindustrial.in/about</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/about.webp</image:loc><image:title>about</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/founder.webp</image:loc><image:title>about</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Lighting%20Projects.webp</image:loc><image:title>about</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/ai-predictive-maintenance-industrial-plants</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>ai-predictive-maintenance-industrial-plants</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/annual-energy-audit-manufacturing</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>annual-energy-audit-manufacturing</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/battery-energy-storage-factory-backup</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>battery-energy-storage-factory-backup</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/bee-energy-audit-process</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>bee-energy-audit-process</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/cpcb-4-plus-dg-norms</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>cpcb-4-plus-dg-norms</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/cpcb-emission-monitoring-factories</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>cpcb-emission-monitoring-factories</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/digital-twins-energy-efficiency</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>digital-twins-energy-efficiency</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/electrical-safety-audit-checklist</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>electrical-safety-audit-checklist</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/electrical-thermography-importance</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>electrical-thermography-importance</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/energy-audit-cost-india</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>energy-audit-cost-india</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/environmental-compliances-guide</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>environmental-compliances-guide</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/esg-compliance-industrial-sites</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>esg-compliance-industrial-sites</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/fire-safety-compliance-factory-act</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>fire-safety-compliance-factory-act</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/hvac-maintenance-best-practices</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>hvac-maintenance-best-practices</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>Industrial engineering</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/industrial-water-risk-management</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>industrial-water-risk-management</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/industry-5-human-centric-safety</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>industry-5-human-centric-safety</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/lightning-protection-systems</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>lightning-protection-systems</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/smart-factory-readiness-india</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>smart-factory-readiness-india</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/supply-chain-resilience-industrial-operations</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>supply-chain-resilience-industrial-operations</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/blog/thermal-imaging-fire-risk-prevention</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>thermal-imaging-fire-risk-prevention</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/case-studies/cement-plant-energy-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/case-studies/cement-plant-impact.webp</image:loc><image:title>cement-plant-energy-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/case-studies/textile-industry-energy-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/case-studies/textile-mill-impact.webp</image:loc><image:title>textile-industry-energy-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/clients</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
   </url>
   <url>
     <loc>https://b2bindustrial.in/contact</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>contact</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/faq</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>faq</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/home/hero-audit.webp</image:loc><image:title>Industrial engineering</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/home/hero-audit.webp</image:loc><image:title>Industrial engineering</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/home/compliance.webp</image:loc><image:title>Industrial engineering</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/ahmedabad-energy-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>ahmedabad-energy-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/bangalore-electrical-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>bangalore-electrical-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/bangalore-energy-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>bangalore-energy-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/bangalore-fire-safety-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>bangalore-fire-safety-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/chennai-energy-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>chennai-energy-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/delhi-electrical-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/delhi-energy-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>delhi-energy-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/faridabad-energy-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>faridabad-energy-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/gurgaon-carbon-footprint</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>gurgaon-carbon-footprint</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/gurgaon-electrical-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>gurgaon-electrical-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/gurgaon-energy-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>gurgaon-energy-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/gurgaon-environmental-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>gurgaon-environmental-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/gurgaon-esg-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>gurgaon-esg-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/gurgaon-fire-safety-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>gurgaon-fire-safety-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/gurgaon-hse-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>gurgaon-hse-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/gurgaon-hvac-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>gurgaon-hvac-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/gurgaon-lightning-protection</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>gurgaon-lightning-protection</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/gurgaon-safety-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>gurgaon-safety-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/gurgaon-thermography-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>gurgaon-thermography-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/gurgaon-water-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>gurgaon-water-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/hyderabad-energy-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>hyderabad-energy-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/manesar-energy-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>manesar-energy-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/mumbai-energy-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>mumbai-energy-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/noida-electrical-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>noida-electrical-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/noida-energy-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>noida-energy-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/noida-environmental-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>noida-environmental-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/noida-esg-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>noida-esg-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/noida-fire-safety-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>noida-fire-safety-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/noida-hse-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>noida-hse-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/noida-safety-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>noida-safety-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/pan-india-energy-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>pan-india-energy-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/pune-energy-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>pune-energy-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/privacy</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>privacy</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/service</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/DUCT.webp</image:loc><image:title>service</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/air-balancing</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HVAC%20Projects%20&amp;%20Robot%20Duct%20Cleaning.webp</image:loc><image:title>air-balancing</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/air-bal.webp</image:loc><image:title>air-balancing</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/arc-flash-study</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/og-cover.webp</image:loc><image:title>arc-flash-study</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>arc-flash-study</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/audits-sustainability</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Energy%20and%20Electrical%20Audits.webp</image:loc><image:title>audits-sustainability</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>audits-sustainability</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/behavioural-safety-training</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>behavioural-safety-training</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>behavioural-safety-training</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/behavioural-safety</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>behavioural-safety</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/behavioural-safety-training.webp</image:loc><image:title>behavioural-safety</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/boiler-efficiency</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Energy%20and%20Electrical%20Audits.webp</image:loc><image:title>boiler-efficiency</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/engenring-tools.webp</image:loc><image:title>boiler-efficiency</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/cable-laying</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Electrical%20Engineering%20Services.webp</image:loc><image:title>cable-laying</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>cable-laying</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/cable-tray</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Electrical%20Engineering%20Services.webp</image:loc><image:title>cable-tray</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>cable-tray</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/carbon-footprint</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Energy%20and%20Electrical%20Audits.webp</image:loc><image:title>carbon-footprint</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>carbon-footprint</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/chartered-engineering</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Compliance%20Management%20Services.webp</image:loc><image:title>chartered-engineering</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>chartered-engineering</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/compliances</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Compliance%20Management%20Services.webp</image:loc><image:title>compliances</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>compliances</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/comprehensive-energy-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Energy%20and%20Electrical%20Audits.webp</image:loc><image:title>comprehensive-energy-audit</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>comprehensive-energy-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/compressed-air-testing</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Energy%20and%20Electrical%20Audits.webp</image:loc><image:title>compressed-air-testing</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>compressed-air-testing</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/cpcb-dgs</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Emission%20Control%20Projects.webp</image:loc><image:title>cpcb-dgs</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>cpcb-dgs</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/cyber-audits</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Energy%20and%20Electrical%20Audits.webp</image:loc><image:title>cyber-audits</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>cyber-audits</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/disaster-management</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>disaster-management</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>disaster-management</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/drills-simulation</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>drills-simulation</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>drills-simulation</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/duct-cleaning</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HVAC%20Projects%20&amp;%20Robot%20Duct%20Cleaning.webp</image:loc><image:title>duct-cleaning</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>duct-cleaning</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/e-hazop</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>e-hazop</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>e-hazop</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/e-waste-solutions</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Compliance%20Management%20Services.webp</image:loc><image:title>e-waste-solutions</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>e-waste-solutions</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/earthing-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Energy%20and%20Electrical%20Audits.webp</image:loc><image:title>earthing-audit</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>earthing-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/earthing-projects</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Electrical%20Engineering%20Services.webp</image:loc><image:title>earthing-projects</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>earthing-projects</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/electrical-compliance</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Compliance%20Management%20Services.webp</image:loc><image:title>electrical-compliance</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>electrical-compliance</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/electrical-projects</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Electrical%20Engineering%20Services.webp</image:loc><image:title>electrical-projects</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>electrical-projects</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/electrical-safety-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Electrical%20Engineering%20Services.webp</image:loc><image:title>electrical-safety-audit</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>electrical-safety-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/electrical-safety</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Electrical%20Engineering%20Services.webp</image:loc><image:title>electrical-safety</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>electrical-safety</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/electrical-sales</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Electrical%20Engineering%20Services.webp</image:loc><image:title>electrical-sales</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>electrical-sales</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/electrical-thermography</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Electrical%20Engineering%20Services.webp</image:loc><image:title>electrical-thermography</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>electrical-thermography</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/emergency-preparedness</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>emergency-preparedness</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>emergency-preparedness</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/emission-control</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Emission%20Control%20Projects.webp</image:loc><image:title>emission-control</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>emission-control</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/energy-audits</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Energy%20and%20Electrical%20Audits.webp</image:loc><image:title>energy-audits</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>energy-audits</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/energy-saving-projects</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Energy%20and%20Electrical%20Audits.webp</image:loc><image:title>energy-saving-projects</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>energy-saving-projects</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/environment-compliances</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Compliance%20Management%20Services.webp</image:loc><image:title>environment-compliances</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/environment-compliance-audit.webp</image:loc><image:title>environment-compliances</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/ergonomics</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>ergonomics</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>ergonomics</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/ev-charging</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Electrical%20Engineering%20Services.webp</image:loc><image:title>ev-charging</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>ev-charging</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/execution-recommendations</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Repair%20&amp;%20Maintenance%20Services.webp</image:loc><image:title>execution-recommendations</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>execution-recommendations</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/featured-products</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HVAC%20Projects%20&amp;%20Robot%20Duct%20Cleaning.webp</image:loc><image:title>featured-products</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>featured-products</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/fire-compliance</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>fire-compliance</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>fire-compliance</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/fire-detection</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>fire-detection</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>fire-detection</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/fire-doors</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>fire-doors</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>fire-doors</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/fire-extinguishers</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>fire-extinguishers</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>fire-extinguishers</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/fire-life-safety</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>fire-life-safety</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>fire-life-safety</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/fire-load-study</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>fire-load-study</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>fire-load-study</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/fire-noc</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>fire-noc</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>fire-noc</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/fire-projects</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>fire-projects</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>fire-projects</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/first-aid-facilities</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>first-aid-facilities</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>first-aid-facilities</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/fm200</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>fm200</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/f200.webp</image:loc><image:title>fm200</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/gas-dg</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Emission%20Control%20Projects.webp</image:loc><image:title>gas-dg</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>gas-dg</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/harmonic-analysis</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Energy%20and%20Electrical%20Audits.webp</image:loc><image:title>harmonic-analysis</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>harmonic-analysis</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/hira</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>hira</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>hira</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/hvac-design</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HVAC%20Projects%20&amp;%20Robot%20Duct%20Cleaning.webp</image:loc><image:title>hvac-design</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>hvac-design</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/hvac-installation</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HVAC%20Projects%20&amp;%20Robot%20Duct%20Cleaning.webp</image:loc><image:title>hvac-installation</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>hvac-installation</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/hvac-projects</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HVAC%20Projects%20&amp;%20Robot%20Duct%20Cleaning.webp</image:loc><image:title>hvac-projects</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/hvac.webp</image:loc><image:title>hvac-projects</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/incident-reporting</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>incident-reporting</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>incident-reporting</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/industrial-lighting</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Lighting%20Projects.webp</image:loc><image:title>industrial-lighting</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>industrial-lighting</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/interior-design</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/Sliders/interior.webp</image:loc><image:title>interior-design</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/Sliders/interior.webp</image:loc><image:title>interior-design</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/Sliders/interior.webp</image:loc><image:title>interior-design</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/lift-noc</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Compliance%20Management%20Services.webp</image:loc><image:title>lift-noc</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/lift-safety-inspection.webp</image:loc><image:title>lift-noc</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/lighting-projects</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Lighting%20Projects.webp</image:loc><image:title>lighting-projects</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/lighting.webp</image:loc><image:title>lighting-projects</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Lighting%20Projects.webp</image:loc><image:title>lighting-projects</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/lightning-protection</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Electrical%20Engineering%20Services.webp</image:loc><image:title>lightning-protection</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>lightning-protection</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/mcd-noc</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Compliance%20Management%20Services.webp</image:loc><image:title>mcd-noc</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>mcd-noc</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/nabl-testing</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Energy%20and%20Electrical%20Audits.webp</image:loc><image:title>nabl-testing</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>nabl-testing</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/occupational-health</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>occupational-health</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>occupational-health</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/ocems</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Emission%20Control%20Projects.webp</image:loc><image:title>ocems</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>ocems</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/office-lighting</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Lighting%20Projects.webp</image:loc><image:title>office-lighting</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>office-lighting</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/outdoor-lighting</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Lighting%20Projects.webp</image:loc><image:title>outdoor-lighting</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>outdoor-lighting</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/panel-projects</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Electrical%20Engineering%20Services.webp</image:loc><image:title>panel-projects</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>panel-projects</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/permit-to-work</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>permit-to-work</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/permit-to-work-system.webp</image:loc><image:title>permit-to-work</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/poles-designer-lights</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Lighting%20Projects.webp</image:loc><image:title>poles-designer-lights</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>poles-designer-lights</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/posh-training</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>posh-training</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>posh-training</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/power-quality-analysis</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Energy%20and%20Electrical%20Audits.webp</image:loc><image:title>power-quality-analysis</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>power-quality-analysis</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/power-quality-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Energy%20and%20Electrical%20Audits.webp</image:loc><image:title>power-quality-audit</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>power-quality-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/process-safety</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>process-safety</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>process-safety</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/project-management</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Repair%20&amp;%20Maintenance%20Services.webp</image:loc><image:title>project-management</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>project-management</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/public-address</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>public-address</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>public-address</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/recd-kit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Emission%20Control%20Projects.webp</image:loc><image:title>recd-kit</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>recd-kit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/renewable-energy</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/solar-energy.webp</image:loc><image:title>renewable-energy</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>renewable-energy</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/repair-maintenance</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Repair%20&amp;%20Maintenance%20Services.webp</image:loc><image:title>repair-maintenance</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>repair-maintenance</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/risk-management</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>risk-management</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>risk-management</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/smart-lighting</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Lighting%20Projects.webp</image:loc><image:title>smart-lighting</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>smart-lighting</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/solar-lighting</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Lighting%20Projects.webp</image:loc><image:title>solar-lighting</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/solar-energy.webp</image:loc><image:title>solar-lighting</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/solar-projects</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/solar-energy.webp</image:loc><image:title>solar-projects</image:title></image:image>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/solar-energy.webp</image:loc><image:title>solar-projects</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/stack-cleaning</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Emission%20Control%20Projects.webp</image:loc><image:title>stack-cleaning</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>stack-cleaning</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/stack-emission</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Emission%20Control%20Projects.webp</image:loc><image:title>stack-emission</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>stack-emission</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/steam-analysis</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Energy%20and%20Electrical%20Audits.webp</image:loc><image:title>steam-analysis</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>steam-analysis</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/tbt</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>tbt</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>tbt</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/thermography</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Energy%20and%20Electrical%20Audits.webp</image:loc><image:title>thermography</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>thermography</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/transformer-dehydration</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Electrical%20Engineering%20Services.webp</image:loc><image:title>transformer-dehydration</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>transformer-dehydration</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/ventilation-projects</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HVAC%20Projects%20&amp;%20Robot%20Duct%20Cleaning.webp</image:loc><image:title>ventilation-projects</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>ventilation-projects</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/wall-mount-lighting</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Lighting%20Projects.webp</image:loc><image:title>wall-mount-lighting</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/hvac-projects.webp</image:loc><image:title>wall-mount-lighting</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/waste-management</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Compliance%20Management%20Services.webp</image:loc><image:title>waste-management</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>waste-management</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/water-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/Energy%20and%20Electrical%20Audits.webp</image:loc><image:title>water-audit</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>water-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/services/well-being-audit</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/services/HSE%20&amp;%20Fire%20Safety%20Audits.webp</image:loc><image:title>well-being-audit</image:title></image:image>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>well-being-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/terms</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>terms</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/tools/</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>Industrial engineering</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/tools/luxlevel-calculator</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
   </url>
   <url>
     <loc>https://b2bindustrial.in/tools/powerfactor-calculation</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
   </url>
   <url>
     <loc>https://b2bindustrial.in/tools/tonnage-calculator</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
   </url>
 </urlset>

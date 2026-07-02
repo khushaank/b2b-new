@@ -1,0 +1,8 @@
+/* TEAM */
+Company: B2B Industrial Solutions
+Contact: info@b2bindustrial.in
+Location: Gurugram, Haryana, India
+
+/* SITE */
+Language: English (India)
+Standards: HTML5, CSS, JavaScript, Schema.org, Open Graph

@@ -1,0 +1,27 @@
+{
+  "@context": "https://schema.org",
+  "@type": [
+    "Organization",
+    "ProfessionalService"
+  ],
+  "@id": "https://b2bindustrial.in/#organization",
+  "name": "B2B Industrial Solutions",
+  "url": "https://b2bindustrial.in/",
+  "logo": "https://b2bindustrial.in/assets/images/logo.webp",
+  "image": "https://b2bindustrial.in/assets/images/og-cover.webp",
+  "telephone": "+91-9899702065",
+  "email": "info@b2bindustrial.in",
+  "foundingDate": "2013",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Shop No. 2, Gali No. 4, Khandsa Road",
+    "addressLocality": "Gurugram",
+    "addressRegion": "Haryana",
+    "postalCode": "122001",
+    "addressCountry": "IN"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "India"
+  }
+}

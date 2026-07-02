@@ -254,5 +254,6 @@ const homepage = fs.readFileSync(homepagePath, 'utf8')
 fs.writeFileSync(homepagePath, homepage, 'utf8');
 
 await import('./tools/enhance-seo.mjs');
+await import('./tools/generate-discovery.mjs');
 
 console.log(`Generated ${sourcePages.length - 1} interior pages. Homepage retained. Total parallel pages: ${sourcePages.length}.`);
