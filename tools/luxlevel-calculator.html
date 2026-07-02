@@ -257,7 +257,7 @@
                 <div class="field-row two" style="margin-bottom:22px">
                     <div class="field" style="grid-column: span 2;">
                         <label>Industry / Room Type</label>
-                        <select id="roomType" onchange="onRoomChange()">
+                        <select id="roomType" onchange="onRoomChange()" autocomplete="off">
                             <option value="">— Select space type —</option>
                             <optgroup label="Storage &amp; Logistics">
                                 <option value="warehouse_general">Warehouse – General Storage</option>
@@ -296,15 +296,15 @@
                 <div class="field-row">
                     <div class="field">
                         <label>Length <em>(m)</em></label>
-                        <input type="number" id="length" min="1" max="500" step="0.5" placeholder="e.g. 40" />
+                        <input type="number" id="length" min="1" max="500" step="0.5" placeholder="e.g. 40" autocomplete="off" />
                     </div>
                     <div class="field">
                         <label>Width <em>(m)</em></label>
-                        <input type="number" id="width" min="1" max="500" step="0.5" placeholder="e.g. 20" />
+                        <input type="number" id="width" min="1" max="500" step="0.5" placeholder="e.g. 20" autocomplete="off" />
                     </div>
                     <div class="field">
                         <label>Height <em>(m)</em></label>
-                        <input type="number" id="height" min="2" max="30" step="0.5" placeholder="e.g. 8" />
+                        <input type="number" id="height" min="2" max="30" step="0.5" placeholder="e.g. 8" autocomplete="off" />
                     </div>
                 </div>
 
@@ -312,11 +312,11 @@
                 <div class="field-row two" style="margin-bottom:22px">
                     <div class="field">
                         <label>Mounting / Work Plane Ht <em>(m)</em></label>
-                        <input type="number" id="mountHeight" min="0.5" max="25" step="0.5" placeholder="e.g. 0.85" />
+                        <input type="number" id="mountHeight" min="0.5" max="25" step="0.5" placeholder="e.g. 0.85" autocomplete="off" />
                     </div>
                     <div class="field">
                         <label>Maintenance Factor (MF)</label>
-                        <select id="mf">
+                        <select id="mf" autocomplete="off">
                             <option value="0.8">0.80 – Clean environment</option>
                             <option value="0.7" selected>0.70 – Industrial (typical)</option>
                             <option value="0.6">0.60 – Dusty / dirty</option>
@@ -332,7 +332,7 @@
                         <label>Ceiling</label>
                         <div class="reflect-row">
                             <input type="range" id="rceil" min="10" max="80" value="50" step="5"
-                                oninput="updateReflect(this,'rvCeil')" />
+                                oninput="updateReflect(this,'rvCeil')" autocomplete="off" />
                             <span class="reflect-val" id="rvCeil">50%</span>
                         </div>
                     </div>
@@ -340,7 +340,7 @@
                         <label>Walls</label>
                         <div class="reflect-row">
                             <input type="range" id="rwall" min="10" max="70" value="30" step="5"
-                                oninput="updateReflect(this,'rvWall')" />
+                                oninput="updateReflect(this,'rvWall')" autocomplete="off" />
                             <span class="reflect-val" id="rvWall">30%</span>
                         </div>
                     </div>
@@ -348,7 +348,7 @@
                         <label>Floor</label>
                         <div class="reflect-row">
                             <input type="range" id="rfloor" min="5" max="40" value="20" step="5"
-                                oninput="updateReflect(this,'rvFloor')" />
+                                oninput="updateReflect(this,'rvFloor')" autocomplete="off" />
                             <span class="reflect-val" id="rvFloor">20%</span>
                         </div>
                     </div>
@@ -359,7 +359,7 @@
                 <div class="field-row two" style="margin-bottom:8px">
                     <div class="field">
                         <label>Primary Fixture Type</label>
-                        <select id="fixtureType">
+                        <select id="fixtureType" autocomplete="off">
                             <option value="ufo_led">UFO LED High Bay</option>
                             <option value="linear_led">Linear LED High Bay</option>
                             <option value="flood_led">LED Floodlight</option>
@@ -370,7 +370,7 @@
                     <div class="field">
                         <label>Custom Lumens/Fixture <em>(optional)</em></label>
                         <input type="number" id="customLumens" min="500" max="200000" step="500"
-                            placeholder="Leave blank = auto" />
+                            placeholder="Leave blank = auto" autocomplete="off" />
                     </div>
                 </div>
 

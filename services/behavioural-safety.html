@@ -353,21 +353,21 @@
               <div class="form-group">
                 <label for="name" class="form-label">Full Name</label>
                 <input type="text" name="name" id="name" class="form-control" placeholder="e.g. Robert California"
-                  required />
+                  required autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Work Email</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="robert@company.com"
-                  required />
+                  required autocomplete="email" />
               </div>
               <div class="form-group">
                 <label for="phone" class="form-label">Phone Number</label>
-                <input type="tel" name="phone" id="phone" class="form-control" placeholder="+91" />
+                <input type="tel" name="phone" id="phone" class="form-control" placeholder="+91" autocomplete="tel" />
               </div>
               <div class="form-group">
                 <label for="message" class="form-label">Safety Goals</label>
                 <textarea name="message" id="message" class="form-control" rows="4"
-                  placeholder="Briefly describe your current safety challenges..." required></textarea>
+                  placeholder="Briefly describe your current safety challenges..." required autocomplete="off"></textarea>
               </div>
               <button type="submit" class="btn-primary btn-block">
                 Inquire Now

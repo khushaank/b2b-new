@@ -379,16 +379,16 @@
 
               <div class="form-group">
                 <label for="name" class="form-label">Contact Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required />
+                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="email@company.com"
-                  required />
+                  required autocomplete="email" />
               </div>
               <div class="form-group">
                 <label for="audit_scope" class="form-label">Audit Scope</label>
-                <select name="audit_scope" id="audit_scope" class="form-control" required>
+                <select name="audit_scope" id="audit_scope" class="form-control" required autocomplete="off">
                   <option value="" disabled selected>
                     Select Audit Type
                   </option>
@@ -410,7 +410,7 @@
                 <label for="message" class="form-label">System Information</label>
                 <textarea name="message" id="message" class="form-control"
                   placeholder="Boiler capacity, steam pressure, fuel type, current fuel consumption..." rows="4"
-                  required></textarea>
+                  required autocomplete="off"></textarea>
               </div>
               <button type="submit" class="btn-primary btn-block">
                 Schedule Audit

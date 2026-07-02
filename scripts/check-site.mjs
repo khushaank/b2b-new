@@ -47,6 +47,11 @@ for (const file of htmlFiles) {
   for (const tag of html.match(/<a\b[^>]*target=["']_blank["'][^>]*>/gi) || []) {
     if (!/rel=["'][^"']*noopener/i.test(tag)) errors.push(`${display}: external new-tab link missing noopener`);
   }
+  for (const tag of html.match(/<(?:input|select|textarea)\b[^>]*>/gi) || []) {
+    const type = tag.match(/\btype=["']([^"']+)["']/i)?.[1]?.toLowerCase() || '';
+    if (['hidden', 'submit', 'reset', 'button', 'image', 'file', 'checkbox', 'radio'].includes(type)) continue;
+    if (!/\bautocomplete=["'][^"']+["']/i.test(tag)) errors.push(`${display}: form field missing autocomplete ${tag.slice(0, 110)}`);
+  }
   const main = html.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0] || '';
   if (!/<img\b/i.test(main)) errors.push(`${display}: main content has no image`);
 

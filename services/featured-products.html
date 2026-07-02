@@ -355,16 +355,16 @@
 
               <div class="form-group">
                 <label for="name" class="form-label">Full Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required />
+                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Work Email</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="email@company.com"
-                  required />
+                  required autocomplete="email" />
               </div>
               <div class="form-group">
                 <label for="product-cat" class="form-label">Category</label>
-                <select name="product-cat" id="product-cat" class="form-control" required>
+                <select name="product-cat" id="product-cat" class="form-control" required autocomplete="off">
                   <option value="" disabled selected>Select Category</option>
                   <option value="Switchgear">Electrical Switchgear</option>
                   <option value="Safety Gear">PPE / Safety Gear</option>
@@ -375,7 +375,7 @@
               <div class="form-group">
                 <label for="message" class="form-label">Requirements</label>
                 <textarea name="message" id="message" class="form-control" rows="4"
-                  placeholder="Model numbers, quantity, or specific problem you are solving..." required></textarea>
+                  placeholder="Model numbers, quantity, or specific problem you are solving..." required autocomplete="off"></textarea>
               </div>
               <button type="submit" class="btn-primary btn-block">
                 Request Quote

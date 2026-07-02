@@ -366,16 +366,16 @@
 
               <div class="form-group">
                 <label for="name" class="form-label">Contact Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required />
+                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Work Email</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="email@company.com"
-                  required />
+                  required autocomplete="email" />
               </div>
               <div class="form-group">
                 <label for="facility_type" class="form-label">Facility Type</label>
-                <select name="facility_type" id="facility_type" class="form-control" required>
+                <select name="facility_type" id="facility_type" class="form-control" required autocomplete="off">
                   <option value="" disabled selected>Select Facility</option>
                   <option value="Warehouse">Warehouse / Storage</option>
                   <option value="Factory">Manufacturing Factory</option>
@@ -387,7 +387,7 @@
               <div class="form-group">
                 <label for="message" class="form-label">Requirements</label>
                 <textarea name="message" id="message" class="form-control" rows="4"
-                  placeholder="Facility area, ceiling height, current lighting..." required></textarea>
+                  placeholder="Facility area, ceiling height, current lighting..." required autocomplete="off"></textarea>
               </div>
               <button type="submit" class="btn-primary btn-block">
                 Request Lighting Survey

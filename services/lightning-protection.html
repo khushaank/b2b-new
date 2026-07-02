@@ -379,20 +379,20 @@
 
               <div class="form-group">
                 <label for="name" class="form-label">Full Name</label>
-                <input type="text" name="name" id="name" class="form-control" required />
+                <input type="text" name="name" id="name" class="form-control" required autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Email Address</label>
-                <input type="email" name="email" id="email" class="form-control" required />
+                <input type="email" name="email" id="email" class="form-control" required autocomplete="email" />
               </div>
               <div class="form-group">
                 <label for="service" class="form-label">Service</label>
                 <input type="text" name="service_type" value="Lightning Protection Audit" class="form-control"
-                  readonly />
+                  readonly autocomplete="off" />
               </div>
               <div class="form-group">
                 <label for="message" class="form-label">Message</label>
-                <textarea name="message" id="message" class="form-control" rows="4" required></textarea>
+                <textarea name="message" id="message" class="form-control" rows="4" required autocomplete="off"></textarea>
               </div>
               <button type="submit" class="btn-primary btn-block">
                 Submit Request

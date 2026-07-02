@@ -373,16 +373,16 @@
 
               <div class="form-group">
                 <label for="name" class="form-label">Contact Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required />
+                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="email@company.com"
-                  required />
+                  required autocomplete="email" />
               </div>
               <div class="form-group">
                 <label for="service_type" class="form-label">Service Required</label>
-                <select name="service_type" id="service_type" class="form-control" required>
+                <select name="service_type" id="service_type" class="form-control" required autocomplete="off">
                   <option value="" disabled selected>Select Service</option>
                   <option value="Plumbing">Plumbing Services</option>
                   <option value="Tank Cleaning">Water Tank Cleaning</option>
@@ -399,7 +399,7 @@
               <div class="form-group">
                 <label for="message" class="form-label">Issue Description</label>
                 <textarea name="message" id="message" class="form-control"
-                  placeholder="Describe the issue or service requirement..." rows="4" required></textarea>
+                  placeholder="Describe the issue or service requirement..." rows="4" required autocomplete="off"></textarea>
               </div>
               <button type="submit" class="btn-primary btn-block">
                 Submit Request

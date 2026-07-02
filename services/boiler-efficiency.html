@@ -383,16 +383,16 @@
 
 
               <div class="form-group">
-                <input type="text" name="name" placeholder="Your Full Name" class="form-control" required />
+                <input type="text" name="name" placeholder="Your Full Name" class="form-control" required autocomplete="name" />
               </div>
               <div class="form-group">
-                <input type="email" name="email" placeholder="Business Email" class="form-control" required />
+                <input type="email" name="email" placeholder="Business Email" class="form-control" required autocomplete="email" />
               </div>
               <div class="form-group">
-                <input type="text" name="phone" placeholder="Phone Number" class="form-control" required />
+                <input type="text" name="phone" placeholder="Phone Number" class="form-control" required autocomplete="tel" />
               </div>
               <div class="form-group">
-                <select name="boiler_type" class="form-control" required>
+                <select name="boiler_type" class="form-control" required autocomplete="off">
                   <option value="" disabled selected>
                     Select Boiler Type
                   </option>
@@ -404,7 +404,7 @@
               </div>
               <div class="form-group">
                 <textarea name="message" placeholder="Describe your current fuel consumption or scaling issues..."
-                  class="form-control" rows="4" required></textarea>
+                  class="form-control" rows="4" required autocomplete="off"></textarea>
               </div>
               <button type="submit" class="btn-primary btn-block">
                 Get Performance Roadmap

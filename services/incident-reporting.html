@@ -375,16 +375,16 @@
 
               <div class="form-group">
                 <label for="name" class="form-label">Full Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required />
+                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Email Address</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="email@company.com"
-                  required />
+                  required autocomplete="email" />
               </div>
               <div class="form-group">
                 <label for="challenge" class="form-label">Current Challenge</label>
-                <select name="challenge" id="challenge" class="form-control" required>
+                <select name="challenge" id="challenge" class="form-control" required autocomplete="off">
                   <option value="" disabled selected>Select Challenge</option>
                   <option value="Low Reporting">Low Reporting Rates</option>
                   <option value="No System">No Reporting System</option>
@@ -396,7 +396,7 @@
               <div class="form-group">
                 <label for="message" class="form-label">Details</label>
                 <textarea name="message" id="message" class="form-control" rows="4"
-                  placeholder="Describe your reporting challenges..." required></textarea>
+                  placeholder="Describe your reporting challenges..." required autocomplete="off"></textarea>
               </div>
               <button type="submit" class="btn-primary btn-block">
                 Request Consultation

@@ -119,13 +119,18 @@
   .services-page .service-content > .content-block:first-child > p:first-of-type,
   .services-page .main-content > .content-block:first-child > p:first-of-type { font-size: 18px; }
   .services-page .service-features, .services-page .features-list, .services-page .offerings-grid, .services-page .technology-grid,
-  .services-page .features-grid, .services-page .benefits-grid { grid-template-columns: 1fr; }
-  .services-page table.service-table { display: block; margin: 24px 0 36px; overflow: visible; border: 0; background: transparent; }
+  .services-page .features-grid, .services-page .benefits-grid { grid-template-columns: 1fr; gap: 12px; margin: 24px 0 38px; }
+  .services-page .feature-item, .services-page .offering-card, .services-page .technology-card,
+  .services-page .feature-card, .services-page .benefit-card { min-height: 0; padding: 21px; border-radius: 15px; }
+  .services-page .content-block { margin-bottom: 44px; }
+  .services-page .content-block > h3,
+  .services-page .content-block > h2:not(:first-child) { margin-top: 42px; }
+  .services-page table.service-table { display: block; margin: 20px 0 34px; overflow: visible; border: 0; background: transparent; }
   .services-page table.service-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
   .services-page table.service-table tbody { display: grid; gap: 12px; }
   .services-page table.service-table tr { display: block; overflow: hidden; border: 1px solid var(--soft-line); border-radius: 15px; background: #fff; box-shadow: 0 10px 26px rgba(0,0,0,.035); }
   .services-page table.service-table td,
-  .services-page table.service-table tr:nth-child(even) td { display: block; padding: 13px 15px; border: 0; border-bottom: 1px solid var(--soft-line); background: #fff; font-size: 14px; overflow-wrap: anywhere; }
+  .services-page table.service-table tr:nth-child(even) td { display: block; padding: 11px 13px; border: 0; border-bottom: 1px solid var(--soft-line); background: #fff; font-size: 14px; overflow-wrap: anywhere; }
   .services-page table.service-table td:last-child { border-bottom: 0; }
   .services-page table.service-table td::before { content: attr(data-label); display: block; margin-bottom: 5px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .06em; line-height: 1.35; text-transform: uppercase; }
   .services-page table.service-table td > .service-table-icon { margin-right: 7px; }

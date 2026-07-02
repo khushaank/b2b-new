@@ -377,16 +377,16 @@
 
               <div class="form-group">
                 <label for="name" class="form-label">Contact Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required />
+                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="email@company.com"
-                  required />
+                  required autocomplete="email" />
               </div>
               <div class="form-group">
                 <label for="solution_type" class="form-label">Solution Type</label>
-                <select name="solution_type" id="solution_type" class="form-control" required>
+                <select name="solution_type" id="solution_type" class="form-control" required autocomplete="off">
                   <option value="" disabled selected>Select Solution</option>
                   <option value="Rooftop Solar">Rooftop Solar PV</option>
                   <option value="Ground Mount">Ground-Mounted Solar</option>
@@ -405,7 +405,7 @@
                 <label for="message" class="form-label">Energy Requirements</label>
                 <textarea name="message" id="message" class="form-control"
                   placeholder="Current electricity bill (monthly), available roof area, energy consumption..." rows="4"
-                  required></textarea>
+                  required autocomplete="off"></textarea>
               </div>
               <button type="submit" class="btn-primary btn-block">
                 Request Feasibility Study

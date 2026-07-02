@@ -462,16 +462,16 @@
 
               <div class="form-group">
                 <label for="name" class="form-label">Contact Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required />
+                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="email@company.com"
-                  required />
+                  required autocomplete="email" />
               </div>
               <div class="form-group">
                 <label for="issue_type" class="form-label">Primary Concern</label>
-                <select name="issue_type" id="issue_type" class="form-control" required>
+                <select name="issue_type" id="issue_type" class="form-control" required autocomplete="off">
                   <option value="" disabled selected>Select Issue</option>
                   <option value="Harmonics">Harmonic Distortion</option>
                   <option value="Voltage Fluctuation">
@@ -492,7 +492,7 @@
                 <label for="message" class="form-label">Facility Details</label>
                 <textarea name="message" id="message" class="form-control"
                   placeholder="Load capacity (kVA), critical equipment, observed issues..." rows="4"
-                  required></textarea>
+                  required autocomplete="off"></textarea>
               </div>
               <button type="submit" class="btn-primary btn-block">
                 Request PQA Study

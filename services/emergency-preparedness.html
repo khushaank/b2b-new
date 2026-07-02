@@ -356,16 +356,16 @@
 
               <div class="form-group">
                 <label for="name" class="form-label">Full Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required />
+                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Work Email</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="email@company.com"
-                  required />
+                  required autocomplete="email" />
               </div>
               <div class="form-group">
                 <label for="industry-type" class="form-label">Industry Type</label>
-                <select name="industry-type" id="industry-type" class="form-control" required>
+                <select name="industry-type" id="industry-type" class="form-control" required autocomplete="off">
                   <option value="" disabled selected>Select Industry</option>
                   <option value="Chemical / Petrochemical">
                     Chemical / Petrochemical
@@ -378,7 +378,7 @@
               <div class="form-group">
                 <label for="message" class="form-label">Requirements</label>
                 <textarea name="message" id="message" class="form-control" rows="4"
-                  placeholder="On-site plan, off-site plan, or update needed?" required></textarea>
+                  placeholder="On-site plan, off-site plan, or update needed?" required autocomplete="off"></textarea>
               </div>
               <button type="submit" class="btn-primary btn-block">
                 Get EPRP Proposal

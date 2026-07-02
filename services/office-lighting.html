@@ -368,16 +368,16 @@
 
               <div class="form-group">
                 <label for="name" class="form-label">Contact Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required />
+                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="email@company.com"
-                  required />
+                  required autocomplete="email" />
               </div>
               <div class="form-group">
                 <label for="lighting_type" class="form-label">Lighting Need</label>
-                <select name="lighting_type" id="lighting_type" class="form-control" required>
+                <select name="lighting_type" id="lighting_type" class="form-control" required autocomplete="off">
                   <option value="" disabled selected>Select Type</option>
                   <option value="LED Panels">LED Panel Lights</option>
                   <option value="Downlighters">Downlighters</option>
@@ -391,7 +391,7 @@
               <div class="form-group">
                 <label for="message" class="form-label">Project Details</label>
                 <textarea name="message" id="message" class="form-control"
-                  placeholder="Office area (sq.ft), number of rooms, existing setup..." rows="4" required></textarea>
+                  placeholder="Office area (sq.ft), number of rooms, existing setup..." rows="4" required autocomplete="off"></textarea>
               </div>
               <button type="submit" class="btn-primary btn-block">
                 Request Lighting Design

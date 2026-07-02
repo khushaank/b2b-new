@@ -373,16 +373,16 @@
 
               <div class="form-group">
                 <label for="name" class="form-label">Contact Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required />
+                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="email@company.com"
-                  required />
+                  required autocomplete="email" />
               </div>
               <div class="form-group">
                 <label for="psm_service" class="form-label">PSM Service Required</label>
-                <select name="psm_service" id="psm_service" class="form-control" required>
+                <select name="psm_service" id="psm_service" class="form-control" required autocomplete="off">
                   <option value="" disabled selected>Select Service</option>
                   <option value="HAZOP Study">HAZOP Study</option>
                   <option value="LOPA">Layer of Protection Analysis</option>
@@ -399,7 +399,7 @@
                 <label for="message" class="form-label">Process/Plant Details</label>
                 <textarea name="message" id="message" class="form-control"
                   placeholder="Industry type, hazardous materials handled, plant capacity..." rows="4"
-                  required></textarea>
+                  required autocomplete="off"></textarea>
               </div>
               <button type="submit" class="btn-primary btn-block">
                 Request PSM Audit

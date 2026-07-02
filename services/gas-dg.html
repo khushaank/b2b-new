@@ -366,16 +366,16 @@
 
               <div class="form-group">
                 <label for="name" class="form-label">Contact Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required />
+                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Work Email</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="email@company.com"
-                  required />
+                  required autocomplete="email" />
               </div>
               <div class="form-group">
                 <label for="capacity" class="form-label">Required Capacity</label>
-                <select name="capacity" id="capacity" class="form-control" required>
+                <select name="capacity" id="capacity" class="form-control" required autocomplete="address-level2">
                   <option value="" disabled selected>Select Capacity</option>
                   <option value="5-25 kVA">5-25 kVA (Small Office)</option>
                   <option value="25-100 kVA">
@@ -391,7 +391,7 @@
               <div class="form-group">
                 <label for="message" class="form-label">Application Details</label>
                 <textarea name="message" id="message" class="form-control" rows="4"
-                  placeholder="Facility type, connected load, runtime requirement..." required></textarea>
+                  placeholder="Facility type, connected load, runtime requirement..." required autocomplete="off"></textarea>
               </div>
               <button type="submit" class="btn-primary btn-block">
                 Request DG Quote

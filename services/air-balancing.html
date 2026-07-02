@@ -341,21 +341,21 @@
 
               <div class="form-group">
                 <label for="name" class="form-label">Full Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="e.g. Jane Smith" required />
+                <input type="text" name="name" id="name" class="form-control" placeholder="e.g. Jane Smith" required autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Email Address</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="e.g. jane@company.com"
-                  required />
+                  required autocomplete="email" />
               </div>
               <div class="form-group">
                 <label for="phone" class="form-label">Phone Number</label>
-                <input type="tel" name="phone" id="phone" class="form-control" placeholder="+91 98765 43210" />
+                <input type="tel" name="phone" id="phone" class="form-control" placeholder="+91 98765 43210" autocomplete="tel" />
               </div>
               <div class="form-group">
                 <label for="message" class="form-label">Message</label>
                 <textarea name="message" id="message" class="form-control"
-                  placeholder="Describe your facility or requirements..." rows="4" required></textarea>
+                  placeholder="Describe your facility or requirements..." rows="4" required autocomplete="off"></textarea>
               </div>
               <button type="submit" class="btn-primary btn-block">
                 Request Quote

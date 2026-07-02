@@ -228,7 +228,7 @@
                     <div class="field">
                         <label>Length</label>
                         <div class="input-wrap">
-                            <input type="number" id="length" value="15" min="1" max="999" />
+                            <input type="number" id="length" value="15" min="1" max="999" autocomplete="off" />
                             <div class="unit-tog">
                                 <button class="unit-btn active" id="btnFt">ft</button>
                                 <button class="unit-btn" id="btnM">m</button>
@@ -238,7 +238,7 @@
                     <div class="field">
                         <label>Width</label>
                         <div class="input-wrap">
-                            <input type="number" id="width" value="12" min="1" max="999" />
+                            <input type="number" id="width" value="12" min="1" max="999" autocomplete="off" />
                             <div class="unit-tog">
                                 <button class="unit-btn active" id="btnFt2">ft</button>
                                 <button class="unit-btn" id="btnM2">m</button>
@@ -251,7 +251,7 @@
                         <label>Ceiling Height</label>
                         <span class="hint">Standard is 8 ft / 2.4 m</span>
                         <div class="input-wrap">
-                            <input type="number" id="ceilHeight" value="9" min="6" max="30" step="0.5" />
+                            <input type="number" id="ceilHeight" value="9" min="6" max="30" step="0.5" autocomplete="off" />
                             <div class="unit-tog">
                                 <button class="unit-btn active" id="cBtnFt">ft</button>
                                 <button class="unit-btn" id="cBtnM">m</button>
@@ -260,7 +260,7 @@
                     </div>
                     <div class="field">
                         <label>Room Type</label>
-                        <select class="styled-select" id="roomType">
+                        <select class="styled-select" id="roomType" autocomplete="off">
                             <option value="0">Bedroom / Living Room</option>
                             <option value="0">Office / Study</option>
                             <option value="4000">Kitchen (+4,000 BTU)</option>
@@ -278,7 +278,7 @@
                 <div class="row">
                     <div class="field">
                         <label>Climate Zone</label>
-                        <select class="styled-select" id="climate">
+                        <select class="styled-select" id="climate" autocomplete="off">
                             <option value="18">Very Cool (18 BTU/sq ft) — e.g. UK, Canada, Scandinavia</option>
                             <option value="20">Cool (20 BTU/sq ft) — e.g. Northern Europe, Seattle</option>
                             <option value="22" selected>Moderate (22 BTU/sq ft) — e.g. Northern India, mild US
@@ -291,7 +291,7 @@
                     </div>
                     <div class="field">
                         <label>Sun Exposure</label>
-                        <select class="styled-select" id="sunExposure">
+                        <select class="styled-select" id="sunExposure" autocomplete="off">
                             <option value="-10">Heavy Shade (−10%)</option>
                             <option value="0" selected>Average / Mixed</option>
                             <option value="15">South/West Facing (+15%)</option>
@@ -302,7 +302,7 @@
                 <div class="row">
                     <div class="field">
                         <label>Insulation Quality</label>
-                        <select class="styled-select" id="insulation">
+                        <select class="styled-select" id="insulation" autocomplete="off">
                             <option value="-15">Excellent (New construction, −15%)</option>
                             <option value="-5">Good (Modern home, −5%)</option>
                             <option value="0" selected>Average</option>
@@ -312,7 +312,7 @@
                     </div>
                     <div class="field">
                         <label>Floor Location</label>
-                        <select class="styled-select" id="floor">
+                        <select class="styled-select" id="floor" autocomplete="off">
                             <option value="0">Ground / Middle Floor</option>
                             <option value="10">Top Floor / Under Direct Roof (+10%)</option>
                             <option value="-5">Basement (−5%)</option>
@@ -330,7 +330,7 @@
                         <span class="hint">First 2 are included in base load</span>
                         <div class="stepper">
                             <button>−</button>
-                            <input type="number" id="occupants" value="2" min="1" max="30" />
+                            <input type="number" id="occupants" value="2" min="1" max="30" autocomplete="off" />
                             <button>+</button>
                         </div>
                     </div>
@@ -339,7 +339,7 @@
                         <span class="hint">First 2 windows in base load</span>
                         <div class="stepper">
                             <button>−</button>
-                            <input type="number" id="windows" value="2" min="0" max="30" />
+                            <input type="number" id="windows" value="2" min="0" max="30" autocomplete="off" />
                             <button>+</button>
                         </div>
                     </div>
@@ -350,7 +350,7 @@
                         <span class="hint">+1,000 BTU each</span>
                         <div class="stepper">
                             <button>−</button>
-                            <input type="number" id="doors" value="1" min="0" max="10" />
+                            <input type="number" id="doors" value="1" min="0" max="10" autocomplete="off" />
                             <button>+</button>
                         </div>
                     </div>
@@ -358,7 +358,7 @@
                         <label>Electrical Load (Watts)</label>
                         <span class="hint">Lights + appliances in room</span>
                         <div class="input-wrap">
-                            <input type="number" id="elecLoad" value="500" min="0" max="10000" step="100" />
+                            <input type="number" id="elecLoad" value="500" min="0" max="10000" step="100" autocomplete="off" />
                         </div>
                     </div>
                 </div>

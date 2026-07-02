@@ -374,16 +374,16 @@
 
               <div class="form-group">
                 <label for="name" class="form-label">Contact Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required />
+                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="email@company.com"
-                  required />
+                  required autocomplete="email" />
               </div>
               <div class="form-group">
                 <label for="source_type" class="form-label">Emission Source</label>
-                <select name="source_type" id="source_type" class="form-control" required>
+                <select name="source_type" id="source_type" class="form-control" required autocomplete="off">
                   <option value="" disabled selected>
                     Select Source Type
                   </option>
@@ -397,7 +397,7 @@
               <div class="form-group">
                 <label for="message" class="form-label">Source Details</label>
                 <textarea name="message" id="message" class="form-control"
-                  placeholder="Fuel type, capacity, operating hours, last test date..." rows="4" required></textarea>
+                  placeholder="Fuel type, capacity, operating hours, last test date..." rows="4" required autocomplete="off"></textarea>
               </div>
               <button type="submit" class="btn-primary btn-block">
                 Request Testing

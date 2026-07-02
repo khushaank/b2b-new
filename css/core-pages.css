@@ -185,7 +185,9 @@
   .core-pages-page .stat-item { min-height: 125px; border-right: 0; border-bottom: 1px solid var(--line); }
   .core-pages-page .stat-item:last-child { border-bottom: 0; }
   .core-pages-page .founder-section .container { grid-template-columns: 1fr; }
+  .core-pages-page .founder-section { padding: 56px 0; }
   .core-pages-page .founder-image { max-width: 230px; }
+  .core-pages-page .founder-text .quote { font-size: 22px; line-height: 1.42; }
   .core-pages-page .mission-card,
   .core-pages-page .vision-card { min-height: 0; padding: 30px; }
   .core-pages-page .category-nav { border-radius: 18px; }
