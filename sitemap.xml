@@ -144,9 +144,29 @@
     <image:image><image:loc>https://b2bindustrial.in/assets/images/home/compliance.webp</image:loc><image:title>Industrial engineering</image:title></image:image>
   </url>
   <url>
+    <loc>https://b2bindustrial.in/locations/ahmedabad-electrical-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>ahmedabad-electrical-audit</image:title></image:image>
+  </url>
+  <url>
     <loc>https://b2bindustrial.in/locations/ahmedabad-energy-audit</loc>
     <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>ahmedabad-energy-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/ahmedabad-environmental-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>ahmedabad-environmental-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/ahmedabad-fire-safety-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>ahmedabad-fire-safety-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/ahmedabad-hse-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>ahmedabad-hse-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/bangalore-electrical-audit</loc>
@@ -159,14 +179,44 @@
     <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>bangalore-energy-audit</image:title></image:image>
   </url>
   <url>
+    <loc>https://b2bindustrial.in/locations/bangalore-environmental-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>bangalore-environmental-audit</image:title></image:image>
+  </url>
+  <url>
     <loc>https://b2bindustrial.in/locations/bangalore-fire-safety-audit</loc>
     <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>bangalore-fire-safety-audit</image:title></image:image>
   </url>
   <url>
+    <loc>https://b2bindustrial.in/locations/bangalore-hse-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>bangalore-hse-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/chennai-electrical-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>chennai-electrical-audit</image:title></image:image>
+  </url>
+  <url>
     <loc>https://b2bindustrial.in/locations/chennai-energy-audit</loc>
     <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>chennai-energy-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/chennai-environmental-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>chennai-environmental-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/chennai-fire-safety-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>chennai-fire-safety-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/chennai-hse-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>chennai-hse-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/delhi-electrical-audit</loc>
@@ -178,9 +228,44 @@
     <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>delhi-energy-audit</image:title></image:image>
   </url>
   <url>
+    <loc>https://b2bindustrial.in/locations/delhi-environmental-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>delhi-environmental-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/delhi-fire-safety-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>delhi-fire-safety-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/delhi-hse-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>delhi-hse-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/faridabad-electrical-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>faridabad-electrical-audit</image:title></image:image>
+  </url>
+  <url>
     <loc>https://b2bindustrial.in/locations/faridabad-energy-audit</loc>
     <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>faridabad-energy-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/faridabad-environmental-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>faridabad-environmental-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/faridabad-fire-safety-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>faridabad-fire-safety-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/faridabad-hse-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>faridabad-hse-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/gurgaon-carbon-footprint</loc>
@@ -243,9 +328,34 @@
     <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>gurgaon-water-audit</image:title></image:image>
   </url>
   <url>
+    <loc>https://b2bindustrial.in/locations/hyderabad-electrical-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>hyderabad-electrical-audit</image:title></image:image>
+  </url>
+  <url>
     <loc>https://b2bindustrial.in/locations/hyderabad-energy-audit</loc>
     <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>hyderabad-energy-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/hyderabad-environmental-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>hyderabad-environmental-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/hyderabad-fire-safety-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>hyderabad-fire-safety-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/hyderabad-hse-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>hyderabad-hse-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp</image:loc><image:title>Industrial engineering</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/manesar-energy-audit</loc>
@@ -253,9 +363,29 @@
     <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>manesar-energy-audit</image:title></image:image>
   </url>
   <url>
+    <loc>https://b2bindustrial.in/locations/mumbai-electrical-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>mumbai-electrical-audit</image:title></image:image>
+  </url>
+  <url>
     <loc>https://b2bindustrial.in/locations/mumbai-energy-audit</loc>
     <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>mumbai-energy-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/mumbai-environmental-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>mumbai-environmental-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/mumbai-fire-safety-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>mumbai-fire-safety-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/mumbai-hse-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>mumbai-hse-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/locations/noida-electrical-audit</loc>
@@ -298,9 +428,29 @@
     <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>pan-india-energy-audit</image:title></image:image>
   </url>
   <url>
+    <loc>https://b2bindustrial.in/locations/pune-electrical-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>pune-electrical-audit</image:title></image:image>
+  </url>
+  <url>
     <loc>https://b2bindustrial.in/locations/pune-energy-audit</loc>
     <lastmod>2026-07-02</lastmod>
     <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/audits-electrical.webp</image:loc><image:title>pune-energy-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/pune-environmental-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/sustainability-emissions.webp</image:loc><image:title>pune-environmental-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/pune-fire-safety-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>pune-fire-safety-audit</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://b2bindustrial.in/locations/pune-hse-audit</loc>
+    <lastmod>2026-07-02</lastmod>
+    <image:image><image:loc>https://b2bindustrial.in/assets/images/editorial/fire-safety.webp</image:loc><image:title>pune-hse-audit</image:title></image:image>
   </url>
   <url>
     <loc>https://b2bindustrial.in/privacy</loc>

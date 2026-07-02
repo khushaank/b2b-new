@@ -7,6 +7,7 @@
 - [Services](https://b2bindustrial.in/service)
 - [About](https://b2bindustrial.in/about)
 - [Industrial insights](https://b2bindustrial.in/blog/)
+- [Service locations](https://b2bindustrial.in/locations/)
 - [Engineering tools](https://b2bindustrial.in/tools/)
 - [Contact](https://b2bindustrial.in/contact)
 

@@ -39,6 +39,13 @@ const pages = htmlFiles.map((file) => {
 });
 
 const blogItems = pages.filter((page) => page.path.startsWith('blog/') && page.path !== 'blog/index.html' && !page.noindex);
+const searchItems = pages.filter((page) => !page.noindex && page.canonical).map((page) => ({
+  title: page.title,
+  url: new URL(page.canonical).pathname.replace(/\/$/, '') || '/',
+  tags: page.html.match(/<meta\s+name=["']keywords["']\s+content=["']([^"']+)/i)?.[1] || '',
+  text: plain(page.html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1] || '').slice(0, 4200),
+}));
+writeFileSync(join(root, 'assets', 'js', 'search-data.min.js'), `const SEARCH_DATA=${JSON.stringify(searchItems)};`);
 const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
@@ -92,8 +99,8 @@ writeFileSync(join(root, 'dublincore.xml'), `<?xml version="1.0" encoding="UTF-8
 writeFileSync(join(root, 'humans.txt'), `/* TEAM */\nCompany: B2B Industrial Solutions\nContact: info@b2bindustrial.in\nLocation: Gurugram, Haryana, India\n\n/* SITE */\nLanguage: English (India)\nStandards: HTML5, CSS, JavaScript, Schema.org, Open Graph\n`);
 
 const serviceLinks = pages.filter((page) => page.path.startsWith('services/') && !page.noindex).map((page) => `- [${page.title}](${page.canonical}): ${page.description}`);
-writeFileSync(join(root, 'llms.txt'), `# B2B Industrial Solutions\n\n> B2B Industrial Solutions provides industrial audits, statutory compliance, fire and HSE safety, energy, electrical, HVAC, emission-control and turnkey engineering services across India.\n\n## Primary pages\n- [Home](${origin}/)\n- [Services](${origin}/service)\n- [About](${origin}/about)\n- [Industrial insights](${origin}/blog/)\n- [Engineering tools](${origin}/tools/)\n- [Contact](${origin}/contact)\n\n## Services\n${serviceLinks.join('\n')}\n\n## Contact\n- Email: info@b2bindustrial.in\n- Phone: +91 98997 02065\n- Service area: India\n`);
+writeFileSync(join(root, 'llms.txt'), `# B2B Industrial Solutions\n\n> B2B Industrial Solutions provides industrial audits, statutory compliance, fire and HSE safety, energy, electrical, HVAC, emission-control and turnkey engineering services across India.\n\n## Primary pages\n- [Home](${origin}/)\n- [Services](${origin}/service)\n- [About](${origin}/about)\n- [Industrial insights](${origin}/blog/)\n- [Service locations](${origin}/locations/)\n- [Engineering tools](${origin}/tools/)\n- [Contact](${origin}/contact)\n\n## Services\n${serviceLinks.join('\n')}\n\n## Contact\n- Email: info@b2bindustrial.in\n- Phone: +91 98997 02065\n- Service area: India\n`);
 
 const manifest = JSON.parse(readFileSync(join(root, 'site.webmanifest'), 'utf8'));
 writeFileSync(join(root, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
-console.log(`Discovery files generated from ${pages.length} pages, ${blogItems.length} feed items and ${imageUrls.size} page-image associations.`);
+console.log(`Discovery files generated from ${pages.length} pages, ${blogItems.length} feed items, ${searchItems.length} search entries and ${imageUrls.size} page-image associations.`);

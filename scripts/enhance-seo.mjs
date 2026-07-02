@@ -89,6 +89,7 @@ function pageType(file) {
   const path = relative(root, file).split(sep).join('/');
   if (path.startsWith('services/')) return 'service';
   if (path.startsWith('blog/') && path !== 'blog/index.html') return 'blog';
+  if (path === 'locations/index.html') return 'page';
   if (path.startsWith('locations/')) return 'location';
   if (path.startsWith('case-studies/')) return 'case-study';
   if (path.startsWith('tools/') && path !== 'tools/index.html') return 'tool';
@@ -154,11 +155,17 @@ function buildSchema(file, html, title, description, canonical, image) {
   const graph = [organization, website, webpage, breadcrumbSchema(file, title, canonical)];
 
   if (type === 'service' || type === 'location') {
+    const locationSlug = relative(root, file).split(sep).pop()?.split('-')[0];
+    const knownLocations = { ahmedabad: 'Ahmedabad', bangalore: 'Bengaluru', chennai: 'Chennai', delhi: 'Delhi', faridabad: 'Faridabad', gurgaon: 'Gurugram', hyderabad: 'Hyderabad', manesar: 'Manesar', mumbai: 'Mumbai', noida: 'Noida', pune: 'Pune' };
+    const locationName = html.match(/<body\b[^>]*\bdata-location=["']([^"']+)["']/i)?.[1] || knownLocations[locationSlug];
+    const serviceName = html.match(/<body\b[^>]*\bdata-service=["']([^"']+)["']/i)?.[1];
     graph.push({
       '@type': 'Service', '@id': `${canonical}#service`, name: pageName, description,
       url: canonical, provider: { '@id': `${origin}/#organization` },
-      areaServed: type === 'location' ? pageName : { '@type': 'Country', name: 'India' },
-      serviceType: pageName,
+      areaServed: type === 'location' && locationName
+        ? { '@type': 'City', name: locationName }
+        : { '@type': 'Country', name: 'India' },
+      serviceType: serviceName || pageName,
     });
   }
 
@@ -362,8 +369,10 @@ for (const file of htmlFiles) {
   }
 
   html = html.replace(/(<div class="footer-links"><b>Company<\/b>[\s\S]*?)(<\/div>)/i, (block, content, close) => {
-    if (/href=["'][^"']*tools\//i.test(content)) return block;
-    return `${content}<a href="${prefix}tools/">Engineering tools</a>${close}`;
+    let links = content;
+    if (!/href=["'][^"']*locations\//i.test(links)) links += `<a href="${prefix}locations/">Service locations</a>`;
+    if (!/href=["'][^"']*tools\//i.test(links)) links += `<a href="${prefix}tools/">Engineering tools</a>`;
+    return `${links}${close}`;
   });
 
   const footerSocial = `<!-- FOOTER-SOCIAL:START --><div class="footer-socials" aria-label="Connect with us"><a href="https://wa.me/919899702065" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="mailto:info@b2bindustrial.in">Email</a><a href="https://www.linkedin.com/company/b2bindustrial/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div><!-- FOOTER-SOCIAL:END -->`;
