@@ -130,6 +130,7 @@
 .core-pages-page .glitch-text { margin: 0; color: var(--blue); font-size: clamp(84px, 14vw, 150px) !important; line-height: .85; letter-spacing: -.08em; }
 .core-pages-page .action-buttons,
 .core-pages-page .action-buttons-modern { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.core-pages-page .form-return-button { gap: 9px; box-shadow: 0 10px 28px rgba(0,102,204,.2); }
 .core-pages-page .btn-outline,
 .core-pages-page .btn-outline-modern { min-height: 46px; display: inline-flex; align-items: center; padding: 0 22px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); background: #fff; }
 .core-pages-page .btn-modern { min-height: 46px; display: inline-flex; align-items: center; gap: 8px; padding: 0 22px; border-radius: 999px; }

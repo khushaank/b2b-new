@@ -1,4 +1,4 @@
-const CACHE = 'b2b-industrial-v3';
+const CACHE = 'b2b-industrial-v4';
 const CORE = [
   '/',
   '/index.html',

@@ -28,9 +28,16 @@ if (navigation && serviceBar) {
     servicesTrigger.classList.add('services-trigger');
     servicesTrigger.setAttribute('aria-haspopup', 'true');
     servicesTrigger.setAttribute('aria-expanded', 'false');
+    servicesTrigger.setAttribute('aria-controls', 'services-mega-menu');
+    const triggerIcon = document.createElement('span');
+    triggerIcon.className = 'services-trigger-icon';
+    triggerIcon.setAttribute('aria-hidden', 'true');
+    triggerIcon.innerHTML = '<svg viewBox="0 0 20 20" focusable="false"><path d="m5.5 7.5 4.5 4.5 4.5-4.5"/></svg>';
+    servicesTrigger.appendChild(triggerIcon);
 
     const megaMenu = document.createElement('div');
     megaMenu.className = 'services-mega';
+    megaMenu.id = 'services-mega-menu';
     megaMenu.setAttribute('aria-label', 'Services menu');
     megaMenu.innerHTML = `
       <div class="shell services-mega-inner">
@@ -121,6 +128,50 @@ if (menuButton && navigation) {
 }
 
 document.querySelectorAll('[data-current-year], #copyright-year, #year').forEach((node) => { node.textContent = new Date().getFullYear(); });
+
+/* Preserve the page that sent a successful enquiry, even across Web3Forms' redirect. */
+const formReturnStorageKey = 'b2b-form-return';
+const getPageLabel = () => {
+  const heading = document.querySelector('main h1');
+  return (heading?.textContent || document.title.split('|')[0] || 'previous page').trim().replace(/\s+/g, ' ').slice(0, 70);
+};
+
+document.querySelectorAll('form[action*="api.web3forms.com/submit"]').forEach((form) => {
+  const source = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+  const label = getPageLabel();
+  const redirect = form.querySelector('input[name="redirect"]');
+  if (redirect?.value) {
+    try {
+      const destination = new URL(redirect.value, window.location.href);
+      destination.searchParams.set('from', source);
+      destination.searchParams.set('label', label);
+      redirect.value = destination.href;
+    } catch (_) { /* Keep the original provider redirect if it is malformed. */ }
+  }
+  form.addEventListener('submit', () => {
+    try { sessionStorage.setItem(formReturnStorageKey, JSON.stringify({ url: source, label })); } catch (_) { /* Storage may be disabled. */ }
+  });
+});
+
+const formReturnButton = document.querySelector('[data-form-return]');
+if (formReturnButton) {
+  let storedReturn = null;
+  try { storedReturn = JSON.parse(sessionStorage.getItem(formReturnStorageKey) || 'null'); } catch (_) { /* Use URL fallback. */ }
+  const params = new URLSearchParams(window.location.search);
+  const returnPath = params.get('from') || storedReturn?.url;
+  const returnLabel = params.get('label') || storedReturn?.label;
+  if (returnPath) {
+    try {
+      const target = new URL(returnPath, window.location.origin);
+      const isSafeLocalPage = target.origin === window.location.origin && !target.pathname.endsWith('/success.html');
+      if (isSafeLocalPage) {
+        formReturnButton.href = `${target.pathname}${target.search}${target.hash}`;
+        const labelNode = formReturnButton.querySelector('[data-form-return-label]');
+        if (labelNode && returnLabel) labelNode.textContent = `Return to ${String(returnLabel).trim().slice(0, 50)}`;
+      }
+    } catch (_) { /* Keep the contact-page fallback. */ }
+  }
+}
 
 document.querySelectorAll('.u-email-link[data-user][data-domain]').forEach((link) => {
   const address = `${link.dataset.user}@${link.dataset.domain}`;
