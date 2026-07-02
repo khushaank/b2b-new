@@ -28,16 +28,25 @@ for (const file of htmlFiles) {
   const description = html.match(/<meta\s+name=["']description["']\s+content=["']([^"']+)["']/i)?.[1]?.trim();
   const robots = html.match(/<meta\s+name=["']robots["']\s+content=["']([^"']+)["']/i)?.[1] || '';
   const canonical = html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i)?.[1];
+  const manifestHref = html.match(/<link\s+rel=["']manifest["']\s+href=["']([^"']+)["']/i)?.[1];
+  const faviconCount = (html.match(/<link\s+rel=["']icon["']/gi) || []).length;
   const canonicalCount = (html.match(/<link\s+rel=["']canonical["']/gi) || []).length;
   const seoStartCount = (html.match(/<!-- SEO:START -->/g) || []).length;
   const seoEndCount = (html.match(/<!-- SEO:END -->/g) || []).length;
   if (!description) errors.push(`${display}: missing meta description`);
   if (!canonical || !canonical.startsWith('https://b2bindustrial.in/')) errors.push(`${display}: missing or invalid canonical URL`);
+  if (!manifestHref || /^https?:\/\//i.test(manifestHref)) errors.push(`${display}: manifest must use a same-origin relative URL`);
+  if (faviconCount !== 1) errors.push(`${display}: expected one favicon link, found ${faviconCount}`);
   if (canonicalCount !== 1) errors.push(`${display}: expected one canonical URL, found ${canonicalCount}`);
   if (seoStartCount !== 1 || seoEndCount !== 1) errors.push(`${display}: invalid generated SEO block markers`);
   if (!/<meta\s+property=["']og:title["']/i.test(html)) errors.push(`${display}: missing Open Graph title`);
   if (!/<meta\s+name=["']twitter:card["']/i.test(html)) errors.push(`${display}: missing Twitter card`);
   if (!/class=["'][^"']*site-preloader/i.test(html)) errors.push(`${display}: missing load-synced preloader`);
+  if (/<footer\b/i.test(html) && !/<footer[\s\S]*?>[\s\S]*?href=["'][^"']*tools\//i.test(html)) errors.push(`${display}: footer is missing Engineering tools link`);
+  if (/href=["']#["']\s+class=["'][^"']*related-link/i.test(html)) errors.push(`${display}: unresolved related-link placeholder`);
+  for (const tag of html.match(/<a\b[^>]*target=["']_blank["'][^>]*>/gi) || []) {
+    if (!/rel=["'][^"']*noopener/i.test(tag)) errors.push(`${display}: external new-tab link missing noopener`);
+  }
   const main = html.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0] || '';
   if (!/<img\b/i.test(main)) errors.push(`${display}: main content has no image`);
 
@@ -75,7 +84,7 @@ for (const [description, files] of indexedDescriptions) {
 }
 if (!existsSync(join(root, 'sitemap.xml'))) errors.push('missing sitemap.xml');
 if (!existsSync(join(root, 'robots.txt'))) errors.push('missing robots.txt');
-for (const artifact of ['sitemap-images.xml', 'site.webmanifest', 'manifest.json', 'sw.js', 'offline.html', 'rss.xml', 'opensearch.xml', 'llms.txt', 'humans.txt', 'schema-master.json']) {
+for (const artifact of ['sitemap-images.xml', 'site.webmanifest', 'manifest.json', 'sw.js', 'offline.html', 'rss.xml', 'opensearch.xml', 'llms.txt', 'humans.txt', 'schema-master.json', '.htaccess', '.well-known/security.txt']) {
   if (!existsSync(join(root, artifact))) errors.push(`missing ${artifact}`);
 }
 

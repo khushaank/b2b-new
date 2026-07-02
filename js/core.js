@@ -403,5 +403,10 @@ if (commandHost) {
 }
 
 if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
-  window.addEventListener('load', () => navigator.serviceWorker.register(new URL('sw.js', siteRootUrl)).catch(() => {}), { once: true });
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register(new URL('sw.js', siteRootUrl), { updateViaCache: 'none' })
+      .then((registration) => registration.update())
+      .catch(() => {});
+  }, { once: true });
 }

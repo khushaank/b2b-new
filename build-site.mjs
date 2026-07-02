@@ -245,7 +245,7 @@ fs.copyFileSync(path.join(outputRoot, 'script.js'), path.join(outputRoot, 'js', 
 
 const homepagePath = path.join(outputRoot, 'index.html');
 const homepage = fs.readFileSync(homepagePath, 'utf8')
-  .replace('href="style.css"', 'href="css/core.css">\n  <link rel="stylesheet" href="css/home.css"')
+  .replace('href="style.css"', 'href="css/core.css">\n  <link rel="stylesheet" href="css/home.css">\n  <link rel="stylesheet" href="css/responsive.css"')
   .replace('src="script.js"', 'src="js/home.js"')
   .replaceAll('../services/', 'services/')
   .replaceAll('../case-studies/', 'case-studies/')
@@ -253,7 +253,7 @@ const homepage = fs.readFileSync(homepagePath, 'utf8')
   .replaceAll('../terms.html', 'terms.html');
 fs.writeFileSync(homepagePath, homepage, 'utf8');
 
-await import('./tools/enhance-seo.mjs');
-await import('./tools/generate-discovery.mjs');
+await import('./scripts/enhance-seo.mjs');
+await import('./scripts/generate-discovery.mjs');
 
 console.log(`Generated ${sourcePages.length - 1} interior pages. Homepage retained. Total parallel pages: ${sourcePages.length}.`);

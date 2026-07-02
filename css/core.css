@@ -141,5 +141,18 @@ body.motion-ready .scroll-reveal.visible { opacity: 1 !important; transform: non
 .page-editorial-visual { width: min(1120px, calc(100% - 36px)); margin: 58px auto 72px; overflow: hidden; border-radius: 24px; background: #eaf2f7; box-shadow: 0 20px 55px rgba(14,42,68,.09); }
 .page-editorial-visual img { width: 100%; height: clamp(240px, 38vw, 520px); display: block; object-fit: cover; }
 
+.content-social { width: min(920px, calc(100% - 48px)); margin: 28px auto 76px; padding: 24px 26px; display: flex; align-items: center; justify-content: space-between; gap: 28px; border: 1px solid var(--soft-line); border-radius: 20px; background: #fff; box-shadow: 0 16px 40px rgba(23,28,34,.07); }
+.content-social small { display: block; margin-bottom: 6px; color: var(--blue); font-size: 9px; font-weight: 700; letter-spacing: .12em; }
+.content-social strong { font-size: 20px; letter-spacing: -.025em; }
+.content-social nav { display: flex; flex-wrap: wrap; gap: 9px; }
+.content-social nav a { min-height: 44px; padding: 0 15px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--soft-line); border-radius: 999px; color: var(--ink); background: #fff; font-size: 12px; font-weight: 650; transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+.content-social nav a:hover { transform: translateY(-2px); border-color: #b8d7f5; background: #f6faff; }
+.content-social svg { width: 17px; height: 17px; fill: currentColor; }
+.content-social .social-whatsapp { color: #128c4a; }
+.content-social .social-email { color: #0874d1; }
+.content-social .social-linkedin { color: #0a66c2; }
+.footer-socials { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px 13px; }
+.footer-socials a { color: var(--blue) !important; font-size: 11px !important; font-weight: 650; }
+
 :focus-visible { outline: 2px solid #0071e3; outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }

@@ -38,11 +38,12 @@ Complete static website for B2B Industrial Solutions, with a shared responsive d
 ## Preview and validate
 
 ```powershell
-node tools/preview-server.mjs
-node tools/check-site.mjs
-node tools/enhance-seo.mjs
-node tools/generate-discovery.mjs
-python tools/optimize_images.py --help
+node scripts/preview-server.mjs
+node scripts/check-site.mjs
+node scripts/check-service-worker.mjs
+node scripts/enhance-seo.mjs
+node scripts/generate-discovery.mjs
+python scripts/optimize_images.py --help
 ```
 
 The preview runs at `http://127.0.0.1:4173`. The checker validates heading structure, duplicate IDs, and local links/assets across the full site.

@@ -14,12 +14,16 @@
     rel="stylesheet">
   <link rel="stylesheet" href="css/core.css">
   <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/responsive.css">
   <script src="js/core.js" defer></script>
   <script src="js/home.js" defer></script>
   <!-- SEO:START -->
   <link rel="canonical" href="https://b2bindustrial.in/">
   <link rel="alternate" hreflang="en-IN" href="https://b2bindustrial.in/">
-  <link rel="manifest" href="https://b2bindustrial.in/site.webmanifest">
+  <link rel="manifest" href="./site.webmanifest">
+  <link rel="icon" href="./assets/images/favicon.png" type="image/png" sizes="318x318">
+  <link rel="apple-touch-icon" href="./assets/images/favicon.png">
+  <meta name="msapplication-config" content="./browserconfig.xml">
   <link rel="alternate" type="application/rss+xml" title="B2B Industrial Insights" href="https://b2bindustrial.in/rss.xml">
   <link rel="search" type="application/opensearchdescription+xml" title="B2B Industrial Solutions" href="https://b2bindustrial.in/opensearch.xml">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -52,6 +56,28 @@
       "foundingDate": "2013",
       "telephone": "+91-9899702065",
       "email": "info@b2bindustrial.in",
+      "sameAs": [
+        "https://www.linkedin.com/company/b2bindustrial/"
+      ],
+      "knowsAbout": [
+        "Industrial energy audits",
+        "Electrical safety",
+        "Fire and HSE compliance",
+        "HVAC engineering",
+        "Emission control",
+        "Statutory industrial compliance"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-9899702065",
+        "email": "info@b2bindustrial.in",
+        "contactType": "sales and technical enquiries",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ]
+      },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Shop No. 2, Gali No. 4, Khandsa Road",
@@ -73,7 +99,12 @@
       "publisher": {
         "@id": "https://b2bindustrial.in/#organization"
       },
-      "inLanguage": "en-IN"
+      "inLanguage": "en-IN",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://b2bindustrial.in/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     },
     {
       "@type": "WebPage",
@@ -109,6 +140,36 @@
       ]
     },
     {
+      "@type": "FAQPage",
+      "@id": "https://b2bindustrial.in/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which industries do you work with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Manufacturing, healthcare, hospitality, IT and corporate parks, retail, real estate and data centres across India."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you execute recommendations after an audit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Our teams execute HVAC, electrical, lighting, fire safety, emission control and energy-saving projects."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you support multi-site projects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We coordinate standardised audits and execution programmes across facilities and cities with central reporting."
+          }
+        }
+      ]
+    },
+    {
       "@type": "ProfessionalService",
       "@id": "https://b2bindustrial.in/#localbusiness",
       "name": "B2B Industrial Solutions",
@@ -127,6 +188,57 @@
       "areaServed": {
         "@type": "Country",
         "name": "India"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/b2bindustrial/"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Industrial audit and engineering services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Energy audits"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Electrical safety audits"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Fire and HSE audits"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Statutory compliance"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "HVAC engineering projects"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Emission control systems"
+            }
+          }
+        ]
       },
       "parentOrganization": {
         "@id": "https://b2bindustrial.in/#organization"
@@ -303,7 +415,10 @@
         </div>
         <div class="directory-grid">
           <details class="service-group reveal" open>
-            <summary><span>Audits, studies &amp; testing</span><b>25 services</b></summary>
+            <summary><span>Audits, studies &amp; testing</span><b>25 services</b><i class="service-toggle-icon"
+                aria-hidden="true"><svg viewBox="0 0 24 24">
+                  <path d="m6 9 6 6 6-6" />
+                </svg></i></summary>
             <div class="service-link-grid">
               <a href="services/energy-audits.html">Energy Audits</a><a
                 href="services/comprehensive-energy-audit.html">Comprehensive Energy Audit</a>
@@ -332,7 +447,10 @@
           </details>
 
           <details class="service-group reveal">
-            <summary><span>Compliance, approvals &amp; environment</span><b>18 services</b></summary>
+            <summary><span>Compliance, approvals &amp; environment</span><b>18 services</b><i
+                class="service-toggle-icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+                  <path d="m6 9 6 6 6-6" />
+                </svg></i></summary>
             <div class="service-link-grid">
               <a href="services/compliances.html">Statutory Compliances</a><a
                 href="services/electrical-compliance.html">Electrical Compliance</a>
@@ -352,7 +470,10 @@
           </details>
 
           <details class="service-group reveal">
-            <summary><span>HVAC, electrical &amp; energy projects</span><b>25 services</b></summary>
+            <summary><span>HVAC, electrical &amp; energy projects</span><b>25 services</b><i class="service-toggle-icon"
+                aria-hidden="true"><svg viewBox="0 0 24 24">
+                  <path d="m6 9 6 6 6-6" />
+                </svg></i></summary>
             <div class="service-link-grid">
               <a href="services/hvac-projects.html">HVAC Projects</a><a href="services/hvac-design.html">HVAC Design</a>
               <a href="services/hvac-installation.html">HVAC Installation</a><a
@@ -382,7 +503,10 @@
           </details>
 
           <details class="service-group reveal">
-            <summary><span>Fire, HSE, training &amp; operations</span><b>24 services</b></summary>
+            <summary><span>Fire, HSE, training &amp; operations</span><b>24 services</b><i class="service-toggle-icon"
+                aria-hidden="true"><svg viewBox="0 0 24 24">
+                  <path d="m6 9 6 6 6-6" />
+                </svg></i></summary>
             <div class="service-link-grid">
               <a href="services/fire-life-safety.html">Fire &amp; Life Safety</a><a
                 href="services/fire-projects.html">Fire Fighting Projects</a>
@@ -412,6 +536,63 @@
       </div>
     </section>
 
+    <section class="authority section" id="industry-expertise">
+      <div class="shell">
+        <div class="section-heading authority-heading reveal">
+          <div>
+            <div class="section-kicker">03 / Industrial expertise</div>
+            <h2>One partner for every<br>critical system.</h2>
+          </div>
+          <p>Our engineers connect audit evidence, statutory requirements and practical execution—so safety, energy,
+            compliance and reliability improve together rather than in isolation.</p>
+        </div>
+
+        <div class="authority-grid">
+          <a class="authority-card reveal" href="services/energy-audits.html">
+            <span>01</span><small>Manufacturing &amp; process plants</small>
+            <h3>Energy performance</h3>
+            <p>Utility baselines, loss mapping and investment-ready conservation measures.</p><b>Explore energy
+              audits&nbsp; â†—</b>
+          </a>
+          <a class="authority-card reveal" href="services/electrical-safety-audit.html">
+            <span>02</span><small>Factories &amp; commercial facilities</small>
+            <h3>Electrical risk</h3>
+            <p>Thermography, protection studies, earthing and actionable risk prioritisation.</p><b>Explore electrical
+              safety&nbsp; â†—</b>
+          </a>
+          <a class="authority-card reveal" href="services/fire-life-safety.html">
+            <span>03</span><small>People, assets &amp; continuity</small>
+            <h3>Fire and HSE</h3>
+            <p>Site-wide life-safety reviews, preparedness and compliance documentation.</p><b>Explore fire and
+              HSE&nbsp; â†—</b>
+          </a>
+          <a class="authority-card reveal" href="services/hvac-projects.html">
+            <span>04</span><small>Buildings &amp; controlled environments</small>
+            <h3>HVAC engineering</h3>
+            <p>Design, indoor air quality, balancing, cleaning and turnkey delivery.</p><b>Explore HVAC projects&nbsp;
+              â†—</b>
+          </a>
+        </div>
+
+        <div class="knowledge-strip reveal">
+          <div class="knowledge-intro">
+            <span>FIELD KNOWLEDGE</span>
+            <h3>Practical guidance for facility teams.</h3>
+            <p>Decision-ready checklists, engineering explainers and calculators developed around real industrial
+              operating challenges.</p>
+          </div>
+          <nav aria-label="Featured industrial resources">
+            <a href="blog/electrical-safety-audit-checklist.html"><span>Guide</span>Electrical safety audit checklist
+              <b>â†—</b></a>
+            <a href="blog/bee-energy-audit-process.html"><span>Insight</span>BEE energy audit process <b>â†—</b></a>
+            <a href="blog/fire-safety-compliance-factory-act.html"><span>Checklist</span>Factory fire compliance
+              <b>â†—</b></a>
+            <a href="tools/"><span>Tools</span>Engineering calculators <b>â†—</b></a>
+          </nav>
+        </div>
+      </div>
+    </section>
+
     <section class="outcomes section" id="approach">
       <div class="shell outcomes-grid">
         <div class="outcomes-image reveal">
@@ -420,7 +601,7 @@
           <div class="outcomes-badge"><b>5,000+</b><span>audits completed</span></div>
         </div>
         <div class="outcomes-copy reveal">
-          <div class="section-kicker">03 / The B2B advantage</div>
+          <div class="section-kicker">04 / The B2B advantage</div>
           <h2>Beyond a report.<br>Built for results.</h2>
           <p>We stay accountable from the first site walk-through to the final handover.</p>
           <ol class="process-list">
@@ -448,7 +629,7 @@
       <div class="shell">
         <div class="section-heading impact-heading reveal">
           <div>
-            <div class="section-kicker">04 / Selected impact</div>
+            <div class="section-kicker">05 / Selected impact</div>
             <h2>Work that moves<br>the needle.</h2>
           </div>
           <a class="text-link" href="case-studies/">View all case studies <span>↗</span></a>
@@ -493,7 +674,7 @@
     <section class="faq section" id="faq">
       <div class="shell faq-grid">
         <div class="faq-intro reveal">
-          <div class="section-kicker">05 / Good to know</div>
+          <div class="section-kicker">06 / Good to know</div>
           <h2>Questions,<br>answered.</h2>
           <p>Need something more specific? Our engineering team is one conversation away.</p>
         </div>
@@ -557,11 +738,11 @@
           projects</a></div>
       <div class="footer-links"><b>Company</b><a href="about.html">About us</a><a href="#approach">Our process</a><a
           href="case-studies/cement-plant-energy-audit.html">Case studies</a><a href="service.html">All services</a><a
-          href="faq.html">FAQs</a></div>
+          href="faq.html">FAQs</a><a href="./tools/">Engineering tools</a></div>
       <div class="footer-links footer-contact"><b>Contact</b><a href="tel:+919899702065">+91 98997 02065</a><a
           href="mailto:info@b2bindustrial.in">info@b2bindustrial.in</a>
         <p>Shop No. 2, Gali No. 4<br>Khandsa Road, Gurugram<br>Haryana 122001</p>
-      </div>
+<!-- FOOTER-SOCIAL:START --><div class="footer-socials" aria-label="Connect with us"><a href="https://wa.me/919899702065" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="mailto:info@b2bindustrial.in">Email</a><a href="https://www.linkedin.com/company/b2bindustrial/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div><!-- FOOTER-SOCIAL:END --></div>
     </div>
     <div class="shell footer-credentials" aria-label="Company credentials"><span><b>ISO 9001:2015</b>
         Certified</span><span><b>BEE-certified</b> audit experts</span><span><b>Pan-India</b> project

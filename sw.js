@@ -1,4 +1,4 @@
-const CACHE = 'b2b-industrial-v1';
+const CACHE = 'b2b-industrial-v3';
 const CORE = [
   '/',
   '/index.html',
@@ -31,8 +31,23 @@ self.addEventListener('fetch', (event) => {
     }).catch(async () => (await caches.match(event.request)) || caches.match('/offline.html')));
     return;
   }
+  const requestUrl = new URL(event.request.url);
+  const preferFresh = /\.(?:css|js|webmanifest|json)$/i.test(requestUrl.pathname);
+  if (preferFresh) {
+    event.respondWith(fetch(event.request).then((response) => {
+      if (response.ok) {
+        const copy = response.clone();
+        caches.open(CACHE).then((cache) => cache.put(event.request, copy)).catch(() => {});
+      }
+      return response;
+    }).catch(() => caches.match(event.request)));
+    return;
+  }
   event.respondWith(caches.match(event.request).then((cached) => cached || fetch(event.request).then((response) => {
-    if (response.ok) caches.open(CACHE).then((cache) => cache.put(event.request, response.clone()));
+    if (response.ok) {
+      const copy = response.clone();
+      caches.open(CACHE).then((cache) => cache.put(event.request, copy)).catch(() => {});
+    }
     return response;
   })));
 });
