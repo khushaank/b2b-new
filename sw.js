@@ -1,14 +1,14 @@
-const CACHE = 'b2b-industrial-v4';
+const CACHE = 'b2b-industrial-v5';
 const CORE = [
   '/',
   '/index.html',
   '/offline.html',
-  '/css/core.css',
-  '/css/content.css',
-  '/css/core-pages.css',
-  '/css/responsive.css',
-  '/js/core.js',
-  '/js/core-pages.js',
+  '/css/core.min.css',
+  '/css/content.min.css',
+  '/css/core-pages.min.css',
+  '/css/responsive.min.css',
+  '/js/core.min.js',
+  '/js/core-pages.min.js',
   '/assets/images/logo.webp',
   '/assets/images/pwa/icon-192.webp'
 ];

@@ -95,6 +95,7 @@ if (navigation && serviceBar) {
       if (!serviceBar.contains(event.relatedTarget)) scheduleClose();
     });
     servicesTrigger.addEventListener('click', (event) => {
+      if (window.innerWidth <= 820) return;
       event.preventDefault();
       setMegaMenu(!serviceBar.classList.contains('mega-open'));
     });
@@ -126,6 +127,28 @@ if (menuButton && navigation) {
   navigation.querySelectorAll('a:not(.services-trigger)').forEach((link) => link.addEventListener('click', closeMenu));
   window.addEventListener('resize', () => { if (window.innerWidth > 820) closeMenu(); });
 }
+
+// Turn wide comparison tables into labelled, scan-friendly cards on phones.
+document.querySelectorAll('table.service-table').forEach((table) => {
+  const labels = [...table.querySelectorAll('thead th')].map((cell) => cell.textContent.trim());
+  if (!labels.length) return;
+  table.querySelectorAll('tbody tr').forEach((row) => {
+    [...row.cells].forEach((cell, index) => {
+      cell.dataset.label = labels[index] || `Detail ${index + 1}`;
+    });
+  });
+});
+
+// Third-party maps load only after an explicit request, avoiding blocker errors on page load.
+document.querySelectorAll('[data-map-load]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const map = button.closest('.modern-map-container')?.querySelector('iframe[data-map-src]');
+    if (!map) return;
+    map.src = map.dataset.mapSrc;
+    map.hidden = false;
+    button.hidden = true;
+  }, { once: true });
+});
 
 document.querySelectorAll('[data-current-year], #copyright-year, #year').forEach((node) => { node.textContent = new Date().getFullYear(); });
 
@@ -251,7 +274,7 @@ if (commandHost) {
     <section class="command-panel" role="dialog" aria-modal="true" aria-label="Search the whole website">
       <div class="command-input-wrap">
         <span aria-hidden="true">⌕</span>
-        <input class="command-input" type="search" autocomplete="off" spellcheck="false" placeholder="Search services, pages, blogs and tools…" aria-label="Search website">
+        <input class="command-input" id="command-palette-search" name="site-search" type="search" autocomplete="off" spellcheck="false" placeholder="Search services, pages, blogs and tools…" aria-label="Search website">
         <kbd>Esc</kbd>
       </div>
       <div class="command-status">Quick links</div>
@@ -280,6 +303,8 @@ if (commandHost) {
 
   const decodeText = (value) => {
     const textArea = document.createElement('textarea');
+    textArea.name = 'clipboard-copy-buffer';
+    textArea.setAttribute('aria-hidden', 'true');
     textArea.innerHTML = value || '';
     return textArea.value;
   };
@@ -456,7 +481,7 @@ if (commandHost) {
 if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register(new URL('sw.js', siteRootUrl), { updateViaCache: 'none' })
+      .register(new URL('sw.min.js', siteRootUrl), { updateViaCache: 'none' })
       .then((registration) => registration.update())
       .catch(() => {});
   }, { once: true });
