@@ -1,4 +1,5 @@
 .locations-page .legacy-content { overflow-x: clip; background: #fff; }
+.locations-page .legacy-content > header.site-header { display: none !important; }
 .locations-page .legacy-content > section:not(.page-header) > .container,
 .locations-page .content-area { width: min(1040px,calc(100% - 48px)) !important; max-width: 1040px !important; margin-inline: auto !important; }
 .locations-page .legacy-content > h2,
@@ -71,9 +72,9 @@
 .locations-page .benefit-list { display: grid; gap: 0; margin: 24px 0 40px; padding: 0; list-style: none; }
 .locations-page .benefit-list li { position: relative; padding: 15px 0 15px 28px; border-bottom: 1px solid var(--soft-line); }
 .locations-page .benefit-list li::before { content: "✓"; position: absolute; left: 2px; color: var(--blue); font-weight: 700; }
-.locations-page .process-steps { counter-reset: old-location-step; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin: 26px 0 52px; }
-.locations-page .process-step-item { counter-increment: old-location-step; position: relative; min-height: 116px; padding: 24px 24px 24px 66px; border: 1px solid var(--soft-line); border-radius: 16px; background: #fff; font-size: 15px; line-height: 1.55; }
-.locations-page .process-step-item::before { content: counter(old-location-step,decimal-leading-zero); position: absolute; left: 22px; top: 25px; color: var(--blue); font-size: 11px; font-weight: 800; letter-spacing: .08em; }
+.locations-page .process-steps { counter-reset: old-location-step; display: grid !important; grid-template-columns: repeat(2,minmax(0,1fr)) !important; gap: 12px !important; margin: 26px 0 52px !important; }
+.locations-page .process-steps > div { counter-increment: old-location-step; position: relative; min-height: 116px; padding: 24px 24px 24px 66px !important; border: 1px solid var(--soft-line) !important; border-left: 1px solid var(--soft-line) !important; border-radius: 16px; background: #fff !important; font-size: 15px; line-height: 1.55; }
+.locations-page .process-steps > div::before { content: counter(old-location-step,decimal-leading-zero); position: absolute; left: 22px; top: 25px; color: var(--blue); font-size: 11px; font-weight: 800; letter-spacing: .08em; }
 .locations-page .content-area .feature-grid { grid-template-columns: repeat(2,minmax(0,1fr)); margin: 25px 0 45px; }
 .locations-page .content-area .feature-item { min-height: 0; padding: 22px; border: 1px solid var(--soft-line); border-radius: 16px; background: #fff; }
 .locations-page .location-faq { display: grid; gap: 10px; margin-top: 26px; }
@@ -120,9 +121,9 @@
   .locations-page .legacy-content > .b2b-faq-item { width: calc(100% - 28px) !important; }
   .locations-page .content-area { width: calc(100% - 28px) !important; }
   .locations-page .content-area > h2,.locations-page .legacy-content > h2 { font-size: 32px !important; }
-  .locations-page .process-steps,.locations-page .content-area .feature-grid { grid-template-columns: 1fr; }
+  .locations-page .process-steps,.locations-page .content-area .feature-grid { grid-template-columns: 1fr !important; }
   .locations-page .legacy-content > ul { grid-template-columns: 1fr; }
-  .locations-page .process-step-item { min-height: 0; padding: 21px 20px 21px 58px; }
+  .locations-page .process-steps > div { min-height: 0; padding: 21px 20px 21px 58px !important; }
   .locations-page .grid-container { grid-template-columns: 1fr; }
   .locations-page .grid-card { min-height: 0; padding: 22px; }
   .locations-page .cta-premium { margin: 34px 0; padding: 42px 22px; border-radius: 18px; }

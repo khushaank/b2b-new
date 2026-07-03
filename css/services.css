@@ -26,10 +26,10 @@
 .anchor-target { position: relative; top: -70px; }
 
 .services-page .legacy-content { background: #fff; }
-.services-page .legacy-content > section { padding: 100px 0; background: #fff !important; }
+.services-page .legacy-content > section { padding: 82px 0; background: #fff !important; }
 .services-page .service-details > .container,
 .services-page .service-details .service-container,
-.services-page .service-details .content-wrapper { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 82px; align-items: start; }
+.services-page .service-details .content-wrapper { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 48px; align-items: start; }
 .services-page .main-content, .services-page .service-content { min-width: 0; }
 .services-page .service-content > .content-block:first-child > h2,
 .services-page .main-content > .content-block:first-child > h2 { max-width: 800px; margin-bottom: 28px; font-size: clamp(38px, 4.2vw, 58px); }
@@ -37,8 +37,10 @@
 .services-page .main-content > .content-block:first-child > p:first-of-type { color: #3a3a3c; font-size: 20px; line-height: 1.58; }
 .services-page .main-content > img, .services-page .service-content > img, .services-page .intro-image img { width: 100%; max-height: 520px; margin-bottom: 42px; object-fit: cover; }
 .services-page .main-content > img:first-child, .services-page .service-content > img:first-child { display: none; }
-.services-page .content-block { margin-bottom: 62px; }
+.services-page .content-block { margin-bottom: 50px; }
 .services-page .content-block > h3, .services-page .content-block > h2:not(:first-child) { margin-top: 54px; }
+.services-page .service-content > h3,
+.services-page .main-content > h3 { margin: 60px 0 26px; font-size: clamp(28px,3vw,38px); }
 .services-page .benefit-pills, .services-page .badges-container, .services-page .certification-badges { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 42px; }
 .services-page .benefit-pills .pill, .services-page .badges-container > *, .services-page .certification-badges > * { padding: 9px 14px; border: 1px solid #d8d8dc; border-radius: 999px; color: #414145; background: #fff; font-size: 12px; }
 
@@ -56,20 +58,24 @@
 .services-page .related-services, .services-page .related-links { display: grid; gap: 0; }
 .services-page .related-services a, .services-page .related-links a { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
 .services-page .related-services a::after, .services-page .related-links a::after { content: "›"; }
-.services-page .related-services-mini { margin-top: 70px; padding-top: 34px; border-top: 1px solid var(--line); }
+.services-page .related-services-mini { margin-top: 54px; padding-top: 30px; border-top: 1px solid var(--line); }
 .services-page .related-grid { display: flex; flex-wrap: wrap; gap: 10px; }
 .services-page .related-grid a { padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px; color: var(--blue); background: #fff; font-size: 13px; }
 .services-page .related-grid a:hover { border-color: var(--blue); }
 
 .services-page .service-features, .services-page .features-list, .services-page .offerings-grid, .services-page .technology-grid,
 .services-page .features-grid, .services-page .benefits-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin: 34px 0 50px; }
+.services-page .service-content > .feature-grid,
+.services-page .main-content > .feature-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; margin: 28px 0 44px; }
+.services-page .service-content > .feature-grid:has(> :nth-child(4):last-child),
+.services-page .main-content > .feature-grid:has(> :nth-child(4):last-child) { grid-template-columns: repeat(2,minmax(0,1fr)); }
 .services-page .feature-item, .services-page .offering-card, .services-page .technology-card,
 .services-page .feature-card, .services-page .benefit-card { min-height: 210px; padding: 26px; border: 1px solid var(--soft-line); border-radius: 18px; background: var(--parchment); }
 .services-page .feature-item h3, .services-page .offering-card h3, .services-page .technology-card h3,
 .services-page .feature-card h3, .services-page .benefit-card h3 { font-size: 19px; }
 .services-page .feature-item p, .services-page .offering-card p, .services-page .technology-card p,
 .services-page .feature-card p, .services-page .benefit-card p { font-size: 15px; line-height: 1.55; }
-.services-page .service-details section { margin: 62px 0; }
+.services-page .service-details section { margin: 48px 0; }
 .services-page .service-details ul:not(.contact-list) { display: grid; gap: 9px; padding: 0; list-style: none; }
 .services-page .service-details ul:not(.contact-list) li { position: relative; padding-left: 24px; }
 .services-page .service-details ul:not(.contact-list) li::before { content: "✓"; position: absolute; left: 0; color: var(--blue); font-weight: 600; }
@@ -79,6 +85,28 @@
 .services-page tr:nth-child(even) td { background: var(--parchment); }
 
 .services-page .cta-section, .services-page .cta-premium, .services-page .cta-box { margin: 70px 0 0; border-radius: 0; }
+
+/* Compatibility layout for older technical service pages. */
+.services-page .content-area { width: min(980px,calc(100% - 48px)) !important; max-width: 980px !important; margin-inline: auto !important; }
+.services-page .content-area > h2 { margin: 62px 0 20px !important; font-size: clamp(32px,3.8vw,46px) !important; }
+.services-page .content-area > h2:first-child { margin-top: 0 !important; }
+.services-page .content-area > p { max-width: 900px; }
+.services-page .content-area > ul { display: grid; gap: 9px; margin: 22px 0 42px !important; padding: 0 !important; list-style: none; }
+.services-page .content-area > ul li { position: relative; margin: 0; padding: 13px 16px 13px 42px; border: 1px solid var(--soft-line); border-radius: 12px; background: #fff; }
+.services-page .content-area > ul li::before { content: "✓"; position: absolute; left: 17px; color: var(--blue); font-weight: 800; }
+.services-page .content-area .cta-banner { margin: 38px 0; padding: 34px; border: 1px solid #d8e5f0; border-radius: 18px; background: linear-gradient(135deg,#f0f7fd,#fff); }
+.services-page .content-area .cta-banner h3 { margin-bottom: 9px; font-size: 24px; }
+.services-page .content-area .cta-banner p { margin-bottom: 18px; }
+.services-page .content-area .cta-banner .btn-primary { color: #fff !important; }
+.services-page .content-area .process-steps { counter-reset: legacy-service-step; display: grid !important; grid-template-columns: repeat(2,minmax(0,1fr)) !important; gap: 12px !important; margin: 26px 0 50px !important; }
+.services-page .content-area .process-steps > div { counter-increment: legacy-service-step; position: relative; min-height: 120px; padding: 24px 24px 24px 66px !important; border: 1px solid var(--soft-line) !important; border-left: 1px solid var(--soft-line) !important; border-radius: 16px; background: #fff !important; line-height: 1.55; }
+.services-page .content-area .process-steps > div::before { content: counter(legacy-service-step,decimal-leading-zero); position: absolute; left: 22px; top: 25px; color: var(--blue); font-size: 11px; font-weight: 800; letter-spacing: .08em; }
+.services-page .content-area .feature-grid { grid-template-columns: repeat(2,minmax(0,1fr)); margin: 25px 0 45px; }
+.services-page .content-area .feature-item { min-height: 0; padding: 22px; border: 1px solid var(--soft-line); border-radius: 16px; background: #fff; }
+.services-page .content-area .b2b-faq-accordion { display: grid; gap: 11px; margin-top: 22px; }
+.services-page .content-area .b2b-faq-item { padding: 0 22px; border: 1px solid var(--soft-line); border-radius: 15px; background: #fff; }
+.services-page .content-area .b2b-faq-question { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.services-page .content-area .b2b-faq-question h3 { margin: 0; font-size: 18px; }
 
 .services-page .partner-brands-section { padding-block: 76px !important; background: #f7f8fa !important; }
 .services-page .partner-brands-section h3 { margin-bottom: 34px; font-size: clamp(28px,3.4vw,44px); }
@@ -107,6 +135,8 @@
   .services-page .service-details .service-container,
   .services-page .service-details .content-wrapper { grid-template-columns: 1fr; gap: 45px; }
   .services-page .sidebar { position: static; }
+  .services-page .service-content > .feature-grid,
+  .services-page .main-content > .feature-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .services-page .logo-strip { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
 
@@ -127,6 +157,16 @@
   .services-page .main-content > .content-block:first-child > p:first-of-type { font-size: 18px; }
   .services-page .service-features, .services-page .features-list, .services-page .offerings-grid, .services-page .technology-grid,
   .services-page .features-grid, .services-page .benefits-grid { grid-template-columns: 1fr; gap: 12px; margin: 24px 0 38px; }
+  .services-page .service-content > .feature-grid,
+  .services-page .main-content > .feature-grid,
+  .services-page .service-content > .feature-grid:has(> :nth-child(4):last-child),
+  .services-page .main-content > .feature-grid:has(> :nth-child(4):last-child),
+  .services-page .content-area .process-steps,
+  .services-page .content-area .feature-grid { grid-template-columns: 1fr !important; }
+  .services-page .content-area { width: calc(100% - 28px) !important; }
+  .services-page .content-area > h2 { margin-top: 46px !important; font-size: 31px !important; }
+  .services-page .content-area .process-steps > div { min-height: 0; padding: 21px 20px 21px 58px !important; }
+  .services-page .content-area .cta-banner { padding: 26px 22px; }
   .services-page .feature-item, .services-page .offering-card, .services-page .technology-card,
   .services-page .feature-card, .services-page .benefit-card { min-height: 0; padding: 21px; border-radius: 15px; }
   .services-page .content-block { margin-bottom: 44px; }
