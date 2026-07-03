@@ -61,6 +61,16 @@ ${blogItems.map((page) => `    <item><title>${escapeXml(page.title)}</title><lin
 writeFileSync(join(root, 'rss.xml'), rss);
 
 const imageUrls = new Map();
+const homepageImageTitles = {
+  '/assets/images/logo.webp': 'B2B Industrial Solutions',
+  '/assets/images/home/logo.webp': 'B2B Industrial Solutions',
+  '/assets/images/home/hero-audit.webp': 'BEE-certified industrial energy audit',
+  '/assets/images/home/compliance.webp': 'Industrial statutory and environmental compliance',
+  '/assets/images/home/hvac-project.webp': 'Industrial HVAC and indoor air quality project',
+  '/assets/images/home/emission-project.webp': 'RECD and industrial emission-control project',
+  '/assets/images/home/Thermography.webp': 'Electrical thermography inspection',
+  '/assets/images/home/emission-control.webp': 'Industrial emission-control system',
+};
 for (const page of pages.filter((item) => !item.noindex && item.canonical)) {
   const candidates = [
     ...page.html.matchAll(/<img\b[^>]*src=["']([^"']+)["'][^>]*?(?:alt=["']([^"']*)["'])?[^>]*>/gi),
@@ -71,7 +81,10 @@ for (const page of pages.filter((item) => !item.noindex && item.canonical)) {
     const image = new URL(src, page.canonical).href;
     if (!image.startsWith(origin)) continue;
     const key = `${page.canonical}|${image}`;
-    imageUrls.set(key, { page: page.canonical, image, title: plain(match[2] || page.title) });
+    const homepageTitle = page.canonical === `${origin}/`
+      ? homepageImageTitles[new URL(image).pathname]
+      : undefined;
+    imageUrls.set(key, { page: page.canonical, image, title: homepageTitle || plain(match[2] || page.title) });
   }
 }
 const groupedImages = new Map();

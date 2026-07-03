@@ -127,7 +127,7 @@ function buildSchema(file, html, title, description, canonical, image) {
     telephone: '+91-9899702065',
     email: 'info@b2bindustrial.in',
     sameAs: ['https://www.linkedin.com/company/b2bindustrial/'],
-    knowsAbout: ['Industrial energy audits', 'Electrical safety', 'Fire and HSE compliance', 'HVAC engineering', 'Emission control', 'Statutory industrial compliance'],
+    knowsAbout: ['Industrial audits', 'Industrial energy audits', 'Electrical safety audits', 'Fire and HSE audits', 'Statutory industrial compliance', 'HVAC and indoor air quality', 'Robotic duct cleaning', 'RECD and DFK kits', 'CPCB IV+ DG compliance', 'Industrial emission control', 'Environmental compliance', 'Turnkey industrial engineering'],
     contactPoint: {
       '@type': 'ContactPoint', telephone: '+91-9899702065', email: 'info@b2bindustrial.in',
       contactType: 'sales and technical enquiries', areaServed: 'IN', availableLanguage: ['English', 'Hindi'],
@@ -141,10 +141,6 @@ function buildSchema(file, html, title, description, canonical, image) {
   const website = {
     '@type': 'WebSite', '@id': `${origin}/#website`, url: `${origin}/`,
     name: 'B2B Industrial Solutions', publisher: { '@id': `${origin}/#organization` }, inLanguage: 'en-IN',
-    potentialAction: {
-      '@type': 'SearchAction', target: `${origin}/?q={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
   };
   const webpage = {
     '@type': 'WebPage', '@id': `${canonical}#webpage`, url: canonical, name: pageName,
@@ -215,7 +211,7 @@ function buildSchema(file, html, title, description, canonical, image) {
       sameAs: organization.sameAs,
       hasOfferCatalog: {
         '@type': 'OfferCatalog', name: 'Industrial audit and engineering services',
-        itemListElement: ['Energy audits', 'Electrical safety audits', 'Fire and HSE audits', 'Statutory compliance', 'HVAC engineering projects', 'Emission control systems']
+        itemListElement: ['Energy audits', 'Electrical safety audits', 'Fire and HSE audits', 'Statutory compliance', 'HVAC engineering projects', 'Indoor air quality and robotic duct cleaning', 'RECD, DFK and CPCB IV+ DG compliance', 'Emission control systems', 'Environmental compliance', 'Turnkey industrial engineering']
           .map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } })),
       },
       parentOrganization: { '@id': `${origin}/#organization` },
@@ -246,12 +242,19 @@ function optimizeImages(html) {
 
 function imageEntries(html, canonical) {
   const entries = [];
+  const homepageImageTitles = {
+    'assets/images/home/hero-audit.webp': 'BEE-certified industrial energy audit',
+    'assets/images/home/compliance.webp': 'Industrial statutory and environmental compliance',
+    'assets/images/home/hvac-project.webp': 'Industrial HVAC and indoor air quality project',
+  };
   for (const match of html.matchAll(/<img\b[^>]*src=["']([^"']+)["'][^>]*?(?:alt=["']([^"']*)["'])?[^>]*>/gi)) {
     const src = match[1];
     if (/^(?:data:|https?:\/\/)/i.test(src) || /(?:logo|favicon|client-logo)/i.test(src)) continue;
     const url = new URL(src, canonical).href;
     if (!url.startsWith(origin)) continue;
-    entries.push({ url, title: plainText(match[2] || cleanTitle(canonical.split('/').pop() || 'Industrial engineering')) });
+    const normalizedSrc = src.replace(/^\.\//, '');
+    const homepageTitle = canonical === `${origin}/` ? homepageImageTitles[normalizedSrc] : undefined;
+    entries.push({ url, title: homepageTitle || plainText(match[2] || cleanTitle(canonical.split('/').pop() || 'Industrial engineering')) });
     if (entries.length === 3) break;
   }
   return entries;
@@ -290,7 +293,13 @@ for (const file of htmlFiles) {
   const noindex = excludedNames.has(path.split('/').pop()) || path.includes(' copy.html');
   const socialType = ['blog', 'case-study'].includes(pageType(file)) ? 'article' : 'website';
   const editorial = editorialAsset(file, title);
-  const socialImage = `${origin}/assets/images/editorial/${editorial.file}`;
+  const isHomepage = path === 'index.html';
+  const socialImage = isHomepage
+    ? `${origin}/assets/images/og-cover.webp`
+    : `${origin}/assets/images/editorial/${editorial.file}`;
+  const socialImageAlt = isHomepage
+    ? 'B2B Industrial Solutions audit, compliance and engineering services across India'
+    : editorial.alt;
   const schema = buildSchema(file, html, title, description, canonical, socialImage);
   const prefix = relativePrefix(file);
   html = html.replace(/href=["']#["'](\s+class=["'][^"']*\brelated-link\b[^"']*["'])/gi, `href="${prefix}contact.html"$1`);
@@ -307,6 +316,7 @@ for (const file of htmlFiles) {
   <link rel="search" type="application/opensearchdescription+xml" title="B2B Industrial Solutions" href="${origin}/opensearch.xml">
   <meta name="robots" content="${noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}">
   <meta name="author" content="B2B Industrial Solutions">
+  <meta name="publisher" content="B2B Industrial Solutions">
   <meta name="theme-color" content="#ffffff">
   <meta property="og:type" content="${socialType}">
   <meta property="og:site_name" content="B2B Industrial Solutions">
@@ -315,11 +325,12 @@ for (const file of htmlFiles) {
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:url" content="${escapeHtml(canonical)}">
   <meta property="og:image" content="${socialImage}">
-  <meta property="og:image:alt" content="${escapeHtml(editorial.alt)}">
+  <meta property="og:image:alt" content="${escapeHtml(socialImageAlt)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escapeHtml(plainText(title))}">
   <meta name="twitter:description" content="${escapeHtml(description)}">
   <meta name="twitter:image" content="${socialImage}">
+  <meta name="twitter:image:alt" content="${escapeHtml(socialImageAlt)}">
   <script type="application/ld+json">${schema}</script>
   <!-- SEO:END -->
 `;
