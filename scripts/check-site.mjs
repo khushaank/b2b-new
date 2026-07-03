@@ -69,6 +69,12 @@ for (const file of htmlFiles) {
   }
 
   const ids = [...html.matchAll(/\sid=["']([^"']+)["']/gi)].map((match) => match[1]);
+  const idSet = new Set(ids);
+  for (const label of html.match(/<label\b[^>]*>[\s\S]*?<\/label>/gi) || []) {
+    const target = label.match(/\bfor=["']([^"']+)["']/i)?.[1];
+    if (target && !idSet.has(target)) errors.push(`${display}: label references missing field #${target}`);
+    if (!target && !/<(?:input|select|textarea)\b/i.test(label)) errors.push(`${display}: label is not associated with a form field`);
+  }
   for (const id of new Set(ids)) {
     if (ids.filter((value) => value === id).length > 1) errors.push(`${display}: duplicate id #${id}`);
   }

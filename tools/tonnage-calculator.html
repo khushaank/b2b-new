@@ -226,7 +226,7 @@
                 <div class="sec-label">Room Dimensions</div>
                 <div class="row">
                     <div class="field">
-                        <label>Length</label>
+                        <label for="length">Length</label>
                         <div class="input-wrap">
                             <input type="number" id="length" value="15" min="1" max="999" autocomplete="off" />
                             <div class="unit-tog">
@@ -236,7 +236,7 @@
                         </div>
                     </div>
                     <div class="field">
-                        <label>Width</label>
+                        <label for="width">Width</label>
                         <div class="input-wrap">
                             <input type="number" id="width" value="12" min="1" max="999" autocomplete="off" />
                             <div class="unit-tog">
@@ -248,7 +248,7 @@
                 </div>
                 <div class="row">
                     <div class="field">
-                        <label>Ceiling Height</label>
+                        <label for="ceilHeight">Ceiling Height</label>
                         <span class="hint">Standard is 8 ft / 2.4 m</span>
                         <div class="input-wrap">
                             <input type="number" id="ceilHeight" value="9" min="6" max="30" step="0.5" autocomplete="off" />
@@ -259,7 +259,7 @@
                         </div>
                     </div>
                     <div class="field">
-                        <label>Room Type</label>
+                        <label for="roomType">Room Type</label>
                         <select class="styled-select" id="roomType" autocomplete="off">
                             <option value="0">Bedroom / Living Room</option>
                             <option value="0">Office / Study</option>
@@ -277,7 +277,7 @@
                 <div class="sec-label">Climate & Environment</div>
                 <div class="row">
                     <div class="field">
-                        <label>Climate Zone</label>
+                        <label for="climate">Climate Zone</label>
                         <select class="styled-select" id="climate" autocomplete="off">
                             <option value="18">Very Cool (18 BTU/sq ft) — e.g. UK, Canada, Scandinavia</option>
                             <option value="20">Cool (20 BTU/sq ft) — e.g. Northern Europe, Seattle</option>
@@ -290,7 +290,7 @@
                         </select>
                     </div>
                     <div class="field">
-                        <label>Sun Exposure</label>
+                        <label for="sunExposure">Sun Exposure</label>
                         <select class="styled-select" id="sunExposure" autocomplete="off">
                             <option value="-10">Heavy Shade (−10%)</option>
                             <option value="0" selected>Average / Mixed</option>
@@ -301,7 +301,7 @@
                 </div>
                 <div class="row">
                     <div class="field">
-                        <label>Insulation Quality</label>
+                        <label for="insulation">Insulation Quality</label>
                         <select class="styled-select" id="insulation" autocomplete="off">
                             <option value="-15">Excellent (New construction, −15%)</option>
                             <option value="-5">Good (Modern home, −5%)</option>
@@ -311,7 +311,7 @@
                         </select>
                     </div>
                     <div class="field">
-                        <label>Floor Location</label>
+                        <label for="floor">Floor Location</label>
                         <select class="styled-select" id="floor" autocomplete="off">
                             <option value="0">Ground / Middle Floor</option>
                             <option value="10">Top Floor / Under Direct Roof (+10%)</option>
@@ -326,7 +326,7 @@
                 <div class="sec-label">Occupants &amp; Openings</div>
                 <div class="row">
                     <div class="field">
-                        <label>Number of Occupants</label>
+                        <label for="occupants">Number of Occupants</label>
                         <span class="hint">First 2 are included in base load</span>
                         <div class="stepper">
                             <button>−</button>
@@ -335,7 +335,7 @@
                         </div>
                     </div>
                     <div class="field">
-                        <label>Number of Windows</label>
+                        <label for="windows">Number of Windows</label>
                         <span class="hint">First 2 windows in base load</span>
                         <div class="stepper">
                             <button>−</button>
@@ -346,7 +346,7 @@
                 </div>
                 <div class="row">
                     <div class="field">
-                        <label>Exterior Doors</label>
+                        <label for="doors">Exterior Doors</label>
                         <span class="hint">+1,000 BTU each</span>
                         <div class="stepper">
                             <button>−</button>
@@ -355,7 +355,7 @@
                         </div>
                     </div>
                     <div class="field">
-                        <label>Electrical Load (Watts)</label>
+                        <label for="elecLoad">Electrical Load (Watts)</label>
                         <span class="hint">Lights + appliances in room</span>
                         <div class="input-wrap">
                             <input type="number" id="elecLoad" value="500" min="0" max="10000" step="100" autocomplete="off" />

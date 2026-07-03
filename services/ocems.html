@@ -372,16 +372,16 @@
               <input type="hidden" name="subject" value="OCEMS Project Inquiry" />
 
               <div class="form-group">
-                <label class="form-label">Full Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Your Name" required autocomplete="name" />
+                <label for="ocems-name" class="form-label">Full Name</label>
+                <input type="text" name="name" id="ocems-name" class="form-control" placeholder="Your Name" required autocomplete="name" />
               </div>
               <div class="form-group">
-                <label class="form-label">Email</label>
-                <input type="email" name="email" class="form-control" placeholder="Email Address" required autocomplete="email" />
+                <label for="ocems-email" class="form-label">Email</label>
+                <input type="email" name="email" id="ocems-email" class="form-control" placeholder="Email Address" required autocomplete="email" />
               </div>
               <div class="form-group">
-                <label class="form-label">Industry Type</label>
-                <select name="industry_type" class="form-control" required autocomplete="off">
+                <label for="ocems-industry" class="form-label">Industry Type</label>
+                <select name="industry_type" id="ocems-industry" class="form-control" required autocomplete="off">
                   <option value="" disabled selected>Select Industry</option>
                   <option value="Power">Power Plant/DG Set</option>
                   <option value="Manufacturing">Manufacturing</option>
@@ -392,12 +392,12 @@
                 </select>
               </div>
               <div class="form-group">
-                <label class="form-label">Number of Stacks</label>
-                <input type="number" name="num_stacks" class="form-control" placeholder="e.g., 2" min="1" autocomplete="off" />
+                <label for="ocems-stacks" class="form-label">Number of Stacks</label>
+                <input type="number" name="num_stacks" id="ocems-stacks" class="form-control" placeholder="e.g., 2" min="1" autocomplete="off" />
               </div>
               <div class="form-group">
-                <label class="form-label">Project Details</label>
-                <textarea name="message" class="form-control" rows="4"
+                <label for="ocems-message" class="form-label">Project Details</label>
+                <textarea name="message" id="ocems-message" class="form-control" rows="4"
                   placeholder="Describe your OCEMS requirements..." autocomplete="off"></textarea>
               </div>
               <button type="submit" class="btn-primary btn-block">

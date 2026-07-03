@@ -5,6 +5,17 @@ const siteRootUrl = new URL('../', document.currentScript?.src || window.locatio
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const sitePreloader = document.querySelector('.site-preloader');
 
+/* Replace printed pages with a concise brand and copyright notice. */
+const printProtection = document.createElement('section');
+printProtection.className = 'print-protection';
+printProtection.setAttribute('aria-hidden', 'true');
+printProtection.innerHTML = `
+  <img src="${new URL('assets/images/logo.webp', siteRootUrl).href}" alt="B2B Industrial Solutions">
+  <h1>B2B Industrial Solutions</h1>
+  <p>Printing or reproducing this website is strictly prohibited.</p>
+  <small>For authorised documents, contact info@b2bindustrial.in</small>`;
+document.body.appendChild(printProtection);
+
 if (sitePreloader) {
   const finishLoading = () => {
     sitePreloader.classList.add('preloader-hidden');

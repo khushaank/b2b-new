@@ -103,3 +103,52 @@ if (retryConnection) {
   retryConnection.addEventListener('click', () => window.location.reload());
   window.addEventListener('online', () => window.location.reload(), { once: true });
 }
+
+const clientGrid = document.querySelector('#client-grid');
+if (clientGrid) {
+  const clients = [...clientGrid.querySelectorAll('.client-item')];
+  const filterButton = document.querySelector('#filter-toggle-btn');
+  const filterMenu = document.querySelector('#filter-dropdown');
+  const filterLabel = document.querySelector('#filter-active-label');
+  const loadMore = document.querySelector('#load-more-btn');
+  const pageSize = 20;
+  let activeFilter = 'all';
+  let visibleCount = pageSize;
+
+  const renderClients = () => {
+    const matches = clients.filter((item) => activeFilter === 'all' || item.dataset.category === activeFilter);
+    clients.forEach((item) => { item.hidden = true; });
+    matches.slice(0, visibleCount).forEach((item) => { item.hidden = false; });
+    if (loadMore) {
+      loadMore.hidden = visibleCount >= matches.length;
+      loadMore.setAttribute('aria-label', `Show ${Math.min(pageSize, Math.max(0, matches.length - visibleCount))} more clients`);
+    }
+  };
+
+  filterButton?.addEventListener('click', () => {
+    const open = filterButton.getAttribute('aria-expanded') !== 'true';
+    filterButton.setAttribute('aria-expanded', String(open));
+  });
+  filterMenu?.querySelectorAll('.filter-opt').forEach((option) => {
+    option.addEventListener('click', () => {
+      activeFilter = option.dataset.filter || 'all';
+      visibleCount = pageSize;
+      filterMenu.querySelectorAll('.filter-opt').forEach((item) => {
+        const active = item === option;
+        item.classList.toggle('active', active);
+        item.setAttribute('aria-selected', String(active));
+      });
+      if (filterLabel) filterLabel.textContent = option.textContent.trim().replace(' Clients', '');
+      filterButton?.setAttribute('aria-expanded', 'false');
+      renderClients();
+    });
+  });
+  loadMore?.addEventListener('click', () => {
+    visibleCount += pageSize;
+    renderClients();
+  });
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('#filter-toggle-wrapper')) filterButton?.setAttribute('aria-expanded', 'false');
+  });
+  renderClients();
+}

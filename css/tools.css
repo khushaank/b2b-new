@@ -396,4 +396,15 @@ body.tools-page {
   .tools-page .metric-row {
     grid-template-columns: 1fr !important;
   }
+
+  .tools-page .page-header-tools { min-height: 0; padding: 52px 0; }
+  .tools-page .page-header-tools h1 { max-width: 290px; margin-inline: auto; font-size: 38px; line-height: 1.02; }
+  .tools-page .page-header-tools p { max-width: 290px; margin-inline: auto; font-size: 15px; line-height: 1.55; }
+  .tools-page .tools-grid { width: calc(100% - 28px); gap: 12px; }
+  .tools-page .tool-card { min-height: 0; border-radius: 17px; }
+  .tools-page .tool-card-content { min-height: 310px; }
+  .tools-page .intro h1,.tools-page .tool-intro h1,.tools-page .hero h1 { font-size: 35px !important; line-height: 1.06; overflow-wrap: anywhere; }
+  .tools-page .layout,.tools-page .calc-grid,.tools-page .main-wrap { gap: 14px; }
+  .tools-page .calculator-card,.tools-page .calc-card,.tools-page .form-panel,.tools-page .result-panel,.tools-page .results-panel { min-width: 0; padding: 24px 18px; border-radius: 16px; }
+  .tools-page input,.tools-page select,.tools-page textarea { max-width: 100%; }
 }

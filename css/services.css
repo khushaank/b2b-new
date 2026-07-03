@@ -80,6 +80,12 @@
 
 .services-page .cta-section, .services-page .cta-premium, .services-page .cta-box { margin: 70px 0 0; border-radius: 0; }
 
+.services-page .partner-brands-section { padding-block: 76px !important; background: #f7f8fa !important; }
+.services-page .partner-brands-section h3 { margin-bottom: 34px; font-size: clamp(28px,3.4vw,44px); }
+.services-page .logo-strip { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 14px; }
+.services-page .logo-strip img { width: 100%; height: 132px; padding: 30px; border: 1px solid var(--soft-line); border-radius: 18px; background: #fff; object-fit: contain; filter: grayscale(1); transition: filter .2s, transform .2s, border-color .2s; }
+.services-page .logo-strip img:hover { border-color: #bdd7ef; filter: none; transform: translateY(-3px); }
+
 @media (max-width: 980px) {
   .service-hero-grid { grid-template-columns: 1fr; }
   .service-hero-copy { padding: 58px 52px; }
@@ -101,6 +107,7 @@
   .services-page .service-details .service-container,
   .services-page .service-details .content-wrapper { grid-template-columns: 1fr; gap: 45px; }
   .services-page .sidebar { position: static; }
+  .services-page .logo-strip { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
 
 @media (max-width: 560px) {
@@ -134,4 +141,7 @@
   .services-page table.service-table td:last-child { border-bottom: 0; }
   .services-page table.service-table td::before { content: attr(data-label); display: block; margin-bottom: 5px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .06em; line-height: 1.35; text-transform: uppercase; }
   .services-page table.service-table td > .service-table-icon { margin-right: 7px; }
+  .services-page .partner-brands-section { padding-block: 52px !important; }
+  .services-page .logo-strip { gap: 10px; }
+  .services-page .logo-strip img { height: 100px; padding: 22px; border-radius: 14px; }
 }

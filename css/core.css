@@ -572,11 +572,23 @@ body.motion-ready .scroll-reveal.visible {
   transform: none !important;
 }
 
-.hero-scroll-cue { position: absolute; z-index: 3; left: 50%; bottom: 22px; width: 42px; height: 42px; display: grid; place-items: center; padding: 0; border: 1px solid rgba(0,102,204,.22); border-radius: 50%; color: var(--blue); background: rgba(255,255,255,.86); box-shadow: 0 10px 28px rgba(0,69,140,.1); transform: translateX(-50%); cursor: pointer; backdrop-filter: blur(12px); }
+.hero-scroll-cue { position: absolute; z-index: 3; left: 50%; bottom: 22px; width: 38px; height: 38px; display: grid; place-items: center; padding: 0; border: 0; color: var(--blue); background: transparent; transform: translateX(-50%); cursor: pointer; }
 .hero-scroll-cue span { width: 10px; height: 10px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-2px) rotate(45deg); animation: hero-cue-bounce 1.7s ease-in-out var(--cue-delay,0ms) infinite; }
-.hero-scroll-cue:hover { color: #fff; background: var(--blue); }
+.hero-scroll-cue:hover { color: #004f9f; background: transparent; }
 @keyframes hero-cue-bounce { 0%,100% { transform: translateY(-4px) rotate(45deg); } 50% { transform: translateY(4px) rotate(45deg); } }
 @media (prefers-reduced-motion: reduce) { .hero-scroll-cue span { animation: none; } }
+
+.print-protection { display: none; }
+
+@media print {
+  @page { margin: 18mm; }
+  body > *:not(.print-protection) { display: none !important; }
+  .print-protection { min-height: 80vh; display: grid !important; place-content: center; gap: 14px; color: #1d1d1f; text-align: center; }
+  .print-protection img { width: 220px; height: auto; margin: 0 auto 28px; }
+  .print-protection h1 { margin: 0; font: 700 28pt/1.15 Arial, sans-serif; }
+  .print-protection p { max-width: 560px; margin: 0; font: 700 17pt/1.5 Arial, sans-serif; }
+  .print-protection small { margin-top: 10px; color: #555; font: 10pt/1.4 Arial, sans-serif; }
+}
 
 .site-preloader {
   position: fixed;

@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://b2bindustrial.in';
 const modifiedDate = new Date().toISOString().slice(0, 10);
-const excludedNames = new Set(['404.html', '410.html', '429.html', '500.html', '503.html', 'offline.html', 'success.html']);
+const excludedNames = new Set(['404.html', '410.html', '421.html', '429.html', '500.html', '503.html', 'offline.html', 'success.html']);
 const htmlFiles = [];
 
 function walk(directory) {
