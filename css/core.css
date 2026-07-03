@@ -572,6 +572,12 @@ body.motion-ready .scroll-reveal.visible {
   transform: none !important;
 }
 
+.hero-scroll-cue { position: absolute; z-index: 3; left: 50%; bottom: 22px; width: 42px; height: 42px; display: grid; place-items: center; padding: 0; border: 1px solid rgba(0,102,204,.22); border-radius: 50%; color: var(--blue); background: rgba(255,255,255,.86); box-shadow: 0 10px 28px rgba(0,69,140,.1); transform: translateX(-50%); cursor: pointer; backdrop-filter: blur(12px); }
+.hero-scroll-cue span { width: 10px; height: 10px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-2px) rotate(45deg); animation: hero-cue-bounce 1.7s ease-in-out var(--cue-delay,0ms) infinite; }
+.hero-scroll-cue:hover { color: #fff; background: var(--blue); }
+@keyframes hero-cue-bounce { 0%,100% { transform: translateY(-4px) rotate(45deg); } 50% { transform: translateY(4px) rotate(45deg); } }
+@media (prefers-reduced-motion: reduce) { .hero-scroll-cue span { animation: none; } }
+
 .site-preloader {
   position: fixed;
   z-index: 500;

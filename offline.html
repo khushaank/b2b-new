@@ -145,7 +145,7 @@
   <!-- SEO:END -->
 </head>
 
-<body class="interior-page core-pages-page">
+<body class="interior-page core-pages-page offline-page">
   <!-- PRELOADER:START -->
   <div class="site-preloader" role="status" aria-label="Loading B2B Industrial Solutions">
     <div class="preloader-inner">
@@ -196,20 +196,17 @@
 
 
 
-    <h1>You are Offline</h1>
-    <p>
-      It seems you have lost your internet connection.<br />Please check your
-      network and try again.
-    </p>
-    <button class="btn-retry">
-      Retry Connection
-    </button>
-
-    <!-- EDITORIAL:START -->
-    <figure class="page-editorial-visual">
-      <img src="./assets/images/editorial/engineering-knowledge.webp" alt="Industrial engineering workspace with technical drawings, instruments and performance data" width="1600" height="900" loading="lazy" decoding="async" fetchpriority="high">
-    </figure>
-    <!-- EDITORIAL:END -->
+    <section class="offline-card" aria-labelledby="offline-title">
+      <img class="offline-logo" src="./assets/images/logo.webp" alt="B2B Industrial Solutions" width="460" height="130">
+      <span class="offline-status">Connection interrupted</span>
+      <h1 id="offline-title">You’re offline.</h1>
+      <p>Your connection dropped, but the website is ready when you are. Reconnect and retry to continue where you left off.</p>
+      <div class="offline-actions">
+        <button class="btn-retry" type="button" data-retry-connection>Retry connection</button>
+        <a class="offline-home" href="./index.html">Cached home</a>
+      </div>
+      <p class="offline-note">Tip: check Wi-Fi or mobile data, then press retry. This page will refresh automatically when your connection returns.</p>
+    </section>
 </main>
 
   <footer id="footer">

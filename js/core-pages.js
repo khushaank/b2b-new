@@ -42,6 +42,8 @@ if (counters.length) {
 
 const categoryNav = document.querySelector('.category-nav');
 if (categoryNav) {
+  const categoryShell = categoryNav.closest('.category-nav-shell');
+  const scrollButtons = [...(categoryShell?.querySelectorAll('[data-category-scroll]') || [])];
   const categoryLinks = [...categoryNav.querySelectorAll('a[href^="#"]')];
   const categorySections = categoryLinks
     .map((link) => document.querySelector(link.getAttribute('href')))
@@ -51,10 +53,35 @@ if (categoryNav) {
     categoryLinks.forEach((link) => {
       const active = link.getAttribute('href') === `#${id}`;
       link.classList.toggle('active', active);
-      if (active) link.setAttribute('aria-current', 'true');
+      if (active) {
+        link.setAttribute('aria-current', 'true');
+        const targetLeft = link.offsetLeft - (categoryNav.clientWidth - link.offsetWidth) / 2;
+        categoryNav.scrollTo({ left: Math.max(0, targetLeft), behavior: 'smooth' });
+      }
       else link.removeAttribute('aria-current');
     });
   };
+
+  const updateCategoryControls = () => {
+    const overflowing = categoryNav.scrollWidth > categoryNav.clientWidth + 2;
+    categoryShell?.classList.toggle('has-overflow', overflowing);
+    scrollButtons.forEach((button) => { button.hidden = !overflowing; });
+    const maxScroll = Math.max(0, categoryNav.scrollWidth - categoryNav.clientWidth);
+    const previous = scrollButtons.find((button) => button.dataset.categoryScroll === '-1');
+    const next = scrollButtons.find((button) => button.dataset.categoryScroll === '1');
+    if (previous) previous.disabled = categoryNav.scrollLeft <= 2;
+    if (next) next.disabled = categoryNav.scrollLeft >= maxScroll - 2;
+  };
+
+  scrollButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const direction = Number(button.dataset.categoryScroll || 1);
+      categoryNav.scrollBy({ left: direction * Math.max(180, categoryNav.clientWidth * .7), behavior: 'smooth' });
+    });
+  });
+  categoryNav.addEventListener('scroll', updateCategoryControls, { passive: true });
+  window.addEventListener('resize', updateCategoryControls);
+  requestAnimationFrame(updateCategoryControls);
 
   categoryLinks.forEach((link) => {
     link.addEventListener('click', () => setActiveCategory(link.hash.slice(1)));
@@ -69,4 +96,10 @@ if (categoryNav) {
     if (visible) setActiveCategory(visible.target.id);
   }, { rootMargin: '-34% 0px -55% 0px', threshold: [0, .15, .5] });
   categorySections.forEach((section) => sectionObserver.observe(section));
+}
+
+const retryConnection = document.querySelector('[data-retry-connection]');
+if (retryConnection) {
+  retryConnection.addEventListener('click', () => window.location.reload());
+  window.addEventListener('online', () => window.location.reload(), { once: true });
 }

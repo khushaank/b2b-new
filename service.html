@@ -206,14 +206,20 @@
     <section class="section services-catalog-section">
       <div class="container">
 
-        <nav class="category-nav">
-          <a href="#audits" class="category-btn active">Audits &amp; Compliance</a>
-          <a href="#safety" class="category-btn">Safety &amp; Risk</a>
-          <a href="#electrical" class="category-btn">Electrical &amp; Energy</a>
-          <a href="#hvac" class="category-btn">HVAC &amp; Env</a>
-          <a href="#lighting" class="category-btn">Lighting</a>
-          <a href="#design" class="category-btn">Design &amp; Projects</a>
-        </nav>
+        <div class="category-nav-shell">
+          <button class="category-nav-arrow category-nav-prev" type="button" data-category-scroll="-1"
+            aria-label="Show previous service categories" hidden><span aria-hidden="true">‹</span></button>
+          <nav class="category-nav" aria-label="Service categories">
+            <a href="#audits" class="category-btn active">Audits &amp; Compliance</a>
+            <a href="#safety" class="category-btn">Safety &amp; Risk</a>
+            <a href="#electrical" class="category-btn">Electrical &amp; Energy</a>
+            <a href="#hvac" class="category-btn">HVAC &amp; Env</a>
+            <a href="#lighting" class="category-btn">Lighting</a>
+            <a href="#design" class="category-btn">Design &amp; Projects</a>
+          </nav>
+          <button class="category-nav-arrow category-nav-next" type="button" data-category-scroll="1"
+            aria-label="Show next service categories" hidden><span aria-hidden="true">›</span></button>
+        </div>
 
 
         <div id="audits" class="service-category-block fade-in-section">

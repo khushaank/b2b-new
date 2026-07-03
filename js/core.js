@@ -244,6 +244,19 @@ const revealTargets = [
   ...document.querySelectorAll('.blog-card, .catalog-card, .service-card, .result-card'),
 ];
 
+document.querySelectorAll('.legacy-content > .page-header').forEach((hero, index) => {
+  const nextSection = hero.nextElementSibling;
+  if (!nextSection || hero.querySelector('.hero-scroll-cue')) return;
+  const cue = document.createElement('button');
+  cue.className = 'hero-scroll-cue';
+  cue.type = 'button';
+  cue.setAttribute('aria-label', 'Continue to page content');
+  cue.innerHTML = '<span aria-hidden="true"></span>';
+  cue.addEventListener('click', () => nextSection.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' }));
+  cue.style.setProperty('--cue-delay', `${index * 40}ms`);
+  hero.appendChild(cue);
+});
+
 if (!prefersReducedMotion && 'IntersectionObserver' in window) {
   document.body.classList.add('motion-ready');
   const revealObserver = new IntersectionObserver((entries, observer) => {
