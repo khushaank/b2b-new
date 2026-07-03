@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'b2b-industrial-';
-const CACHE = `${CACHE_PREFIX}v6`;
+const CACHE = `${CACHE_PREFIX}v7`;
 const scopedUrl = (path = '') => new URL(path, self.registration.scope).href;
 const OFFLINE_URL = scopedUrl('offline.html');
 const CORE = [

@@ -137,6 +137,12 @@ if (navigation && serviceBar) {
     });
     backdrop.addEventListener('click', () => setMegaMenu(false));
     document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setMegaMenu(false); });
+    const closeMegaOnViewportMove = () => {
+      if (serviceBar.classList.contains('mega-open')) setMegaMenu(false);
+    };
+    window.addEventListener('scroll', closeMegaOnViewportMove, { passive: true });
+    window.addEventListener('wheel', closeMegaOnViewportMove, { passive: true });
+    window.addEventListener('touchmove', closeMegaOnViewportMove, { passive: true });
     window.addEventListener('resize', () => setMegaMenu(false));
   }
 }
