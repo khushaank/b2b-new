@@ -65,6 +65,10 @@
 }
 
 @media (max-width: 560px) {
+  .tools-page .page-header-tools { width: calc(100% - 28px) !important; min-height: 0 !important; height: auto !important; padding: 44px 22px !important; }
+  .tools-page .page-header-tools .container { width: 100% !important; }
+  .tools-page .page-header-tools h1 { max-width: 250px !important; margin: 0 auto 18px !important; font-size: 34px !important; line-height: 1.02 !important; }
+  .tools-page .page-header-tools p { max-width: 265px !important; margin-inline: auto !important; font-size: 14px !important; line-height: 1.55 !important; }
   .shell, .container { width: calc(100% - 28px); }
   .global-bar, .global-bar-inner { height: 64px; }
   .brand { width: 158px; }

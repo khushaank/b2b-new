@@ -579,6 +579,8 @@ body.motion-ready .scroll-reveal.visible {
 @media (prefers-reduced-motion: reduce) { .hero-scroll-cue span { animation: none; } }
 
 .print-protection { display: none; }
+.copy-protection-notice { position: fixed; z-index: 1000; left: 50%; bottom: 24px; max-width: calc(100% - 32px); padding: 10px 15px; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; color: #fff; background: rgba(20,22,25,.92); box-shadow: 0 12px 35px rgba(0,0,0,.18); font-size: 12px; opacity: 0; pointer-events: none; transform: translate(-50%,12px); transition: opacity .2s,transform .2s; backdrop-filter: blur(14px); }
+.copy-protection-notice.visible { opacity: 1; transform: translate(-50%,0); }
 
 @media print {
   @page { margin: 18mm; }

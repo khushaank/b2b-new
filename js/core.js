@@ -16,6 +16,31 @@ printProtection.innerHTML = `
   <small>For authorised documents, contact info@b2bindustrial.in</small>`;
 document.body.appendChild(printProtection);
 
+/* Keep page text selectable while preventing it from being copied to the clipboard. */
+const isEditableTarget = (target) => target instanceof Element && Boolean(target.closest('input, textarea, [contenteditable="true"]'));
+let copyNoticeTimer;
+const showCopyNotice = () => {
+  let notice = document.querySelector('.copy-protection-notice');
+  if (!notice) {
+    notice = document.createElement('div');
+    notice.className = 'copy-protection-notice';
+    notice.setAttribute('role', 'status');
+    notice.textContent = 'Website content can be selected but not copied.';
+    document.body.appendChild(notice);
+  }
+  notice.classList.add('visible');
+  clearTimeout(copyNoticeTimer);
+  copyNoticeTimer = setTimeout(() => notice.classList.remove('visible'), 1800);
+};
+['copy', 'cut'].forEach((eventName) => {
+  document.addEventListener(eventName, (event) => {
+    if (isEditableTarget(event.target)) return;
+    event.preventDefault();
+    event.clipboardData?.setData('text/plain', '');
+    showCopyNotice();
+  });
+});
+
 if (sitePreloader) {
   const finishLoading = () => {
     sitePreloader.classList.add('preloader-hidden');
