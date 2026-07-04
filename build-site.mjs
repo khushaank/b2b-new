@@ -253,6 +253,7 @@ const homepage = fs.readFileSync(homepagePath, 'utf8')
   .replaceAll('../terms.html', 'terms.html');
 fs.writeFileSync(homepagePath, homepage, 'utf8');
 
+await import('./scripts/generate-industries.mjs');
 await import('./scripts/enhance-seo.mjs');
 await import('./scripts/generate-discovery.mjs');
 

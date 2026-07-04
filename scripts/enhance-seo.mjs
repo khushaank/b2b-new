@@ -1,10 +1,9 @@
-import { readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, extname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://b2bindustrial.in';
-const modifiedDate = new Date().toISOString().slice(0, 10);
 const excludedNames = new Set(['404.html', '410.html', '421.html', '429.html', '500.html', '503.html', 'offline.html', 'success.html']);
 const htmlFiles = [];
 
@@ -92,6 +91,7 @@ function pageType(file) {
   if (path === 'locations/index.html') return 'page';
   if (path.startsWith('locations/')) return 'location';
   if (path.startsWith('case-studies/')) return 'case-study';
+  if (path.startsWith('industries/') && path !== 'industries/index.html') return 'industry';
   if (path.startsWith('tools/') && path !== 'tools/index.html') return 'tool';
   if (path === 'faq.html') return 'faq';
   return 'page';
@@ -150,7 +150,7 @@ function buildSchema(file, html, title, description, canonical, image) {
   };
   const graph = [organization, website, webpage, breadcrumbSchema(file, title, canonical)];
 
-  if (type === 'service' || type === 'location') {
+  if (type === 'service' || type === 'location' || type === 'industry') {
     const locationSlug = relative(root, file).split(sep).pop()?.split('-')[0];
     const knownLocations = { ahmedabad: 'Ahmedabad', bangalore: 'Bengaluru', chennai: 'Chennai', delhi: 'Delhi', faridabad: 'Faridabad', gurgaon: 'Gurugram', hyderabad: 'Hyderabad', manesar: 'Manesar', mumbai: 'Mumbai', noida: 'Noida', pune: 'Pune' };
     const locationName = html.match(/<body\b[^>]*\bdata-location=["']([^"']+)["']/i)?.[1] || knownLocations[locationSlug];
@@ -279,6 +279,10 @@ for (const file of htmlFiles) {
   html = html.replace(/\s*<!-- EDITORIAL:START -->[\s\S]*?<!-- EDITORIAL:END -->\s*/g, '\n');
   html = html.replace(/\s*<!-- CONTENT-SOCIAL:START -->[\s\S]*?<!-- CONTENT-SOCIAL:END -->\s*/g, '\n');
   html = html.replace(/\s*<!-- FOOTER-SOCIAL:START -->[\s\S]*?<!-- FOOTER-SOCIAL:END -->\s*/g, '\n');
+  // Remove hand-authored copies of tags managed below so the refresh remains idempotent.
+  html = html.replace(/\s*<link\b[^>]*rel=["']canonical["'][^>]*>/gi, '');
+  html = html.replace(/\s*<link\b[^>]*rel=["']manifest["'][^>]*>/gi, '');
+  html = html.replace(/\s*<meta\b[^>]*name=["']robots["'][^>]*>/gi, '');
   html = html.replace(/\s*<link\b[^>]*rel=["'](?:shortcut icon|icon|apple-touch-icon)["'][^>]*>/gi, '');
   html = removeDivByClass(html, 'blog-share-bar');
   html = removeDivByClass(html, 'share-box');
@@ -383,6 +387,7 @@ for (const file of htmlFiles) {
     let links = content;
     if (!/href=["'][^"']*locations\//i.test(links)) links += `<a href="${prefix}locations/">Service locations</a>`;
     if (!/href=["'][^"']*tools\//i.test(links)) links += `<a href="${prefix}tools/">Engineering tools</a>`;
+    if (!/href=["'][^"']*industries\//i.test(links)) links += `<a href="${prefix}industries/">Industries served</a>`;
     return `${links}${close}`;
   });
 
@@ -394,18 +399,16 @@ for (const file of htmlFiles) {
 
   const normalizedTitle = plainText(title).toLowerCase();
   const normalizedDescription = description.toLowerCase();
-  titles.set(normalizedTitle, (titles.get(normalizedTitle) || 0) + 1);
-  descriptions.set(normalizedDescription, (descriptions.get(normalizedDescription) || 0) + 1);
-  if (!noindex) sitemapPages.push({ canonical, images: imageEntries(html, canonical) });
+  if (!noindex) {
+    titles.set(normalizedTitle, (titles.get(normalizedTitle) || 0) + 1);
+    descriptions.set(normalizedDescription, (descriptions.get(normalizedDescription) || 0) + 1);
+    sitemapPages.push({ canonical });
+  }
 }
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${sitemapPages.map(({ canonical, images }) => `  <url>
-    <loc>${escapeXml(canonical)}</loc>
-    <lastmod>${modifiedDate}</lastmod>${images.map((image) => `
-    <image:image><image:loc>${escapeXml(image.url)}</image:loc><image:title>${escapeXml(image.title)}</image:title></image:image>`).join('')}
-  </url>`).join('\n')}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapPages.map(({ canonical }) => `  <url><loc>${escapeXml(canonical)}</loc></url>`).join('\n')}
 </urlset>
 `;
 writeFileSync(join(root, 'sitemap.xml'), sitemap, 'utf8');
