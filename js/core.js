@@ -245,10 +245,12 @@ document.querySelectorAll('.u-email-link[data-user][data-domain]').forEach((link
 });
 
 document.querySelectorAll('img').forEach((image) => {
+  image.draggable = false;
   if (!image.hasAttribute('loading') && !image.closest('.page-header, .blog-post-hero, .client-hero')) image.loading = 'lazy';
 });
 
 document.querySelectorAll('main img, main iframe').forEach((media) => {
+  if (media instanceof HTMLImageElement && media.fetchPriority === 'high') return;
   media.classList.add('skeleton-media');
   const finishMedia = () => media.classList.add('media-ready');
   if (media.tagName === 'IMG' && media.complete && media.naturalWidth) finishMedia();
