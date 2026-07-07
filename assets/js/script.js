@@ -468,8 +468,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const user = el.getAttribute('data-user');
       const domain = el.getAttribute('data-domain');
       if (user && domain) {
-        const email = `${user}@${domain}`;
-        el.textContent = email;
+        el.textContent = 'Email us';
         el.classList.add('is-restored');
       }
     });
@@ -480,9 +479,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (user && domain) {
         const email = `${user}@${domain}`;
         el.setAttribute('href', `mailto:${email}`);
+        el.setAttribute('aria-label', 'Email B2B Industrial Solutions');
 
         if (el.textContent.includes('[at]') || el.textContent.trim() === '') {
-          el.textContent = email;
+          el.textContent = 'Email us';
         }
         el.classList.add('is-restored');
       }

@@ -13,7 +13,7 @@ printProtection.innerHTML = `
   <img src="${new URL('assets/images/logo.webp', siteRootUrl).href}" alt="B2B Industrial Solutions">
   <h1>B2B Industrial Solutions</h1>
   <p>Printing or reproducing this website is strictly prohibited.</p>
-  <small>For authorised documents, contact info@b2bindustrial.in</small>`;
+  <small>For authorised documents, use the contact form.</small>`;
 document.body.appendChild(printProtection);
 
 /* Keep page text selectable while preventing it from being copied to the clipboard. */
@@ -241,7 +241,7 @@ if (formReturnButton) {
 document.querySelectorAll('.u-email-link[data-user][data-domain]').forEach((link) => {
   const address = `${link.dataset.user}@${link.dataset.domain}`;
   link.href = `mailto:${address}`;
-  link.textContent = address;
+  link.setAttribute('aria-label', 'Email B2B Industrial Solutions');
 });
 
 document.querySelectorAll('img').forEach((image) => {

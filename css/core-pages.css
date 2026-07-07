@@ -729,8 +729,8 @@
 
 .core-pages-page .page-header-services {
   min-height: 390px;
-  color: #fff;
-  background: radial-gradient(circle at 82% 12%, rgba(74, 173, 255, .26), transparent 32%), linear-gradient(135deg, #0c1f30, #123d5d 72%, #075fa8);
+  color: #fff !important;
+  background: radial-gradient(circle at 82% 12%, rgba(74, 173, 255, .26), transparent 32%), linear-gradient(135deg, #0c1f30, #123d5d 72%, #075fa8) !important;
 }
 
 .core-pages-page .page-header-services::after {
@@ -738,7 +738,7 @@
 }
 
 .core-pages-page .page-header-services h1 {
-  color: #fff;
+  color: #fff !important;
 }
 
 .core-pages-page .page-header-services p {

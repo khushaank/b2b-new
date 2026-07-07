@@ -125,11 +125,10 @@ function buildSchema(file, html, title, description, canonical, image) {
     logo: { '@type': 'ImageObject', url: `${origin}/assets/images/logo.webp` },
     foundingDate: '2013',
     telephone: '+91-9899702065',
-    email: 'info@b2bindustrial.in',
     sameAs: ['https://www.linkedin.com/company/b2bindustrial/'],
     knowsAbout: ['Industrial audits', 'Industrial energy audits', 'Electrical safety audits', 'Fire and HSE audits', 'Statutory industrial compliance', 'HVAC and indoor air quality', 'Robotic duct cleaning', 'RECD and DFK kits', 'CPCB IV+ DG compliance', 'Industrial emission control', 'Environmental compliance', 'Turnkey industrial engineering'],
     contactPoint: {
-      '@type': 'ContactPoint', telephone: '+91-9899702065', email: 'info@b2bindustrial.in',
+      '@type': 'ContactPoint', telephone: '+91-9899702065',
       contactType: 'sales and technical enquiries', areaServed: 'IN', availableLanguage: ['English', 'Hindi'],
     },
     address: {
@@ -206,7 +205,7 @@ function buildSchema(file, html, title, description, canonical, image) {
   if (['index.html', 'about.html', 'contact.html'].includes(relative(root, file).split(sep).join('/'))) {
     graph.push({
       '@type': 'ProfessionalService', '@id': `${origin}/#localbusiness`, name: 'B2B Industrial Solutions',
-      image, logo: organization.logo, url: `${origin}/`, telephone: '+91-9899702065', email: 'info@b2bindustrial.in',
+      image, logo: organization.logo, url: `${origin}/`, telephone: '+91-9899702065',
       priceRange: 'Request a quote',
       address: organization.address, areaServed: organization.areaServed,
       sameAs: organization.sameAs,
@@ -368,14 +367,13 @@ for (const file of htmlFiles) {
 
   if (['blog', 'case-study'].includes(pageType(file))) {
     const whatsappUrl = `https://wa.me/919899702065?text=${encodeURIComponent(`Hello B2B Industrial Solutions, I am reading ${plainText(title)}: ${canonical}`)}`;
-    const emailUrl = `mailto:info@b2bindustrial.in?subject=${encodeURIComponent(`Regarding ${plainText(title)}`)}&body=${encodeURIComponent(`Hello B2B Industrial Solutions,\n\nI would like to discuss this page:\n${canonical}`)}`;
     const socialBlock = `
     <!-- CONTENT-SOCIAL:START -->
     <aside class="content-social" aria-label="Connect with B2B Industrial Solutions">
       <div><small>CONTINUE THE CONVERSATION</small><strong>Discuss or share this insight.</strong></div>
       <nav aria-label="Social and contact links">
         <a class="social-whatsapp" href="${escapeHtml(whatsappUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Contact B2B Industrial Solutions on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.7a8.5 8.5 0 1 1 16.2-4.1Zm-5.1 1.8c-.2-.1-1.3-.7-1.5-.7-.2-.1-.4-.1-.6.1l-.7.9c-.1.2-.3.2-.5.1-1.4-.7-2.4-1.4-3.3-3-.2-.3.2-.5.5-1 .1-.2 0-.4 0-.6l-.7-1.7c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.8.4-.8.8-1.2 1.9-.7 3 .6 1.7 1.9 3.4 3.5 4.5 1.8 1.2 4.1 2.1 5.4 1.5.7-.3 1.2-1.1 1.3-1.9.1-.3.1-.5-.2-.6l-1.1-.6Z"/></svg><span>WhatsApp</span></a>
-        <a class="social-email" href="${escapeHtml(emailUrl)}" aria-label="Email B2B Industrial Solutions"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3V5Zm2 2v.4l7 5.1 7-5.1V7H5Zm14 10V9.9l-7 5-7-5V17h14Z"/></svg><span>Email</span></a>
+        <a class="social-email u-email-link" href="${prefix}contact.html#form" data-user="info" data-domain="b2bindustrial.in" aria-label="Email B2B Industrial Solutions"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3V5Zm2 2v.4l7 5.1 7-5.1V7H5Zm14 10V9.9l-7 5-7-5V17h14Z"/></svg><span>Email us</span></a>
         <a class="social-linkedin" href="https://www.linkedin.com/company/b2bindustrial/" target="_blank" rel="noopener noreferrer" aria-label="Follow B2B Industrial Solutions on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.3 7.7H2.2V21h3.1V7.7ZM3.8 2A1.8 1.8 0 1 0 3.8 5.6 1.8 1.8 0 0 0 3.8 2ZM21.8 13.4c0-4-2.1-5.9-4.9-5.9-2.3 0-3.3 1.3-3.8 2.2v-2h-3.1V21h3.1v-6.6c0-1.7.3-3.4 2.5-3.4 2.1 0 2.2 2 2.2 3.5V21h3.1l.9-7.6Z"/></svg><span>LinkedIn</span></a>
       </nav>
     </aside>
@@ -392,7 +390,7 @@ for (const file of htmlFiles) {
     return `${links}${close}`;
   });
 
-  const footerSocial = `<!-- FOOTER-SOCIAL:START --><div class="footer-socials" aria-label="Connect with us"><a href="https://wa.me/919899702065" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="mailto:info@b2bindustrial.in">Email</a><a href="https://www.linkedin.com/company/b2bindustrial/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div><!-- FOOTER-SOCIAL:END -->`;
+  const footerSocial = `<!-- FOOTER-SOCIAL:START --><div class="footer-socials" aria-label="Connect with us"><a href="https://wa.me/919899702065" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="u-email-link" href="${prefix}contact.html#form" data-user="info" data-domain="b2bindustrial.in">Email us</a><a href="https://www.linkedin.com/company/b2bindustrial/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div><!-- FOOTER-SOCIAL:END -->`;
   html = html.replace(/(<div class="footer-links footer-contact">[\s\S]*?)(<\/div>)/i, `$1${footerSocial}$2`);
   html = optimizeImages(html);
   html = html.replace(/[ \t]+$/gm, '');
