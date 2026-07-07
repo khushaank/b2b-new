@@ -459,7 +459,7 @@ h1 em {
 }
 
 .intro-content h2 span {
-  color: #8da09c;
+  color: #5f6f6b;
 }
 
 .intro-columns {
@@ -1039,7 +1039,7 @@ blockquote em {
 .contact-card p {
   max-width: 550px;
   margin: 0;
-  color: rgba(255, 255, 255, .78);
+  color: #fff;
 }
 
 .button-light {
