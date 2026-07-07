@@ -206,7 +206,8 @@ function buildSchema(file, html, title, description, canonical, image) {
   if (['index.html', 'about.html', 'contact.html'].includes(relative(root, file).split(sep).join('/'))) {
     graph.push({
       '@type': 'ProfessionalService', '@id': `${origin}/#localbusiness`, name: 'B2B Industrial Solutions',
-      image, url: `${origin}/`, telephone: '+91-9899702065', priceRange: 'Request a quote',
+      image, logo: organization.logo, url: `${origin}/`, telephone: '+91-9899702065', email: 'info@b2bindustrial.in',
+      priceRange: 'Request a quote',
       address: organization.address, areaServed: organization.areaServed,
       sameAs: organization.sameAs,
       hasOfferCatalog: {
