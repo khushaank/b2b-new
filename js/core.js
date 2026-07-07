@@ -194,6 +194,57 @@ document.querySelectorAll('[data-map-load]').forEach((button) => {
 
 document.querySelectorAll('[data-current-year], #copyright-year, #year').forEach((node) => { node.textContent = new Date().getFullYear(); });
 
+const serviceGroups = document.querySelectorAll('.service-directory .service-group');
+const animateServiceGroup = (group, open) => {
+  const content = group.querySelector('.service-link-grid');
+  if (!content || prefersReducedMotion) {
+    group.open = open;
+    return;
+  }
+
+  group.dataset.animating = 'true';
+  if (open) {
+    group.open = true;
+    content.style.height = '0px';
+    content.style.opacity = '0';
+    content.style.overflow = 'hidden';
+    requestAnimationFrame(() => {
+      content.style.height = `${content.scrollHeight}px`;
+      content.style.opacity = '1';
+    });
+  } else {
+    group.dataset.closing = 'true';
+    content.style.height = `${content.scrollHeight}px`;
+    content.style.opacity = '1';
+    content.style.overflow = 'hidden';
+    requestAnimationFrame(() => {
+      content.style.height = '0px';
+      content.style.opacity = '0';
+    });
+  }
+
+  content.addEventListener('transitionend', (event) => {
+    if (event.propertyName !== 'height') return;
+    if (!open) group.open = false;
+    delete group.dataset.animating;
+    delete group.dataset.closing;
+    content.style.height = '';
+    content.style.opacity = '';
+    content.style.overflow = '';
+  }, { once: true });
+};
+
+serviceGroups.forEach((group) => {
+  group.querySelector('summary')?.addEventListener('click', (event) => {
+    event.preventDefault();
+    const shouldOpen = !group.open;
+    serviceGroups.forEach((otherGroup) => {
+      if (otherGroup !== group && otherGroup.open) animateServiceGroup(otherGroup, false);
+    });
+    animateServiceGroup(group, shouldOpen);
+  });
+});
+
 /* Preserve the page that sent a successful enquiry, even across Web3Forms' redirect. */
 const formReturnStorageKey = 'b2b-form-return';
 const getPageLabel = () => {
