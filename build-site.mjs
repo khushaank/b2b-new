@@ -109,7 +109,7 @@ const header = (prefix) => `
       <div class="shell global-bar-inner">
         <a class="brand" href="${prefix}index.html" aria-label="B2B Industrial Solutions home"><img src="${prefix}assets/images/logo.webp" alt="B2B Industrial Solutions"></a>
         <nav class="global-nav" aria-label="Company navigation">
-          <a href="${prefix}about.html">About</a><a href="${prefix}index.html#approach">Process</a><a href="${prefix}case-studies/cement-plant-energy-audit.html">Case studies</a><a href="${prefix}blog/index.html">Insights</a><a href="${prefix}contact.html">Contact</a>
+          <a href="${prefix}about.html">About</a><a href="${prefix}index.html#approach">Process</a><a href="${prefix}case-studies/cement-plant-energy-audit.html">Case studies</a><a href="${prefix}blog/">Insights</a><a href="${prefix}contact.html">Contact</a>
         </nav>
         <div class="header-contact"><span>Pan-India service</span><a href="tel:+919899702065" class="global-phone">+91 98997 02065</a></div>
       </div>
@@ -131,7 +131,7 @@ const footer = (prefix) => `
       <div class="footer-brand"><img src="${prefix}assets/images/logo.webp" alt="B2B Industrial Solutions"><p>Audits, compliance and turnkey engineering solutions for safer, efficient and future-ready industrial operations.</p><a class="footer-cta" href="${prefix}contact.html">Discuss your requirement <span>›</span></a></div>
       <div class="footer-links"><b>Audits &amp; compliance</b><a href="${prefix}services/energy-audits.html">Energy audits</a><a href="${prefix}services/electrical-safety-audit.html">Electrical safety</a><a href="${prefix}services/fire-life-safety.html">Fire &amp; HSE audits</a><a href="${prefix}services/compliances.html">Statutory compliance</a><a href="${prefix}services/environment-compliances.html">Environment compliance</a></div>
       <div class="footer-links"><b>Engineering projects</b><a href="${prefix}services/hvac-projects.html">HVAC &amp; duct cleaning</a><a href="${prefix}services/recd-kit.html">RECD &amp; DFK kits</a><a href="${prefix}services/emission-control.html">Emission control</a><a href="${prefix}services/electrical-projects.html">Electrical projects</a><a href="${prefix}services/fire-projects.html">Fire projects</a></div>
-      <div class="footer-links"><b>Company</b><a href="${prefix}about.html">About us</a><a href="${prefix}index.html#approach">Our process</a><a href="${prefix}blog/index.html">Insights</a><a href="${prefix}service.html">All services</a><a href="${prefix}faq.html">FAQs</a></div>
+      <div class="footer-links"><b>Company</b><a href="${prefix}about.html">About us</a><a href="${prefix}index.html#approach">Our process</a><a href="${prefix}blog/">Insights</a><a href="${prefix}service.html">All services</a><a href="${prefix}faq.html">FAQs</a></div>
       <div class="footer-links footer-contact"><b>Contact</b><a href="tel:+919899702065">+91 98997 02065</a><a href="mailto:info@b2bindustrial.in">info@b2bindustrial.in</a><p>Shop No. 2, Gali No. 4<br>Khandsa Road, Gurugram<br>Haryana 122001</p></div>
     </div>
     <div class="shell footer-credentials"><span><b>ISO 9001:2015</b> Certified</span><span><b>BEE-certified</b> audit experts</span><span><b>Pan-India</b> project delivery</span><span><b>Since 2013</b> industrial expertise</span></div>

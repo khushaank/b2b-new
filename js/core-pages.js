@@ -48,6 +48,8 @@ if (categoryNav) {
   const categorySections = categoryLinks
     .map((link) => document.querySelector(link.getAttribute('href')))
     .filter(Boolean);
+  let lockedCategoryId = '';
+  let unlockCategoryTimer = 0;
 
   const setActiveCategory = (id) => {
     categoryLinks.forEach((link) => {
@@ -56,9 +58,29 @@ if (categoryNav) {
       if (active) {
         link.setAttribute('aria-current', 'true');
         const targetLeft = link.offsetLeft - (categoryNav.clientWidth - link.offsetWidth) / 2;
-        categoryNav.scrollTo({ left: Math.max(0, targetLeft), behavior: 'smooth' });
+        categoryNav.scrollTo({ left: Math.max(0, targetLeft), behavior: 'auto' });
       }
       else link.removeAttribute('aria-current');
+    });
+  };
+
+  const scrollToCategory = (id) => {
+    const section = document.getElementById(id);
+    if (!section) return;
+    lockedCategoryId = id;
+    clearTimeout(unlockCategoryTimer);
+    setActiveCategory(id);
+    const stickyHeaderHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sticky-header-height')) || 0;
+    const stickyNavHeight = categoryShell?.offsetHeight || 0;
+    const targetTop = section.getBoundingClientRect().top + window.scrollY - stickyHeaderHeight - stickyNavHeight - 14;
+    const root = document.documentElement;
+    const previousScrollBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo({ top: Math.max(0, targetTop), behavior: 'auto' });
+    requestAnimationFrame(() => {
+      setActiveCategory(id);
+      root.style.scrollBehavior = previousScrollBehavior;
+      unlockCategoryTimer = setTimeout(() => { lockedCategoryId = ''; }, 450);
     });
   };
 
@@ -84,12 +106,20 @@ if (categoryNav) {
   requestAnimationFrame(updateCategoryControls);
 
   categoryLinks.forEach((link) => {
-    link.addEventListener('click', () => setActiveCategory(link.hash.slice(1)));
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      scrollToCategory(link.hash.slice(1));
+      history.replaceState(null, '', link.hash);
+    });
   });
 
-  if (location.hash && document.querySelector(location.hash)) setActiveCategory(location.hash.slice(1));
+  if (location.hash && document.querySelector(location.hash)) requestAnimationFrame(() => scrollToCategory(location.hash.slice(1)));
 
   const sectionObserver = new IntersectionObserver((entries) => {
+    if (lockedCategoryId) {
+      setActiveCategory(lockedCategoryId);
+      return;
+    }
     const visible = entries
       .filter((entry) => entry.isIntersecting)
       .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];

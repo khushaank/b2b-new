@@ -1,9 +1,21 @@
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('.main-nav');
 const serviceBar = document.querySelector('.service-bar');
+const globalBar = document.querySelector('.global-bar');
 const siteRootUrl = new URL('../', document.currentScript?.src || window.location.href);
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const sitePreloader = document.querySelector('.site-preloader');
+const siteHeader = document.querySelector('.site-header');
+
+const canonicalPath = (() => {
+  const path = window.location.pathname;
+  if (/\/index\.html$/i.test(path)) return path.replace(/index\.html$/i, '');
+  if (/\.html$/i.test(path)) return path.replace(/\.html$/i, '');
+  return '';
+})();
+if (canonicalPath && /^https?:$/.test(window.location.protocol) && window.history?.replaceState) {
+  window.history.replaceState(null, '', `${canonicalPath}${window.location.search}${window.location.hash}`);
+}
 
 /* Replace printed pages with a concise brand and copyright notice. */
 const printProtection = document.createElement('section');
@@ -16,7 +28,7 @@ printProtection.innerHTML = `
   <small>For authorised documents, use the contact form.</small>`;
 document.body.appendChild(printProtection);
 
-/* Keep page text selectable while preventing it from being copied to the clipboard. */
+/* Keep inputs usable while discouraging casual copying, saving, printing, and right-click scraping. */
 const isEditableTarget = (target) => target instanceof Element && Boolean(target.closest('input, textarea, [contenteditable="true"]'));
 let copyNoticeTimer;
 const showCopyNotice = () => {
@@ -25,7 +37,7 @@ const showCopyNotice = () => {
     notice = document.createElement('div');
     notice.className = 'copy-protection-notice';
     notice.setAttribute('role', 'status');
-    notice.textContent = 'Website content can be selected but not copied.';
+    notice.textContent = 'Website content is protected.';
     document.body.appendChild(notice);
   }
   notice.classList.add('visible');
@@ -41,6 +53,28 @@ const showCopyNotice = () => {
   });
 });
 
+document.addEventListener('contextmenu', (event) => {
+  if (isEditableTarget(event.target)) return;
+  event.preventDefault();
+  showCopyNotice();
+});
+
+document.addEventListener('dragstart', (event) => {
+  if (!isEditableTarget(event.target)) event.preventDefault();
+});
+
+document.addEventListener('keydown', (event) => {
+  if (isEditableTarget(event.target)) return;
+  const key = event.key.toLowerCase();
+  const protectedShortcut = (event.ctrlKey || event.metaKey) && ['s', 'p', 'u'].includes(key);
+  const devShortcut = event.key === 'F12' || (event.ctrlKey && event.shiftKey && ['i', 'j', 'c'].includes(key));
+  if (protectedShortcut || devShortcut) {
+    event.preventDefault();
+    event.stopPropagation();
+    showCopyNotice();
+  }
+}, true);
+
 if (sitePreloader) {
   const finishLoading = () => {
     sitePreloader.classList.add('preloader-hidden');
@@ -53,6 +87,20 @@ if (sitePreloader) {
   };
   if (document.readyState === 'complete') requestAnimationFrame(finishLoading);
   else window.addEventListener('load', finishLoading, { once: true });
+}
+
+if (siteHeader) {
+  const updateStickyHeader = () => {
+    siteHeader.classList.toggle('header-compact', window.scrollY > 24);
+    const serviceIndexPage = document.body.classList.contains('services-index-page');
+    const mobileHeaderHeight = (globalBar?.offsetHeight || 0) + (serviceBar?.offsetHeight || 0);
+    const stickyHeight = serviceIndexPage ? globalBar?.offsetHeight || 0 : window.innerWidth <= 820 ? mobileHeaderHeight : siteHeader.offsetHeight;
+    document.documentElement.style.setProperty('--sticky-header-height', `${stickyHeight}px`);
+  };
+  updateStickyHeader();
+  window.addEventListener('scroll', updateStickyHeader, { passive: true });
+  window.addEventListener('resize', updateStickyHeader);
+  window.addEventListener('load', updateStickyHeader, { once: true });
 }
 
 if (navigation && serviceBar) {
@@ -289,8 +337,398 @@ if (formReturnButton) {
   }
 }
 
+document.querySelectorAll('[data-guided-form]').forEach((form) => {
+  const steps = [...form.querySelectorAll('[data-form-step]')];
+  const progress = form.querySelector('[data-form-progress]');
+  const currentNode = form.querySelector('[data-form-current]');
+  const totalNode = form.querySelector('[data-form-total]');
+  const backButton = form.querySelector('[data-form-back]');
+  const nextButton = form.querySelector('[data-form-next]');
+  const submitButton = form.querySelector('[type="submit"]');
+  let index = 0;
+
+  const showStep = (nextIndex) => {
+    index = Math.max(0, Math.min(nextIndex, steps.length - 1));
+    steps.forEach((step, stepIndex) => {
+      const active = stepIndex === index;
+      step.classList.toggle('active', active);
+      step.toggleAttribute('hidden', !active);
+    });
+    if (progress) progress.style.setProperty('--form-progress', `${((index + 1) / steps.length) * 100}%`);
+    if (currentNode) currentNode.textContent = String(index + 1).padStart(2, '0');
+    if (totalNode) totalNode.textContent = String(steps.length).padStart(2, '0');
+    if (backButton) backButton.disabled = index === 0;
+    if (nextButton) nextButton.hidden = index === steps.length - 1;
+    if (submitButton) submitButton.hidden = index !== steps.length - 1;
+    steps[index]?.querySelector('input, textarea')?.focus({ preventScroll: true });
+  };
+
+  const validCurrentStep = () => {
+    const field = steps[index]?.querySelector('input, textarea');
+    return !field || field.reportValidity();
+  };
+
+  form.querySelectorAll('[data-fill-message]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const message = form.querySelector('textarea[name="message"]');
+      if (message) {
+        message.value = button.dataset.fillMessage;
+        message.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    });
+  });
+
+  backButton?.addEventListener('click', () => showStep(index - 1));
+  nextButton?.addEventListener('click', () => {
+    if (validCurrentStep()) showStep(index + 1);
+  });
+  form.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && event.target instanceof HTMLInputElement && index < steps.length - 1) {
+      event.preventDefault();
+      if (validCurrentStep()) showStep(index + 1);
+    }
+  });
+  showStep(0);
+});
+
+const formSuccessMarkup = (heading, text, actionText) => `
+  <div class="form-success-state" role="status" aria-live="polite">
+    <div class="form-success-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 17l5 5 11-13"/></svg></div>
+    <h3>${heading}</h3>
+    <p>${text}</p>
+    <p>Your reference details have been submitted successfully.</p>
+    <button type="button" data-form-reset>${actionText}</button>
+  </div>`;
+
+const formErrorMarkup = (message) => `
+  <div class="form-error-state" role="alert">
+    <h3>Submission failed</h3>
+    <p>${message}</p>
+    <button type="button" data-form-error-dismiss>Try again</button>
+  </div>`;
+
+document.querySelectorAll('[data-smart-contact-form]').forEach((form) => {
+  const steps = [...form.querySelectorAll('[data-step]')];
+  const progressBar = form.querySelector('[data-step-progress]');
+  const stepLabel = form.querySelector('[data-step-label]');
+  const stepTitle = form.querySelector('[data-step-title]');
+  const status = form.querySelector('[data-form-status]');
+  const backButton = form.querySelector('[data-step-back]');
+  const nextButton = form.querySelector('[data-step-next]');
+  const submitButton = form.querySelector('[data-step-submit]');
+  const summaryList = form.querySelector('[data-summary]');
+  const sequenceItems = [...form.querySelectorAll('[data-step-sequence] li')];
+  const totalSteps = steps.length;
+  let stepIndex = 0;
+  let submitting = false;
+
+  const fields = {
+    name: form.querySelector('#name'),
+    company: form.querySelector('#company'),
+    email: form.querySelector('#email'),
+    phone: form.querySelector('#phone'),
+    service: () => form.querySelector('input[name="service"]:checked'),
+    message: form.querySelector('#message'),
+  };
+
+  const setStatus = (message = '', type = '') => {
+    if (!status) return;
+    status.textContent = message;
+    status.classList.toggle('success', type === 'success');
+    status.classList.toggle('error', type === 'error');
+  };
+
+  const setError = (step, message = '') => {
+    const error = step?.querySelector('[data-error]');
+    if (error) error.textContent = message;
+    step?.querySelectorAll('input, textarea').forEach((field) => {
+      field.setAttribute('aria-invalid', message ? 'true' : 'false');
+    });
+  };
+
+  const phoneIsValid = (value) => {
+    const digits = String(value || '').replace(/\D/g, '');
+    return digits.length >= 7 && digits.length <= 15;
+  };
+
+  const escapeHtml = (value) => String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
+  const validateStep = (step, showError = false) => {
+    if (!step) return true;
+    const textField = step.querySelector('input:not([type="radio"]):not([type="hidden"]):not([type="checkbox"]), textarea');
+    const radio = step.querySelector('input[type="radio"]');
+    let valid = true;
+    let message = '';
+
+    if (textField) {
+      const value = textField.value.trim();
+      if (textField.required && !value) {
+        valid = false;
+        message = 'Please complete this field.';
+      } else if (textField.type === 'email' && !textField.validity.valid) {
+        valid = false;
+        message = 'Please enter a valid email address.';
+      } else if (textField.name === 'phone' && !phoneIsValid(value)) {
+        valid = false;
+        message = 'Please enter a valid phone number.';
+      } else if (textField.minLength > 0 && value.length < textField.minLength) {
+        valid = false;
+        message = `Please enter at least ${textField.minLength} characters.`;
+      }
+    } else if (radio && !fields.service()) {
+      valid = false;
+      message = 'Please choose a service.';
+    }
+
+    setError(step, showError && !valid ? message : '');
+    return valid;
+  };
+
+  const currentStep = () => steps[stepIndex];
+
+  const updateSummary = () => {
+    if (!summaryList) return;
+    const rows = [
+      ['Name', fields.name?.value.trim()],
+      ['Company', fields.company?.value.trim()],
+      ['Email', fields.email?.value.trim()],
+      ['Phone', fields.phone?.value.trim()],
+      ['Service', fields.service()?.value],
+      ['Requirement', fields.message?.value.trim()],
+    ];
+    summaryList.innerHTML = rows
+      .map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value || 'Not provided')}</dd></div>`)
+      .join('');
+  };
+
+  const showStep = (nextIndex) => {
+    stepIndex = Math.max(0, Math.min(nextIndex, totalSteps - 1));
+    steps.forEach((step, index) => {
+      const active = index === stepIndex;
+      step.classList.toggle('active', active);
+      step.toggleAttribute('hidden', !active);
+      if (active) step.setAttribute('aria-current', 'step');
+      else step.removeAttribute('aria-current');
+    });
+
+    const activeStep = currentStep();
+    const progress = ((stepIndex + 1) / totalSteps) * 100;
+    form.style.setProperty('--step-progress', `${progress}%`);
+    if (progressBar) progressBar.style.width = `${progress}%`;
+    if (stepLabel) stepLabel.textContent = `Step ${stepIndex + 1} of ${totalSteps}`;
+    if (stepTitle) stepTitle.textContent = activeStep?.dataset.stepName || '';
+    sequenceItems.forEach((item, index) => {
+      const active = index === stepIndex;
+      item.classList.toggle('active', active);
+      item.classList.toggle('completed', index < stepIndex);
+      if (active) item.setAttribute('aria-current', 'step');
+      else item.removeAttribute('aria-current');
+    });
+    if (backButton) backButton.disabled = stepIndex === 0 || submitting;
+    if (nextButton) {
+      nextButton.hidden = stepIndex === totalSteps - 1;
+      nextButton.disabled = !validateStep(activeStep, false) || submitting;
+    }
+    if (submitButton) {
+      submitButton.hidden = stepIndex !== totalSteps - 1;
+      submitButton.disabled = submitting;
+    }
+    setStatus();
+    if (stepIndex === totalSteps - 1) updateSummary();
+    activeStep?.querySelector('input:not([type="radio"]), textarea')?.focus({ preventScroll: true });
+  };
+
+  const goNext = () => {
+    if (submitting) return;
+    const step = currentStep();
+    if (!validateStep(step, true)) return;
+    showStep(stepIndex + 1);
+  };
+
+  const validateBeforeSubmit = () => {
+    for (let index = 0; index < totalSteps - 1; index += 1) {
+      if (!validateStep(steps[index], true)) {
+        showStep(index);
+        return false;
+      }
+    }
+    updateSummary();
+    return true;
+  };
+
+  form.addEventListener('input', () => {
+    validateStep(currentStep(), false);
+    if (nextButton && stepIndex < totalSteps - 1) nextButton.disabled = !validateStep(currentStep(), false) || submitting;
+  });
+
+  form.addEventListener('change', () => {
+    validateStep(currentStep(), false);
+    if (nextButton && stepIndex < totalSteps - 1) nextButton.disabled = !validateStep(currentStep(), false) || submitting;
+  });
+
+  nextButton?.addEventListener('click', goNext);
+  backButton?.addEventListener('click', () => {
+    if (!submitting) showStep(stepIndex - 1);
+  });
+
+  form.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' || submitting) return;
+    const target = event.target;
+    const isTextarea = target instanceof HTMLTextAreaElement;
+    const isRadio = target instanceof HTMLInputElement && target.type === 'radio';
+    if (isTextarea && !event.ctrlKey && !event.metaKey) return;
+    if (stepIndex < totalSteps - 1 && (target instanceof HTMLInputElement || isTextarea || isRadio)) {
+      event.preventDefault();
+      goNext();
+    }
+  });
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (submitting || !validateBeforeSubmit()) return;
+    submitting = true;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.classList.add('is-sending');
+      submitButton.textContent = 'Sending...';
+    }
+    if (backButton) backButton.disabled = true;
+    if (nextButton) nextButton.disabled = true;
+    setStatus('Sending your enquiry securely...', '');
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      let result = {};
+      try { result = await response.json(); } catch (_) { /* Some form providers return empty success bodies. */ }
+      if (!response.ok || result.success === false) throw new Error(result.message || 'Submission failed');
+      const success = document.createElement('div');
+      success.innerHTML = formSuccessMarkup(
+        'Enquiry received',
+        'Thank you. Our team will review your requirement and contact you shortly.',
+        'Send another enquiry'
+      );
+      form.hidden = true;
+      form.after(success.firstElementChild);
+      form.nextElementSibling?.querySelector('[data-form-reset]')?.addEventListener('click', () => {
+        form.nextElementSibling?.remove();
+        form.reset();
+        submitting = false;
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.classList.remove('is-sending');
+          submitButton.textContent = 'Send enquiry';
+        }
+        form.hidden = false;
+        showStep(0);
+      });
+    } catch (_) {
+      submitting = false;
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.classList.remove('is-sending');
+        submitButton.textContent = 'Send enquiry';
+      }
+      if (backButton) backButton.disabled = stepIndex === 0;
+      if (nextButton && stepIndex < totalSteps - 1) nextButton.disabled = !validateStep(currentStep(), false);
+      setStatus('We could not send the enquiry right now. Please check your connection and try again, or call us directly.', 'error');
+    }
+  });
+
+  showStep(0);
+});
+
+document.querySelectorAll('.quote-form form').forEach((form) => {
+  if (form.dataset.enhancedSubmit) return;
+  form.dataset.enhancedSubmit = 'true';
+  const button = form.querySelector('button[type="submit"], input[type="submit"]');
+  const originalButtonText = button?.textContent || button?.value || 'Submit';
+  let submitting = false;
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (submitting || !form.reportValidity()) return;
+    submitting = true;
+    form.querySelector('.form-error-state')?.remove();
+    form.querySelectorAll('input, textarea, select, button').forEach((field) => { field.disabled = true; });
+    if (button) {
+      button.classList.add('is-sending');
+      button.textContent = 'Sending...';
+    }
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      let result = {};
+      try { result = await response.json(); } catch (_) { /* Some form providers return empty success bodies. */ }
+      if (!response.ok || result.success === false) throw new Error(result.message || 'Submission failed');
+      const success = document.createElement('div');
+      success.innerHTML = formSuccessMarkup(
+        'Request received',
+        'Thank you. Our team will review your requirements and contact you to discuss the next steps.',
+        'Submit another request'
+      );
+      const sidebar = form.closest('.sidebar');
+      if (sidebar) sidebar.scrollTop = 0;
+      form.hidden = true;
+      const successState = success.firstElementChild;
+      form.after(successState);
+      const successHeading = successState?.querySelector('h3');
+      successHeading?.setAttribute('tabindex', '-1');
+      successHeading?.focus({ preventScroll: true });
+      form.nextElementSibling?.querySelector('[data-form-reset]')?.addEventListener('click', () => {
+        form.nextElementSibling?.remove();
+        form.reset();
+        form.querySelectorAll('input, textarea, select, button').forEach((field) => { field.disabled = false; });
+        if (button) {
+          button.classList.remove('is-sending');
+          button.textContent = originalButtonText;
+        }
+        submitting = false;
+        form.hidden = false;
+      });
+    } catch (_) {
+      submitting = false;
+      form.querySelectorAll('input, textarea, select, button').forEach((field) => { field.disabled = false; });
+      if (button) {
+        button.classList.remove('is-sending');
+        button.textContent = originalButtonText;
+      }
+      const error = document.createElement('div');
+      error.innerHTML = formErrorMarkup('Please check your connection and try again, or call us directly.');
+      const errorState = error.firstElementChild;
+      form.append(errorState);
+      errorState?.setAttribute('tabindex', '-1');
+      errorState?.focus({ preventScroll: true });
+      form.querySelector('[data-form-error-dismiss]')?.addEventListener('click', () => {
+        form.querySelector('.form-error-state')?.remove();
+      });
+    }
+  });
+});
+
 document.querySelectorAll('.u-email-link[data-user][data-domain]').forEach((link) => {
   const address = `${link.dataset.user}@${link.dataset.domain}`;
+  link.href = `mailto:${address}`;
+  link.setAttribute('aria-label', 'Email B2B Industrial Solutions');
+});
+
+document.querySelectorAll('.protected-email[data-user][data-domain][data-tld]').forEach((link) => {
+  const { user, domain, tld } = link.dataset;
+  if (!user || !domain || !tld) return;
+  const address = `${user}@${domain}.${tld}`;
+  link.textContent = address;
   link.href = `mailto:${address}`;
   link.setAttribute('aria-label', 'Email B2B Industrial Solutions');
 });
@@ -362,9 +800,8 @@ if (!prefersReducedMotion && 'IntersectionObserver' in window) {
     });
   }, { threshold: .08, rootMargin: '0px 0px -8% 0px' });
 
-  [...new Set(revealTargets)].forEach((element, index) => {
+  [...new Set(revealTargets)].forEach((element) => {
     element.classList.add('scroll-reveal');
-    element.style.setProperty('--reveal-delay', `${(index % 3) * 35}ms`);
     revealObserver.observe(element);
   });
 } else {
@@ -419,10 +856,10 @@ if (commandHost) {
 
   const resolvePageUrl = (rawUrl) => {
     const clean = String(rawUrl || '/').replace(/^\/+/, '');
-    if (!clean || clean === 'index') return new URL('index.html', siteRootUrl).href;
-    if (clean.endsWith('/')) return new URL(`${clean}index.html`, siteRootUrl).href;
+    if (!clean || clean === 'index') return new URL('', siteRootUrl).href;
+    if (clean.endsWith('/')) return new URL(clean, siteRootUrl).href;
     if (/\.[a-z0-9]+$/i.test(clean)) return new URL(clean, siteRootUrl).href;
-    return new URL(`${clean}.html`, siteRootUrl).href;
+    return new URL(clean, siteRootUrl).href;
   };
 
   const sectionLabel = (url) => {

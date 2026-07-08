@@ -1572,8 +1572,11 @@ blockquote {
 }
 
 .site-header {
-  position: relative;
+  position: sticky;
+  z-index: 80;
+  top: 0;
   background: white;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .06);
 }
 
 .global-bar {
@@ -2399,6 +2402,9 @@ footer {
 }
 
 .service-bar {
+  position: relative;
+  z-index: auto;
+  top: auto;
   background: rgba(250, 250, 252, .92);
 }
 

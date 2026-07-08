@@ -13,20 +13,25 @@
   body.motion-ready .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   a, button, summary { touch-action: manipulation; }
   .shell, .container { width: min(680px, calc(100% - 34px)); }
+  .site-header { display: contents; position: static; }
   .global-bar, .global-bar-inner { height: 68px; }
+  .global-bar { position: relative; z-index: 80; background: #fff; }
   .brand { width: 184px; }
   .brand img { transform: scale(1.18); }
   .global-nav { display: none; }
   .header-contact { margin-left: auto; padding-left: 16px; }
   .header-contact > span { display: none; }
   .global-phone { display: block; font-size: 12px; }
-  .service-bar { background: var(--pearl); backdrop-filter: none; }
+  .service-bar { position: sticky; z-index: 85; top: 0; background: var(--pearl); backdrop-filter: none; box-shadow: 0 1px 0 rgba(0,0,0,.08); }
   .nav-wrap { height: 54px; }
+  .site-header.header-compact .global-bar, .site-header.header-compact .global-bar-inner { height: 68px; }
+  .site-header.header-compact .brand img { height: 52px; transform: scale(1.18); }
+  .site-header.header-compact .nav-wrap { height: 54px; }
   .menu-toggle { z-index: 3; display: block; }
-  .main-nav { position: fixed; z-index: 2; inset: 122px 0 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: clamp(16px,3vh,25px); margin: 0; padding: clamp(26px,6vh,58px) 10%; overflow: hidden; overscroll-behavior: none; background: var(--pearl); opacity: 0; visibility: hidden; transform: translateY(-10px); transition: .25s; }
+  .main-nav { position: fixed; z-index: 2; inset: var(--sticky-header-height, 54px) 0 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: clamp(16px,3vh,25px); margin: 0; padding: clamp(26px,6vh,58px) 10%; overflow-y: auto; overscroll-behavior: contain; background: var(--pearl); opacity: 0; visibility: hidden; transform: translateY(-10px); transition: .25s; }
   .main-nav.open { opacity: 1; visibility: visible; transform: none; }
   .main-nav a { font-size: 25px; }
-  .services-trigger { justify-content: space-between; width: 100%; }
+  .services-trigger { justify-content: flex-start; width: auto; gap: 14px; }
   .main-nav .services-mega { display: none; }
   .services-mega { position: static; width: 100%; border: 0; background: transparent; backdrop-filter: none; }
   .service-bar.mega-open .services-mega { max-height: 900px; }
@@ -36,10 +41,10 @@
   .mega-column { gap: 15px; }
   .mega-column a { font-size: 17px; }
   .mega-backdrop { display: none; }
-  .core-pages-page .category-nav-shell { top: 8px; }
+  .core-pages-page .category-nav-shell { top: calc(var(--sticky-header-height, 54px) + 8px); }
   .core-pages-page .category-nav { scroll-snap-type: x proximity; overscroll-behavior-inline: contain; -webkit-overflow-scrolling: touch; }
   .core-pages-page .category-btn { scroll-snap-align: start; }
-  .core-pages-page .service-category-block { scroll-margin-top: 92px; }
+  .core-pages-page .service-category-block { scroll-margin-top: calc(var(--sticky-header-height, 54px) + 92px); }
   .nav-cta { margin-left: auto; }
   .page-context .shell { grid-template-columns: 1fr auto; }
   .page-context span { display: none; }
@@ -73,12 +78,15 @@
   .global-bar, .global-bar-inner { height: 64px; }
   .brand { width: 158px; }
   .brand img { max-width: 100%; transform: none; }
+  .site-header.header-compact .global-bar, .site-header.header-compact .global-bar-inner { height: 64px; }
+  .site-header.header-compact .brand img { height: 52px; transform: none; }
   .header-contact { padding: 0; border: 0; }
   .global-phone { font-size: 11px; }
   .nav-wrap { height: 52px; }
-  .main-nav { inset: 116px 0 0; }
-  .core-pages-page .category-nav-shell { top: 6px; margin-bottom: 55px; }
-  .core-pages-page .service-category-block { scroll-margin-top: 88px; }
+  .site-header.header-compact .nav-wrap { height: 52px; }
+  .main-nav { inset: var(--sticky-header-height, 52px) 0 0; }
+  .core-pages-page .category-nav-shell { top: calc(var(--sticky-header-height, 52px) + 6px); margin-bottom: 55px; }
+  .core-pages-page .service-category-block { scroll-margin-top: calc(var(--sticky-header-height, 52px) + 88px); }
   .nav-cta { min-height: 34px; padding-inline: 14px; font-size: 11px; }
   .page-context b { font-size: 11px; }
   .page-context a { font-size: 11px; }

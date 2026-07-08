@@ -24,7 +24,20 @@ createServer(async (request, response) => {
 
   try {
     if (!file.startsWith(root)) throw new Error('Invalid path');
-    if ((await stat(file)).isDirectory()) file = join(file, 'index.html');
+    try {
+      if ((await stat(file)).isDirectory()) file = join(file, 'index.html');
+    } catch (error) {
+      if (extname(file)) throw error;
+      const htmlFile = `${file}.html`;
+      const indexFile = join(file, 'index.html');
+      try {
+        await stat(htmlFile);
+        file = htmlFile;
+      } catch {
+        await stat(indexFile);
+        file = indexFile;
+      }
+    }
     response.writeHead(200, { 'Content-Type': types[extname(file)] || 'application/octet-stream' });
     createReadStream(file).pipe(response);
   } catch {
