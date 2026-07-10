@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"><ShortName>B2B Industrial</ShortName><Description>Search B2B Industrial Solutions</Description><InputEncoding>UTF-8</InputEncoding><Image height="32" width="32" type="image/png">https://b2bindustrial.in/assets/images/favicon.png</Image><Url type="text/html" template="https://b2bindustrial.in/?q={searchTerms}" /></OpenSearchDescription>

@@ -6,7 +6,7 @@ const htmlFiles = [];
 
 function walk(directory) {
   for (const entry of readdirSync(directory, { withFileTypes: true })) {
-    if (entry.name === '.git') continue;
+    if (entry.name === '.git' || entry.name === 'node_modules') continue;
     const fullPath = join(directory, entry.name);
     if (entry.isDirectory()) walk(fullPath);
     else if (extname(entry.name) === '.html') htmlFiles.push(fullPath);
@@ -51,6 +51,9 @@ for (const file of htmlFiles) {
     const type = tag.match(/\btype=["']([^"']+)["']/i)?.[1]?.toLowerCase() || '';
     if (['hidden', 'submit', 'reset', 'button', 'image', 'file', 'checkbox', 'radio'].includes(type)) continue;
     if (!/\bautocomplete=["'][^"']+["']/i.test(tag)) errors.push(`${display}: form field missing autocomplete ${tag.slice(0, 110)}`);
+  }
+  for (const form of html.match(/<form\b(?=[^>]*\baction=["']https:\/\/api\.web3forms\.com\/submit["'])[^>]*>[\s\S]*?<\/form>/gi) || []) {
+    if (!/\bname=["']botcheck["']/.test(form)) errors.push(`${display}: Web3Forms form missing botcheck`);
   }
   const main = html.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0] || '';
   if (!/<img\b/i.test(main)) errors.push(`${display}: main content has no image`);

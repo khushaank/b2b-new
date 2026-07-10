@@ -59,7 +59,6 @@ function cleanTitle(title) {
 
 function canonicalFor(file) {
   let path = relative(root, file).split(sep).join('/');
-  if (path.endsWith(' copy.html')) path = path.replace(' copy.html', '.html');
   if (path === 'index.html') return `${origin}/`;
   if (path.endsWith('/index.html')) return `${origin}/${path.replace(/index\.html$/, '')}`;
   return `${origin}/${path.replace(/\.html$/, '')}`;
@@ -294,7 +293,7 @@ for (const file of htmlFiles) {
   const description = decodeEntities(existingDescription || fallbackText || `${cleanTitle(title)} by B2B Industrial Solutions across India.`).slice(0, 180);
   const canonical = canonicalFor(file);
   const path = relative(root, file).split(sep).join('/');
-  const noindex = excludedNames.has(path.split('/').pop()) || path.includes(' copy.html');
+  const noindex = excludedNames.has(path.split('/').pop());
   const socialType = ['blog', 'case-study'].includes(pageType(file)) ? 'article' : 'website';
   const editorial = editorialAsset(file, title);
   const isHomepage = path === 'index.html';
@@ -306,8 +305,6 @@ for (const file of htmlFiles) {
     : editorial.alt;
   const schema = buildSchema(file, html, title, description, canonical, socialImage);
   const prefix = relativePrefix(file);
-  html = html.replace(/href=["']#["'](\s+class=["'][^"']*\brelated-link\b[^"']*["'])/gi, `href="${prefix}contact.html"$1`);
-
   const seoBlock = `
   <!-- SEO:START -->
   <link rel="canonical" href="${escapeHtml(canonical)}">
