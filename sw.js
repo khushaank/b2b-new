@@ -1,17 +1,15 @@
 const CACHE_PREFIX = 'b2b-industrial-';
-const CACHE = `${CACHE_PREFIX}v8`;
+const CACHE = `${CACHE_PREFIX}v10`;
 const scopedUrl = (path = '') => new URL(path, self.registration.scope).href;
-const OFFLINE_URL = scopedUrl('offline.html');
 const CORE = [
   '',
   'index.html',
-  'offline.html',
-  'css/core.min.css',
-  'css/content.min.css',
-  'css/core-pages.min.css',
-  'css/responsive.min.css',
-  'js/core.min.js',
-  'js/core-pages.min.js',
+  'css/core.css',
+  'css/content.css',
+  'css/core-pages.css',
+  'css/responsive.css',
+  'js/core.js',
+  'js/core-pages.js',
   'assets/images/logo.webp',
   'assets/images/pwa/icon-192.webp'
 ].map(scopedUrl);
@@ -31,7 +29,7 @@ self.addEventListener('fetch', (event) => {
       const copy = response.clone();
       caches.open(CACHE).then((cache) => cache.put(event.request, copy)).catch(() => {});
       return response;
-    }).catch(async () => (await caches.match(event.request)) || caches.match(OFFLINE_URL)));
+    }).catch(async () => (await caches.match(event.request)) || new Response('', { status: 503, statusText: 'Service Unavailable' })));
     return;
   }
   const requestUrl = new URL(event.request.url);
@@ -43,7 +41,7 @@ self.addEventListener('fetch', (event) => {
         caches.open(CACHE).then((cache) => cache.put(event.request, copy)).catch(() => {});
       }
       return response;
-    }).catch(() => caches.match(event.request)));
+    }).catch(async () => (await caches.match(event.request)) || new Response('', { status: 504, statusText: 'Gateway Timeout' })));
     return;
   }
   event.respondWith(caches.match(event.request).then((cached) => cached || fetch(event.request).then((response) => {
@@ -52,5 +50,5 @@ self.addEventListener('fetch', (event) => {
       caches.open(CACHE).then((cache) => cache.put(event.request, copy)).catch(() => {});
     }
     return response;
-  })));
+  }).catch(() => new Response('', { status: 504, statusText: 'Gateway Timeout' }))));
 });

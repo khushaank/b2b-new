@@ -8,10 +8,10 @@
     content="Learn how to improve industrial safety, compliance, and energy efficiency with expert-backed guides on audits, HVAC, fire safety, and electrical systems.">
   <title>Industrial Pulse | B2B Industrial Solutions</title>
 
-  <link rel="stylesheet" href="../css/core.min.css">
-  <link rel="stylesheet" href="../css/content.min.css">
-  <link rel="stylesheet" href="../css/blogs.min.css">
-  <link rel="stylesheet" href="../css/responsive.min.css">
+  <link rel="stylesheet" href="../css/core.css">
+  <link rel="stylesheet" href="../css/content.css">
+  <link rel="stylesheet" href="../css/blogs.css">
+  <link rel="stylesheet" href="../css/responsive.css">
   <!-- SEO:START -->
   <link rel="canonical" href="https://b2bindustrial.in/blog/">
   <link rel="alternate" hreflang="en-IN" href="https://b2bindustrial.in/blog/">
@@ -19,10 +19,8 @@
   <link rel="icon" href="../assets/images/favicon.png" type="image/png" sizes="318x318">
   <link rel="apple-touch-icon" href="../assets/images/favicon.png">
   <meta name="msapplication-config" content="../browserconfig.xml">
-  <link rel="alternate" type="application/rss+xml" title="B2B Industrial Insights"
-    href="https://b2bindustrial.in/rss.xml">
-  <link rel="search" type="application/opensearchdescription+xml" title="B2B Industrial Solutions"
-    href="https://b2bindustrial.in/opensearch.xml">
+  <link rel="alternate" type="application/rss+xml" title="B2B Industrial Insights" href="https://b2bindustrial.in/rss.xml">
+  <link rel="search" type="application/opensearchdescription+xml" title="B2B Industrial Solutions" href="https://b2bindustrial.in/opensearch.xml">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="author" content="B2B Industrial Solutions">
   <meta name="publisher" content="B2B Industrial Solutions">
@@ -31,19 +29,15 @@
   <meta property="og:site_name" content="B2B Industrial Solutions">
   <meta property="og:locale" content="en_IN">
   <meta property="og:title" content="Industrial Pulse | B2B Industrial Solutions">
-  <meta property="og:description"
-    content="Learn how to improve industrial safety, compliance, and energy efficiency with expert-backed guides on audits, HVAC, fire safety, and electrical systems.">
+  <meta property="og:description" content="Learn how to improve industrial safety, compliance, and energy efficiency with expert-backed guides on audits, HVAC, fire safety, and electrical systems.">
   <meta property="og:url" content="https://b2bindustrial.in/blog/">
   <meta property="og:image" content="https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp">
-  <meta property="og:image:alt"
-    content="Industrial engineering workspace with technical drawings, instruments and performance data">
+  <meta property="og:image:alt" content="Industrial engineering workspace with technical drawings, instruments and performance data">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Industrial Pulse | B2B Industrial Solutions">
-  <meta name="twitter:description"
-    content="Learn how to improve industrial safety, compliance, and energy efficiency with expert-backed guides on audits, HVAC, fire safety, and electrical systems.">
+  <meta name="twitter:description" content="Learn how to improve industrial safety, compliance, and energy efficiency with expert-backed guides on audits, HVAC, fire safety, and electrical systems.">
   <meta name="twitter:image" content="https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp">
-  <meta name="twitter:image:alt"
-    content="Industrial engineering workspace with technical drawings, instruments and performance data">
+  <meta name="twitter:image:alt" content="Industrial engineering workspace with technical drawings, instruments and performance data">
   <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
@@ -153,17 +147,7 @@
 </head>
 
 <body class="interior-page blogs-page">
-  <!-- PRELOADER:START -->
-  <div class="site-preloader" role="status" aria-label="Loading B2B Industrial Solutions">
-    <div class="preloader-inner">
-      <img src="../assets/images/logo.webp" alt="B2B Industrial Solutions" decoding="async">
-      <div class="preloader-track" aria-hidden="true"><span></span></div>
-      <small>Engineering progress</small>
-    </div>
-  </div>
-  <!-- PRELOADER:END -->
-
-  <a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header" id="top">
     <div class="global-bar">
@@ -210,24 +194,12 @@
           </dl>
         </div>
 
-        <div class="insights-discovery" aria-label="Insight topics">
-          <div class="topic-filter-row" role="list" aria-label="Topics">
-            <button class="topic-filter active" type="button" aria-pressed="true">All</button>
-            <button class="topic-filter" type="button">Compliance</button>
-            <button class="topic-filter" type="button">Energy</button>
-            <button class="topic-filter" type="button">Safety</button>
-            <button class="topic-filter" type="button">Fire Safety</button>
-            <button class="topic-filter" type="button">HVAC</button>
-            <button class="topic-filter" type="button">ESG</button>
-            <button class="topic-filter" type="button">Electrical Safety</button>
-            <button class="topic-filter" type="button">Water</button>
-            <button class="topic-filter" type="button">Operations</button>
-            <button class="topic-filter" type="button">Smart Factory</button>
-          </div>
-          <div class="insights-results-row">
-            <p>Showing 17 of 17 insights</p>
-          </div>
+        <div class="insights-search" role="search">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m16.5 16.5 4 4"></path></svg>
+          <input id="insightTitleSearch" type="search" autocomplete="off" aria-label="Search articles" placeholder="Search articles">
         </div>
+        <p class="insights-search-status" data-search-status role="status" aria-live="polite"></p>
+        <p class="insights-empty" id="insightsEmpty" hidden>No article titles match that search. Try fewer words.</p>
 
         <section class="insights-section featured-insights" aria-labelledby="featured-insights-title">
           <div class="insights-section-heading">
@@ -471,15 +443,16 @@
             </a>
           </article>
         </div>
-          <div class="load-more-wrap">
-            <button type="button" id="loadMoreInsights" class="load-more-insights">Load more insights</button>
-            <p data-remaining-count></p>
-          </div>
         </section>
       </div>
     </section>
 
-  </main>
+    <!-- EDITORIAL:START -->
+    <figure class="page-editorial-visual">
+      <img src="../assets/images/editorial/engineering-knowledge.webp" alt="Industrial engineering workspace with technical drawings, instruments and performance data" width="1600" height="900" loading="lazy" decoding="async" fetchpriority="high">
+    </figure>
+    <!-- EDITORIAL:END -->
+</main>
 
   <footer id="footer">
     <div class="shell footer-top">
@@ -505,12 +478,7 @@
       <div class="footer-links footer-contact"><b>Contact</b><a href="tel:+919899702065">+91 98997 02065</a><a
           href="../contact.html#form" class="u-email-link" data-user="info" data-domain="b2bindustrial.in">Email us</a>
         <p>Shop No. 2, Gali No. 4<br>Khandsa Road, Gurugram<br>Haryana 122001</p>
-        <!-- FOOTER-SOCIAL:START -->
-        <div class="footer-socials" aria-label="Connect with us"><a href="https://wa.me/919899702065" target="_blank"
-            rel="noopener noreferrer">WhatsApp</a><a href="../contact.html#form" class="u-email-link" data-user="info"
-            data-domain="b2bindustrial.in">Email us</a><a href="https://linkedin.b2bindustrial.in/" target="_blank"
-            rel="noopener noreferrer">LinkedIn</a></div><!-- FOOTER-SOCIAL:END -->
-      </div>
+<!-- FOOTER-SOCIAL:START --><div class="footer-socials" aria-label="Connect with us"><a href="https://wa.me/919899702065" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="u-email-link" href="../contact.html#form" data-user="info" data-domain="b2bindustrial.in">Email us</a><a href="https://linkedin.b2bindustrial.in/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div><!-- FOOTER-SOCIAL:END --></div>
     </div>
     <div class="shell footer-credentials"><span><b>ISO 9001:2015</b> Certified</span><span><b>BEE-certified</b> audit
         experts</span><span><b>Pan-India</b> project delivery</span><span><b>Since 2013</b> industrial expertise</span>
@@ -519,8 +487,8 @@
       <div><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a><a href="#top">Back to top ↑</a></div>
     </div>
   </footer>
-  <script src="../js/core.min.js" defer></script>
-  <script src="../js/blogs.min.js" defer></script>
+  <script src="../js/core.js" defer></script>
+  <script src="../js/blogs.js" defer></script>
 
 </body>
 

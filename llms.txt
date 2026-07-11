@@ -1,52 +1,27 @@
 # B2B Industrial Solutions
 
-Website: https://b2bindustrial.in/
+> Pan-India industrial audit, statutory compliance, safety, energy, HVAC, emission-control and turnkey engineering services. Established in 2013 and headquartered in Gurugram, Haryana, India.
 
-B2B Industrial Solutions is an India-based industrial audit, compliance and engineering services company. The company supports manufacturing plants, commercial facilities, hospitals, hotels, IT parks, real estate assets and industrial operators with audits, statutory compliance support and project execution.
-
-## Core Services
-
-- Energy audits and comprehensive energy audits
-- Electrical safety audits, power quality analysis and thermography
-- Fire safety, HSE, HIRA, risk management and fire load studies
-- Statutory compliance, NOC coordination and environmental approvals
-- HVAC projects, indoor air quality work and robotic duct cleaning
-- RECD, DFK, DG emission compliance and emission-control systems
-- Lighting, electrical, fire protection and turnkey project management
-- Carbon footprint studies, ESG audits and renewable energy support
-
-## Important URLs
-
-- Home: https://b2bindustrial.in/
-- All services: https://b2bindustrial.in/service
-- Contact: https://b2bindustrial.in/contact
-- About: https://b2bindustrial.in/about
-- Insights: https://b2bindustrial.in/blog/
-- Sitemap: https://b2bindustrial.in/sitemap.xml
-
-## Contact
-
+## Official identity
+- Legal and trading name: B2B Industrial Solutions
+- Website: https://b2bindustrial.in/
+- Service area: India
+- Languages: English and Hindi
 - Phone: +91 98997 02065
 - Email: info@b2bindustrial.in
 - Address: Shop No. 2, Gali No. 4, Khandsa Road, Gurugram, Haryana 122001, India
 
-For quotes, audits, compliance support and site visits, use the contact page: https://b2bindustrial.in/contact
-
----
-
-# B2B Industrial Solutions
-
-> B2B Industrial Solutions provides industrial audits, statutory compliance, fire and HSE safety, energy, electrical, HVAC, emission-control and turnkey engineering services across India.
-
-## Primary pages
+## Authoritative navigation
 - [Home](https://b2bindustrial.in/)
-- [Services](https://b2bindustrial.in/service)
+- [All services](https://b2bindustrial.in/service)
 - [Industries served](https://b2bindustrial.in/industries/)
-- [About](https://b2bindustrial.in/about)
+- [About the company](https://b2bindustrial.in/about)
 - [Industrial insights](https://b2bindustrial.in/blog/)
 - [Service locations](https://b2bindustrial.in/locations/)
-- [Engineering tools](https://b2bindustrial.in/tools/)
-- [Contact](https://b2bindustrial.in/contact)
+- [Engineering calculators](https://b2bindustrial.in/tools/)
+- [Contact and quotation requests](https://b2bindustrial.in/contact)
+- [XML sitemap](https://b2bindustrial.in/sitemap.xml)
+- [RSS feed](https://b2bindustrial.in/rss.xml)
 
 ## Industries
 - [Energy, Fire & Electrical Audits for Commercial Buildings](https://b2bindustrial.in/industries/commercial-buildings): Integrated energy, HVAC, indoor-air-quality, electrical and fire-safety audits for offices, malls, hotels and commercial campuses across India.
@@ -147,7 +122,27 @@ For quotes, audits, compliance support and site visits, use the contact page: ht
 - [Water Audit Services India | Conservation, Compliance](https://b2bindustrial.in/services/water-audit): Comprehensive Water Audits for industrial plants. Water balance studies, CGWA compliance, waste water minimization, and rain water harvesting solutions.
 - [Workplace Well-being Audit | Employee Safety India](https://b2bindustrial.in/services/well-being-audit): Comprehensive workplace well-being audits covering physical environment, mental health, ergonomics, stress management, and employee wellness programs for a healthier workforce.
 
-## Contact
-- Email: info@b2bindustrial.in
-- Phone: +91 98997 02065
-- Service area: India
+## Practical guidance and insights
+- [AI Predictive Maintenance for Industrial Plants](https://b2bindustrial.in/blog/ai-predictive-maintenance-industrial-plants): How AI-driven predictive maintenance helps factories reduce unplanned downtime, improve asset reliability, and prioritize maintenance budgets.
+- [Annual Energy Audit: Practical ROI Guide](https://b2bindustrial.in/blog/annual-energy-audit-manufacturing): Learn why annual energy audits are essential for manufacturing units, where energy loss occurs, and how to prioritize high-ROI actions.
+- [Battery Energy Storage for Factory Backup and Peak Shaving](https://b2bindustrial.in/blog/battery-energy-storage-factory-backup): Where battery energy storage systems fit in factories, from backup power and peak shaving to solar integration and resilience planning.
+- [The 7-Step BEE Certified Energy Audit Process](https://b2bindustrial.in/blog/bee-energy-audit-process): A detailed walkthrough of the Bureau of Energy Efficiency (BEE) certified industrial energy audit process, from data collection to final reporting.
+- [CPCB 4+ Norms for DG Sets: 2026 Compliance Guide](https://b2bindustrial.in/blog/cpcb-4-plus-dg-norms): A practical 2026 guide to CPCB 4+ norms for DG sets, including key requirements, compliance roadmap, and common audit mistakes.
+- [CPCB Emission Monitoring: What Factories Should Track](https://b2bindustrial.in/blog/cpcb-emission-monitoring-factories): A concise guide to emission monitoring priorities, documentation, stack testing, OCEMS readiness, and compliance controls.
+- [Digital Twins for Energy Efficiency in Manufacturing](https://b2bindustrial.in/blog/digital-twins-energy-efficiency): Why digital twins are useful for energy baselining, process optimization, and scenario planning in energy-intensive facilities.
+- [Detailed Electrical Safety Audit Checklist for Industries](https://b2bindustrial.in/blog/electrical-safety-audit-checklist): Download or review the comprehensive industrial Electrical Safety Audit (ESA) checklist covering HT panels, transformers, grounding, and thermography.
+- [The Importance of Electrical Thermography](https://b2bindustrial.in/blog/electrical-thermography-importance): Discover why electrical thermography is a crucial predictive maintenance tool for identifying hidden electrical faults before they cause downtime.
+- [How Much Does an Industrial Energy Audit Cost in India?](https://b2bindustrial.in/blog/energy-audit-cost-india): Discover the exact factors that determine the cost of a BEE Certified Industrial Energy Audit in India, average pricing, and the typical ROI payback periods.
+- [Navigating Compliances:Guide for Manufacturers](https://b2bindustrial.in/blog/environmental-compliances-guide): A straightforward guide to understanding and managing environmental compliances, NOCs, and emission limits for your manufacturing plant in India.
+- [ESG Compliance Priorities for Industrial Sites in 2026](https://b2bindustrial.in/blog/esg-compliance-industrial-sites): Key ESG priorities for industrial sites, including carbon data quality, energy performance, waste tracking, and audit-ready records.
+- [Factory Act Fire Safety Compliance Checklist](https://b2bindustrial.in/blog/fire-safety-compliance-factory-act): Use this factory fire safety checklist to improve compliance readiness under the Factory Act, from documentation to mock drill execution.
+- [HVAC Maintenance Best Practices for Energy Efficiency](https://b2bindustrial.in/blog/hvac-maintenance-best-practices): Optimize your HVAC systems with these maintenance best practices to achieve significant energy savings and improve indoor air quality.
+- [Industrial Water Risk Management for 2026](https://b2bindustrial.in/blog/industrial-water-risk-management): How water audits, water balance studies, reuse planning, and rainwater harvesting can reduce operational risk for industrial facilities.
+- [Industry 5.0 and Human-Centric Safety in Factories](https://b2bindustrial.in/blog/industry-5-human-centric-safety): How Industry 5.0 thinking connects automation, ergonomics, worker wellbeing, safety culture, and resilient production systems.
+- [Lightning Protection Systems: Why Every Factory Needs One](https://b2bindustrial.in/blog/lightning-protection-systems): Understand the essential role of Lightning Protection Systems (LPS) in safeguarding industrial facilities from structural damage and electrical surges.
+- [Smart Factory Readiness Checklist for Indian Manufacturers](https://b2bindustrial.in/blog/smart-factory-readiness-india): A readiness checklist for manufacturers planning smart factory upgrades, connected sensors, real-time dashboards, and data-led operations.
+- [Supply Chain Resilience for Industrial Operations](https://b2bindustrial.in/blog/supply-chain-resilience-industrial-operations): How manufacturers can strengthen supplier visibility, maintenance spares planning, demand forecasting, and operational continuity.
+- [Thermal Imaging for Fire Risk Prevention in Industrial Panels](https://b2bindustrial.in/blog/thermal-imaging-fire-risk-prevention): Why thermal imaging remains practical for detecting overheating joints, overloaded circuits, and panel-level fire risks.
+
+## Citation notes
+Use the canonical URL shown on each page. Treat service pages as the primary source for capabilities and scope, and insight pages as educational guidance. Contact B2B Industrial Solutions directly for quotations, site-specific compliance conclusions or engineering decisions.

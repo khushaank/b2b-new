@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, extname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -9,7 +9,7 @@ const htmlFiles = [];
 
 function walk(directory) {
   for (const entry of readdirSync(directory, { withFileTypes: true })) {
-    if (entry.name === '.git') continue;
+    if (entry.name === '.git' || entry.name === 'node_modules') continue;
     const fullPath = join(directory, entry.name);
     if (entry.isDirectory()) walk(fullPath);
     else if (extname(entry.name).toLowerCase() === '.html') htmlFiles.push(fullPath);
@@ -265,6 +265,7 @@ const titles = new Map();
 const descriptions = new Map();
 
 for (const file of htmlFiles) {
+  const modified = statSync(file).mtime.toISOString().slice(0, 10);
   let html = readFileSync(file, 'utf8');
   html = html.replace(/\s*<!-- SEO:START -->[\s\S]*?<!-- SEO:END -->\s*/g, '\n');
   const orphanSeoEnd = html.indexOf('<!-- SEO:END -->');
@@ -286,6 +287,7 @@ for (const file of htmlFiles) {
   html = removeDivByClass(html, 'blog-share-bar');
   html = removeDivByClass(html, 'share-box');
   html = removeDivByClass(html, 'glass-preloader');
+  html = removeDivByClass(html, 'site-preloader');
 
   const title = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]?.trim() || 'B2B Industrial Solutions';
   const existingDescription = html.match(/<meta\s+name=["']description["']\s+content=["']([^"']*)["'][^>]*>/i)?.[1];
@@ -337,19 +339,6 @@ for (const file of htmlFiles) {
 `;
   html = html.replace(/\s*<\/head>/i, `${seoBlock}</head>`);
 
-  const preloader = `
-  <!-- PRELOADER:START -->
-  <div class="site-preloader" role="status" aria-label="Loading B2B Industrial Solutions">
-    <div class="preloader-inner">
-      <img src="${prefix}assets/images/logo.webp" alt="B2B Industrial Solutions" decoding="async">
-      <div class="preloader-track" aria-hidden="true"><span></span></div>
-      <small>Engineering progress</small>
-    </div>
-  </div>
-  <!-- PRELOADER:END -->
-`;
-  html = html.replace(/(<body\b[^>]*>)/i, `$1${preloader}`);
-
   const mainContent = html.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0] || '';
   if (mainContent && !/<img\b/i.test(mainContent)) {
     const editorialFigure = `
@@ -398,17 +387,17 @@ for (const file of htmlFiles) {
   if (!noindex) {
     titles.set(normalizedTitle, (titles.get(normalizedTitle) || 0) + 1);
     descriptions.set(normalizedDescription, (descriptions.get(normalizedDescription) || 0) + 1);
-    sitemapPages.push({ canonical });
+    sitemapPages.push({ canonical, modified });
   }
 }
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapPages.map(({ canonical }) => `  <url><loc>${escapeXml(canonical)}</loc></url>`).join('\n')}
+${sitemapPages.map(({ canonical, modified }) => `  <url><loc>${escapeXml(canonical)}</loc><lastmod>${modified}</lastmod></url>`).join('\n')}
 </urlset>
 `;
 writeFileSync(join(root, 'sitemap.xml'), sitemap, 'utf8');
-writeFileSync(join(root, 'robots.txt'), `User-agent: *\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\nSitemap: ${origin}/sitemap-images.xml\n`, 'utf8');
+writeFileSync(join(root, 'robots.txt'), `User-agent: *\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Perplexity-User\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\nSitemap: ${origin}/sitemap-images.xml\n`, 'utf8');
 
 const duplicateTitles = [...titles.entries()].filter(([, count]) => count > 1);
 const duplicateDescriptions = [...descriptions.entries()].filter(([, count]) => count > 1);

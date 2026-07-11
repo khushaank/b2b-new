@@ -41,7 +41,6 @@ for (const file of htmlFiles) {
   if (seoStartCount !== 1 || seoEndCount !== 1) errors.push(`${display}: invalid generated SEO block markers`);
   if (!/<meta\s+property=["']og:title["']/i.test(html)) errors.push(`${display}: missing Open Graph title`);
   if (!/<meta\s+name=["']twitter:card["']/i.test(html)) errors.push(`${display}: missing Twitter card`);
-  if (!/class=["'][^"']*site-preloader/i.test(html)) errors.push(`${display}: missing load-synced preloader`);
   if (/<footer\b/i.test(html) && !/<footer[\s\S]*?>[\s\S]*?href=["'][^"']*tools\//i.test(html)) errors.push(`${display}: footer is missing Engineering tools link`);
   if (/href=["']#["']\s+class=["'][^"']*related-link/i.test(html)) errors.push(`${display}: unresolved related-link placeholder`);
   for (const tag of html.match(/<a\b[^>]*target=["']_blank["'][^>]*>/gi) || []) {
@@ -98,7 +97,20 @@ for (const [description, files] of indexedDescriptions) {
 }
 if (!existsSync(join(root, 'sitemap.xml'))) errors.push('missing sitemap.xml');
 if (!existsSync(join(root, 'robots.txt'))) errors.push('missing robots.txt');
-for (const artifact of ['sitemap-images.xml', 'site.webmanifest', 'manifest.json', 'sw.js', 'offline.html', 'rss.xml', 'opensearch.xml', 'llms.txt', 'humans.txt', 'schema-master.json', '.htaccess', '.well-known/security.txt']) {
+if (!/User-agent:\s*OAI-SearchBot[\s\S]*?Allow:\s*\//i.test(readFileSync(join(root, 'robots.txt'), 'utf8'))) errors.push('robots.txt must allow OAI-SearchBot');
+if (!/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/i.test(readFileSync(join(root, 'sitemap.xml'), 'utf8'))) errors.push('sitemap.xml is missing lastmod dates');
+const blogIndex = readFileSync(join(root, 'blog', 'index.html'), 'utf8');
+const blogScript = readFileSync(join(root, 'js', 'blogs.js'), 'utf8');
+const coreScript = readFileSync(join(root, 'js', 'core.js'), 'utf8');
+const homeCss = readFileSync(join(root, 'css', 'home.css'), 'utf8');
+const homeServiceBarRules = [...homeCss.matchAll(/\.service-bar\s*\{([^}]*)\}/g)];
+if (!/id=["']insightTitleSearch["'][^>]*type=["']search["']/i.test(blogIndex)) errors.push('blog index is missing title search');
+if (/topic-filter|insights-discovery/i.test(blogIndex)) errors.push('blog index still contains the removed topic filter panel');
+if (/insights-search-hint|Titles only/i.test(blogIndex)) errors.push('blog search still exposes the internal title-only rule');
+if (!/querySelector\(['"]h2['"]\)[\s\S]*includes\(query\)/.test(blogScript)) errors.push('blog search must filter article titles only');
+if (!/position:\s*sticky/.test(homeServiceBarRules.at(-1)?.[1] || '')) errors.push('homepage final service bar rule must remain sticky');
+if (!/servicesTrigger\.addEventListener\(['"]mouseenter['"]/.test(coreScript)) errors.push('services menu must open on hover');
+for (const artifact of ['sitemap-images.xml', 'site.webmanifest', 'manifest.json', 'sw.js', 'rss.xml', 'opensearch.xml', 'llms.txt', 'humans.txt', 'schema-master.json', '.htaccess', '.well-known/security.txt']) {
   if (!existsSync(join(root, artifact))) errors.push(`missing ${artifact}`);
 }
 

@@ -13,7 +13,7 @@ const htmlFiles = [];
 
 function walk(directory) {
   for (const entry of readdirSync(directory, { withFileTypes: true })) {
-    if (entry.name === '.git') continue;
+    if (entry.name === '.git' || entry.name === 'node_modules') continue;
     const full = join(directory, entry.name);
     if (entry.isDirectory()) walk(full);
     else if (extname(entry.name).toLowerCase() === '.html') htmlFiles.push(full);
@@ -103,6 +103,9 @@ const organization = {
   telephone: '+91-9899702065', email: 'info@b2bindustrial.in', foundingDate: '2013',
   address: { '@type': 'PostalAddress', streetAddress: 'Shop No. 2, Gali No. 4, Khandsa Road', addressLocality: 'Gurugram', addressRegion: 'Haryana', postalCode: '122001', addressCountry: 'IN' },
   areaServed: { '@type': 'Country', name: 'India' },
+  sameAs: ['https://linkedin.b2bindustrial.in/'],
+  knowsAbout: ['Industrial audits', 'Energy audits', 'Electrical safety', 'Fire and HSE audits', 'Statutory compliance', 'HVAC and indoor air quality', 'Environmental compliance', 'Emission control', 'Turnkey industrial engineering'],
+  contactPoint: { '@type': 'ContactPoint', telephone: '+91-9899702065', contactType: 'sales and technical enquiries', areaServed: 'IN', availableLanguage: ['English', 'Hindi'] },
 };
 writeFileSync(join(root, 'schema-master.json'), `${JSON.stringify(organization, null, 2)}\n`);
 
@@ -113,7 +116,8 @@ writeFileSync(join(root, 'humans.txt'), `/* TEAM */\nCompany: B2B Industrial Sol
 
 const serviceLinks = pages.filter((page) => page.path.startsWith('services/') && !page.noindex).map((page) => `- [${page.title}](${page.canonical}): ${page.description}`);
 const industryLinks = pages.filter((page) => page.path.startsWith('industries/') && page.path !== 'industries/index.html' && !page.noindex).map((page) => `- [${page.title}](${page.canonical}): ${page.description}`);
-writeFileSync(join(root, 'llms.txt'), `# B2B Industrial Solutions\n\n> B2B Industrial Solutions provides industrial audits, statutory compliance, fire and HSE safety, energy, electrical, HVAC, emission-control and turnkey engineering services across India.\n\n## Primary pages\n- [Home](${origin}/)\n- [Services](${origin}/service)\n- [Industries served](${origin}/industries/)\n- [About](${origin}/about)\n- [Industrial insights](${origin}/blog/)\n- [Service locations](${origin}/locations/)\n- [Engineering tools](${origin}/tools/)\n- [Contact](${origin}/contact)\n\n## Industries\n${industryLinks.join('\n')}\n\n## Services\n${serviceLinks.join('\n')}\n\n## Contact\n- Email: info@b2bindustrial.in\n- Phone: +91 98997 02065\n- Service area: India\n`);
+const insightLinks = blogItems.map((page) => `- [${page.title}](${page.canonical}): ${page.description}`);
+writeFileSync(join(root, 'llms.txt'), `# B2B Industrial Solutions\n\n> Pan-India industrial audit, statutory compliance, safety, energy, HVAC, emission-control and turnkey engineering services. Established in 2013 and headquartered in Gurugram, Haryana, India.\n\n## Official identity\n- Legal and trading name: B2B Industrial Solutions\n- Website: ${origin}/\n- Service area: India\n- Languages: English and Hindi\n- Phone: +91 98997 02065\n- Email: info@b2bindustrial.in\n- Address: Shop No. 2, Gali No. 4, Khandsa Road, Gurugram, Haryana 122001, India\n\n## Authoritative navigation\n- [Home](${origin}/)\n- [All services](${origin}/service)\n- [Industries served](${origin}/industries/)\n- [About the company](${origin}/about)\n- [Industrial insights](${origin}/blog/)\n- [Service locations](${origin}/locations/)\n- [Engineering calculators](${origin}/tools/)\n- [Contact and quotation requests](${origin}/contact)\n- [XML sitemap](${origin}/sitemap.xml)\n- [RSS feed](${origin}/rss.xml)\n\n## Industries\n${industryLinks.join('\n')}\n\n## Services\n${serviceLinks.join('\n')}\n\n## Practical guidance and insights\n${insightLinks.join('\n')}\n\n## Citation notes\nUse the canonical URL shown on each page. Treat service pages as the primary source for capabilities and scope, and insight pages as educational guidance. Contact B2B Industrial Solutions directly for quotations, site-specific compliance conclusions or engineering decisions.\n`);
 
 const manifest = JSON.parse(readFileSync(join(root, 'site.webmanifest'), 'utf8'));
 writeFileSync(join(root, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);

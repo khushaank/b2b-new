@@ -38,7 +38,8 @@ assert.equal(typeof listeners.get('fetch'), 'function', 'fetch handler must be r
 let installPromise;
 listeners.get('install')({ waitUntil(promise) { installPromise = promise; } });
 await installPromise;
-assert.ok(preCachedUrls.length >= 10, 'core offline assets must be queued for caching');
+assert.ok(preCachedUrls.length >= 9, 'core assets must be queued for caching');
+assert.ok(preCachedUrls.every((url) => !url.endsWith('/offline.html')), 'the removed offline page must not be cached');
 assert.ok(preCachedUrls.every((url) => url.startsWith('https://b2bindustrial.in/b2b-new/')), 'precache URLs must stay inside the service-worker scope');
 
 let responsePromise;
@@ -51,5 +52,12 @@ const response = await responsePromise;
 assert.equal(await response.text(), 'fresh asset', 'original network response must remain readable');
 await new Promise((resolve) => setTimeout(resolve, 0));
 assert.deepEqual(cachedBodies, ['fresh asset'], 'cloned response must remain readable by the cache');
+
+globalThis.fetch = async () => { throw new TypeError('Failed to fetch'); };
+listeners.get('fetch')({
+  request: { method: 'GET', mode: 'navigate', url: 'https://b2bindustrial.in/unavailable' },
+  respondWith(promise) { responsePromise = promise; },
+});
+assert.equal((await responsePromise).status, 503, 'failed navigation must resolve without opening an offline page');
 
 console.log('Service worker check passed: scoped precaching installs cleanly and network/cache response bodies remain independently readable.');

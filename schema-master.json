@@ -23,5 +23,29 @@
   "areaServed": {
     "@type": "Country",
     "name": "India"
+  },
+  "sameAs": [
+    "https://linkedin.b2bindustrial.in/"
+  ],
+  "knowsAbout": [
+    "Industrial audits",
+    "Energy audits",
+    "Electrical safety",
+    "Fire and HSE audits",
+    "Statutory compliance",
+    "HVAC and indoor air quality",
+    "Environmental compliance",
+    "Emission control",
+    "Turnkey industrial engineering"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-9899702065",
+    "contactType": "sales and technical enquiries",
+    "areaServed": "IN",
+    "availableLanguage": [
+      "English",
+      "Hindi"
+    ]
   }
 }

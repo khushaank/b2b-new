@@ -2564,8 +2564,7 @@
 /* Error, status and offline pages */
 .core-pages-page .legacy-content:has(> .error-card),
 .core-pages-page .legacy-content:has(> .success-card),
-.core-pages-page .legacy-content:has(> .error-content-container),
-.core-pages-page .legacy-content:has(> .glass-preloader) {
+.core-pages-page .legacy-content:has(> .error-content-container) {
   min-height: 660px;
   display: grid;
   place-items: center;
@@ -2759,26 +2758,6 @@
 
 .core-pages-page .floating-icons {
   display: none;
-}
-
-.core-pages-page .glass-preloader {
-  display: none;
-}
-
-.core-pages-page .legacy-content:has(> .glass-preloader)>h1,
-.core-pages-page .legacy-content:has(> .glass-preloader)>p,
-.core-pages-page .legacy-content:has(> .glass-preloader)>.btn-retry {
-  position: relative;
-  z-index: 1;
-}
-
-.core-pages-page .legacy-content:has(> .glass-preloader) {
-  align-content: center;
-  text-align: center;
-}
-
-.core-pages-page .legacy-content:has(> .glass-preloader)>h1 {
-  margin-bottom: 12px;
 }
 
 .core-pages-page .btn-retry {
