@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'b2b-industrial-';
-const CACHE = `${CACHE_PREFIX}v10`;
+const CACHE = `${CACHE_PREFIX}v14`;
 const scopedUrl = (path = '') => new URL(path, self.registration.scope).href;
 const CORE = [
   '',
@@ -10,6 +10,16 @@ const CORE = [
   'css/responsive.css',
   'js/core.js',
   'js/core-pages.js',
+  'js/tools.js',
+  'css/tools.css',
+  'assets/legacy-css/tools.css',
+  'tools/',
+  'tools/tonnage-calculator.html',
+  'tools/powerfactor-calculation.html',
+  'tools/luxlevel-calculator.html',
+  'assets/js/tooljs/tonnage-calculator.min.js',
+  'assets/js/tooljs/powerfactor-calculation.min.js',
+  'assets/js/tooljs/luxlevel-calculator.min.js',
   'assets/images/logo.webp',
   'assets/images/pwa/icon-192.webp'
 ].map(scopedUrl);
@@ -32,23 +42,11 @@ self.addEventListener('fetch', (event) => {
     }).catch(async () => (await caches.match(event.request)) || new Response('', { status: 503, statusText: 'Service Unavailable' })));
     return;
   }
-  const requestUrl = new URL(event.request.url);
-  const preferFresh = /\.(?:css|js|webmanifest|json)$/i.test(requestUrl.pathname);
-  if (preferFresh) {
-    event.respondWith(fetch(event.request).then((response) => {
-      if (response.ok) {
-        const copy = response.clone();
-        caches.open(CACHE).then((cache) => cache.put(event.request, copy)).catch(() => {});
-      }
-      return response;
-    }).catch(async () => (await caches.match(event.request)) || new Response('', { status: 504, statusText: 'Gateway Timeout' })));
-    return;
-  }
   event.respondWith(caches.match(event.request).then((cached) => cached || fetch(event.request).then((response) => {
     if (response.ok) {
       const copy = response.clone();
       caches.open(CACHE).then((cache) => cache.put(event.request, copy)).catch(() => {});
     }
     return response;
-  }).catch(() => new Response('', { status: 504, statusText: 'Gateway Timeout' }))));
+  })));
 });
