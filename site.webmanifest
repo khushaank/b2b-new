@@ -3,7 +3,7 @@
   "short_name": "B2B Industrial",
   "description": "Industrial audits, compliance, safety, energy, HVAC and turnkey engineering services across India.",
   "id": "./",
-  "start_url": "./index.html",
+  "start_url": "./",
   "scope": "./",
   "lang": "en-IN",
   "dir": "ltr",
@@ -33,8 +33,8 @@
     }
   ],
   "shortcuts": [
-    { "name": "All services", "short_name": "Services", "url": "./service.html" },
+    { "name": "All services", "short_name": "Services", "url": "./service" },
     { "name": "Engineering tools", "short_name": "Tools", "url": "./tools/" },
-    { "name": "Contact", "short_name": "Contact", "url": "./contact.html" }
+    { "name": "Contact", "short_name": "Contact", "url": "./contact" }
   ]
 }

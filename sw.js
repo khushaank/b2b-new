@@ -1,9 +1,8 @@
 const CACHE_PREFIX = 'b2b-industrial-';
-const CACHE = `${CACHE_PREFIX}v14`;
+const CACHE = `${CACHE_PREFIX}v16`;
 const scopedUrl = (path = '') => new URL(path, self.registration.scope).href;
 const CORE = [
   '',
-  'index.html',
   'css/core.css',
   'css/content.css',
   'css/core-pages.css',
@@ -14,9 +13,9 @@ const CORE = [
   'css/tools.css',
   'assets/legacy-css/tools.css',
   'tools/',
-  'tools/tonnage-calculator.html',
-  'tools/powerfactor-calculation.html',
-  'tools/luxlevel-calculator.html',
+  'tools/tonnage-calculator',
+  'tools/powerfactor-calculation',
+  'tools/luxlevel-calculator',
   'assets/js/tooljs/tonnage-calculator.min.js',
   'assets/js/tooljs/powerfactor-calculation.min.js',
   'assets/js/tooljs/luxlevel-calculator.min.js',

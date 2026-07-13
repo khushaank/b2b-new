@@ -3,6 +3,7 @@ import { dirname, extname, join, relative, resolve } from 'node:path';
 
 const root = process.cwd();
 const htmlFiles = [];
+const jsFiles = [];
 
 function walk(directory) {
   for (const entry of readdirSync(directory, { withFileTypes: true })) {
@@ -10,6 +11,7 @@ function walk(directory) {
     const fullPath = join(directory, entry.name);
     if (entry.isDirectory()) walk(fullPath);
     else if (extname(entry.name) === '.html') htmlFiles.push(fullPath);
+    else if (extname(entry.name) === '.js') jsFiles.push(fullPath);
   }
 }
 
@@ -82,10 +84,11 @@ for (const file of htmlFiles) {
   }
 
   for (const match of html.matchAll(/(?:href|src)=["']([^"']+)["']/gi)) {
+    if (/\.html(?:[?#]|$)/i.test(match[1]) && !/^(?:https?:|mailto:|tel:|data:|javascript:)/i.test(match[1])) errors.push(`${display}: internal link must use a clean URL ${match[1]}`);
     const reference = match[1].split('#')[0].split('?')[0];
     if (!reference || /^(?:https?:|mailto:|tel:|data:|javascript:)/i.test(reference)) continue;
     const target = resolve(dirname(file), decodeURIComponent(reference));
-    if (!existsSync(target)) errors.push(`${display}: broken reference ${match[1]}`);
+    if (!existsSync(target) && !existsSync(`${target}.html`) && !existsSync(join(target, 'index.html'))) errors.push(`${display}: broken reference ${match[1]}`);
   }
 }
 
@@ -102,12 +105,24 @@ if (!/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/i.test(readFileSync(join(root, 'site
 const blogIndex = readFileSync(join(root, 'blog', 'index.html'), 'utf8');
 const blogScript = readFileSync(join(root, 'js', 'blogs.js'), 'utf8');
 const coreScript = readFileSync(join(root, 'js', 'core.js'), 'utf8');
+const htaccess = readFileSync(join(root, '.htaccess'), 'utf8');
 const homeCss = readFileSync(join(root, 'css', 'home.css'), 'utf8');
 const homeServiceBarRules = [...homeCss.matchAll(/\.service-bar\s*\{([^}]*)\}/g)];
 if (!/id=["']insightTitleSearch["'][^>]*type=["']search["']/i.test(blogIndex)) errors.push('blog index is missing title search');
 if (/topic-filter|insights-discovery/i.test(blogIndex)) errors.push('blog index still contains the removed topic filter panel');
 if (/insights-search-hint|Titles only/i.test(blogIndex)) errors.push('blog search still exposes the internal title-only rule');
 if (!/querySelector\(['"]h2['"]\)[\s\S]*includes\(query\)/.test(blogScript)) errors.push('blog search must filter article titles only');
+if (/site-scroll-progress/.test(coreScript)) errors.push('reading progress must not be created by the whole-site script');
+if (/canonicalPath/.test(coreScript)) errors.push('clean URLs must be served by the server, not cosmetically rewritten in JavaScript');
+if (/\b(?:eval\s*\(|new\s+Function\b)/.test(jsFiles.map((file) => readFileSync(file, 'utf8')).join('\n'))) errors.push('site JavaScript must not evaluate strings as code');
+if (/unsafe-eval/.test(htaccess)) errors.push('CSP must not allow unsafe-eval');
+if (!/findLastIndex/.test(blogScript)) errors.push('blog TOC must keep only the current section active when scrolling in either direction');
+if (/white-space:\s*nowrap/.test(readFileSync(join(root, 'css', 'blogs.css'), 'utf8').match(/\.article-hover-toc a b\s*\{[^}]+/i)?.[0] || '')) errors.push('blog TOC labels must wrap long headings');
+for (const name of ['delhi-energy-audit', 'delhi-fire-safety-audit', 'delhi-hse-audit', 'gurgaon-energy-audit', 'gurgaon-fire-safety-audit', 'gurgaon-hse-audit', 'gurgaon-safety-audit', 'hyderabad-energy-audit', 'hyderabad-fire-safety-audit', 'hyderabad-hse-audit', 'noida-energy-audit', 'noida-fire-safety-audit', 'noida-hse-audit', 'noida-safety-audit']) {
+  const localHtml = readFileSync(join(root, 'locations', `${name}.html`), 'utf8');
+  const faqCount = (localHtml.match(/<details\b/g) || []).length + (localHtml.match(/itemprop=["']mainEntity["']/g) || []).length;
+  if (faqCount < 5) errors.push(`locations/${name}.html: expected at least five useful FAQs`);
+}
 if (!/position:\s*sticky/.test(homeServiceBarRules.at(-1)?.[1] || '')) errors.push('homepage final service bar rule must remain sticky');
 if (!/servicesTrigger\.addEventListener\(['"]mouseenter['"]/.test(coreScript)) errors.push('services menu must open on hover');
 for (const artifact of ['sitemap-images.xml', 'site.webmanifest', 'manifest.json', 'sw.js', 'rss.xml', 'opensearch.xml', 'llms.txt', 'humans.txt', 'schema-master.json', '.htaccess', '.well-known/security.txt']) {

@@ -7,16 +7,6 @@ if (/\/(?:404|410|421|429|500|503)(?:\.html)?\/?$/i.test(window.location.pathnam
   window.location.replace(siteRootUrl.href);
 }
 
-const canonicalPath = (() => {
-  const path = window.location.pathname;
-  if (/\/index\.html$/i.test(path)) return path.replace(/index\.html$/i, '');
-  if (/\.html$/i.test(path)) return path.replace(/\.html$/i, '');
-  return '';
-})();
-if (canonicalPath && /^https?:$/.test(window.location.protocol) && window.history?.replaceState) {
-  window.history.replaceState(null, '', `${canonicalPath}${window.location.search}${window.location.hash}`);
-}
-
 if (serviceBar) {
   const updateStickyOffset = () => {
     document.documentElement.style.setProperty('--sticky-header-height', `${serviceBar.offsetHeight}px`);
@@ -27,10 +17,10 @@ if (serviceBar) {
 }
 
 if (navigation && serviceBar) {
-  const servicesTrigger = [...navigation.querySelectorAll('a')].find((link) => /service\.html(?:$|[?#])/.test(link.getAttribute('href') || ''));
+  const servicesTrigger = [...navigation.querySelectorAll('a')].find((link) => /service(?:\.html)?(?:$|[?#])/.test(link.getAttribute('href') || ''));
 
   if (servicesTrigger) {
-    const prefix = servicesTrigger.getAttribute('href').replace(/service\.html.*$/, '');
+    const prefix = servicesTrigger.getAttribute('href').replace(/service(?:\.html)?.*$/, '');
     servicesTrigger.textContent = 'Services';
     servicesTrigger.classList.add('services-trigger');
     servicesTrigger.setAttribute('aria-haspopup', 'true');
@@ -52,31 +42,31 @@ if (navigation && serviceBar) {
           <span class="mega-kicker">Integrated industrial solutions</span>
           <strong>From audit findings to engineered outcomes.</strong>
           <p>One accountable partner for compliance, safety, energy performance, and turnkey project delivery across India.</p>
-          <a href="${prefix}service.html">Explore all 80+ services <span aria-hidden="true">→</span></a>
+          <a href="${prefix}service">Explore all 80+ services <span aria-hidden="true">→</span></a>
         </div>
         <div class="mega-column">
           <b>Audits &amp; compliance</b>
-          <a href="${prefix}services/energy-audits.html">Energy audits</a>
-          <a href="${prefix}services/electrical-safety-audit.html">Electrical safety</a>
-          <a href="${prefix}services/fire-life-safety.html">Fire &amp; HSE audits</a>
-          <a href="${prefix}services/environment-compliances.html">Environment compliance</a>
-          <a class="mega-all" href="${prefix}services/compliances.html">View compliance services →</a>
+          <a href="${prefix}services/energy-audits">Energy audits</a>
+          <a href="${prefix}services/electrical-safety-audit">Electrical safety</a>
+          <a href="${prefix}services/fire-life-safety">Fire &amp; HSE audits</a>
+          <a href="${prefix}services/environment-compliances">Environment compliance</a>
+          <a class="mega-all" href="${prefix}services/compliances">View compliance services →</a>
         </div>
         <div class="mega-column">
           <b>Engineering projects</b>
-          <a href="${prefix}services/electrical-projects.html">Electrical projects</a>
-          <a href="${prefix}services/hvac-projects.html">HVAC &amp; duct cleaning</a>
-          <a href="${prefix}services/fire-projects.html">Fire protection projects</a>
-          <a href="${prefix}services/lighting-projects.html">Lighting projects</a>
-          <a class="mega-all" href="${prefix}services/project-management.html">Project management →</a>
+          <a href="${prefix}services/electrical-projects">Electrical projects</a>
+          <a href="${prefix}services/hvac-projects">HVAC &amp; duct cleaning</a>
+          <a href="${prefix}services/fire-projects">Fire protection projects</a>
+          <a href="${prefix}services/lighting-projects">Lighting projects</a>
+          <a class="mega-all" href="${prefix}services/project-management">Project management →</a>
         </div>
         <div class="mega-column">
           <b>Emission &amp; sustainability</b>
-          <a href="${prefix}services/recd-kit.html">RECD &amp; DFK kits</a>
-          <a href="${prefix}services/emission-control.html">Emission control</a>
-          <a href="${prefix}services/carbon-footprint.html">Carbon footprint</a>
-          <a href="${prefix}services/renewable-energy.html">Renewable energy</a>
-          <a class="mega-all" href="${prefix}contact.html">Discuss your requirement →</a>
+          <a href="${prefix}services/recd-kit">RECD &amp; DFK kits</a>
+          <a href="${prefix}services/emission-control">Emission control</a>
+          <a href="${prefix}services/carbon-footprint">Carbon footprint</a>
+          <a href="${prefix}services/renewable-energy">Renewable energy</a>
+          <a class="mega-all" href="${prefix}contact">Discuss your requirement →</a>
         </div>
       </div>`;
     servicesTrigger.insertAdjacentElement('afterend', megaMenu);
@@ -208,7 +198,7 @@ if (formReturnButton) {
   if (returnPath) {
     try {
       const target = new URL(returnPath, window.location.origin);
-      const isSafeLocalPage = target.origin === window.location.origin && !target.pathname.endsWith('/success.html');
+      const isSafeLocalPage = target.origin === window.location.origin && !/\/success(?:\.html)?$/.test(target.pathname);
       if (isSafeLocalPage) {
         formReturnButton.href = `${target.pathname}${target.search}${target.hash}`;
         const labelNode = formReturnButton.querySelector('[data-form-return-label]');
@@ -614,28 +604,12 @@ document.querySelectorAll('.protected-email[data-user][data-domain][data-tld]').
   link.setAttribute('aria-label', 'Email B2B Industrial Solutions');
 });
 
+document.addEventListener('copy', (event) => event.preventDefault());
+
 document.querySelectorAll('img').forEach((image) => {
   image.draggable = false;
   if (!image.hasAttribute('loading') && !image.closest('.page-header, .blog-post-hero, .client-hero')) image.loading = 'lazy';
 });
-
-const scrollProgress = document.createElement('div');
-scrollProgress.className = 'site-scroll-progress';
-scrollProgress.setAttribute('aria-hidden', 'true');
-document.body.appendChild(scrollProgress);
-let progressFrame = 0;
-const updateScrollProgress = () => {
-  if (progressFrame) return;
-  progressFrame = requestAnimationFrame(() => {
-    const available = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = available > 0 ? Math.min(window.scrollY / available, 1) : 0;
-    scrollProgress.style.transform = `scaleX(${progress})`;
-    progressFrame = 0;
-  });
-};
-updateScrollProgress();
-window.addEventListener('scroll', updateScrollProgress, { passive: true });
-window.addEventListener('resize', updateScrollProgress);
 
 document.querySelectorAll('.legacy-content > .page-header').forEach((hero) => {
   const nextSection = hero.nextElementSibling;
@@ -673,7 +647,7 @@ if (commandHost) {
   const commandResults = palette.querySelector('.command-results');
   const commandStatus = palette.querySelector('.command-status');
   const quickLinks = [
-    { title: 'Home', url: '/index', tags: 'homepage overview' },
+    { title: 'Home', url: '/', tags: 'homepage overview' },
     { title: 'All Services', url: '/service', tags: 'services directory' },
     { title: 'About B2B Industrial Solutions', url: '/about', tags: 'company' },
     { title: 'Industrial Insights', url: '/blog/', tags: 'blogs articles' },

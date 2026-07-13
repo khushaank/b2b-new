@@ -26,11 +26,8 @@ if (article) {
     const total = article.offsetHeight - window.innerHeight;
     const read = Math.min(1, Math.max(0, -rect.top / Math.max(total, 1)));
     progress.style.transform = `scaleX(${read})`;
-    document.querySelectorAll('.article-hover-toc a').forEach((link) => {
-      const id = link.getAttribute('href')?.slice(1);
-      const heading = id ? document.getElementById(id) : null;
-      link.classList.toggle('active', Boolean(heading && heading.getBoundingClientRect().top < window.innerHeight * .42));
-    });
+    const activeIndex = headings.findLastIndex((heading) => heading.getBoundingClientRect().top < window.innerHeight * .42);
+    document.querySelectorAll('.article-hover-toc a').forEach((link, index) => link.classList.toggle('active', index === activeIndex));
   };
   window.addEventListener('scroll', update, { passive: true });
   update();
