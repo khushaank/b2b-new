@@ -3,6 +3,29 @@ const navigation = document.querySelector('.main-nav');
 const serviceBar = document.querySelector('.service-bar');
 const siteRootUrl = new URL('../', document.currentScript?.src || window.location.href);
 
+// Keep these company pages discoverable without maintaining the same links in every static page.
+const companyLinks = [
+  ['Testimonials', 'testimonials'],
+  ['Careers', 'careers'],
+];
+const globalNav = document.querySelector('.global-nav');
+companyLinks.forEach(([label, path]) => {
+  if (globalNav && ![...globalNav.querySelectorAll('a')].some((link) => link.textContent.trim() === label)) {
+    const link = document.createElement('a');
+    link.href = new URL(path, siteRootUrl).pathname;
+    link.textContent = label;
+    globalNav.insertBefore(link, globalNav.querySelector('a[href*="contact"]') || null);
+  }
+  const companyFooter = [...document.querySelectorAll('.footer-links')]
+    .find((section) => section.querySelector('b')?.textContent.trim() === 'Company');
+  if (companyFooter && ![...companyFooter.querySelectorAll('a')].some((link) => link.textContent.trim() === label)) {
+    const link = document.createElement('a');
+    link.href = new URL(path, siteRootUrl).pathname;
+    link.textContent = label;
+    companyFooter.append(link);
+  }
+});
+
 if (/\/(?:404|410|421|429|500|503)(?:\.html)?\/?$/i.test(window.location.pathname)) {
   window.location.replace(siteRootUrl.href);
 }

@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'b2b-industrial-';
-const CACHE = `${CACHE_PREFIX}v16`;
+const CACHE = `${CACHE_PREFIX}v17`;
 const scopedUrl = (path = '') => new URL(path, self.registration.scope).href;
 const CORE = [
   '',

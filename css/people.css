@@ -1,0 +1,6 @@
+.people-page .legacy-content > .people-hero { color: #fff; background: #112d45 !important; }
+.people-page .legacy-content > .people-proof, .people-page .legacy-content > .career-values, .people-page .legacy-content > .career-apply { background: #fff !important; }
+.people-page .legacy-content > .people-process, .people-page .legacy-content > .career-roles { background: #eef4f8 !important; }
+.people-page .legacy-content > .people-cta { background: #0071c9 !important; }
+.people-page .legacy-content .people-hero h1 { max-width: 780px; color: #fff; }
+.people-page .legacy-content .people-hero p { color: rgba(255,255,255,.78); }
