@@ -9,7 +9,6 @@ The files in `scripts/` are optional maintenance tools for checking links, refre
 Run the repeatable SEO and discovery workflow after changing pages:
 
 ```powershell
-node scripts/enhance-seo.mjs
 node scripts/generate-discovery.mjs
 node scripts/check-site.mjs
 ```

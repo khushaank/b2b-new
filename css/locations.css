@@ -88,6 +88,7 @@
 .locations-page .local-link-group nav { display: grid; gap: 8px; }
 .locations-page .local-link-group a { display: flex; justify-content: space-between; gap: 15px; padding: 10px 0; border-bottom: 1px solid var(--soft-line); color: var(--blue); font-size: 14px; }
 .locations-page .local-link-group a:last-child { border-bottom: 0; }
+.locations-page .location-specialists { margin-top: 45px; }
 .locations-page .location-index-intro { max-width: 780px; margin-bottom: 45px; }
 .locations-page .city-service-matrix { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
 .locations-page .city-service-card { padding: 30px; border: 1px solid var(--soft-line); border-radius: 22px; background: #fff; }
