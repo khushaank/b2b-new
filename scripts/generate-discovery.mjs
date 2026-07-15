@@ -39,13 +39,6 @@ const pages = htmlFiles.map((file) => {
 });
 
 const blogItems = pages.filter((page) => page.path.startsWith('blog/') && page.path !== 'blog/index.html' && !page.noindex);
-const searchItems = pages.filter((page) => !page.noindex && page.canonical).map((page) => ({
-  title: page.title,
-  url: new URL(page.canonical).pathname.replace(/\/$/, '') || '/',
-  tags: page.html.match(/<meta\s+name=["']keywords["']\s+content=["']([^"']+)/i)?.[1] || '',
-  text: plain(page.html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1] || '').slice(0, 4200),
-}));
-writeFileSync(join(root, 'assets', 'js', 'search-data.min.js'), `const SEARCH_DATA=${JSON.stringify(searchItems)};`);
 const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
@@ -121,4 +114,4 @@ writeFileSync(join(root, 'llms.txt'), `# B2B Industrial Solutions\n\n> Pan-India
 
 const manifest = JSON.parse(readFileSync(join(root, 'site.webmanifest'), 'utf8'));
 writeFileSync(join(root, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
-console.log(`Discovery files generated from ${pages.length} pages, ${blogItems.length} feed items, ${searchItems.length} search entries and ${imageUrls.size} page-image associations.`);
+console.log(`Discovery files generated from ${pages.length} pages, ${blogItems.length} feed items and ${imageUrls.size} page-image associations.`);

@@ -41,6 +41,23 @@ requireMatch(htaccess, /^AcceptPathInfo Off$/m,
   'Apache must reject invalid path info instead of returning 500');
 requireMatch(htaccess, /RewriteRule \^servicess\?\/\?\$ \/service \[R=301,L,NE\]/,
   'legacy services URLs must redirect to /service');
+for (const [source, target] of [
+  ['about-us', '/about'],
+  ['contact-us', '/contact'],
+  ['our_clients', '/clients'],
+  ['terms-and-conditions', '/terms'],
+  ['services/energy-audit', '/services/energy-audits'],
+  ['services/vesda', '/services/fire-detection'],
+  ['services/hse-fire-safety', '/services/fire-life-safety'],
+  ['services/fire-pump-testing', '/services/fire-compliance'],
+  ['b2b-services/hvac', '/services/hvac-projects'],
+  ['b2b-services/fire-management', '/services/fire-projects'],
+  ['b2b-services/led-lights', '/services/lighting-projects'],
+  ['b2b-services/liasion-services-for-regulatory-compliances', '/services/compliances'],
+]) {
+  requireMatch(htaccess, new RegExp(`RewriteRule \\^${source.replaceAll('/', '\\/')}.*? ${target.replaceAll('/', '\\/')} \\[R=301,L,NE\\]`),
+    `${source} must redirect to ${target}`);
+}
 
 walk(root);
 for (const file of htmlFiles) {

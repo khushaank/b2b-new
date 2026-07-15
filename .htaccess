@@ -6,11 +6,48 @@ ServerSignature Off
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Enforce HTTPS in production, including common reverse-proxy deployments.
+  # Use one canonical production host and HTTPS.
+  RewriteCond %{HTTP_HOST} ^www\.b2bindustrial\.in$ [NC]
+  RewriteRule ^ https://b2bindustrial.in%{REQUEST_URI} [R=301,L,NE]
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
   RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)(:\d+)?$ [NC]
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE]
+
+  # Remove crawler-only tracking variants of the homepage.
+  RewriteCond %{REQUEST_URI} ^/$
+  RewriteCond %{QUERY_STRING} ^(?:trk=|ref=|whoisdatacenter(?:_com|\.com))(?:[=&/]|$) [NC]
+  RewriteRule ^$ / [R=301,L,NE,QSD]
+
+  # Consolidate retired and renamed URLs onto their current equivalent pages.
+  RewriteRule ^about-us(?:\.html)?/?$ /about [R=301,L,NE]
+  RewriteRule ^vision-and-mission-statement(?:\.html)?/?$ /about [R=301,L,NE]
+  RewriteRule ^contact-us(?:\.html)?/?$ /contact [R=301,L,NE]
+  RewriteRule ^our_clients(?:\.html)?/?$ /clients [R=301,L,NE]
+  RewriteRule ^terms-and-conditions(?:\.html)?/?$ /terms [R=301,L,NE]
+  RewriteRule ^energy-audits(?:\.html)?/?$ /services/energy-audits [R=301,L,NE]
+  RewriteRule ^electrical-engineering(?:\.html)?/?$ /services/electrical-projects [R=301,L,NE]
+  RewriteRule ^emission-control(?:\.html)?/?$ /services/emission-control [R=301,L,NE]
+  RewriteRule ^compliance(?:\.html)?/?$ /services/compliances [R=301,L,NE]
+  RewriteRule ^hvac(?:\.html)?/?$ /services/hvac-projects [R=301,L,NE]
+  RewriteRule ^hse-fire-safety(?:\.html)?/?$ /services/fire-life-safety [R=301,L,NE]
+  RewriteRule ^repair-maintenance(?:\.html)?/?$ /services/repair-maintenance [R=301,L,NE]
+  RewriteRule ^lighting-projects(?:\.html)?/?$ /services/lighting-projects [R=301,L,NE]
+  RewriteRule ^services/energy-audit(?:\.html)?/?$ /services/energy-audits [R=301,L,NE]
+  RewriteRule ^services/vesda(?:\.html)?/?$ /services/fire-detection [R=301,L,NE]
+  RewriteRule ^services/hse-fire-safety(?:\.html)?/?$ /services/fire-life-safety [R=301,L,NE]
+  RewriteRule ^services/fire-pump-testing(?:\.html)?/?$ /services/fire-compliance [R=301,L,NE]
+  RewriteRule ^b2b-services/energy-audit-management(?:/index)?(?:\.html)?/?$ /services/energy-audits [R=301,L,NE]
+  RewriteRule ^b2b-services/electrical-engineering(?:/index)?(?:\.html)?/?$ /services/electrical-projects [R=301,L,NE]
+  RewriteRule ^b2b-services/emission-control-projects(?:/index)?(?:\.html)?/?$ /services/emission-control [R=301,L,NE]
+  RewriteRule ^b2b-services/hvac(?:/index)?(?:\.html)?/?$ /services/hvac-projects [R=301,L,NE]
+  RewriteRule ^b2b-services/fire-management(?:/index)?(?:\.html)?/?$ /services/fire-projects [R=301,L,NE]
+  RewriteRule ^b2b-services/led-lights(?:/index)?(?:\.html)?/?$ /services/lighting-projects [R=301,L,NE]
+  RewriteRule ^b2b-services/liasion-services-for-regulatory-compliances(?:/index)?(?:\.html)?/?$ /services/compliances [R=301,L,NE]
+  RewriteRule ^b2b-services/other-value-added-services(?:/index)?(?:\.html)?/?$ /service [R=301,L,NE]
+  RewriteRule ^blog-fire-safety-compliance-factory-act/?$ /blog/fire-safety-compliance-factory-act [R=301,L,NE]
+  RewriteRule ^blog-cpcb-4-plus-dg-norms/?$ /blog/cpcb-4-plus-dg-norms [R=301,L,NE]
+  RewriteRule ^search/?$ / [R=301,L,NE]
 
   # Consolidate the former services directory and its common misspelling.
   RewriteRule ^servicess?/?$ /service [R=301,L,NE]
