@@ -2,11 +2,6 @@ const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('.main-nav');
 const serviceBar = document.querySelector('.service-bar');
 const siteRootUrl = new URL('../', document.currentScript?.src || window.location.href);
-
-const companyLinks = [
-  ['Testimonials', 'testimonials'],
-  ['Careers', 'careers'],
-];
 const globalNav = document.querySelector('.global-nav');
 companyLinks.forEach(([label, path]) => {
   if (globalNav && ![...globalNav.querySelectorAll('a')].some((link) => link.textContent.trim() === label)) {
@@ -152,7 +147,6 @@ if (menuButton && navigation) {
   window.addEventListener('resize', () => { if (window.innerWidth > 820) closeMenu(); });
 }
 
-// Turn wide comparison tables into labelled, scan-friendly cards on phones.
 document.querySelectorAll('table.service-table').forEach((table) => {
   const labels = [...table.querySelectorAll('thead th')].map((cell) => cell.textContent.trim());
   if (!labels.length) return;
@@ -163,7 +157,6 @@ document.querySelectorAll('table.service-table').forEach((table) => {
   });
 });
 
-// Third-party maps load only after an explicit request, avoiding blocker errors on page load.
 document.querySelectorAll('[data-map-load]').forEach((button) => {
   button.addEventListener('click', () => {
     const map = button.closest('.modern-map-container')?.querySelector('iframe[data-map-src]');
@@ -186,7 +179,6 @@ serviceGroups.forEach((group) => {
   });
 });
 
-/* Preserve the page that sent a successful enquiry, even across Web3Forms' redirect. */
 const formReturnStorageKey = 'b2b-form-return';
 const getPageLabel = () => {
   const heading = document.querySelector('main h1');
@@ -194,6 +186,30 @@ const getPageLabel = () => {
 };
 
 document.querySelectorAll('form[action*="api.web3forms.com/submit"]').forEach((form) => {
+  form.querySelectorAll('input[name="name"]').forEach((field) => {
+    if (!field.hasAttribute('minlength')) field.minLength = 2;
+    if (!field.hasAttribute('maxlength')) field.maxLength = 100;
+  });
+  form.querySelectorAll('input[type="email"]').forEach((field) => {
+    if (!field.hasAttribute('maxlength')) field.maxLength = 254;
+  });
+  form.querySelectorAll('input[type="tel"]').forEach((field) => {
+    if (!field.hasAttribute('minlength')) field.minLength = 8;
+    if (!field.hasAttribute('maxlength')) field.maxLength = 20;
+    if (!field.hasAttribute('pattern')) field.pattern = '[0-9+() \\-]{8,20}';
+  });
+  form.querySelectorAll('textarea').forEach((field) => {
+    if (!field.hasAttribute('minlength')) field.minLength = 10;
+    if (!field.hasAttribute('maxlength')) field.maxLength = 2000;
+  });
+  if (!form.querySelector('input[name="consent"]')) {
+    const consent = document.createElement('label');
+    consent.className = 'form-consent';
+    consent.innerHTML = '<input type="checkbox" name="consent" value="Agreed" required> <span>I agree that B2B Industrial Solutions may contact me regarding this enquiry.</span>';
+    const actions = form.querySelector('.step-form-actions');
+    if (actions) actions.before(consent);
+    else form.querySelector('button[type="submit"], input[type="submit"]')?.before(consent);
+  }
   const source = `${window.location.pathname}${window.location.search}${window.location.hash}`;
   const label = getPageLabel();
   const redirect = form.querySelector('input[name="redirect"]');
@@ -203,17 +219,17 @@ document.querySelectorAll('form[action*="api.web3forms.com/submit"]').forEach((f
       destination.searchParams.set('from', source);
       destination.searchParams.set('label', label);
       redirect.value = destination.href;
-    } catch (_) { /* Keep the original provider redirect if it is malformed. */ }
+    } catch (_) { }
   }
   form.addEventListener('submit', () => {
-    try { sessionStorage.setItem(formReturnStorageKey, JSON.stringify({ url: source, label })); } catch (_) { /* Storage may be disabled. */ }
+    try { sessionStorage.setItem(formReturnStorageKey, JSON.stringify({ url: source, label })); } catch (_) { }
   });
 });
 
 const formReturnButton = document.querySelector('[data-form-return]');
 if (formReturnButton) {
   let storedReturn = null;
-  try { storedReturn = JSON.parse(sessionStorage.getItem(formReturnStorageKey) || 'null'); } catch (_) { /* Use URL fallback. */ }
+  try { storedReturn = JSON.parse(sessionStorage.getItem(formReturnStorageKey) || 'null'); } catch (_) { }
   const params = new URLSearchParams(window.location.search);
   const returnPath = params.get('from') || storedReturn?.url;
   const returnLabel = params.get('label') || storedReturn?.label;
@@ -226,7 +242,7 @@ if (formReturnButton) {
         const labelNode = formReturnButton.querySelector('[data-form-return-label]');
         if (labelNode && returnLabel) labelNode.textContent = `Return to ${String(returnLabel).trim().slice(0, 50)}`;
       }
-    } catch (_) { /* Keep the contact-page fallback. */ }
+    } catch (_) { }
   }
 }
 
@@ -331,12 +347,16 @@ document.querySelectorAll('[data-smart-contact-form]').forEach((form) => {
     status.classList.toggle('error', type === 'error');
   };
 
-  const setError = (step, message = '') => {
-    const error = step?.querySelector('[data-error]');
+  const setError = (field, message = '') => {
+    const errorId = field?.getAttribute('aria-describedby');
+    const error = errorId
+      ? document.getElementById(errorId)
+      : field?.type === 'radio' ? field.closest('[data-step]')?.querySelector('[data-error]') : null;
     if (error) error.textContent = message;
-    step?.querySelectorAll('input, textarea').forEach((field) => {
-      field.setAttribute('aria-invalid', message ? 'true' : 'false');
-    });
+    const fieldsToMark = field?.type === 'radio'
+      ? field.closest('[data-step]')?.querySelectorAll(`input[name="${field.name}"]`)
+      : [field];
+    fieldsToMark?.forEach((control) => control?.setAttribute('aria-invalid', message ? 'true' : 'false'));
   };
 
   const phoneIsValid = (value) => {
@@ -353,32 +373,28 @@ document.querySelectorAll('[data-smart-contact-form]').forEach((form) => {
 
   const validateStep = (step, showError = false) => {
     if (!step) return true;
-    const textField = step.querySelector('input:not([type="radio"]):not([type="hidden"]):not([type="checkbox"]), textarea');
-    const radio = step.querySelector('input[type="radio"]');
     let valid = true;
-    let message = '';
-
-    if (textField) {
-      const value = textField.value.trim();
-      if (textField.required && !value) {
-        valid = false;
-        message = 'Please complete this field.';
-      } else if (textField.type === 'email' && !textField.validity.valid) {
-        valid = false;
-        message = 'Please enter a valid email address.';
-      } else if (textField.name === 'phone' && !phoneIsValid(value)) {
-        valid = false;
-        message = 'Please enter a valid phone number.';
-      } else if (textField.minLength > 0 && value.length < textField.minLength) {
-        valid = false;
-        message = `Please enter at least ${textField.minLength} characters.`;
+    const radioGroups = new Set();
+    for (const field of step.querySelectorAll('input:not([type="hidden"]), textarea')) {
+      if (field.type === 'radio') {
+        if (radioGroups.has(field.name)) continue;
+        radioGroups.add(field.name);
       }
-    } else if (radio && !fields.service()) {
-      valid = false;
-      message = 'Please choose a service.';
+      const value = field.value.trim();
+      let message = '';
+      if (field.type === 'radio' && !form.querySelector(`input[name="${field.name}"]:checked`)) {
+        message = 'Please choose a service.';
+      } else if (field.type === 'checkbox' && field.required && !field.checked) {
+        message = 'Please confirm that we may contact you about this enquiry.';
+      } else if (field.required && !value) message = 'Please complete this field.';
+      else if (field.type === 'email' && !field.validity.valid) message = 'Please enter a valid email address.';
+      else if (field.name === 'phone' && !phoneIsValid(value)) message = 'Please enter a valid phone number.';
+      else if (field.minLength > 0 && value.length > 0 && value.length < field.minLength) {
+        message = `Please enter at least ${field.minLength} characters.`;
+      }
+      if (message) valid = false;
+      setError(field, showError ? message : '');
     }
-
-    setError(step, showError && !valid ? message : '');
     return valid;
   };
 
@@ -422,7 +438,10 @@ document.querySelectorAll('[data-smart-contact-form]').forEach((form) => {
       if (active) item.setAttribute('aria-current', 'step');
       else item.removeAttribute('aria-current');
     });
-    if (backButton) backButton.disabled = stepIndex === 0 || submitting;
+    if (backButton) {
+      backButton.hidden = stepIndex === 0;
+      backButton.disabled = submitting;
+    }
     if (nextButton) {
       nextButton.hidden = stepIndex === totalSteps - 1;
       nextButton.disabled = !validateStep(activeStep, false) || submitting;
@@ -444,9 +463,10 @@ document.querySelectorAll('[data-smart-contact-form]').forEach((form) => {
   };
 
   const validateBeforeSubmit = () => {
-    for (let index = 0; index < totalSteps - 1; index += 1) {
+    for (let index = 0; index < totalSteps; index += 1) {
       if (!validateStep(steps[index], true)) {
-        showStep(index);
+        if (index !== stepIndex) showStep(index);
+        validateStep(steps[index], true);
         return false;
       }
     }
@@ -472,10 +492,8 @@ document.querySelectorAll('[data-smart-contact-form]').forEach((form) => {
   form.addEventListener('keydown', (event) => {
     if (event.key !== 'Enter' || submitting) return;
     const target = event.target;
-    const isTextarea = target instanceof HTMLTextAreaElement;
-    const isRadio = target instanceof HTMLInputElement && target.type === 'radio';
-    if (isTextarea && !event.ctrlKey && !event.metaKey) return;
-    if (stepIndex < totalSteps - 1 && (target instanceof HTMLInputElement || isTextarea || isRadio)) {
+    if (target instanceof HTMLTextAreaElement) return;
+    if (stepIndex < totalSteps - 1 && target instanceof HTMLInputElement) {
       event.preventDefault();
       goNext();
     }
@@ -483,7 +501,7 @@ document.querySelectorAll('[data-smart-contact-form]').forEach((form) => {
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    if (submitting || !validateBeforeSubmit()) return;
+    if (submitting || !validateBeforeSubmit() || !form.reportValidity()) return;
     submitting = true;
     if (submitButton) {
       submitButton.disabled = true;
@@ -501,7 +519,7 @@ document.querySelectorAll('[data-smart-contact-form]').forEach((form) => {
         headers: { Accept: 'application/json' },
       });
       let result = {};
-      try { result = await response.json(); } catch (_) { /* Some form providers return empty success bodies. */ }
+      try { result = await response.json(); } catch (_) { }
       if (!response.ok || result.success === false) throw new Error(result.message || 'Submission failed');
       const success = document.createElement('div');
       success.innerHTML = formSuccessMarkup(
@@ -530,7 +548,7 @@ document.querySelectorAll('[data-smart-contact-form]').forEach((form) => {
         submitButton.classList.remove('is-sending');
         submitButton.textContent = 'Send enquiry';
       }
-      if (backButton) backButton.disabled = stepIndex === 0;
+      if (backButton) backButton.disabled = false;
       if (nextButton && stepIndex < totalSteps - 1) nextButton.disabled = !validateStep(currentStep(), false);
       setStatus('We could not send the enquiry right now. Please check your connection and try again, or call us directly.', 'error');
     }
@@ -564,7 +582,7 @@ document.querySelectorAll('.quote-form form').forEach((form) => {
         headers: { Accept: 'application/json' },
       });
       let result = {};
-      try { result = await response.json(); } catch (_) { /* Some form providers return empty success bodies. */ }
+      try { result = await response.json(); } catch (_) { }
       if (!response.ok || result.success === false) throw new Error(result.message || 'Submission failed');
       const success = document.createElement('div');
       success.innerHTML = formSuccessMarkup(
@@ -614,7 +632,7 @@ document.querySelectorAll('.quote-form form').forEach((form) => {
 document.querySelectorAll('.u-email-link[data-user][data-domain]').forEach((link) => {
   const address = `${link.dataset.user}@${link.dataset.domain}`;
   link.href = `mailto:${address}`;
-  link.setAttribute('aria-label', 'Email B2B Industrial Solutions');
+  link.setAttribute('aria-label', 'Email us at B2B Industrial Solutions');
 });
 
 document.querySelectorAll('.protected-email[data-user][data-domain][data-tld]').forEach((link) => {
@@ -623,10 +641,8 @@ document.querySelectorAll('.protected-email[data-user][data-domain][data-tld]').
   const address = `${user}@${domain}.${tld}`;
   link.textContent = address;
   link.href = `mailto:${address}`;
-  link.setAttribute('aria-label', 'Email B2B Industrial Solutions');
+  link.setAttribute('aria-label', `Email ${address}`);
 });
-
-document.addEventListener('copy', (event) => event.preventDefault());
 
 document.querySelectorAll('img').forEach((image) => {
   image.draggable = false;
@@ -645,11 +661,15 @@ document.querySelectorAll('.legacy-content > .page-header').forEach((hero) => {
   hero.appendChild(cue);
 });
 
-if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register(new URL('sw.js', siteRootUrl), { updateViaCache: 'none' })
-      .then((registration) => registration.update())
+    navigator.serviceWorker.getRegistrations()
+      .then((registrations) => Promise.all(registrations.map((registration) => registration.unregister())))
       .catch(() => { });
+    if ('caches' in window) {
+      caches.keys()
+        .then((keys) => Promise.all(keys.filter((key) => key.startsWith('b2b-industrial-')).map((key) => caches.delete(key))))
+        .catch(() => { });
+    }
   }, { once: true });
 }

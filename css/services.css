@@ -89,7 +89,7 @@
 
 .services-page .cta-section, .services-page .cta-premium, .services-page .cta-box { margin: 70px 0 0; border-radius: 0; }
 
-/* Compatibility layout for older technical service pages. */
+
 .services-page .content-area { width: min(980px,calc(100% - 48px)) !important; max-width: 980px !important; margin-inline: auto !important; }
 .services-page .content-area > h2 { margin: 62px 0 20px !important; font-size: clamp(32px,3.8vw,46px) !important; }
 .services-page .content-area > h2:first-child { margin-top: 0 !important; }

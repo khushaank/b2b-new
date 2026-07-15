@@ -1539,7 +1539,7 @@ footer {
   }
 }
 
-/* Content-led revision: Apple-inspired gallery system from the supplied design brief. */
+
 :root {
   --ink: #1d1d1f;
   --navy: #1d1d1f;
@@ -2332,7 +2332,7 @@ footer {
   }
 }
 
-/* Header, priority-card and footer refinements. */
+
 .global-bar {
   height: 76px;
   color: var(--ink);

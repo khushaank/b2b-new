@@ -10,7 +10,7 @@
 
   <link rel="stylesheet" href="./css/core.css">
   <link rel="stylesheet" href="./css/content.css">
-  <link rel="stylesheet" href="./css/core-pages.css">
+  <link rel="stylesheet" href="./css/core-pages.css?v=20260715-contact">
   <link rel="stylesheet" href="./css/responsive.css">
   <link rel="canonical" href="https://b2bindustrial.in/contact">
   <link rel="alternate" hreflang="en-IN" href="https://b2bindustrial.in/contact">
@@ -20,8 +20,6 @@
   <meta name="msapplication-config" content="./browserconfig.xml">
   <link rel="alternate" type="application/rss+xml" title="B2B Industrial Insights"
     href="https://b2bindustrial.in/rss.xml">
-  <link rel="search" type="application/opensearchdescription+xml" title="B2B Industrial Solutions"
-    href="https://b2bindustrial.in/opensearch.xml">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="author" content="B2B Industrial Solutions">
   <meta name="publisher" content="B2B Industrial Solutions">
@@ -264,7 +262,7 @@
     <div class="global-bar">
       <div class="shell global-bar-inner">
         <a class="brand" href="./" aria-label="B2B Industrial Solutions home"><img src="./assets/images/logo.webp"
-            alt="B2B Industrial Solutions" decoding="async"></a>
+            alt="B2B Industrial Solutions" decoding="async" width="780" height="320"></a>
         <nav class="global-nav" aria-label="Company navigation">
           <a href="./about">About</a><a href="./#approach">Process</a><a
             href="./case-studies/cement-plant-energy-audit">Case studies</a><a href="./blog/">Insights</a><a
@@ -288,227 +286,154 @@
       </div>
     </div>
   </header>
-  <div class="page-context">
-    <div class="shell"><span>B2B Industrial Solutions</span><b>Get in Touch</b><a href="./contact#form">Discuss a
-        project</a></div>
-  </div>
-
   <main id="main" class="legacy-content">
+    <section class="contact-page-section">
+      <div class="contact-page-shell">
+        <header class="contact-page-intro">
+          <h1>Tell us about your requirement</h1>
+          <p>Complete the short form and our team will respond with the appropriate next step.</p>
+        </header>
 
-    <section class="contact-modern-section contact-refresh-section fade-in-section">
-      <div class="container">
-        <div class="contact-hero-grid">
-          <div class="contact-quick-start">
-            <p class="section-eyebrow">Get in touch</p>
-            <h1>Let's build safer, smarter workplaces.</h1>
-            <p>Share your requirement and our experts will guide you with the right solutions clearly and without
-              jargon.</p>
-          </div>
-        </div>
+        <div class="contact-form-panel" id="form">
+          <form action="https://api.web3forms.com/submit" method="POST" class="modern-form contact-step-form"
+            data-smart-contact-form novalidate>
+            <input type="hidden" name="access_key" value="37c7915d-f633-4c37-b45f-c670fe70ea2b" />
+            <input type="hidden" name="redirect" value="https://b2bindustrial.in/success" />
+            <input type="hidden" name="subject" value="New Website Inquiry - Contact Page" />
+            <input type="hidden" name="from_name" value="B2B Website" />
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none" />
 
-        <div class="contact-modern-grid" id="form">
-          <div class="contact-form-panel" id="contact-form-panel">
-            <div class="form-header">
-              <span>Send us an enquiry</span>
-              <h3>Start your enquiry</h3>
-              <p>Answer a few focused questions so our team can respond with the right next step.</p>
+            <div class="step-form-progress" aria-label="Form progress">
+              <div>
+                <span data-step-label>Step 1 of 3</span>
+              </div>
+              <div class="step-progress-track" aria-hidden="true"><span data-step-progress></span></div>
             </div>
 
-            <form action="https://api.web3forms.com/submit" method="POST" class="modern-form contact-step-form"
-              data-smart-contact-form novalidate>
-              <input type="hidden" name="access_key" value="37c7915d-f633-4c37-b45f-c670fe70ea2b" />
-              <input type="hidden" name="redirect" value="https://b2bindustrial.in/success" />
-              <input type="hidden" name="subject" value="New Website Inquiry - Contact Page" />
-              <input type="hidden" name="from_name" value="B2B Website" />
-              <input type="checkbox" name="botcheck" class="hidden" style="display: none" />
+            <div class="step-form-status" data-form-status role="status" aria-live="polite"></div>
 
-              <div class="step-form-progress" aria-label="Form progress">
-                <div>
-                  <span data-step-label>Step 1 of 7</span>
+            <div class="step-question active" data-step data-step-name="Contact details">
+              <h4>Contact details</h4>
+              <div class="step-field-grid">
+                <div class="step-field">
+                  <label for="name">Full name</label>
+                  <input type="text" id="name" name="name" placeholder="Your full name" autocomplete="name" required
+                    minlength="2" aria-describedby="name-error" />
+                  <small class="field-error" id="name-error" data-error></small>
                 </div>
-                <div class="step-progress-track" aria-hidden="true"><span data-step-progress></span></div>
-              </div>
-
-              <div class="step-form-status" data-form-status role="status" aria-live="polite"></div>
-
-              <div class="step-question active" data-step data-step-name="Name">
-                <label for="name">What is your name?</label>
-                <p>So we know who to address when we reply.</p>
-                <input type="text" id="name" name="name" placeholder="Your full name" autocomplete="name" required
-                  minlength="2" aria-describedby="name-error" />
-                <small class="field-error" id="name-error" data-error></small>
-              </div>
-
-              <div class="step-question" data-step data-step-name="Organisation" hidden>
-                <label for="company">What is your company or organisation name?</label>
-                <p>This helps us understand the type of site or facility.</p>
-                <input type="text" id="company" name="company" placeholder="Company or organisation"
-                  autocomplete="organization" required minlength="2" aria-describedby="company-error" />
-                <small class="field-error" id="company-error" data-error></small>
-              </div>
-
-              <div class="step-question" data-step data-step-name="Email" hidden>
-                <label for="email">What is your email address?</label>
-                <p>We will send the response and next steps here.</p>
-                <input type="email" id="email" name="email" placeholder="name@company.com" autocomplete="email" required
-                  aria-describedby="email-error" />
-                <small class="field-error" id="email-error" data-error></small>
-              </div>
-
-              <div class="step-question" data-step data-step-name="Phone" hidden>
-                <label for="phone">What is your phone number?</label>
-                <p>A direct number helps us respond quickly for urgent site work.</p>
-                <input type="tel" id="phone" name="phone" placeholder="+91 98997 02065" autocomplete="tel" required
-                  inputmode="tel" aria-describedby="phone-error" />
-                <small class="field-error" id="phone-error" data-error></small>
-              </div>
-
-              <fieldset class="step-question service-card-step" data-step data-step-name="Service" hidden>
-                <legend>What service are you interested in?</legend>
-                <p>Choose the closest match. You can add details in the next step.</p>
-                <div class="service-choice-grid" role="radiogroup" aria-describedby="service-error">
-                  <label class="service-choice-card">
-                    <input type="radio" name="service" value="Energy audits" required />
-                    <span>Energy audits</span>
-                    <small>Energy performance, savings and compliance readiness.</small>
-                  </label>
-                  <label class="service-choice-card">
-                    <input type="radio" name="service" value="Electrical safety" />
-                    <span>Electrical safety</span>
-                    <small>Safety audits, thermography and panel risk checks.</small>
-                  </label>
-                  <label class="service-choice-card">
-                    <input type="radio" name="service" value="Fire and HSE audits" />
-                    <span>Fire &amp; HSE audits</span>
-                    <small>Fire systems, drills, HIRA and workplace safety.</small>
-                  </label>
-                  <label class="service-choice-card">
-                    <input type="radio" name="service" value="Compliance support" />
-                    <span>Compliance support</span>
-                    <small>Statutory, environmental, DG and NOC support.</small>
-                  </label>
-                  <label class="service-choice-card">
-                    <input type="radio" name="service" value="HVAC and IAQ" />
-                    <span>HVAC &amp; IAQ</span>
-                    <small>HVAC projects, duct cleaning and air quality work.</small>
-                  </label>
-                  <label class="service-choice-card">
-                    <input type="radio" name="service" value="Turnkey engineering project" />
-                    <span>Turnkey project</span>
-                    <small>Electrical, fire, lighting and execution support.</small>
-                  </label>
+                <div class="step-field">
+                  <label for="company">Company or organisation <span>(optional)</span></label>
+                  <input type="text" id="company" name="company" placeholder="Company or organisation"
+                    autocomplete="organization" aria-describedby="company-error" />
+                  <small class="field-error" id="company-error" data-error></small>
                 </div>
-                <small class="field-error" id="service-error" data-error></small>
-              </fieldset>
+                <div class="step-field">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="name@company.com" autocomplete="email"
+                    required aria-describedby="email-error" />
+                  <small class="field-error" id="email-error" data-error></small>
+                </div>
+                <div class="step-field">
+                  <label for="phone">Phone</label>
+                  <input type="tel" id="phone" name="phone" placeholder="+91 98997 02065" autocomplete="tel" required
+                    inputmode="tel" aria-describedby="phone-error" />
+                  <small class="field-error" id="phone-error" data-error></small>
+                </div>
+              </div>
+            </div>
 
-              <div class="step-question" data-step data-step-name="Requirement" hidden>
-                <label for="message">Tell us briefly about your requirement.</label>
-                <p>Include the service need, city, site type, urgency, or any known issue.</p>
+            <fieldset class="step-question service-card-step" data-step data-step-name="Requirement" hidden>
+              <legend>What service are you interested in?</legend>
+              <div class="service-choice-grid" role="radiogroup" aria-describedby="service-error">
+                <label class="service-choice-card">
+                  <input type="radio" name="service" value="Energy audits" required />
+                  <span>Energy audits</span>
+                  <small>Energy performance, savings and compliance readiness.</small>
+                </label>
+                <label class="service-choice-card">
+                  <input type="radio" name="service" value="Electrical safety" />
+                  <span>Electrical safety</span>
+                  <small>Safety audits, thermography and panel risk checks.</small>
+                </label>
+                <label class="service-choice-card">
+                  <input type="radio" name="service" value="Fire and HSE audits" />
+                  <span>Fire &amp; HSE audits</span>
+                  <small>Fire systems, drills, HIRA and workplace safety.</small>
+                </label>
+                <label class="service-choice-card">
+                  <input type="radio" name="service" value="Compliance support" />
+                  <span>Compliance support</span>
+                  <small>Statutory, environmental, DG and NOC support.</small>
+                </label>
+                <label class="service-choice-card">
+                  <input type="radio" name="service" value="HVAC and IAQ" />
+                  <span>HVAC &amp; IAQ</span>
+                  <small>HVAC projects, duct cleaning and air quality work.</small>
+                </label>
+                <label class="service-choice-card">
+                  <input type="radio" name="service" value="Turnkey engineering project" />
+                  <span>Turnkey project</span>
+                  <small>Electrical, fire, lighting and execution support.</small>
+                </label>
+              </div>
+              <small class="field-error" id="service-error" data-error></small>
+              <div class="step-field step-requirement-field">
+                <label for="message">Requirement</label>
                 <textarea id="message" name="message" rows="6"
                   placeholder="E.g. We need an electrical safety audit for our Gurgaon manufacturing unit..." required
                   minlength="10" autocomplete="off" aria-describedby="message-error"></textarea>
                 <small class="field-error" id="message-error" data-error></small>
               </div>
+            </fieldset>
 
-              <div class="step-question step-review" data-step data-step-name="Review" hidden>
-                <h4>Review your enquiry</h4>
-                <p>Please check the details before sending them to B2B Industrial Solutions.</p>
-                <dl data-summary></dl>
-              </div>
-
-              <div class="step-form-actions">
-                <button type="button" class="step-back" data-step-back disabled>Back</button>
-                <button type="button" class="step-next" data-step-next disabled>Continue</button>
-                <button type="submit" class="step-submit" data-step-submit hidden>Send enquiry</button>
-              </div>
-            </form>
-          </div>
-
-          <div class="contact-info-panel">
-            <div class="info-group">
-              <h3>Contact directly</h3>
-
-              <ul class="clean-contact-list">
-                <li class="contact-direct-action">
-                  <div class="icon-box" aria-hidden="true">PH</div>
-                  <div class="text-box">
-                    <strong>Phone</strong>
-                    <p><a href="tel:+919899702065">+91 98997 02065</a></p>
-                  </div>
-                </li>
-                <li class="contact-direct-action">
-                  <div class="icon-box" aria-hidden="true">EM</div>
-                  <div class="text-box">
-                    <strong>Email</strong>
-                    <p><a href="#form" class="u-email-link" data-user="info" data-domain="b2bindustrial.in">Email us</a>
-                    </p>
-                  </div>
-                </li>
-                <li class="contact-direct-action">
-                  <div class="icon-box" aria-hidden="true">WA</div>
-                  <div class="text-box">
-                    <strong>WhatsApp</strong>
-                    <p><a href="https://wa.me/919899702065" target="_blank" rel="noopener noreferrer">Message on
-                        WhatsApp</a></p>
-                  </div>
-                </li>
-                <li>
-                  <div class="icon-box" aria-hidden="true">OF</div>
-                  <div class="text-box">
-                    <strong>Office address</strong>
-                    <p>Shop No. 2, Gali No. 4,<br>Khandsa Road,<br>Gurugram, Haryana - 122001,<br>India</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="icon-box" aria-hidden="true">HR</div>
-                  <div class="text-box">
-                    <strong>Business hours</strong>
-                    <p>Monday to Saturday: 9:30 AM - 6:30 PM<br>Sunday: Closed</p>
-                  </div>
-                </li>
-              </ul>
+            <div class="step-question step-review" data-step data-step-name="Confirm and send" hidden>
+              <h4>Confirm and send</h4>
+              <dl data-summary></dl>
+              <label class="form-consent">
+                <input type="checkbox" name="consent" value="Agreed" required aria-describedby="consent-error" />
+                <span>I agree that B2B Industrial Solutions may contact me regarding this enquiry.</span>
+              </label>
+              <small class="field-error" id="consent-error" data-error></small>
             </div>
 
-            <div class="modern-map-container">
-              <div>
-                <strong>Need directions?</strong>
-                <a href="https://www.google.com/maps/search/?api=1&query=B2B%20Industrial%20Solutions%20Gurugram"
-                  target="_blank" rel="noopener noreferrer">Get directions</a>
-              </div>
+            <div class="step-form-actions">
+              <button type="button" class="step-back" data-step-back hidden>Back</button>
+              <button type="button" class="step-next" data-step-next disabled>Continue</button>
+              <button type="submit" class="step-submit" data-step-submit hidden>Send enquiry</button>
             </div>
-          </div>
+          </form>
         </div>
 
-        <div class="contact-assurance-strip" aria-label="Why teams contact B2B Industrial Solutions">
-          <div><span aria-hidden="true">IN</span><b>Pan-India Service</b>
-            <p>Across industries and locations</p>
+        <section class="direct-contact" aria-labelledby="direct-contact-heading">
+          <h2 id="direct-contact-heading">Prefer to contact us directly?</h2>
+          <div class="direct-contact-grid">
+            <div>
+              <span>Phone</span>
+              <a href="tel:+919899702065">+91 98997 02065</a>
+            </div>
+            <div>
+              <span>Email</span>
+              <a class="u-email-link" href="#form" data-user="info"
+                data-domain="b2bindustrial.in">info@b2bindustrial.in</a>
+            </div>
+            <div>
+              <span>WhatsApp</span>
+              <a href="https://wa.me/919899702065" target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>
+            </div>
+            <div>
+              <span>Office</span>
+              <p>Gurugram, Haryana</p>
+            </div>
           </div>
-          <div><span aria-hidden="true">TM</span><b>Multi-disciplinary Team</b>
-            <p>Experts in audits, HVAC, safety &amp; compliance</p>
-          </div>
-          <div><span aria-hidden="true">EO</span><b>End-to-End Support</b>
-            <p>From assessment to implementation</p>
-          </div>
-          <div><span aria-hidden="true">PS</span><b>Practical Solutions</b>
-            <p>Actionable, compliant and future-ready</p>
-          </div>
-        </div>
+        </section>
       </div>
     </section>
-
-    <!-- EDITORIAL:START -->
-    <figure class="page-editorial-visual">
-      <img src="./assets/images/editorial/engineering-knowledge.webp"
-        alt="Industrial engineering workspace with technical drawings, instruments and performance data" width="1600"
-        height="900" loading="lazy" decoding="async" fetchpriority="high">
-    </figure>
-    <!-- EDITORIAL:END -->
   </main>
 
   <footer id="footer">
     <div class="shell footer-top">
       <div class="footer-brand"><img src="./assets/images/logo.webp" alt="B2B Industrial Solutions" decoding="async"
-          loading="eager" fetchpriority="high">
+          loading="eager" fetchpriority="high" width="780" height="320">
         <p>Audits, compliance and turnkey engineering solutions for safer, efficient and future-ready industrial
           operations.</p><a class="footer-cta" href="./contact#form">Discuss your requirement <span>›</span></a>
       </div>
@@ -523,8 +448,7 @@
           projects</a></div>
       <div class="footer-links"><b>Company</b><a href="./about">About us</a><a href="./#approach">Our
           process</a><a href="./blog/">Insights</a><a href="./service">All services</a><a href="./faq">FAQs</a><a
-          href="./tools/">Engineering tools</a><a href="./locations/">Service
-          locations</a><a href="./industries/">Industries served</a></div>
+          href="./tools/">Engineering tools</a><a href="./industries/">Industries served</a></div>
       <div class="footer-links footer-contact"><b>Contact</b><a href="tel:+919893XXXXXX">+91 98997 02065</a><a
           href="#form" class="u-email-link" data-user="info" data-domain="b2bindustrial.in">Email us</a>
         <p>Shop No. 2, Gali No. 4<br>Khandsa Road, Gurugram<br>Haryana 122001</p>
@@ -542,7 +466,7 @@
       <div><a href="./privacy">Privacy</a><a href="./terms">Terms</a><a href="#top">Back to top ↑</a></div>
     </div>
   </footer>
-  <script src="./js/core.js" defer></script>
+  <script src="./js/core.js?v=20260715-2" defer></script>
   <script src="./js/core-pages.js" defer></script>
 
 </body>

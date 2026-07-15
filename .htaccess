@@ -6,20 +6,17 @@ ServerSignature Off
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Use one canonical production host and HTTPS.
-  RewriteCond %{HTTP_HOST} ^www\.b2bindustrial\.in$ [NC]
+  RewriteCond %{HTTP_HOST} !^(?:b2bindustrial\.in|localhost|127\.0\.0\.1)(?::\d+)?$ [NC]
   RewriteRule ^ https://b2bindustrial.in%{REQUEST_URI} [R=301,L,NE]
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
   RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)(:\d+)?$ [NC]
-  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE]
+  RewriteRule ^ https://b2bindustrial.in%{REQUEST_URI} [R=301,L,NE]
 
-  # Remove crawler-only tracking variants of the homepage.
   RewriteCond %{REQUEST_URI} ^/$
   RewriteCond %{QUERY_STRING} ^(?:trk=|ref=|whoisdatacenter(?:_com|\.com))(?:[=&/]|$) [NC]
   RewriteRule ^$ / [R=301,L,NE,QSD]
 
-  # Consolidate retired and renamed URLs onto their current equivalent pages.
   RewriteRule ^about-us(?:\.html)?/?$ /about [R=301,L,NE]
   RewriteRule ^vision-and-mission-statement(?:\.html)?/?$ /about [R=301,L,NE]
   RewriteRule ^contact-us(?:\.html)?/?$ /contact [R=301,L,NE]
@@ -47,26 +44,22 @@ ServerSignature Off
   RewriteRule ^b2b-services/other-value-added-services(?:/index)?(?:\.html)?/?$ /service [R=301,L,NE]
   RewriteRule ^blog-fire-safety-compliance-factory-act/?$ /blog/fire-safety-compliance-factory-act [R=301,L,NE]
   RewriteRule ^blog-cpcb-4-plus-dg-norms/?$ /blog/cpcb-4-plus-dg-norms [R=301,L,NE]
-  RewriteRule ^search/?$ / [R=301,L,NE]
+  RewriteCond %{QUERY_STRING} ^q= [NC]
+  RewriteRule ^$ - [G,L]
+  RewriteRule ^search/?$ - [G,L]
 
-  # Consolidate the former services directory and its common misspelling.
   RewriteRule ^servicess?/?$ /service [R=301,L,NE]
   RewriteRule ^services/index(?:\.html)?$ /service [R=301,L,NE]
 
-  # Static pages use extensionless canonicals; remove accidental path-info slashes.
   RewriteCond %{THE_REQUEST} \s/+(.+?)/(?:[?\s]) [NC]
   RewriteCond %{DOCUMENT_ROOT}/%1.html -f
   RewriteRule ^(.+)/$ /$1 [R=301,L,NE]
 
-  # Keep the conventional browser fallback aligned with the declared favicon.
   RewriteRule ^favicon\.ico$ /favicon.png [R=301,L,NE]
 
-  # Direct visits to internal error documents return visitors to the public site.
-  # Internal ErrorDocument subrequests keep their real HTTP status and error page.
   RewriteCond %{THE_REQUEST} \s/+((?:404|410|421|429|500|503)(?:\.html)?)(?:[?\s]) [NC]
   RewriteRule ^(?:404|410|421|429|500|503)(?:\.html)?$ / [R=302,L]
 
-  # Redirect public .html URLs to their clean canonical form.
   RewriteCond %{THE_REQUEST} \s/+blog/index(?:\.html)?(?:[?\s]) [NC]
   RewriteRule ^blog/index(?:\.html)?$ /blog/ [R=301,L,NE]
   RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html(?:[?\s]) [NC]
@@ -74,7 +67,6 @@ ServerSignature Off
   RewriteCond %{THE_REQUEST} \s/+(.+?)\.html(?:[?\s]) [NC]
   RewriteRule ^(.+)\.html$ /$1 [R=301,L,NE]
 
-  # Internally serve the matching HTML document for clean URLs.
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME}.html -f
@@ -95,7 +87,7 @@ ErrorDocument 503 /503
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
   SetEnvIf Host "^(localhost|127\.0\.0\.1)(:[0-9]+)?$" local_preview
   Header always unset Content-Security-Policy
-  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://api.web3forms.com; script-src 'self'; script-src-elem 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self' https://api.web3forms.com; manifest-src 'self'; worker-src 'self'"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://api.web3forms.com; script-src 'self'; script-src-elem 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self' https://api.web3forms.com; manifest-src 'self'; worker-src 'none'"
   Header always unset X-Powered-By
   <If "%{HTTPS} == 'on'">
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
@@ -121,7 +113,6 @@ ErrorDocument 503 /503
   AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json application/ld+json application/xml image/svg+xml
 </IfModule>
 
-# Keep build sources, repository metadata and server configuration private.
 <FilesMatch "(^\.|README\.md$|package(?:-lock)?\.json$|.*\.(?:py|mjs)$)">
   Require all denied
 </FilesMatch>

@@ -102,10 +102,9 @@ const organization = {
 };
 writeFileSync(join(root, 'schema-master.json'), `${JSON.stringify(organization, null, 2)}\n`);
 
-writeFileSync(join(root, 'opensearch.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"><ShortName>B2B Industrial</ShortName><Description>Search B2B Industrial Solutions</Description><InputEncoding>UTF-8</InputEncoding><Image height="32" width="32" type="image/png">${origin}/favicon.png</Image><Url type="text/html" template="${origin}/?q={searchTerms}" /></OpenSearchDescription>\n`);
 writeFileSync(join(root, 'browserconfig.xml'), `<?xml version="1.0" encoding="utf-8"?>\n<browserconfig><msapplication><tile><square150x150logo src="assets/images/pwa/icon-192.webp"/><TileColor>#0874d1</TileColor></tile></msapplication></browserconfig>\n`);
 writeFileSync(join(root, 'dublincore.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title>B2B Industrial Solutions</dc:title><dc:creator>B2B Industrial Solutions</dc:creator><dc:subject>Industrial audits, compliance, safety, energy, HVAC and engineering</dc:subject><dc:description>Pan-India industrial audit, compliance and turnkey engineering services.</dc:description><dc:publisher>B2B Industrial Solutions</dc:publisher><dc:language>en-IN</dc:language><dc:coverage>India</dc:coverage></metadata>\n`);
-writeFileSync(join(root, 'humans.txt'), `/* TEAM */\nCompany: B2B Industrial Solutions\nContact: info@b2bindustrial.in\nLocation: Gurugram, Haryana, India\n\n/* SITE */\nLanguage: English (India)\nStandards: HTML5, CSS, JavaScript, Schema.org, Open Graph\n`);
+writeFileSync(join(root, 'humans.txt'), `Company: B2B Industrial Solutions\nContact: info@b2bindustrial.in\nLocation: Gurugram, Haryana, India\n\nLanguage: English (India)\nStandards: HTML5, CSS, JavaScript, Schema.org, Open Graph\n`);
 
 const serviceLinks = pages.filter((page) => page.path.startsWith('services/') && !page.noindex).map((page) => `- [${page.title}](${page.canonical}): ${page.description}`);
 const industryLinks = pages.filter((page) => page.path.startsWith('industries/') && page.path !== 'industries/index.html' && !page.noindex).map((page) => `- [${page.title}](${page.canonical}): ${page.description}`);

@@ -4,7 +4,6 @@ const SITEMAP_URL = "https://b2bindustrial.in/sitemap.xml";
 const API_KEY = process.env.PAGESPEED_API_KEY || "";
 const OUTPUT_FILE = "pagespeed-report.csv";
 
-// Keep the delay to avoid sending requests too aggressively.
 const REQUEST_DELAY_MS = 1500;
 
 const STRATEGIES = ["mobile", "desktop"];
@@ -246,7 +245,6 @@ async function main() {
                 rows.push(createErrorRow(pageUrl, strategy, error));
             }
 
-            // Save after every request so progress is not lost.
             await saveCsv(rows);
             await sleep(REQUEST_DELAY_MS);
         }

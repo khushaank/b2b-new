@@ -33,8 +33,6 @@ body {
   letter-spacing: -.01em;
   overflow-x: hidden;
   overscroll-behavior-y: none;
-  -webkit-user-select: none;
-  user-select: none;
 }
 
 body.menu-open {
@@ -863,4 +861,19 @@ button.is-sending::before {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
   }
+}
+.form-consent {
+  display: flex;
+  gap: .65rem;
+  align-items: flex-start;
+  margin: 1rem 0;
+  font-size: .9rem;
+  line-height: 1.45;
+}
+
+.form-consent input {
+  flex: 0 0 auto;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: .1rem;
 }
