@@ -14,7 +14,6 @@
 ## Authoritative navigation
 - [Home](https://b2bindustrial.in/)
 - [All services](https://b2bindustrial.in/service)
-- [Industries served](https://b2bindustrial.in/industries/)
 - [About the company](https://b2bindustrial.in/about)
 - [Industrial insights](https://b2bindustrial.in/blog/)
 - [Service locations](https://b2bindustrial.in/locations/)
@@ -23,10 +22,6 @@
 - [XML sitemap](https://b2bindustrial.in/sitemap.xml)
 - [RSS feed](https://b2bindustrial.in/rss.xml)
 
-## Industries
-- [Energy, Fire & Electrical Audits for Commercial Buildings](https://b2bindustrial.in/industries/commercial-buildings): Integrated energy, HVAC, indoor-air-quality, electrical and fire-safety audits for offices, malls, hotels and commercial campuses across India.
-- [Energy & Electrical Safety Audits for Data Centres in India](https://b2bindustrial.in/industries/data-centres): Data-centre energy, power-quality, electrical safety, cooling and fire-risk audits designed around uptime, redundancy and controlled implementation.
-- [Industrial Audit Services for Manufacturing Plants in India](https://b2bindustrial.in/industries/manufacturing): Energy, electrical safety, fire, HSE and environmental audits for manufacturing plants, with practical engineering support from assessment to implementation.
 
 ## Services
 - [Air Balancing & IAQ Services | HVAC Performance Optimization](https://b2bindustrial.in/services/air-balancing): Professional Air Balancing and Indoor Air Quality (IAQ) testing services by B2B Industrial. Optimize HVAC performance, ensure regulatory compliance, reduce energy costs, and improve occupant health with our precision audits.
