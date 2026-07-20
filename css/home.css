@@ -256,55 +256,74 @@
   font-size: 11px;
 }
 
+/* CLIENT LOGO TICKER — LEFT TO RIGHT */
+
 .trust {
-  padding: 22px 0 18px;
+  width: 100%;
+  padding: 22px 0;
+  overflow: hidden;
   border-bottom: 1px solid var(--home-line);
   background: #fff;
-  overflow: hidden;
 }
 
-/* HTML5 CSS-only infinite ticker */
 .client-ticker-wrap {
-  overflow: hidden;
   width: 100%;
+  overflow: hidden;
 }
 
 .client-ticker {
   display: flex;
-  gap: 102px;
-  align-items: center;
   width: max-content;
-  /* Start at translateX(0) so first logo is immediately visible */
-  animation: ticker-scroll 22s linear infinite;
+  will-change: transform;
+
+  /* Force animation in case another stylesheet overrides it */
+  animation: client-scroll-right 25s linear infinite !important;
+}
+
+.client-ticker-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 100px;
+
+  /* Creates equal spacing between both repeated groups */
+  padding-right: 100px;
 }
 
 .client-ticker img {
+  display: block;
   flex: 0 0 auto;
   width: auto;
   height: 40px;
+  max-width: 150px;
   object-fit: contain;
-  opacity: .6;
-  transition: opacity .2s ease, filter .2s ease;
+  opacity: 0.65;
 }
 
-.client-ticker img:hover {
-  opacity: 1;
-  filter: none;
+.client-ticker-wrap:hover .client-ticker {
+  animation-play-state: paused !important;
 }
 
-@keyframes ticker-scroll {
-  0% {
-    transform: translateX(0);
+/* Start one complete group to the left, then move right */
+@keyframes client-scroll-right {
+  from {
+    transform: translate3d(-50%, 0, 0);
   }
 
-  100% {
-    transform: translateX(-50%);
+  to {
+    transform: translate3d(0, 0, 0);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .client-ticker {
-    animation: none;
+@media (max-width: 767px) {
+  .client-ticker-group {
+    gap: 55px;
+    padding-right: 55px;
+  }
+
+  .client-ticker img {
+    height: 31px;
+    max-width: 115px;
   }
 }
 
