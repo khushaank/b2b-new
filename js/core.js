@@ -2,6 +2,20 @@ const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('.main-nav');
 const serviceBar = document.querySelector('.service-bar');
 const siteRootUrl = new URL('../', document.currentScript?.src || window.location.href);
+
+const pathname = window.location.pathname.replace(/\/+$/, '') || '/';
+const hasInlineRequirementAction = document.querySelector('main a[href*="contact#form"], main #form, main .contact-step-form, main .quote-form, main form[action*="web3forms"]');
+const isRequirementPage = pathname === '/' || pathname === '/contact' || pathname === '/service' || pathname.startsWith('/services/');
+
+if (!isRequirementPage && !hasInlineRequirementAction && !document.querySelector('.floating-requirement')) {
+  const requirementButton = document.createElement('a');
+  requirementButton.className = 'floating-requirement';
+  requirementButton.href = new URL('contact#form', siteRootUrl).pathname + '#form';
+  requirementButton.textContent = 'Discuss requirement';
+  requirementButton.setAttribute('aria-label', 'Discuss your requirement');
+  document.body.append(requirementButton);
+}
+
 if (/\/(?:404|410|421|429|500|503)(?:\.html)?\/?$/i.test(window.location.pathname)) {
   window.location.replace(siteRootUrl.href);
 }
@@ -19,6 +33,14 @@ const siteHeader = document.querySelector('.site-header');
 const updateHeaderState = () => siteHeader?.classList.toggle('is-scrolled', window.scrollY > 10);
 updateHeaderState();
 window.addEventListener('scroll', updateHeaderState, { passive: true });
+
+document.querySelectorAll('a[href="#top"]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+  });
+});
 
 const serviceNavigationReady = navigation && serviceBar
   ? import(new URL('js/services-data.js', siteRootUrl).href).then(({ serviceCategories }) => {
@@ -99,7 +121,7 @@ const serviceNavigationReady = navigation && serviceBar
 
     const setMegaMenu = (open) => {
       clearTimeout(closeTimer);
-      if (open && window.innerWidth <= 820) return;
+      if (open && window.innerWidth <= 960) return;
       serviceBar.classList.toggle('mega-open', open);
       document.body.classList.toggle('mega-menu-open', open);
       servicesTrigger.setAttribute('aria-expanded', String(open));
@@ -150,7 +172,7 @@ const serviceNavigationReady = navigation && serviceBar
     });
     servicesTrigger.addEventListener('click', (event) => {
       event.preventDefault();
-      if (window.innerWidth > 820) {
+      if (window.innerWidth > 960) {
         setMegaMenu(true);
         return;
       }
@@ -174,7 +196,7 @@ const serviceNavigationReady = navigation && serviceBar
     document.body.appendChild(backdrop);
     backdrop.addEventListener('click', () => setMegaMenu(false));
     document.addEventListener('pointerdown', (event) => {
-      if (window.innerWidth > 820 && !serviceBar.contains(event.target)) setMegaMenu(false);
+      if (window.innerWidth > 960 && !serviceBar.contains(event.target)) setMegaMenu(false);
     });
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && serviceBar.classList.contains('mega-open')) {
@@ -187,7 +209,7 @@ const serviceNavigationReady = navigation && serviceBar
     window.addEventListener('scroll', () => setMegaMenu(false), { passive: true });
     window.addEventListener('resize', () => {
       setMegaMenu(false);
-      if (window.innerWidth > 820) {
+      if (window.innerWidth > 960) {
         mobileServices.classList.remove('is-open');
         servicesTrigger.classList.remove('mobile-open');
       }
@@ -243,7 +265,7 @@ if (menuButton && navigation) {
         first.focus();
       }
     });
-    window.addEventListener('resize', () => { if (window.innerWidth > 820) closeMenu(); });
+    window.addEventListener('resize', () => { if (window.innerWidth > 960) closeMenu(); });
   });
 }
 
@@ -302,14 +324,6 @@ document.querySelectorAll('form[action*="api.web3forms.com/submit"]').forEach((f
     if (!field.hasAttribute('minlength')) field.minLength = 10;
     if (!field.hasAttribute('maxlength')) field.maxLength = 2000;
   });
-  if (!form.querySelector('input[name="consent"]')) {
-    const consent = document.createElement('label');
-    consent.className = 'form-consent';
-    consent.innerHTML = '<input type="checkbox" name="consent" value="Agreed" required> <span>I agree that B2B Industrial Solutions may contact me regarding this enquiry.</span>';
-    const actions = form.querySelector('.step-form-actions');
-    if (actions) actions.before(consent);
-    else form.querySelector('button[type="submit"], input[type="submit"]')?.before(consent);
-  }
   const source = `${window.location.pathname}${window.location.search}${window.location.hash}`;
   const label = getPageLabel();
   const redirect = form.querySelector('input[name="redirect"]');

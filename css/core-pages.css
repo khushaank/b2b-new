@@ -1886,7 +1886,7 @@
   background: #eef7ff;
 }
 
-@media (max-width: 820px){
+@media (max-width: 960px){
   .core-pages-page .step-sequence{
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 12px 8px;
@@ -2244,7 +2244,7 @@
   }
 }
 
-@media (max-width: 820px){
+@media (max-width: 960px){
 
   .core-pages-page .about-intro-grid,
   .core-pages-page .contact-grid,
@@ -2667,7 +2667,7 @@
 .career-form input:focus, .career-form select:focus, .career-form textarea:focus{ outline: 3px solid rgba(0,102,204,.16); border-color: var(--blue); }
 .career-form .btn-primary{ justify-self: start; border: 0; cursor: pointer; }
 
-@media (max-width: 820px){
+@media (max-width: 960px){
   .people-page .people-hero .container{ margin-inline: auto; }
   .testimonial-grid, .career-role-grid, .career-apply-grid{ grid-template-columns: 1fr; }
 }

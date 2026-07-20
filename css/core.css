@@ -72,6 +72,10 @@ a {
   text-decoration: none;
 }
 
+.floating-requirement {
+  display: none;
+}
+
 button,
 input,
 textarea,
@@ -280,7 +284,7 @@ select {
 
 .mega-section-label {
   margin: 1px 10px 11px;
-  color: #77838e;
+  color: #56636e;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: .11em;
@@ -314,7 +318,7 @@ select {
 }
 
 .mega-category span {
-  color: #84909a;
+  color: #56636e;
   font-size: 10px;
   font-weight: 700;
 }
@@ -326,7 +330,7 @@ select {
 }
 
 .mega-category i {
-  color: #9aa4ad;
+  color: #5d6973;
   font-size: 16px;
   font-style: normal;
 }
@@ -384,7 +388,7 @@ select {
 }
 
 .mega-panel-head small {
-  color: #7b8791;
+  color: #56636e;
   font-size: 11px;
 }
 
@@ -410,7 +414,7 @@ select {
 }
 
 .mega-service-list a span {
-  color: #9aa4ad;
+  color: #5d6973;
   font-size: 11px;
 }
 
@@ -489,7 +493,7 @@ body.mega-menu-open .mega-backdrop {
   min-height: 38px;
   padding: 0 18px;
   border: 0;
-  border-radius: 999px;
+  border-radius: 7px;
   color: #fff;
   background: var(--blue);
   font-size: 13px;
