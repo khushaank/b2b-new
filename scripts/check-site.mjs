@@ -43,7 +43,7 @@ const localTargetExists = (pathname) => {
 
 requireMatch(home, /<title>Industrial Audits, Compliance, HVAC &amp; Turnkey Projects \| B2B Industrial Solutions<\/title>/,
   'homepage multidisciplinary-services title is missing');
-requireMatch(home, /<h1[^>]*>Engineering safer, compliant and more efficient facilities\.<\/h1>/,
+requireMatch(home, /<h1[^>]*>[\s\S]*?One Engineering Partner\. Every Industrial Need\.[\s\S]*?<\/h1>/,
   'homepage multidisciplinary-services heading is missing');
 if (serviceCategories.length !== 11) errors.push('service navigation must contain exactly 11 categories');
 if (serviceCategories.reduce((total, category) => total + category.services.length, 0) !== 84) {

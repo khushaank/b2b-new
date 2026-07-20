@@ -38,14 +38,4 @@
         .map((category) => `<a href="${path(category.href)}">${category.title}</a>`).join(''));
     }
   }).catch(() => { });
-
-  const faqItems = document.querySelectorAll('.faq-list details');
-  faqItems.forEach((item) => {
-    item.addEventListener('toggle', () => {
-      if (!item.open) return;
-      faqItems.forEach((other) => {
-        if (other !== item) other.open = false;
-      });
-    });
-  });
 })();

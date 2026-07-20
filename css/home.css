@@ -858,85 +858,6 @@
   margin-top: 25px;
 }
 
-.faq {
-  background: #fff;
-}
-
-.faq-grid {
-  display: grid;
-  grid-template-columns: .72fr 1.28fr;
-  gap: clamp(50px, 8vw, 100px);
-  align-items: start;
-}
-
-.faq-intro {
-  position: sticky;
-  top: 104px;
-}
-
-.faq-intro>p:not(.section-kicker) {
-  margin: 19px 0;
-  color: var(--home-muted);
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-.faq-intro a {
-  color: var(--home-blue);
-  font-size: 13px;
-  font-weight: 650;
-}
-
-.faq-list {
-  border-top: 1px solid #cfd7dd;
-}
-
-.faq-list details {
-  border-bottom: 1px solid #cfd7dd;
-}
-
-.faq-list summary {
-  min-height: 72px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 18px;
-  align-items: center;
-  padding: 16px 0;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  list-style: none;
-}
-
-.faq-list summary::-webkit-details-marker {
-  display: none;
-}
-
-.faq-list summary span {
-  width: 27px;
-  height: 27px;
-  display: grid;
-  place-items: center;
-  border: 1px solid #b8c4cd;
-  border-radius: 50%;
-  color: var(--home-blue);
-  transition: transform .18s ease, background .18s ease;
-}
-
-.faq-list details[open] summary span {
-  color: #fff;
-  background: var(--home-blue);
-  transform: rotate(45deg);
-}
-
-.faq-list details p {
-  max-width: 680px;
-  margin: -2px 48px 23px 0;
-  color: var(--home-muted);
-  font-size: 14px;
-  line-height: 1.65;
-}
-
 .contact-cta {
   padding-top: 0;
   background: #fff;
@@ -1155,8 +1076,7 @@
 
   .positioning-grid,
   .section-heading,
-  .execution-grid,
-  .faq-grid {
+  .execution-grid {
     grid-template-columns: 1fr;
     gap: 28px;
   }
@@ -1420,14 +1340,6 @@
 
   .coverage-grid article h3 {
     margin-top: 34px;
-  }
-
-  .faq-list summary {
-    font-size: 15px;
-  }
-
-  .faq-list details p {
-    margin-right: 0;
   }
 
   .contact-card {
