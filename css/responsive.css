@@ -51,8 +51,8 @@
   .site-header { display: contents; position: static; }
   .global-bar, .global-bar-inner { height: 68px; }
   .global-bar { position: relative; z-index: 80; background: #fff; }
-  .brand { width: 184px; }
-  .brand img { transform: scale(1.18); }
+  .brand { width: 210px; }
+  .brand img { transform: scale(1.24); }
   .global-nav { display: none; }
   .header-contact { margin-left: auto; padding-left: 16px; }
   .header-contact > span { display: none; }
@@ -116,7 +116,7 @@
   .tools-page .page-header-tools p { max-width: 265px !important; margin-inline: auto !important; font-size: 14px !important; line-height: 1.55 !important; }
   .shell, .container { width: calc(100% - 28px); }
   .global-bar, .global-bar-inner { height: 64px; }
-  .brand { width: 158px; }
+  .brand { width: 178px; }
   .brand img { max-width: 100%; transform: none; }
   .header-contact { padding: 0; border: 0; }
   .global-phone { font-size: 11px; }
