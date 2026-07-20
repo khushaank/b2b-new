@@ -3,6 +3,8 @@ import { join, relative, resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
 const read = (...parts) => readFileSync(join(root, ...parts), 'utf8');
+const servicesModule = read('js', 'services-data.js');
+const { serviceCategories } = await import(`data:text/javascript;base64,${Buffer.from(servicesModule).toString('base64')}`);
 const errors = [];
 const home = read('index.html');
 const contact = read('contact.html');
@@ -39,10 +41,20 @@ const localTargetExists = (pathname) => {
     || existsSync(join(target, 'index.html'));
 };
 
-requireMatch(home, /<title>Industrial Audit Company in India \| B2B Industrial Solutions<\/title>/,
-  'homepage audit-company title is missing');
-requireMatch(home, /<h1>Pan-India industrial audits/,
-  'homepage Pan-India audit heading is missing');
+requireMatch(home, /<title>Industrial Audits, Compliance, HVAC &amp; Turnkey Projects \| B2B Industrial Solutions<\/title>/,
+  'homepage multidisciplinary-services title is missing');
+requireMatch(home, /<h1[^>]*>Engineering safer, compliant and more efficient facilities\.<\/h1>/,
+  'homepage multidisciplinary-services heading is missing');
+if (serviceCategories.length !== 11) errors.push('service navigation must contain exactly 11 categories');
+if (serviceCategories.reduce((total, category) => total + category.services.length, 0) !== 84) {
+  errors.push('service navigation must contain the complete 84-service hierarchy');
+}
+for (const category of serviceCategories) {
+  if (!localTargetExists(category.href)) errors.push(`service category links to missing target ${category.href}`);
+  for (const service of category.services) {
+    if (!localTargetExists(service.href)) errors.push(`service navigation links to missing target ${service.href}`);
+  }
+}
 requireMatch(home, /<link rel="icon" href="\/favicon\.png"/,
   'homepage must declare the stable root favicon');
 requireMatch(home, /"contentUrl": "https:\/\/b2bindustrial\.in\/favicon\.png"/,

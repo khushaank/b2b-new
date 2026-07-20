@@ -37,236 +37,165 @@ if (serviceBar) {
   window.addEventListener('load', updateStickyOffset, { once: true });
 }
 
-const siteHeader = document.querySelector('.site-header');
-const updateHeaderState = () => siteHeader?.classList.toggle('is-scrolled', window.scrollY > 10);
-updateHeaderState();
-window.addEventListener('scroll', updateHeaderState, { passive: true });
+if (navigation && serviceBar) {
+  const servicesTrigger = [...navigation.querySelectorAll('a')].find((link) => /service(?:\.html)?(?:$|[?#])/.test(link.getAttribute('href') || ''));
 
-const serviceNavigationReady = navigation && serviceBar
-  ? import(new URL('js/services-data.js', siteRootUrl).href).then(({ serviceCategories }) => {
-    const servicesTrigger = [...navigation.querySelectorAll('a')]
-      .find((link) => /service(?:\.html)?(?:$|[?#])/.test(link.getAttribute('href') || ''));
-    if (!servicesTrigger) return null;
-
-    const path = (value) => new URL(value, siteRootUrl).pathname;
+  if (servicesTrigger) {
+    const prefix = servicesTrigger.getAttribute('href').replace(/service(?:\.html)?.*$/, '');
+    const serviceCategories = [
+      ['Audits & Compliance', 'audits', [
+        ['Sustainability & ESG Audits', 'services/audits-sustainability'], ['Chartered Engineering Services', 'services/chartered-engineering'], ['Statutory Compliances & Approvals', 'services/compliances'], ['Comprehensive Energy Audit', 'services/comprehensive-energy-audit'], ['Industrial Cyber Security (OT)', 'services/cyber-audits'], ['Earthing & Grounding Audit', 'services/earthing-audit'], ['Electrical Compliance', 'services/electrical-compliance'], ['Electrical Safety Audit', 'services/electrical-safety'], ['Electrical Safety Audit (ESA)', 'services/electrical-safety-audit'], ['Fire Compliance & Audit', 'services/fire-compliance'], ['Life Safety Audits', 'services/fire-life-safety'], ['Fire Load Study', 'services/fire-load-study'], ['Fire NOC Support', 'services/fire-noc'], ['Lift NOC & Approvals', 'services/lift-noc'], ['Factory License & Municipal Approvals', 'services/mcd-noc'], ['NABL Testing & Noise Monitoring', 'services/nabl-testing'], ['Power Quality & Harmonic Audit', 'services/power-quality-audit'], ['Water Audit', 'services/water-audit'], ['Workplace Well-Being Audit', 'services/well-being-audit'],
+      ]],
+      ['Safety & Risk', 'safety', [
+        ['Behavioural Based Safety', 'services/behavioural-safety'], ['Behavioural Safety Training', 'services/behavioural-safety-training'], ['Disaster Management Plans', 'services/disaster-management'], ['Mock Drills & Simulations', 'services/drills-simulation'], ['E-HAZOP Study', 'services/e-hazop'], ['Emergency Preparedness Plan', 'services/emergency-preparedness'], ['Workplace Ergonomics', 'services/ergonomics'], ['First Aid & Medical Facilities', 'services/first-aid-facilities'], ['HIRA - Risk Assessment', 'services/hira'], ['Incident & Near-Miss Reporting', 'services/incident-reporting'], ['Occupational Health Risk Assessment', 'services/occupational-health'], ['Permit-to-Work Systems Audit', 'services/permit-to-work'], ['POSH Training & Compliance', 'services/posh-training'], ['Process Safety Management', 'services/process-safety'], ['Risk Management Services', 'services/risk-management'], ['Tool Box Talks', 'services/tbt'],
+      ]],
+      ['Electrical & Energy', 'electrical', [
+        ['Arc Flash Study', 'services/arc-flash-study'], ['Cable Laying & Termination', 'services/cable-laying'], ['Cable Management Systems', 'services/cable-tray'], ['Earthing & Lightning Protection', 'services/earthing-projects'], ['Electrical Projects', 'services/electrical-projects'], ['Electrical Goods Supply', 'services/electrical-sales'], ['Infrared Thermography', 'services/electrical-thermography'], ['Energy Audit', 'services/energy-audits'], ['Energy Saving Projects', 'services/energy-saving-projects'], ['EV Charging Solutions', 'services/ev-charging'], ['Gas & Diesel Generator Sets', 'services/gas-dg'], ['Harmonic Analysis & Mitigation', 'services/harmonic-analysis'], ['Lightning Protection System', 'services/lightning-protection'], ['Distribution Panel Projects', 'services/panel-projects'], ['Power Quality Analysis', 'services/power-quality-analysis'], ['Renewable Energy Solutions', 'services/renewable-energy'], ['Solar Projects - EPC Services', 'services/solar-projects'], ['Steam System Analysis', 'services/steam-analysis'], ['Thermography & Infrared Scanning', 'services/thermography'], ['Transformer Dehydration', 'services/transformer-dehydration'],
+      ]],
+      ['HVAC & Environment', 'hvac', [
+        ['Air Balancing & IAQ', 'services/air-balancing'], ['Boiler Efficiency Testing', 'services/boiler-efficiency'], ['Carbon Footprint Study', 'services/carbon-footprint'], ['Compressed Air Leakage Testing', 'services/compressed-air-testing'], ['New CPCB IV+ DG Sets', 'services/cpcb-dgs'], ['Robotic Duct Cleaning', 'services/duct-cleaning'], ['Emission Control Systems', 'services/emission-control'], ['Environment Compliances', 'services/environment-compliances'], ['E-Waste Solutions', 'services/e-waste-solutions'], ['HVAC Design to Execution', 'services/hvac-design'], ['HVAC Installation & Commissioning', 'services/hvac-installation'], ['HVAC Projects', 'services/hvac-projects'], ['OCEMS Projects', 'services/ocems'], ['RECD & DFK Kits', 'services/recd-kit'], ['Stack & Duct Cleaning', 'services/stack-cleaning'], ['Stack Emission Testing', 'services/stack-emission'], ['Industrial Ventilation Projects', 'services/ventilation-projects'], ['Waste Management Solutions', 'services/waste-management'],
+      ]],
+      ['Lighting', 'lighting', [
+        ['Industrial Lighting Solutions', 'services/industrial-lighting'], ['Lighting Projects', 'services/lighting-projects'], ['Office Lighting Solutions', 'services/office-lighting'], ['Outdoor Lighting', 'services/outdoor-lighting'], ['Poles & Designer Lights', 'services/poles-designer-lights'], ['Smart Lighting Solutions', 'services/smart-lighting'], ['Solar Lighting Solutions', 'services/solar-lighting'], ['Wall Mount & Step Lights', 'services/wall-mount-lighting'],
+      ]],
+      ['Design & Projects', 'design', [
+        ['Execution Support', 'services/execution-recommendations'], ['Featured Products', 'services/featured-products'], ['Fire Detection Systems', 'services/fire-detection'], ['Fire Rated Doors', 'services/fire-doors'], ['Fire Extinguishers', 'services/fire-extinguishers'], ['Fire Protection Projects', 'services/fire-projects'], ['FM 200 & Kitchen Suppression', 'services/fm200'], ['Interior Design Projects', 'services/interior-design'], ['Project Management', 'services/project-management'], ['Public Address Systems', 'services/public-address'], ['Repair & Maintenance Services', 'services/repair-maintenance'],
+      ]],
+    ];
     servicesTrigger.textContent = 'Services';
     servicesTrigger.classList.add('services-trigger');
     servicesTrigger.setAttribute('aria-haspopup', 'true');
     servicesTrigger.setAttribute('aria-expanded', 'false');
-    servicesTrigger.setAttribute('aria-controls', 'services-mega-menu mobile-services-menu');
-    servicesTrigger.insertAdjacentHTML('beforeend', '<span class="services-trigger-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="m5.5 7.5 4.5 4.5 4.5-4.5"/></svg></span>');
+    servicesTrigger.setAttribute('aria-controls', 'services-mega-menu');
+    const triggerIcon = document.createElement('span');
+    triggerIcon.className = 'services-trigger-icon';
+    triggerIcon.setAttribute('aria-hidden', 'true');
+    triggerIcon.innerHTML = '<svg viewBox="0 0 20 20" focusable="false"><path d="m5.5 7.5 4.5 4.5 4.5-4.5"/></svg>';
+    servicesTrigger.appendChild(triggerIcon);
 
     const megaMenu = document.createElement('div');
     megaMenu.className = 'services-mega';
     megaMenu.id = 'services-mega-menu';
     megaMenu.setAttribute('aria-label', 'Services menu');
-    megaMenu.setAttribute('aria-hidden', 'true');
     megaMenu.innerHTML = `
-      <div class="services-mega-inner">
-        <div class="mega-categories" role="tablist" aria-label="Service categories">
-          <div class="mega-section-label">Service categories</div>
-          ${serviceCategories.map((category, index) => `
-            <button type="button" class="mega-category${index ? '' : ' is-active'}" role="tab"
-              id="mega-tab-${category.id}" aria-selected="${index === 0}" aria-controls="services-category-panel"
-              tabindex="${index ? '-1' : '0'}" data-service-category="${category.id}">
-              <span>${category.number}</span><b>${category.title}</b><i aria-hidden="true">›</i>
-            </button>`).join('')}
+      <div class="shell services-mega-inner">
+        <div class="mega-primary">
+          <span class="mega-kicker">Integrated industrial solutions</span>
+          <strong>From audit findings to engineered outcomes.</strong>
+          <p>One accountable partner for compliance, safety, energy performance, and turnkey project delivery across India.</p>
+          <a href="${prefix}service">Explore all 80+ services <span aria-hidden="true">→</span></a>
         </div>
-        <div class="mega-services" id="services-category-panel" role="tabpanel" aria-labelledby="mega-tab-${serviceCategories[0].id}"></div>
-        <aside class="mega-visual" aria-live="polite"></aside>
-      </div>`;
-
-    const mobileServices = document.createElement('div');
-    mobileServices.className = 'mobile-services';
-    mobileServices.id = 'mobile-services-menu';
-    mobileServices.innerHTML = `
-      <div class="mobile-services-head"><span>Service categories</span><a href="${path('service')}">View all services</a></div>
-      <div class="mobile-service-groups">
-        ${serviceCategories.map((category, index) => `
-          <details class="mobile-service-group"${index ? '' : ' open'}>
-            <summary><span><b>${category.number}</b>${category.title}</span><i aria-hidden="true">+</i></summary>
-            <div>${category.services.map((service) => `<a href="${path(service.href)}">${service.title}</a>`).join('')}<a class="mobile-category-link" href="${path(category.href)}">Explore category →</a></div>
-          </details>`).join('')}
+        <div class="mega-column">
+          <b>Audits &amp; compliance</b>
+          <a href="${prefix}services/energy-audits">Energy audits</a>
+          <a href="${prefix}services/electrical-safety-audit">Electrical safety</a>
+          <a href="${prefix}services/fire-life-safety">Fire &amp; HSE audits</a>
+          <a href="${prefix}services/environment-compliances">Environment compliance</a>
+          <a class="mega-all" href="${prefix}services/compliances">View compliance services →</a>
+        </div>
+        <div class="mega-column">
+          <b>Engineering projects</b>
+          <a href="${prefix}services/electrical-projects">Electrical projects</a>
+          <a href="${prefix}services/hvac-projects">HVAC &amp; duct cleaning</a>
+          <a href="${prefix}services/fire-projects">Fire protection projects</a>
+          <a href="${prefix}services/lighting-projects">Lighting projects</a>
+          <a class="mega-all" href="${prefix}services/project-management">Project management →</a>
+        </div>
+        <div class="mega-column">
+          <b>Emission &amp; sustainability</b>
+          <a href="${prefix}services/recd-kit">RECD &amp; DFK kits</a>
+          <a href="${prefix}services/emission-control">Emission control</a>
+          <a href="${prefix}services/carbon-footprint">Carbon footprint</a>
+          <a href="${prefix}services/renewable-energy">Renewable energy</a>
+          <a class="mega-all" href="${prefix}contact">Discuss your requirement →</a>
+        </div>
       </div>`;
     servicesTrigger.insertAdjacentElement('afterend', megaMenu);
-    megaMenu.insertAdjacentElement('afterend', mobileServices);
 
-    const categoryButtons = [...megaMenu.querySelectorAll('.mega-category')];
-    const servicesPanel = megaMenu.querySelector('.mega-services');
-    const visualPanel = megaMenu.querySelector('.mega-visual');
-    let activeCategory = serviceCategories[0];
-    let closeTimer;
-    let hoverTimer;
-    let suppressFocusOpen = false;
+    const cascadeMenu = document.createElement('div');
+    cascadeMenu.className = 'services-cascade';
+    megaMenu.removeAttribute('id');
+    cascadeMenu.id = 'services-mega-menu';
+    cascadeMenu.setAttribute('aria-label', 'Services menu');
+    cascadeMenu.innerHTML = `<div class="services-cascade-categories">${serviceCategories.map(([name, id], index) => `<button type="button" class="services-category${index ? '' : ' is-active'}" aria-current="${index === 0 ? 'true' : 'false'}" data-category="${id}">${name}<span aria-hidden="true">›</span></button>`).join('')}</div><div class="services-cascade-panel"></div>`;
+    megaMenu.insertAdjacentElement('afterend', cascadeMenu);
 
-    const renderCategory = (category) => {
-      if (!category || activeCategory.id === category.id && servicesPanel.children.length) return;
-      activeCategory = category;
+    const categoryButtons = [...cascadeMenu.querySelectorAll('.services-category')];
+    const categoryPanel = cascadeMenu.querySelector('.services-cascade-panel');
+    const showCategory = (id) => {
+      const category = serviceCategories.find(([, categoryId]) => categoryId === id);
+      if (!category) return;
+      const [name, categoryId, services] = category;
       categoryButtons.forEach((button) => {
-        const active = button.dataset.serviceCategory === category.id;
+        const active = button.dataset.category === categoryId;
         button.classList.toggle('is-active', active);
-        button.setAttribute('aria-selected', String(active));
-        button.tabIndex = active ? 0 : -1;
+        button.setAttribute('aria-current', String(active));
       });
-      servicesPanel.classList.add('is-updating');
-      visualPanel.classList.add('is-updating');
-      servicesPanel.setAttribute('aria-labelledby', `mega-tab-${category.id}`);
-      servicesPanel.innerHTML = `<div class="mega-panel-head"><span>${category.number}</span><div><strong>${category.title}</strong><small>${category.services.length} services</small></div></div><div class="mega-service-list">${category.services.map((service) => `<a href="${path(service.href)}">${service.title}<span aria-hidden="true">↗</span></a>`).join('')}</div>`;
-      visualPanel.innerHTML = `<img src="${path(category.image)}" alt="${category.imageAlt}" width="${category.imageWidth}" height="${category.imageHeight}" loading="lazy" decoding="async"><div><span>${category.number} / ${category.title}</span><p>${category.description}</p><a href="${path(category.href)}">Explore category <span aria-hidden="true">→</span></a></div>`;
-      requestAnimationFrame(() => {
-        servicesPanel.classList.remove('is-updating');
-        visualPanel.classList.remove('is-updating');
-      });
+      categoryPanel.innerHTML = `<span class="services-cascade-kicker">${name}</span><div class="services-cascade-links">${services.map(([label, path]) => `<a href="${prefix}${path}">${label}<span aria-hidden="true">→</span></a>`).join('')}</div><a class="services-cascade-all" href="${prefix}service#${categoryId}">View all ${name} services <span aria-hidden="true">→</span></a>`;
     };
+    categoryButtons.forEach((button) => {
+      button.addEventListener('mouseenter', () => showCategory(button.dataset.category));
+      button.addEventListener('focus', () => showCategory(button.dataset.category));
+      button.addEventListener('click', () => showCategory(button.dataset.category));
+    });
+    showCategory('audits');
+
+    const backdrop = document.createElement('div');
+    backdrop.className = 'mega-backdrop';
+    document.body.appendChild(backdrop);
 
     const setMegaMenu = (open) => {
       clearTimeout(closeTimer);
-      if (open && window.innerWidth <= 820) return;
       serviceBar.classList.toggle('mega-open', open);
-      document.body.classList.toggle('mega-menu-open', open);
+      document.body.classList.toggle('mega-menu-open', open && window.innerWidth > 820);
       servicesTrigger.setAttribute('aria-expanded', String(open));
-      megaMenu.setAttribute('aria-hidden', String(!open));
     };
-    const scheduleClose = () => { closeTimer = setTimeout(() => setMegaMenu(false), 220); };
-    const scheduleCategory = (category) => {
-      clearTimeout(hoverTimer);
-      hoverTimer = setTimeout(() => renderCategory(category), 90);
-    };
-
-    renderCategory(serviceCategories[0]);
-    categoryButtons.forEach((button, index) => {
-      const category = serviceCategories[index];
-      button.addEventListener('mouseenter', () => scheduleCategory(category));
-      button.addEventListener('focus', () => renderCategory(category));
-      button.addEventListener('click', () => renderCategory(category));
-      button.addEventListener('keydown', (event) => {
-        let targetIndex = index;
-        if (event.key === 'ArrowDown') targetIndex = (index + 1) % categoryButtons.length;
-        else if (event.key === 'ArrowUp') targetIndex = (index - 1 + categoryButtons.length) % categoryButtons.length;
-        else if (event.key === 'Home') targetIndex = 0;
-        else if (event.key === 'End') targetIndex = categoryButtons.length - 1;
-        else if (event.key === 'ArrowRight') {
-          event.preventDefault();
-          servicesPanel.querySelector('a')?.focus();
-          return;
-        } else return;
-        event.preventDefault();
-        categoryButtons[targetIndex].focus();
-      });
-    });
-    servicesPanel.addEventListener('keydown', (event) => {
-      if (event.key === 'ArrowLeft') {
-        event.preventDefault();
-        megaMenu.querySelector('.mega-category.is-active')?.focus();
-      }
-    });
+    let closeTimer;
+    const scheduleClose = () => { closeTimer = setTimeout(() => setMegaMenu(false), 140); };
 
     servicesTrigger.addEventListener('mouseenter', () => setMegaMenu(true));
-    servicesTrigger.addEventListener('focus', () => {
-      if (!suppressFocusOpen) setMegaMenu(true);
-    });
-    serviceBar.addEventListener('mouseenter', () => clearTimeout(closeTimer));
     serviceBar.addEventListener('mouseleave', scheduleClose);
+    servicesTrigger.addEventListener('focus', () => setMegaMenu(true));
     serviceBar.addEventListener('focusout', (event) => {
       if (!serviceBar.contains(event.relatedTarget)) scheduleClose();
     });
     servicesTrigger.addEventListener('click', (event) => {
       event.preventDefault();
-      if (window.innerWidth > 820) {
-        setMegaMenu(true);
-        return;
-      }
-      const open = !mobileServices.classList.contains('is-open');
-      mobileServices.classList.toggle('is-open', open);
-      servicesTrigger.classList.toggle('mobile-open', open);
-      servicesTrigger.setAttribute('aria-expanded', String(open));
+      setMegaMenu(true);
     });
-
-    mobileServices.querySelectorAll('details').forEach((group) => {
-      group.addEventListener('toggle', () => {
-        if (!group.open) return;
-        mobileServices.querySelectorAll('details').forEach((other) => {
-          if (other !== group) other.open = false;
-        });
-      });
-    });
-
-    const backdrop = document.createElement('div');
-    backdrop.className = 'mega-backdrop';
-    document.body.appendChild(backdrop);
     backdrop.addEventListener('click', () => setMegaMenu(false));
-    document.addEventListener('pointerdown', (event) => {
-      if (window.innerWidth > 820 && !serviceBar.contains(event.target)) setMegaMenu(false);
-    });
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && serviceBar.classList.contains('mega-open')) {
-        suppressFocusOpen = true;
-        setMegaMenu(false);
-        servicesTrigger.focus();
-        suppressFocusOpen = false;
-      }
-    });
-    window.addEventListener('scroll', () => setMegaMenu(false), { passive: true });
-    window.addEventListener('resize', () => {
-      setMegaMenu(false);
-      if (window.innerWidth > 820) {
-        mobileServices.classList.remove('is-open');
-        servicesTrigger.classList.remove('mobile-open');
-      }
-    });
-    return { servicesTrigger, megaMenu, mobileServices, setMegaMenu };
-  }).catch(() => null)
-  : Promise.resolve(null);
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setMegaMenu(false); });
+    const closeMegaOnViewportMove = () => {
+      if (serviceBar.classList.contains('mega-open')) setMegaMenu(false);
+    };
+    window.addEventListener('scroll', closeMegaOnViewportMove, { passive: true });
+    window.addEventListener('wheel', closeMegaOnViewportMove, { passive: true });
+    window.addEventListener('touchmove', closeMegaOnViewportMove, { passive: true });
+    window.addEventListener('resize', () => setMegaMenu(false));
+  }
+}
 
 if (menuButton && navigation) {
-  serviceNavigationReady.then((serviceNavigation) => {
-    const closeMenu = (restoreFocus = false) => {
-      menuButton.classList.remove('active');
-      navigation.classList.remove('open');
-      document.body.classList.remove('menu-open', 'mega-menu-open');
-      serviceBar?.classList.remove('mega-open');
-      serviceNavigation?.mobileServices.classList.remove('is-open');
-      serviceNavigation?.servicesTrigger.classList.remove('mobile-open');
-      serviceNavigation?.servicesTrigger.setAttribute('aria-expanded', 'false');
-      serviceNavigation?.megaMenu.setAttribute('aria-hidden', 'true');
-      menuButton.setAttribute('aria-expanded', 'false');
-      menuButton.setAttribute('aria-label', 'Open navigation');
-      if (restoreFocus) menuButton.focus();
-    };
+  const closeMenu = () => {
+    menuButton.classList.remove('active');
+    navigation.classList.remove('open');
+    document.body.classList.remove('menu-open', 'mega-menu-open');
+    serviceBar?.classList.remove('mega-open');
+    navigation.querySelector('.services-trigger')?.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', 'Open navigation');
+  };
 
-    menuButton.addEventListener('click', () => {
-      const open = menuButton.classList.toggle('active');
-      navigation.classList.toggle('open', open);
-      document.body.classList.toggle('menu-open', open);
-      menuButton.setAttribute('aria-expanded', String(open));
-      menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-      if (open) requestAnimationFrame(() => navigation.querySelector(':scope > a')?.focus());
-    });
-
-    navigation.querySelectorAll('a:not(.services-trigger)').forEach((link) => link.addEventListener('click', () => closeMenu()));
-    document.addEventListener('keydown', (event) => {
-      if (!document.body.classList.contains('menu-open')) return;
-      if (event.key === 'Escape') {
-        event.preventDefault();
-        closeMenu(true);
-        return;
-      }
-      if (event.key !== 'Tab') return;
-      const focusable = [...serviceBar.querySelectorAll('a, button, summary')]
-        .filter((element) => element.offsetParent !== null && !element.hasAttribute('disabled'));
-      if (!focusable.length) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    });
-    window.addEventListener('resize', () => { if (window.innerWidth > 820) closeMenu(); });
+  menuButton.addEventListener('click', () => {
+    const open = menuButton.classList.toggle('active');
+    navigation.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
   });
+
+  navigation.querySelectorAll('a:not(.services-trigger)').forEach((link) => link.addEventListener('click', closeMenu));
+  window.addEventListener('resize', () => { if (window.innerWidth > 820) closeMenu(); });
 }
 
 document.querySelectorAll('table.service-table').forEach((table) => {
