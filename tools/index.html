@@ -4,8 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self' https://api.web3forms.com; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com data:; img-src 'self' data: https://b2bindustrial.in; connect-src 'self' https://api.web3forms.com; manifest-src 'self'; frame-src 'none'; worker-src 'none'" />
   <meta name="description"
-    content="Free tools for HVAC load sizing, power factor correction, and lux level compliance. Get instant, IS-compliant estimates for your industrial spaces.">
+    content="Free tools for preliminary HVAC load sizing, power-factor correction and lux planning. Get early-stage engineering estimates for industrial spaces.">
   <title>Industrial Engineering &amp; Compliance Calculators | B2B Industrial</title>
   <link rel="stylesheet" href="../assets/legacy-css/tools.css">
   <link rel="stylesheet" href="../css/core.css">
@@ -15,8 +18,8 @@
   <link rel="canonical" href="https://b2bindustrial.in/tools/">
   <link rel="alternate" hreflang="en-IN" href="https://b2bindustrial.in/tools/">
   <link rel="manifest" href="../site.webmanifest">
-  <link rel="icon" href="/favicon.png" type="image/png" sizes="318x318">
-  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="icon" href="https://b2bindustrial.in/favicon.png" type="image/png" sizes="318x318">
+  <link rel="apple-touch-icon" href="https://b2bindustrial.in/favicon.png">
   <meta name="msapplication-config" content="../browserconfig.xml">
   <link rel="alternate" type="application/rss+xml" title="B2B Industrial Insights"
     href="https://b2bindustrial.in/rss.xml">
@@ -29,7 +32,7 @@
   <meta property="og:locale" content="en_IN">
   <meta property="og:title" content="Industrial Engineering &amp; Compliance Calculators | B2B Industrial">
   <meta property="og:description"
-    content="Free tools for HVAC load sizing, power factor correction, and lux level compliance. Get instant, IS-compliant estimates for your industrial spaces.">
+    content="Free tools for HVAC load sizing, power factor correction, and lux level compliance. Get instant, early-stage engineering estimates for your industrial spaces.">
   <meta property="og:url" content="https://b2bindustrial.in/tools/">
   <meta property="og:image" content="https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp">
   <meta property="og:image:alt"
@@ -37,7 +40,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Industrial Engineering &amp; Compliance Calculators | B2B Industrial">
   <meta name="twitter:description"
-    content="Free tools for HVAC load sizing, power factor correction, and lux level compliance. Get instant, IS-compliant estimates for your industrial spaces.">
+    content="Free tools for HVAC load sizing, power factor correction, and lux level compliance. Get instant, early-stage engineering estimates for your industrial spaces.">
   <meta name="twitter:image" content="https://b2bindustrial.in/assets/images/editorial/engineering-knowledge.webp">
   <meta name="twitter:image:alt"
     content="Industrial engineering workspace with technical drawings, instruments and performance data">
@@ -110,7 +113,7 @@
       "@id": "https://b2bindustrial.in/tools/#webpage",
       "url": "https://b2bindustrial.in/tools/",
       "name": "Industrial Engineering & Compliance Calculators | B2B Industrial",
-      "description": "Free tools for HVAC load sizing, power factor correction, and lux level compliance. Get instant, IS-compliant estimates for your industrial spaces.",
+      "description": "Free tools for HVAC load sizing, power factor correction, and lux level compliance. Get instant, early-stage engineering estimates for your industrial spaces.",
       "isPartOf": {
         "@id": "https://b2bindustrial.in/#website"
       },
@@ -152,17 +155,22 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header" id="top">
-  <div class="service-bar">
-    <div class="shell nav-wrap">
-      <a class="brand" href="../" aria-label="B2B Industrial Solutions home"><img src="../assets/images/home/logo.webp" alt="B2B Industrial Solutions" width="780" height="320" decoding="async"></a>
-      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
-      <nav class="main-nav" aria-label="Primary navigation">
-        <a href="../">Home</a><a href="../about">About</a><a href="../service">Services</a><a href="../#projects">Projects</a><a href="../clients">Clients</a><a href="../blog/">Insights</a><a href="../contact">Contact</a>
-      </nav>
-      <a class="button nav-cta" href="../contact#form">Discuss Your Requirement</a>
+    <div class="service-bar">
+      <div class="shell nav-wrap">
+        <a class="brand" href="../" aria-label="B2B Industrial Solutions home"><img
+            src="../assets/images/home/logo.webp" alt="B2B Industrial Solutions" width="780" height="320"
+            decoding="async"></a>
+        <button class="menu-toggle" type="button" aria-label="Open navigation"
+          aria-expanded="false"><span></span><span></span></button>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="../">Home</a><a href="../about">About</a><a href="../service">Services</a><a
+            href="../#projects">Projects</a><a href="../clients">Clients</a><a href="../blog/">Insights</a><a
+            href="../contact">Contact</a>
+        </nav>
+        <a class="button nav-cta" href="../contact#form">Discuss Your Requirement</a>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
   <div class="page-context">
     <div class="shell"><span>Engineering tools</span><b>Industrial Engineering Tools</b><a href="../contact">Discuss a
         project</a></div>
@@ -175,7 +183,7 @@
 
       <div class="container">
         <h1>Industrial Engineering Tools</h1>
-        <p>Free, IS-compliant digital calculators designed for HVAC engineering, electrical compliance, and
+        <p>Free preliminary digital calculators designed for HVAC engineering, electrical compliance, and
           energy audits.</p>
       </div>
     </section>
@@ -191,8 +199,8 @@
                 <path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4" />
               </svg>
             </div>
-            <h3>AC Tonnage Calculator</h3>
-            <p>Perform precise thermal cooling load calculations based on room dimensions, climate zone,
+            <h2>AC Tonnage Calculator</h2>
+            <p>Create a preliminary thermal cooling-load estimate based on room dimensions, climate zone,
               ceiling height, and solar exposure to size the perfect HVAC system.</p>
             <a href="../tools/tonnage-calculator" class="tool-btn">
               Launch Calculator <span aria-hidden="true">→</span>
@@ -210,7 +218,7 @@
             </div>
             <h3>Power Factor Calculator</h3>
             <p>Determine required capacitor sizing (kVAR) to improve energy efficiency, avoid utility
-              penalty surcharges, and estimate exact monthly and annual savings on electricity bills.</p>
+              penalty surcharges, and estimate indicative monthly and annual savings on electricity bills.</p>
 
             <a href="../tools/powerfactor-calculation" class="tool-btn">
               Launch Calculator <span aria-hidden="true">→</span>
@@ -227,7 +235,7 @@
               </svg>
             </div>
             <h3>Lux Level Calculator</h3>
-            <p>Calculate compliant lighting fixture requirements and layout spacing configurations for
+            <p>Estimate lighting fixture requirements and layout spacing configurations for
               factories, warehouses, and offices per IS 3646 and National Building Code standards.</p>
             <a href="../tools/luxlevel-calculator" class="tool-btn">
               Launch Calculator <span aria-hidden="true">→</span>
@@ -242,22 +250,51 @@
     <figure class="page-editorial-visual">
       <img src="../assets/images/editorial/engineering-knowledge.webp"
         alt="Industrial engineering workspace with technical drawings, instruments and performance data" width="1600"
-        height="900" loading="lazy" decoding="async" fetchpriority="high">
+        height="900" loading="lazy" decoding="async">
     </figure>
 
   </main>
 
   <footer id="footer">
-  <div class="shell footer-top">
-    <div class="footer-brand"><img src="../assets/images/iso.webp" alt="B2B Industrial Solutions" width="780" height="320" loading="lazy" decoding="async"><p>Complete industrial engineering, compliance and project execution support for safer, efficient and reliable facilities.</p><a class="footer-cta" href="../contact#form">Discuss your requirement <span>→</span></a></div>
-    <div class="footer-links"><b>Services</b><a href="../services/audits-sustainability">Energy &amp; Sustainability</a><a href="../services/electrical-safety">Electrical Safety &amp; Power Systems</a><a href="../services/behavioural-safety">Health, Safety &amp; Environment</a><a href="../services/fire-life-safety">Fire Safety &amp; Fire Protection</a><a href="../services/compliances">Compliance, Certification &amp; Approvals</a><a href="../services/hvac-projects">HVAC &amp; Indoor Air Quality</a><a href="../service">View all services</a></div>
-    <div class="footer-links"><b>Need Help With?</b><a href="../services/audits-sustainability">Reducing Energy Costs</a><a href="../services/electrical-safety-audit">Improving Electrical Safety</a><a href="../services/compliances">Obtaining Statutory Approvals</a><a href="../services/hvac-projects">Upgrading HVAC Systems</a><a href="../services/fire-life-safety">Improving Fire Protection</a><a href="../services/project-management">Executing an Engineering Project</a></div>
-    <div class="footer-links"><b>Company</b><a href="../about">About</a><a href="../#projects">Projects &amp; case studies</a><a href="../clients">Clients</a><a href="../blog/">Resources</a><a href="../careers">Careers</a><a href="../testimonials">Testimonials</a></div>
-    <div class="footer-links footer-contact"><b>Contact</b><a href="tel:+919899702065">+91 98997 02065</a><a href="mailto:info@b2bindustrial.in">info@b2bindustrial.in</a><p>Shop No. 2, Gali No. 4<br>Khandsa Road, Gurugram<br>Haryana 122001</p><div class="footer-socials"><a href="https://wa.me/919899702065" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="https://linkedin.b2bindustrial.in/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div></div>
-  </div>
-  <div class="shell footer-credentials" aria-label="Certifications and service credentials"><span><b>ISO 9001:2015</b>Certified enterprise</span><span><b>BEE-certified</b>Audit experts</span><span><b>Pan-India</b>Project delivery</span><span><b>Since 2013</b>Industrial expertise</span></div>
-  <div class="shell footer-bottom"><span>© <span id="year"></span> B2B Industrial Solutions</span><div><a href="../privacy">Privacy policy</a><a href="../terms">Terms</a><a href="#top">Back to top ↑</a></div></div>
-</footer>
+    <div class="shell footer-top">
+      <div class="footer-brand"><img src="../assets/images/iso.webp" alt="B2B Industrial Solutions" width="780"
+          height="320" loading="lazy" decoding="async">
+        <p>Complete industrial engineering, compliance and project execution support for safer, efficient and reliable
+          facilities.</p><a class="footer-cta" href="../contact#form">Discuss your requirement <span>→</span></a>
+      </div>
+      <div class="footer-links"><b>Services</b><a href="../services/audits-sustainability">Energy &amp;
+          Sustainability</a><a href="../services/electrical-safety">Electrical Safety &amp; Power Systems</a><a
+          href="../services/behavioural-safety">Health, Safety &amp; Environment</a><a
+          href="../services/fire-life-safety">Fire Safety &amp; Fire Protection</a><a
+          href="../services/compliances">Compliance, Certification &amp; Approvals</a><a
+          href="../services/hvac-projects">HVAC &amp; Indoor Air Quality</a><a href="../service">View all services</a>
+      </div>
+      <div class="footer-links"><b>Need Help With?</b><a href="../services/audits-sustainability">Reducing Energy
+          Costs</a><a href="../services/electrical-safety-audit">Improving Electrical Safety</a><a
+          href="../services/compliances">Obtaining Statutory Approvals</a><a href="../services/hvac-projects">Upgrading
+          HVAC Systems</a><a href="../services/fire-life-safety">Improving Fire Protection</a><a
+          href="../services/project-management">Executing an Engineering Project</a></div>
+      <div class="footer-links"><b>Company</b><a href="../about">About</a><a href="../#projects">Projects &amp; case
+          studies</a><a href="../clients">Clients</a><a href="../blog/">Resources</a><a href="../careers">Careers</a><a
+          href="../testimonials">Testimonials</a></div>
+      <div class="footer-links footer-contact"><b>Contact</b><a href="tel:+919899702065">+91 98997 02065</a><a
+          href="mailto:info@b2bindustrial.in">info@b2bindustrial.in</a>
+        <p>Shop No. 2, Gali No. 4<br>Khandsa Road, Gurugram<br>Haryana 122001</p>
+        <div class="footer-socials"><a href="https://wa.me/919899702065" target="_blank"
+            rel="noopener noreferrer">WhatsApp</a><a href="https://linkedin.b2bindustrial.in/" target="_blank"
+            rel="noopener noreferrer">LinkedIn</a></div>
+      </div>
+    </div>
+    <div class="shell footer-credentials" aria-label="Certifications and service credentials" role="group"><span><b>ISO
+          9001:2015</b>Certified enterprise</span><span><b>BEE-certified</b>Audit
+        experts</span><span><b>Pan-India</b>Project delivery</span><span><b>Since 2013</b>Industrial expertise</span>
+    </div>
+
+    <div class="shell footer-bottom"><span>© <span id="year"></span> B2B Industrial Solutions</span>
+      <div><a href="../privacy">Privacy policy</a><a href="../terms">Terms</a><a href="../claims-and-evidence">Claims
+          &amp; evidence</a><a href="#top">Back to top ↑</a></div>
+    </div>
+  </footer>
   <script src="../js/core.js" defer></script>
   <script src="../js/tools.js?v=12" defer></script>
 

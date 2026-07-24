@@ -4,6 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self' https://api.web3forms.com; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com data:; img-src 'self' data: https://b2bindustrial.in; connect-src 'self' https://api.web3forms.com; manifest-src 'self'; frame-src 'none'; worker-src 'none'" />
   <meta name="description"
     content="Learn about B2B Industrial Solutions, an ISO 9001:2015-certified enterprise offering comprehensive industrial solutions across India since 2013.">
   <title>B2B Industrial Solutions | Engineering &amp; Compliance Experts</title>
@@ -15,8 +18,8 @@
   <link rel="canonical" href="https://b2bindustrial.in/about">
   <link rel="alternate" hreflang="en-IN" href="https://b2bindustrial.in/about">
   <link rel="manifest" href="./site.webmanifest">
-  <link rel="icon" href="/favicon.png" type="image/png" sizes="318x318">
-  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="icon" href="https://b2bindustrial.in/favicon.png" type="image/png" sizes="318x318">
+  <link rel="apple-touch-icon" href="https://b2bindustrial.in/favicon.png">
   <meta name="msapplication-config" content="./browserconfig.xml">
   <link rel="alternate" type="application/rss+xml" title="B2B Industrial Insights"
     href="https://b2bindustrial.in/rss.xml">
@@ -294,7 +297,7 @@
         <div class="about-intro-grid">
           <div class="intro-image">
             <img src="./assets/images/about.webp" alt="B2B Industrial Solutions engineering team" width="1260"
-              height="750" loading="lazy" / decoding="async" fetchpriority="high">
+              height="750" loading="lazy" decoding="async">
           </div>
           <div class="intro-text">
             <h2>Your Trusted Partner in Industrial Excellence</h2>
@@ -366,7 +369,7 @@
     <section class="founder-section fade-in-section">
       <div class="container">
         <div class="founder-image" id="founderImage" style="cursor: pointer;" title="Click to read about the Founder">
-          <img src="./assets/images/founder.webp" alt="Sandeep Gupta, Founder" draggable="false" / decoding="async"
+          <img src="./assets/images/founder.webp" alt="Sandeep Gupta, Founder" draggable="false" decoding="async"
             loading="lazy" width="640" height="640">
         </div>
         <div class="founder-text">
@@ -439,7 +442,7 @@
         <div class="feature-grid">
           <div class="feature-card">
             <div class="feature-icon"><i class="fas fa-users-cog"></i></div>
-            <h4>Expert Team</h4>
+            <h3>Expert Team</h3>
             <p class="metric">50+ Certified Professionals</p>
             <p>
               Seasoned engineers and consultants with multi-sector expertise,
@@ -509,14 +512,14 @@
         <div class="values-grid">
           <div class="value-card">
             <i class="fas fa-shield-alt"></i>
-            <h5>Integrity</h5>
+            <h3>Integrity</h3>
             <p>
               Upholding the highest ethical standards in all our dealings.
             </p>
           </div>
           <div class="value-card">
             <i class="fas fa-lightbulb"></i>
-            <h5>Innovation</h5>
+            <h4>Innovation</h4>
             <p>Continuously seeking better ways to solve challenges.</p>
           </div>
           <div class="value-card">
@@ -542,7 +545,7 @@
           <div class="service-card">
             <div class="service-card-image">
               <img src="./assets/images/services/Lighting%20Projects.webp" alt="Industrial lighting fixtures"
-                draggable="false" / decoding="async" loading="lazy" width="1535" height="1024">
+                draggable="false" decoding="async" loading="lazy" width="1535" height="1024">
             </div>
             <div class="service-card-content">
               <h3>Lighting Projects</h3>
@@ -558,7 +561,7 @@
           <div class="service-card">
             <div class="service-card-image">
               <img src="./assets/images/services/HVAC%20Projects%20%26%20Robot%20Duct%20Cleaning.webp"
-                alt="Commercial HVAC system ducts" draggable="false" / decoding="async" loading="lazy" width="1536"
+                alt="Commercial HVAC system ducts" draggable="false" decoding="async" loading="lazy" width="1536"
                 height="1024">
             </div>
             <div class="service-card-content">
@@ -573,7 +576,7 @@
           </div>
           <div class="service-card">
             <div class="service-card-image">
-              <img src="./assets/images/services/Fire-Safety.webp" alt="Fire alarm system panel" draggable="false" /
+              <img src="./assets/images/services/Fire-Safety.webp" alt="Fire alarm system panel" draggable="false"
                 decoding="async" loading="lazy" width="1280" height="870">
             </div>
             <div class="service-card-content">
@@ -622,12 +625,14 @@
             rel="noopener noreferrer">LinkedIn</a></div>
       </div>
     </div>
-    <div class="shell footer-credentials" aria-label="Certifications and service credentials"><span><b>ISO
+    <div class="shell footer-credentials" aria-label="Certifications and service credentials" role="group"><span><b>ISO
           9001:2015</b>Certified enterprise</span><span><b>BEE-certified</b>Audit
         experts</span><span><b>Pan-India</b>Project delivery</span><span><b>Since 2013</b>Industrial expertise</span>
     </div>
+
     <div class="shell footer-bottom"><span>© <span id="year"></span> B2B Industrial Solutions</span>
-      <div><a href="./privacy">Privacy policy</a><a href="./terms">Terms</a><a href="#top">Back to top ↑</a></div>
+      <div><a href="./privacy">Privacy policy</a><a href="./terms">Terms</a><a href="./claims-and-evidence">Claims &amp;
+          evidence</a><a href="#top">Back to top ↑</a></div>
     </div>
   </footer>
   <script src="./js/core.js" defer></script>

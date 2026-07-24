@@ -19,6 +19,7 @@
 - [Service locations](https://b2bindustrial.in/locations/)
 - [Engineering calculators](https://b2bindustrial.in/tools/)
 - [Contact and quotation requests](https://b2bindustrial.in/contact)
+- [Claims, evidence and attribution policy](https://b2bindustrial.in/claims-and-evidence)
 - [XML sitemap](https://b2bindustrial.in/sitemap.xml)
 - [RSS feed](https://b2bindustrial.in/rss.xml)
 

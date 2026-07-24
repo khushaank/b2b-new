@@ -4,8 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self' https://api.web3forms.com; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com data:; img-src 'self' data: https://b2bindustrial.in; connect-src 'self' https://api.web3forms.com; manifest-src 'self'; frame-src 'none'; worker-src 'none'" />
   <meta name="description"
-    content="Calculate the capacitor bank rating (kVAR) required for power factor correction. Eliminate utility penalties and reduce maximum demand charges as per DISCOM norms.">
+    content="Estimate capacitor-bank kVAR for power-factor correction and review indicative demand and tariff effects before professional system design.">
   <title>Power Factor Correction Calculator | B2B Industrial</title>
   <link rel="stylesheet" href="../assets/legacy-css/tools.css">
   <link rel="stylesheet" href="../css/core.css">
@@ -15,8 +18,8 @@
   <link rel="canonical" href="https://b2bindustrial.in/tools/powerfactor-calculation">
   <link rel="alternate" hreflang="en-IN" href="https://b2bindustrial.in/tools/powerfactor-calculation">
   <link rel="manifest" href="../site.webmanifest">
-  <link rel="icon" href="/favicon.png" type="image/png" sizes="318x318">
-  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="icon" href="https://b2bindustrial.in/favicon.png" type="image/png" sizes="318x318">
+  <link rel="apple-touch-icon" href="https://b2bindustrial.in/favicon.png">
   <meta name="msapplication-config" content="../browserconfig.xml">
   <link rel="alternate" type="application/rss+xml" title="B2B Industrial Insights"
     href="https://b2bindustrial.in/rss.xml">
@@ -168,17 +171,22 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header" id="top">
-  <div class="service-bar">
-    <div class="shell nav-wrap">
-      <a class="brand" href="../" aria-label="B2B Industrial Solutions home"><img src="../assets/images/home/logo.webp" alt="B2B Industrial Solutions" width="780" height="320" decoding="async"></a>
-      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
-      <nav class="main-nav" aria-label="Primary navigation">
-        <a href="../">Home</a><a href="../about">About</a><a href="../service">Services</a><a href="../#projects">Projects</a><a href="../clients">Clients</a><a href="../blog/">Insights</a><a href="../contact">Contact</a>
-      </nav>
-      <a class="button nav-cta" href="../contact#form">Discuss Your Requirement</a>
+    <div class="service-bar">
+      <div class="shell nav-wrap">
+        <a class="brand" href="../" aria-label="B2B Industrial Solutions home"><img
+            src="../assets/images/home/logo.webp" alt="B2B Industrial Solutions" width="780" height="320"
+            decoding="async"></a>
+        <button class="menu-toggle" type="button" aria-label="Open navigation"
+          aria-expanded="false"><span></span><span></span></button>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="../">Home</a><a href="../about">About</a><a href="../service">Services</a><a
+            href="../#projects">Projects</a><a href="../clients">Clients</a><a href="../blog/">Insights</a><a
+            href="../contact">Contact</a>
+        </nav>
+        <a class="button nav-cta" href="../contact#form">Discuss Your Requirement</a>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
   <div class="page-context">
     <div class="shell"><span>Engineering tools</span><b>Power Factor Correction Calculator</b><a
         href="../contact">Discuss a project</a></div>
@@ -201,7 +209,7 @@
           Engineering Tool
         </div>
         <h1>Power Factor Correction Calculator</h1>
-        <p>Calculate the exact capacitor bank rating (kVAR) needed to correct your plant's power factor, reduce
+        <p>Estimate the capacitor bank rating (kVAR) needed to correct your plant's power factor, reduce
           maximum demand charges, and eliminate utility penalty surcharges — as per Indian DISCOM tariff norms.
         </p>
       </div>
@@ -282,9 +290,11 @@
                   autocomplete="off" />
                 <div class="pf-value-box" id="pf-target-display">0.99</div>
               </div>
-              <div class="field-hint" style="margin-top: 8px;">Most Indian DISCOMs mandate ≥ 0.95. Targeting
-                0.99 qualifies for incentive rebates.</div>
+              <div class="field-hint" id="pf-target-hint" style="margin-top: 8px;">Many Indian DISCOM tariffs use a PF
+                threshold near 0.95, but thresholds, penalties and rebates vary by utility and consumer category. Check
+                your current tariff order.</div>
               <input type="hidden" id="pf-target" value="0.99" />
+              <div class="field-error" id="err-pf" role="alert" aria-live="polite"></div>
             </div>
 
             <hr class="section-divider" />
@@ -416,22 +426,68 @@
     <figure class="page-editorial-visual">
       <img src="../assets/images/editorial/audits-electrical.webp"
         alt="Certified industrial auditors performing a thermal electrical inspection" width="1600" height="900"
-        loading="lazy" decoding="async" fetchpriority="high">
+        loading="lazy" decoding="async">
     </figure>
 
+    <aside class="shell engineering-tool-limitations" aria-label="Power factor calculator limitations">
+      <strong>Engineering-tool limitations &amp; Technical Citations:</strong> The kVAR estimate uses the standard trigonometric relationship
+      between active power and power factor. It does not assess harmonics, resonance, voltage variation, switching
+      steps, transformer loading or capacitor duty. Tariff penalties and rebates vary by DISCOM, consumer category and
+      tariff order; the savings section is illustrative and must be checked against the current utility bill and tariff
+      schedule.
+      <div style="margin-top: 12px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 10px;">
+        <strong>Applicable Governing Standards:</strong>
+        <ul style="margin: 6px 0 0 18px; padding: 0; font-size: 13px; color: var(--muted);">
+          <li><strong>IS/IEC 60831 (Parts 1 &amp; 2)</strong>: Shunt power capacitors of the self-healing type for AC systems up to 1000 V.</li>
+          <li><strong>CEA Regulations 2010</strong>: Technical Standards for Connectivity to Distribution Systems (Target PF Range 0.95–0.99).</li>
+          <li><strong>IEEE 519-2022</strong>: IEEE Standard Schedules and Recommended Practices for Harmonic Control in Power Systems.</li>
+          <li><strong>State DISCOM Tariff Orders</strong>: Statutory Penalty Surcharge and Incentive Rebate Schedules for Industrial Power Factor.</li>
+        </ul>
+        <p style="margin-top: 8px; font-size: 13px;">For details on evidence and estimate interpretations, see our <a href="../claims-and-evidence">Claims, Evidence &amp; Attribution</a> notice.</p>
+      </div>
+    </aside>
   </main>
 
   <footer id="footer">
-  <div class="shell footer-top">
-    <div class="footer-brand"><img src="../assets/images/iso.webp" alt="B2B Industrial Solutions" width="780" height="320" loading="lazy" decoding="async"><p>Complete industrial engineering, compliance and project execution support for safer, efficient and reliable facilities.</p><a class="footer-cta" href="../contact#form">Discuss your requirement <span>→</span></a></div>
-    <div class="footer-links"><b>Services</b><a href="../services/audits-sustainability">Energy &amp; Sustainability</a><a href="../services/electrical-safety">Electrical Safety &amp; Power Systems</a><a href="../services/behavioural-safety">Health, Safety &amp; Environment</a><a href="../services/fire-life-safety">Fire Safety &amp; Fire Protection</a><a href="../services/compliances">Compliance, Certification &amp; Approvals</a><a href="../services/hvac-projects">HVAC &amp; Indoor Air Quality</a><a href="../service">View all services</a></div>
-    <div class="footer-links"><b>Need Help With?</b><a href="../services/audits-sustainability">Reducing Energy Costs</a><a href="../services/electrical-safety-audit">Improving Electrical Safety</a><a href="../services/compliances">Obtaining Statutory Approvals</a><a href="../services/hvac-projects">Upgrading HVAC Systems</a><a href="../services/fire-life-safety">Improving Fire Protection</a><a href="../services/project-management">Executing an Engineering Project</a></div>
-    <div class="footer-links"><b>Company</b><a href="../about">About</a><a href="../#projects">Projects &amp; case studies</a><a href="../clients">Clients</a><a href="../blog/">Resources</a><a href="../careers">Careers</a><a href="../testimonials">Testimonials</a></div>
-    <div class="footer-links footer-contact"><b>Contact</b><a href="tel:+919899702065">+91 98997 02065</a><a href="mailto:info@b2bindustrial.in">info@b2bindustrial.in</a><p>Shop No. 2, Gali No. 4<br>Khandsa Road, Gurugram<br>Haryana 122001</p><div class="footer-socials"><a href="https://wa.me/919899702065" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="https://linkedin.b2bindustrial.in/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div></div>
-  </div>
-  <div class="shell footer-credentials" aria-label="Certifications and service credentials"><span><b>ISO 9001:2015</b>Certified enterprise</span><span><b>BEE-certified</b>Audit experts</span><span><b>Pan-India</b>Project delivery</span><span><b>Since 2013</b>Industrial expertise</span></div>
-  <div class="shell footer-bottom"><span>© <span id="year"></span> B2B Industrial Solutions</span><div><a href="../privacy">Privacy policy</a><a href="../terms">Terms</a><a href="#top">Back to top ↑</a></div></div>
-</footer>
+    <div class="shell footer-top">
+      <div class="footer-brand"><img src="../assets/images/iso.webp" alt="B2B Industrial Solutions" width="780"
+          height="320" loading="lazy" decoding="async">
+        <p>Complete industrial engineering, compliance and project execution support for safer, efficient and reliable
+          facilities.</p><a class="footer-cta" href="../contact#form">Discuss your requirement <span>→</span></a>
+      </div>
+      <div class="footer-links"><b>Services</b><a href="../services/audits-sustainability">Energy &amp;
+          Sustainability</a><a href="../services/electrical-safety">Electrical Safety &amp; Power Systems</a><a
+          href="../services/behavioural-safety">Health, Safety &amp; Environment</a><a
+          href="../services/fire-life-safety">Fire Safety &amp; Fire Protection</a><a
+          href="../services/compliances">Compliance, Certification &amp; Approvals</a><a
+          href="../services/hvac-projects">HVAC &amp; Indoor Air Quality</a><a href="../service">View all services</a>
+      </div>
+      <div class="footer-links"><b>Need Help With?</b><a href="../services/audits-sustainability">Reducing Energy
+          Costs</a><a href="../services/electrical-safety-audit">Improving Electrical Safety</a><a
+          href="../services/compliances">Obtaining Statutory Approvals</a><a href="../services/hvac-projects">Upgrading
+          HVAC Systems</a><a href="../services/fire-life-safety">Improving Fire Protection</a><a
+          href="../services/project-management">Executing an Engineering Project</a></div>
+      <div class="footer-links"><b>Company</b><a href="../about">About</a><a href="../#projects">Projects &amp; case
+          studies</a><a href="../clients">Clients</a><a href="../blog/">Resources</a><a href="../careers">Careers</a><a
+          href="../testimonials">Testimonials</a></div>
+      <div class="footer-links footer-contact"><b>Contact</b><a href="tel:+919899702065">+91 98997 02065</a><a
+          href="mailto:info@b2bindustrial.in">info@b2bindustrial.in</a>
+        <p>Shop No. 2, Gali No. 4<br>Khandsa Road, Gurugram<br>Haryana 122001</p>
+        <div class="footer-socials"><a href="https://wa.me/919899702065" target="_blank"
+            rel="noopener noreferrer">WhatsApp</a><a href="https://linkedin.b2bindustrial.in/" target="_blank"
+            rel="noopener noreferrer">LinkedIn</a></div>
+      </div>
+    </div>
+    <div class="shell footer-credentials" aria-label="Certifications and service credentials" role="group"><span><b>ISO
+          9001:2015</b>Certified enterprise</span><span><b>BEE-certified</b>Audit
+        experts</span><span><b>Pan-India</b>Project delivery</span><span><b>Since 2013</b>Industrial expertise</span>
+    </div>
+
+    <div class="shell footer-bottom"><span>© <span id="year"></span> B2B Industrial Solutions</span>
+      <div><a href="../privacy">Privacy policy</a><a href="../terms">Terms</a><a href="../claims-and-evidence">Claims
+          &amp; evidence</a><a href="#top">Back to top ↑</a></div>
+    </div>
+  </footer>
   <script src="../js/core.js" defer></script>
   <script src="../js/tools.js?v=12" defer></script>
   <script src="../assets/js/tooljs/powerfactor-calculation.min.js" defer></script>

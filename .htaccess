@@ -87,7 +87,7 @@ ErrorDocument 503 /503
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
   SetEnvIf Host "^(localhost|127\.0\.0\.1)(:[0-9]+)?$" local_preview
   Header always unset Content-Security-Policy
-  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://api.web3forms.com; script-src 'self'; script-src-elem 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self' https://api.web3forms.com; manifest-src 'self'; worker-src 'none'"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://api.web3forms.com; script-src 'self'; script-src-elem 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com data:; img-src 'self' data:; connect-src 'self' https://api.web3forms.com; manifest-src 'self'; frame-src 'none'; worker-src 'none'; upgrade-insecure-requests"
   Header always unset X-Powered-By
   <If "%{HTTPS} == 'on'">
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"

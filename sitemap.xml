@@ -191,4 +191,10 @@
   <url><loc>https://b2bindustrial.in/tools/luxlevel-calculator</loc><lastmod>2026-07-11</lastmod></url>
   <url><loc>https://b2bindustrial.in/tools/powerfactor-calculation</loc><lastmod>2026-07-11</lastmod></url>
   <url><loc>https://b2bindustrial.in/tools/tonnage-calculator</loc><lastmod>2026-07-11</lastmod></url>
+  <url>
+    <loc>https://b2bindustrial.in/claims-and-evidence</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
 </urlset>
